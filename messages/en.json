@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "routes": "Routes",
+    "destinations": "Destinations",
+    "about": "About",
+    "contact": "Contact",
+    "bookNow": "Book Now",
+    "sustainable": "Sustainable",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Portugal Walking Operator",
+      "headline1": "We operate",
+      "headline2": "the trails",
+      "headline3": "we built",
+      "subheadline": "Premium guided and self-guided walking tours across Portugal's most extraordinary landscapes.",
+      "cta": "Explore Routes",
+      "ctaSecondary": "Meet the Team"
+    },
+    "intro": {
+      "label": "About Us · DMC",
+      "title": "Born from the territory.\nOperating with purpose.",
+      "body": "Portugal NTN spent 12 years building and structuring walking trails across northern and northeastern Portugal. Now we operate them. Every route we offer is a route we designed, certified, and know by heart.",
+      "stat1Value": "12",
+      "stat1Label": "Years of expertise",
+      "stat2Value": "9+",
+      "stat2Label": "Active routes",
+      "stat3Value": "3",
+      "stat3Label": "Regions covered",
+      "body2": "We are also a DMC (Destination Management Company) specialised in walking tourism. We create, certify and sell our own routes to agencies and operators worldwide, with NET rates and a guaranteed 24h response.",
+      "cta": "Work with us"
+    },
+    "whyus": {
+      "label": "The NTN difference",
+      "title": "Why walk with us",
+      "value1Title": "Tailored routes",
+      "value1Desc": "We adapt every route to the group's needs.",
+      "value2Title": "24H support",
+      "value2Desc": "Our team coordinates the full travel logistics.",
+      "value3Title": "Committed team",
+      "value3Desc": "Committed to the people and the territory.",
+      "value4Title": "Local expertise",
+      "value4Desc": "We know every trail because we built them.",
+      "value5Title": "Local partners",
+      "value5Desc": "Genuine products from the communities we serve.",
+      "value6Title": "Real value",
+      "value6Desc": "We operate locally to maximise the experience."
+    },
+    "routes": {
+      "label": "Our Destinations",
+      "title": "Choose your destination",
+      "filterAll": "All",
+      "filter1day": "1 Day",
+      "filter3days": "3 Days",
+      "filter5days": "5 Days",
+      "filter8days": "8 Days",
+      "guided": "Guided",
+      "selfGuided": "Self-Guided",
+      "viewRoute": "View Route",
+      "from": "From",
+      "perPerson": "/ person",
+      "discover": "Discover",
+      "routesWord": "routes"
+    },
+    "destinations": {
+      "label": "Where We Operate",
+      "title": "Where we walk,\nwe are local.",
+      "body": "We operate in the regions we know best, from the Douro to the mountains of Trás-os-Montes, from Gerês to the Algarve. Every destination is territory where we have roots."
+    },
+    "sustainability": {
+      "label": "Our Commitment",
+      "title": "Walking that\ngives back",
+      "body": "Every step supports local communities, preserves cultural heritage, and funds the maintenance of the trails we helped create. Sustainability is not a tag. It is our origin story.",
+      "pillar1": "Natural Preservation",
+      "pillar2": "Economic Development",
+      "pillar3": "Local Communities",
+      "pillar4": "Cultural Heritage",
+      "cta": "Our commitment"
+    },
+    "b2b": {
+      "label": "For Travel Partners",
+      "title": "Your local DMC in Portugal.",
+      "body": "We were born in the territory we operate. For 12 years we built and structured walking trails across northern Portugal. Today we are also a DMC. We create, certify and sell our own routes to agencies and operators worldwide.",
+      "cta": "Request Brochure",
+      "ctaSecondary": "Contact Us"
+    },
+    "blog": {
+      "label": "Trail Journal",
+      "title": "Stories from the territory",
+      "body": "Field notes, guides and behind-the-scenes from those who walk and operate Portugal's trails.",
+      "viewAll": "View all articles",
+      "readMore": "Read article"
+    }
+  },
+  "footer": {
+    "tagline": "Portugal's walking specialists.",
+    "routes": "Routes",
+    "company": "Company",
+    "about": "About NTN",
+    "consulting": "NTN Consulting",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "copyright": "© {year} Portugal NTN Walking. All rights reserved."
+  },
+  "sustainablePage": {
+    "heroLabel": "Sustainability",
+    "heroTitle": "Walking leaves\na mark. Ours is\na positive one.",
+    "heroBody": "We operate nature tourism with a real commitment: every route contributes to preserving the territories, developing local communities and valuing heritage.",
+    "p1Label": "Our purpose",
+    "p1Title": "Tourism that regenerates",
+    "p1Body": "Visiting is not enough. We believe in tourism that gives back more than it takes. That is why we built routes that respect nature's pace, support the local economy and preserve the memory of places.",
+    "areasLabel": "Our pillars",
+    "areasTitle": "Four fronts of commitment",
+    "area1Title": "Natural Preservation",
+    "area1Body": "Trails designed to minimise environmental impact and protect the biodiversity of the regions where we operate.",
+    "area2Title": "Economic Development",
+    "area2Body": "Every journey generates value for the accommodations, restaurants and producers of the communities we cross.",
+    "area3Title": "Local Communities",
+    "area3Body": "We work with local guides, hosts and partners, keeping the traditions and knowledge of the territory alive.",
+    "area4Title": "Cultural Heritage",
+    "area4Body": "We value villages, ancient paths and cultural legacy, interpreting them for those who visit us.",
+    "ctaTitle": "Walk with us, with purpose.",
+    "ctaBody": "Talk to our team and discover how we craft responsible, memorable walking experiences.",
+    "cta": "Talk to us"
+  },
+  "portal": {
+    "intro": "PORTUGALNTN is a tourism and travel company that delivers distinctive experiences, in safe yet challenging environments, where heritage and local people take the leading role. We value genuineness and authenticity, in tune with local communities and partners, generating lasting value for the territory, grounded in respect for and preservation of tangible and intangible heritage.",
+    "chooseLabel": "Choose your path",
+    "chooseTitle": "Two territories,\none origin.",
+    "consultingTitle": "Consulting",
+    "consultingDesc": "Nature tourism specialists. We structure trails, routes and tourism products for municipalities and public entities, from diagnosis to implementation.",
+    "consultingCta": "Explore Consulting",
+    "walkingTitle": "Walking",
+    "walkingDesc": "Premium walking tour operator. We create, operate and sell our own routes across the territories we know by heart.",
+    "walkingCta": "Explore Walking",
+    "soon": "Coming soon",
+    "consultingTagline": "We build trails and nature tourism products.",
+    "walkingTagline": "We operate the trails we built.",
+    "pageTitle": "Portugal NTN · Nature Tourism",
+    "lead": "Nature tourism specialists. Choose the territory you are looking for."
+  }
+}

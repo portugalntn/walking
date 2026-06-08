@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "routes": "Rutas",
+    "destinations": "Destinos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "bookNow": "Reservar",
+    "sustainable": "Sostenible",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Operadora de Turismo de Senderismo",
+      "headline1": "Operamos",
+      "headline2": "los senderos",
+      "headline3": "que creamos",
+      "subheadline": "Rutas de senderismo guiadas y autoguiadas por los paisajes más extraordinarios de Portugal.",
+      "cta": "Explorar Rutas",
+      "ctaSecondary": "Conocer el Equipo"
+    },
+    "intro": {
+      "label": "Nosotros · DMC",
+      "title": "Nacidos del territorio.\nOperamos con propósito.",
+      "body": "Portugal NTN pasó 12 años construyendo y estructurando senderos en el Norte y Nordeste de Portugal. Ahora los operamos. Cada ruta que ofrecemos es una ruta que diseñamos, certificamos y conocemos de memoria.",
+      "stat1Value": "12",
+      "stat1Label": "Años de experiencia",
+      "stat2Value": "9+",
+      "stat2Label": "Rutas activas",
+      "stat3Value": "3",
+      "stat3Label": "Regiones cubiertas",
+      "body2": "También somos una DMC (Destination Management Company) especializada en turismo de senderismo. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo, con tarifas NET y respuesta garantizada en 24h.",
+      "cta": "Trabajar con nosotros"
+    },
+    "whyus": {
+      "label": "La diferencia NTN",
+      "title": "Por qué caminar con nosotros",
+      "value1Title": "Rutas a medida",
+      "value1Desc": "Adaptamos cada ruta a las necesidades del grupo.",
+      "value2Title": "Soporte 24H",
+      "value2Desc": "Nuestro equipo coordina toda la logística del viaje.",
+      "value3Title": "Equipo comprometido",
+      "value3Desc": "Comprometidos con las personas y el territorio.",
+      "value4Title": "Experiencia local",
+      "value4Desc": "Conocemos cada sendero porque los construimos.",
+      "value5Title": "Socios locales",
+      "value5Desc": "Productos genuinos de las comunidades que servimos.",
+      "value6Title": "Valor real",
+      "value6Desc": "Operamos localmente para maximizar la experiencia."
+    },
+    "routes": {
+      "label": "Nuestros Destinos",
+      "title": "Elige tu destino",
+      "filterAll": "Todas",
+      "filter1day": "1 Día",
+      "filter3days": "3 Días",
+      "filter5days": "5 Días",
+      "filter8days": "8 Días",
+      "guided": "Guiado",
+      "selfGuided": "Autoguiado",
+      "viewRoute": "Ver Ruta",
+      "from": "Desde",
+      "perPerson": "/ persona",
+      "discover": "Descubrir",
+      "routesWord": "rutas"
+    },
+    "destinations": {
+      "label": "Dónde Operamos",
+      "title": "Donde caminamos,\nsomos locales.",
+      "body": "Operamos en las regiones que mejor conocemos, del Duero a las montañas de Trás-os-Montes, del Gerês al Algarve. Cada destino es territorio donde tenemos raíces."
+    },
+    "sustainability": {
+      "label": "Nuestro Compromiso",
+      "title": "Caminar que\ndevuelve al territorio",
+      "body": "Cada paso apoya a las comunidades locales, preserva el patrimonio cultural y financia el mantenimiento de los senderos que ayudamos a crear. La sostenibilidad no es una etiqueta. Es nuestra historia de origen.",
+      "pillar1": "Preservación Natural",
+      "pillar2": "Desarrollo Económico",
+      "pillar3": "Comunidades Locales",
+      "pillar4": "Patrimonio Cultural",
+      "cta": "Nuestro compromiso"
+    },
+    "b2b": {
+      "label": "Para Socios Comerciales",
+      "title": "Tu operadora local en Portugal.",
+      "body": "Nacimos en el territorio que operamos. Durante 12 años estructuramos rutas de senderismo en el norte de Portugal. Hoy somos también DMC. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo.",
+      "cta": "Solicitar Brochure",
+      "ctaSecondary": "Contactarnos"
+    },
+    "blog": {
+      "label": "Diario de Senderos",
+      "title": "Historias del territorio",
+      "body": "Crónicas, guías y bastidores de quienes caminan y operan los senderos de Portugal.",
+      "viewAll": "Ver todos los artículos",
+      "readMore": "Leer artículo"
+    }
+  },
+  "footer": {
+    "tagline": "Los especialistas en senderismo en Portugal.",
+    "routes": "Rutas",
+    "company": "Empresa",
+    "about": "Sobre NTN",
+    "consulting": "NTN Consulting",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "copyright": "© {year} Portugal NTN Walking. Todos los derechos reservados."
+  },
+  "sustainablePage": {
+    "heroLabel": "Sostenibilidad",
+    "heroTitle": "Caminar deja\nhuella. La nuestra\nes positiva.",
+    "heroBody": "Operamos turismo de naturaleza con un compromiso real: cada ruta contribuye a la preservación de los territorios, el desarrollo de las comunidades locales y la valorización del patrimonio.",
+    "p1Label": "Nuestro propósito",
+    "p1Title": "Turismo que regenera",
+    "p1Body": "Visitar no basta. Creemos en un turismo que devuelve más de lo que toma. Por eso estructuramos rutas que respetan el ritmo de la naturaleza, apoyan la economía local y preservan la memoria de los lugares.",
+    "areasLabel": "Nuestros pilares",
+    "areasTitle": "Cuatro frentes de compromiso",
+    "area1Title": "Preservación Natural",
+    "area1Body": "Senderos diseñados para minimizar el impacto ambiental y proteger la biodiversidad de las regiones donde operamos.",
+    "area2Title": "Desarrollo Económico",
+    "area2Body": "Cada viaje genera valor para alojamientos, restaurantes y productores de las comunidades que atravesamos.",
+    "area3Title": "Comunidades Locales",
+    "area3Body": "Trabajamos con guías, anfitriones y socios locales, manteniendo vivas las tradiciones y el conocimiento del territorio.",
+    "area4Title": "Patrimonio Cultural",
+    "area4Body": "Valoramos aldeas, caminos antiguos y el legado cultural, interpretándolos para quienes nos visitan.",
+    "ctaTitle": "Camina con nosotros, con propósito.",
+    "ctaBody": "Habla con nuestro equipo y descubre cómo creamos experiencias de senderismo responsables y memorables.",
+    "cta": "Hablar con nosotros"
+  },
+  "portal": {
+    "intro": "PORTUGALNTN es una empresa de animación turística y agencia de viajes que ofrece experiencias diferenciadoras, en entornos seguros pero desafiantes, donde el patrimonio y las personas asumen el papel más relevante. Valoramos la genuinidad y la autenticidad, en sintonía con la población y los agentes locales, generando valor para el territorio, sustentado en el respeto y la preservación del patrimonio material e inmaterial.",
+    "chooseLabel": "Elige tu camino",
+    "chooseTitle": "Dos territorios,\nun mismo origen.",
+    "consultingTitle": "Consulting",
+    "consultingDesc": "Especialistas en turismo de naturaleza. Estructuramos rutas, senderos y productos turísticos para municipios y entidades, del diagnóstico a la implementación.",
+    "consultingCta": "Explorar Consulting",
+    "walkingTitle": "Walking",
+    "walkingDesc": "Operadora de turismo de senderismo premium. Creamos, operamos y vendemos nuestros propios itinerarios por los territorios que conocemos de memoria.",
+    "walkingCta": "Explorar Walking",
+    "soon": "Próximamente",
+    "consultingTagline": "Estructuramos rutas y productos turísticos.",
+    "walkingTagline": "Operamos los senderos que creamos.",
+    "pageTitle": "Portugal NTN · Turismo de Naturaleza",
+    "lead": "Especialistas en turismo de naturaleza. Elige el territorio que buscas."
+  }
+}

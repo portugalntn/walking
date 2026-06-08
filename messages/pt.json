@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "routes": "Roteiros",
+    "destinations": "Destinos",
+    "about": "Sobre Nós",
+    "contact": "Contacto",
+    "bookNow": "Reservar",
+    "sustainable": "Sustentável",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Operadora de Turismo de Caminhada",
+      "headline1": "Operamos",
+      "headline2": "os trilhos",
+      "headline3": "que criamos",
+      "subheadline": "Roteiros de caminhada guiados e self-guided pelas paisagens mais extraordinárias de Portugal.",
+      "cta": "Ver Roteiros",
+      "ctaSecondary": "Conhecer a Equipa"
+    },
+    "intro": {
+      "label": "Quem Somos · DMC",
+      "title": "Nascemos do território.\nOperamos com propósito.",
+      "body": "A Portugal NTN passou 12 anos a construir e estruturar trilhos pedestres no Norte e Nordeste de Portugal. Agora operamo-los. Cada roteiro que oferecemos é um roteiro que concebemos, certificámos e conhecemos de cor.",
+      "stat1Value": "12",
+      "stat1Label": "Anos de experiência",
+      "stat2Value": "9+",
+      "stat2Label": "Roteiros activos",
+      "stat3Value": "3",
+      "stat3Label": "Regiões cobertas",
+      "body2": "Somos também uma DMC (Destination Management Company) especializada em turismo de caminhada. Criamos, certificamos e vendemos os nossos próprios roteiros a agências e operadores de todo o mundo, com tarifas NET e resposta garantida em 24h.",
+      "cta": "Trabalhar connosco"
+    },
+    "whyus": {
+      "label": "A nossa diferença",
+      "title": "Porque caminhar connosco",
+      "value1Title": "Personalização",
+      "value1Desc": "Adaptamos cada roteiro às necessidades do grupo.",
+      "value2Title": "Suporte 24H",
+      "value2Desc": "A nossa equipa coordena toda a logística da viagem.",
+      "value3Title": "Comprometimento",
+      "value3Desc": "Comprometidos com as pessoas e o território.",
+      "value4Title": "Conhecimento local",
+      "value4Desc": "Conhecemos cada trilho porque os construímos.",
+      "value5Title": "Parceiros locais",
+      "value5Desc": "Produtos genuínos das comunidades que servimos.",
+      "value6Title": "Valor real",
+      "value6Desc": "Operamos localmente para maximizar a experiência."
+    },
+    "routes": {
+      "label": "Os Nossos Destinos",
+      "title": "Escolha o seu destino",
+      "filterAll": "Todos",
+      "filter1day": "1 Dia",
+      "filter3days": "3 Dias",
+      "filter5days": "5 Dias",
+      "filter8days": "8 Dias",
+      "guided": "Guiado",
+      "selfGuided": "Self-Guided",
+      "viewRoute": "Ver Roteiro",
+      "from": "A partir de",
+      "perPerson": "/ pessoa",
+      "discover": "Descobrir",
+      "routesWord": "roteiros"
+    },
+    "destinations": {
+      "label": "Onde Operamos",
+      "title": "Onde caminhamos,\nsomos locais.",
+      "body": "Operamos nas regiões que conhecemos melhor, do Douro às montanhas de Trás-os-Montes, do Gerês ao Algarve. Cada destino é território onde temos raízes."
+    },
+    "sustainability": {
+      "label": "O Nosso Compromisso",
+      "title": "Caminhar que\ndevolve ao território",
+      "body": "Cada passo apoia as comunidades locais, preserva o património cultural e financia a manutenção dos trilhos que ajudámos a criar. A sustentabilidade não é um rótulo. É a nossa origem.",
+      "pillar1": "Preservação Natural",
+      "pillar2": "Desenvolvimento Económico",
+      "pillar3": "Comunidades Locais",
+      "pillar4": "Património Cultural",
+      "cta": "Conheça o nosso compromisso"
+    },
+    "b2b": {
+      "label": "Para Parceiros Comerciais",
+      "title": "Somos a sua operadora local em Portugal.",
+      "body": "Nascemos do território que operamos. Durante 12 anos estruturámos rotas de caminhada no Norte e Nordeste de Portugal. Hoje somos também operadora DMC. Criamos, certificamos e vendemos os nossos próprios roteiros para agências e operadores de todo o mundo.",
+      "cta": "Solicitar Brochura",
+      "ctaSecondary": "Contactar-nos"
+    },
+    "blog": {
+      "label": "Diário de Trilhos",
+      "title": "Histórias do território",
+      "body": "Relatos, guias e bastidores de quem caminha e opera os trilhos de Portugal.",
+      "viewAll": "Ver todos os artigos",
+      "readMore": "Ler artigo"
+    }
+  },
+  "footer": {
+    "tagline": "Os especialistas de caminhada em Portugal.",
+    "routes": "Roteiros",
+    "company": "Empresa",
+    "about": "Sobre a NTN",
+    "consulting": "NTN Consulting",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos e Condições",
+    "copyright": "© {year} Portugal NTN Walking. Todos os direitos reservados."
+  },
+  "sustainablePage": {
+    "heroLabel": "Sustentabilidade",
+    "heroTitle": "Caminhar deixa\nmarca. A nossa é\npositiva.",
+    "heroBody": "Operamos turismo de natureza com um compromisso real: cada roteiro contribui para a preservação dos territórios, o desenvolvimento das comunidades locais e a valorização do património.",
+    "p1Label": "O nosso propósito",
+    "p1Title": "Turismo que regenera",
+    "p1Body": "Não basta visitar. Acreditamos num turismo que devolve mais do que retira. Por isso estruturámos rotas que respeitam o ritmo da natureza, apoiam a economia local e preservam a memória dos lugares.",
+    "areasLabel": "Os nossos pilares",
+    "areasTitle": "Quatro frentes de compromisso",
+    "area1Title": "Preservação Natural",
+    "area1Body": "Trilhos desenhados para minimizar o impacto ambiental e proteger a biodiversidade das regiões onde operamos.",
+    "area2Title": "Desenvolvimento Económico",
+    "area2Body": "Cada viagem gera valor para alojamentos, restaurantes e produtores das comunidades que atravessamos.",
+    "area3Title": "Comunidades Locais",
+    "area3Body": "Trabalhamos com guias, anfitriões e parceiros locais, mantendo vivas as tradições e o conhecimento do território.",
+    "area4Title": "Património Cultural",
+    "area4Body": "Valorizamos aldeias, caminhos antigos e o legado cultural, interpretando-os para quem nos visita.",
+    "ctaTitle": "Caminhe connosco com propósito.",
+    "ctaBody": "Fale com a nossa equipa e descubra como criamos experiências de caminhada responsáveis e memoráveis.",
+    "cta": "Falar connosco"
+  },
+  "portal": {
+    "intro": "A PORTUGALNTN é uma empresa de animação turística e agente de viagens que proporciona experiências diferenciadoras, em ambientes seguros mas desafiantes, onde o património e as gentes assumem o papel mais relevante. Privilegiamos a genuinidade e a autenticidade, em sintonia com a população e os agentes locais, promovendo mais-valias para o território, sustentadas pelo respeito e preservação do património material e imaterial.",
+    "chooseLabel": "Escolha o seu caminho",
+    "chooseTitle": "Dois territórios,\numa só origem.",
+    "consultingTitle": "Consulting",
+    "consultingDesc": "Especialistas em turismo de natureza. Estruturamos rotas, percursos e produtos turísticos para municípios e entidades, do diagnóstico à implementação.",
+    "consultingCta": "Explorar Consulting",
+    "walkingTitle": "Walking",
+    "walkingDesc": "Operadora de turismo de caminhada premium. Criamos, operamos e vendemos roteiros próprios pelos territórios que conhecemos de cor.",
+    "walkingCta": "Explorar Walking",
+    "soon": "Em breve",
+    "consultingTagline": "Estruturamos rotas e produtos turísticos.",
+    "walkingTagline": "Operamos os trilhos que criamos.",
+    "pageTitle": "Portugal NTN · Turismo de Natureza",
+    "lead": "Especialistas em turismo de natureza. Escolha o território que procura."
+  }
+}
