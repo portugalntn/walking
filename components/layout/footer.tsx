@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
+import { SealsStrip } from "@/components/layout/seals-strip";
 
 const socialLinks = [
   {
@@ -44,7 +45,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer
+    <>
+      {/* Certification seals band — above the footer on every page */}
+      <SealsStrip />
+
+      <footer
       style={{ backgroundColor: "var(--color-ntn-black-900)" }}
     >
       {/* Top separator line with lime accent */}
@@ -210,7 +215,7 @@ export function Footer() {
             className="text-label"
             style={{ color: "rgba(190,194,181,0.4)" }}
           >
-            {t("copyright").replace("{year}", String(year))}
+            {t("copyright", { year })}
           </p>
           {/* Lang switcher bottom */}
           <div className="flex gap-4">
@@ -233,5 +238,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

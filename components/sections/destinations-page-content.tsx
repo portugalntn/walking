@@ -322,7 +322,7 @@ export function DestinationsPageContent() {
               >
                 <HoverCard>
                   <a href={`/${locale}/destinations/${route.id}`} className="group block">
-                    <div className="relative w-full overflow-hidden mb-4" style={{ aspectRatio: "16/11", borderRadius: "8px" }}>
+                    <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/11", borderRadius: "8px", marginBottom: "22px" }}>
                       <Image
                         src={route.image}
                         alt={route.title}
@@ -332,36 +332,49 @@ export function DestinationsPageContent() {
                       />
                       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(29,29,26,0.55) 100%)" }} />
                       <span
-                        className="absolute top-4 right-4 text-label px-3 py-1.5 rounded"
-                        style={{ backgroundColor: "rgba(29,29,26,0.6)", color: "#fff", backdropFilter: "blur(6px)" }}
+                        className="absolute top-4 right-4"
+                        style={{
+                          backgroundColor: "var(--color-ntn-lime)",
+                          color: "var(--color-ntn-black-900)",
+                          fontFamily: "var(--font-ui)",
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          padding: "7px 14px",
+                          borderRadius: "5px",
+                        }}
                       >
                         {route.duration}
                       </span>
                       <p
-                        className="absolute bottom-4 left-4 text-label"
-                        style={{ color: "rgba(255,255,255,0.9)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}
+                        className="absolute bottom-4 text-label"
+                        style={{ left: "16px", color: "rgba(255,255,255,0.9)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}
                       >
                         {route.region} · {route.type[locale]}
                       </p>
                     </div>
-                    <h3
-                      className="font-ui mb-1.5 leading-snug"
-                      style={{ color: "var(--color-ntn-black-900)", fontSize: "var(--text-display-sm)", fontWeight: 600 }}
-                    >
-                      {route.title}
-                    </h3>
-                    <p className="text-body-md mb-3" style={{ color: "var(--color-ntn-sage-200)" }}>
-                      {route.tagline[locale]}
-                    </p>
-                    <span
-                      className="inline-flex items-center gap-1.5 transition-all duration-200 group-hover:gap-2.5"
-                      style={{ color: "var(--color-ntn-forest-400)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em" }}
-                    >
-                      {t("discover")}
-                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
+                    {/* Below-card content — left-aligned with the in-image label (16px) */}
+                    <div style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                      <h3
+                        className="font-ui mb-1.5 leading-snug"
+                        style={{ color: "var(--color-ntn-black-900)", fontSize: "var(--text-display-sm)", fontWeight: 600 }}
+                      >
+                        {route.title}
+                      </h3>
+                      <p className="text-body-md mb-3" style={{ color: "var(--color-ntn-sage-200)" }}>
+                        {route.tagline[locale]}
+                      </p>
+                      <span
+                        className="inline-flex items-center gap-1.5 transition-all duration-200 group-hover:gap-2.5"
+                        style={{ color: "var(--color-ntn-forest-400)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em" }}
+                      >
+                        {t("discover")}
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                          <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </div>
                   </a>
                 </HoverCard>
               </m.div>

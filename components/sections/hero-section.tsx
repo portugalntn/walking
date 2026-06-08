@@ -59,6 +59,31 @@ export function HeroSection() {
               "linear-gradient(to right, rgba(29,29,26,0.6) 0%, rgba(29,29,26,0.0) 65%)",
           }}
         />
+        {/* Brand watermark — subtle, bottom-right, clear of the title.
+            Sits in the darker bottom gradient so it reads on any photo. */}
+        <div
+          aria-hidden
+          className="hidden md:block"
+          style={{
+            position: "absolute",
+            bottom: "2%",
+            right: "1%",
+            width: "min(34vw, 460px)",
+            opacity: 0.1,
+            transform: "rotate(-10deg)",
+            pointerEvents: "none",
+            zIndex: 1,
+            filter: "drop-shadow(0 2px 14px rgba(0,0,0,0.25))",
+          }}
+        >
+          <Image
+            src="/images/portal/ntn-symbol-v2.png"
+            alt=""
+            width={460}
+            height={460}
+            style={{ width: "100%", height: "auto", filter: "brightness(0) invert(1)" }}
+          />
+        </div>
       </div>
 
       {/* ── Content ── */}

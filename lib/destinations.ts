@@ -217,7 +217,7 @@ export const routes: RouteProduct[] = [
     format: "roteiro",
     type: { en: "Guided", pt: "Guiado", es: "Guiado" },
     image: "/images/routes/sintra-1.jpg",
-    title: "Mystic Sintra — Sacred Mountain",
+    title: "Mystic Sintra",
     tagline: {
       en: "Mist, myth and forest",
       pt: "Névoa, mito e floresta",
@@ -232,7 +232,7 @@ export const routes: RouteProduct[] = [
     format: "roteiro",
     type: { en: "Guided", pt: "Guiado", es: "Guiado" },
     image: "/images/routes/tras-os-montes-3.jpg",
-    title: "Quadrassal — Romeu",
+    title: "Quadrassal e Romeu",
     tagline: {
       en: "Organic farmland and olive groves",
       pt: "Campos biológicos e olivais",
@@ -247,7 +247,7 @@ export const routes: RouteProduct[] = [
     format: "roteiro",
     type: { en: "Guided", pt: "Guiado", es: "Guiado" },
     image: "/images/routes/algarve-1.jpg",
-    title: "Charneca do Farol — Vincentian Coast",
+    title: "Charneca do Farol",
     tagline: {
       en: "Cliffs and the wild Atlantic",
       pt: "Falésias e o Atlântico selvagem",

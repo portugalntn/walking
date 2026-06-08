@@ -260,6 +260,37 @@ img, video {
   outline-offset: 3px;
 }
 
+/* ─── PRODUCT ITINERARY DAY ────────────────────────────────── */
+
+/* Narrow text column so the description wraps in ~2 lines */
+.day-text {
+  max-width: 640px;
+}
+
+/* 3 equal photos in a row, spanning the full layout width */
+.day-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 22px;
+  width: 100%;
+}
+
+.day-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 3 / 2;
+  cursor: zoom-in;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+@media (max-width: 520px) {
+  .day-photos { gap: 6px; }
+}
+
 /* ─── FLOATING BRAND ELEMENTS ─────────────────────────────── */
 
 @keyframes floatA {
