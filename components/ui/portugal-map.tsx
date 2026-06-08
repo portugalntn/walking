@@ -17,19 +17,19 @@ const HEIGHT = 640;
 type Region = {
   id: string;
   coords: [number, number]; // [lng, lat]
-  anchor: "start" | "end";
+  anchor: "start" | "middle" | "end";
   dx: number;
   dy: number;
   lines: string[];
 };
 
 const regions: Region[] = [
-  { id: "geres",   coords: [-8.20, 41.85], anchor: "end",   dx: -13, dy: 0,  lines: ["Peneda-Gerês"] },
-  { id: "santiago",coords: [-7.50, 41.78], anchor: "end",   dx: -13, dy: -14, lines: ["Caminho de Santiago", "Interior"] },
-  { id: "tras",    coords: [-6.80, 41.72], anchor: "start", dx: 13,  dy: 0,  lines: ["Trás-os-Montes"] },
-  { id: "douro",   coords: [-7.65, 41.10], anchor: "start", dx: 13,  dy: 0,  lines: ["Douro Valley"] },
-  { id: "lisboa",  coords: [-9.20, 38.72], anchor: "end",   dx: -13, dy: 0,  lines: ["Lisboa & Sintra"] },
-  { id: "algarve", coords: [-8.00, 37.10], anchor: "start", dx: 13,  dy: 0,  lines: ["Algarve"] },
+  { id: "geres",   coords: [-8.20, 41.86], anchor: "end",    dx: -13, dy: 4,   lines: ["Peneda-Gerês"] },
+  { id: "santiago",coords: [-7.45, 41.74], anchor: "middle", dx: 0,   dy: -22, lines: ["Caminho de Santiago", "Interior"] },
+  { id: "tras",    coords: [-6.78, 41.74], anchor: "start",  dx: 13,  dy: 0,   lines: ["Trás-os-Montes"] },
+  { id: "douro",   coords: [-7.65, 41.10], anchor: "start",  dx: 13,  dy: 0,   lines: ["Douro Valley"] },
+  { id: "lisboa",  coords: [-9.20, 38.72], anchor: "end",    dx: -13, dy: 0,   lines: ["Lisboa & Sintra"] },
+  { id: "algarve", coords: [-8.00, 37.10], anchor: "start",  dx: 13,  dy: 0,   lines: ["Algarve"] },
 ];
 
 export function PortugalMap() {

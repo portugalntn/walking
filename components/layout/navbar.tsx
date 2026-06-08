@@ -40,7 +40,7 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { href: `/${locale}#routes`, label: t("destinations") },
+    { href: `/${locale}/destinations`, label: t("destinations") },
     { href: `/${locale}#about`, label: t("about") },
     { href: `/${locale}/sustainable`, label: t("sustainable") },
     { href: `/${locale}/blog`, label: t("blog") },

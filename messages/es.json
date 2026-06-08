@@ -146,5 +146,27 @@
     "cardDescWalking": "Destination Management Company (DMC) especializada en Walking en el Norte y Nordeste de Portugal.",
     "leadWalking": "Creamos experiencias auténticas, en sintonía con las comunidades y el territorio, con conocimiento local genuino sobre el Norte y Nordeste de Portugal.",
     "leadConsulting": "Implementamos, señalizamos y desarrollamos rutas de walking que transforman destinos. Cada sendero, cada parada, cada experiencia es resultado de vivencia, estudio profundo e implementación técnica."
+  },
+  "destinationsPage": {
+    "label": "Destinos",
+    "heroTitle": "Donde empieza el sendero",
+    "viewRoutes": "Ver rutas",
+    "routesWord": "rutas",
+    "days": "días",
+    "routesLabel": "Nuestras Rutas",
+    "routesTitle": "Rutas por todo el territorio",
+    "discover": "Descubrir",
+    "filterAll": "Todas",
+    "intro": "Seis territorios que conocemos de memoria. Elige por dónde quieres caminar.",
+    "formatsLabel": "Formatos",
+    "formatsTitle": "¿Cómo prefieres caminar?",
+    "format1Title": "Rutas de 1 Día",
+    "format1Desc": "Caminatas guiadas de un día, con degustación de productos locales y regreso al punto de partida.",
+    "format1Tag": "1 Día · Guiado",
+    "formatMultiTitle": "Programas Multidías",
+    "formatMultiDesc": "Viajes de 3, 5, 8 u 11 días, autoguiados o guiados, con alojamiento y logística incluidos.",
+    "formatMultiTag": "3 · 5 · 8 · 11 Días",
+    "filter1day": "Rutas de 1 Día",
+    "filterMulti": "Programas Multidías"
   }
 }
