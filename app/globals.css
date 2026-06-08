@@ -284,22 +284,38 @@ img, video {
 .portal-layout {
   display: grid;
   grid-template-columns: 42% 58%;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .portal-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 120px clamp(24px, 4vw, 72px) 80px;
+  justify-content: flex-start; /* always top-anchored so the logo never clips */
+  padding: 104px clamp(24px, 4vw, 72px) 40px;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .portal-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 96px clamp(24px, 3vw, 48px) 48px 0;
+  align-items: center;
+  gap: 18px;
+  padding: 96px clamp(24px, 3vw, 56px) 48px 0;
   height: 100vh;
+}
+
+.portal-card-float {
+  height: 72vh;
+  max-height: 600px;
+  animation: portalFloat 8s ease-in-out infinite;
+}
+@keyframes portalFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-card-float { animation: none; }
 }
 
 .portal-card {
@@ -307,7 +323,7 @@ img, video {
   overflow: hidden;
   border-radius: 10px;
   height: 100%;
-  box-shadow: 0 20px 50px -20px rgba(29, 29, 26, 0.35);
+  box-shadow: 0 35px 60px -18px rgba(0, 0, 0, 0.6);
 }
 
 .portal-card-img {
@@ -334,12 +350,13 @@ img, video {
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .portal-layout { grid-template-columns: 1fr; }
-  .portal-left { padding-top: 110px; padding-bottom: 40px; }
+  .portal-layout { grid-template-columns: 1fr; height: auto; }
+  .portal-left { height: auto; overflow: visible; padding-top: 110px; padding-bottom: 40px; }
   .portal-cards {
     height: auto;
     padding: 0 clamp(24px, 4vw, 48px) 64px;
   }
+  .portal-card-float { height: auto; max-height: none; }
   .portal-card { min-height: 420px; }
 }
 

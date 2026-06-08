@@ -128,7 +128,7 @@
   "portal": {
     "intro": "A PORTUGALNTN é uma empresa de animação turística e agente de viagens que proporciona experiências diferenciadoras, em ambientes seguros mas desafiantes, onde o património e as gentes assumem o papel mais relevante. Privilegiamos a genuinidade e a autenticidade, em sintonia com a população e os agentes locais, promovendo mais-valias para o território, sustentadas pelo respeito e preservação do património material e imaterial.",
     "chooseLabel": "Escolha o seu caminho",
-    "chooseTitle": "Dois territórios,\numa só origem.",
+    "chooseTitle": "Uma empresa,\ndois caminhos\ne um propósito:\nSustentabilidade.",
     "consultingTitle": "Consulting",
     "consultingDesc": "Especialistas em turismo de natureza. Estruturamos rotas, percursos e produtos turísticos para municípios e entidades, do diagnóstico à implementação.",
     "consultingCta": "Explorar Consulting",
@@ -139,6 +139,12 @@
     "consultingTagline": "Estruturamos rotas e produtos turísticos.",
     "walkingTagline": "Operamos os trilhos que criamos.",
     "pageTitle": "Portugal NTN · Turismo de Natureza",
-    "lead": "Especialistas em turismo de natureza. Escolha o território que procura."
+    "lead": "Turismo de natureza que cria experiências autênticas, em sintonia com as comunidades e o território, com a sustentabilidade como propósito.",
+    "enterConsulting": "Entrar no Consulting",
+    "enterWalking": "Entrar no Walking",
+    "cardDescConsulting": "Especialistas em planear e implementar percursos pedestres, percursos pedestres acessíveis, Centros de Cyclin' e Trail Running.",
+    "cardDescWalking": "Destination Management Company (DMC) especializada em Walking no Norte e Nordeste de Portugal.",
+    "leadWalking": "Criamos experiências autênticas, em sintonia com as comunidades e o território, com conhecimento local genuíno sobre o Norte e Nordeste de Portugal.",
+    "leadConsulting": "Implementamos, sinalizamos e desenvolvemos rotas de walking que transformam destinos. Cada trilho, cada parada, cada experiência é resultado de vivência, estudo profundo e implementação técnica."
   }
 }

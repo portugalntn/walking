@@ -128,7 +128,7 @@
   "portal": {
     "intro": "PORTUGALNTN is a tourism and travel company that delivers distinctive experiences, in safe yet challenging environments, where heritage and local people take the leading role. We value genuineness and authenticity, in tune with local communities and partners, generating lasting value for the territory, grounded in respect for and preservation of tangible and intangible heritage.",
     "chooseLabel": "Choose your path",
-    "chooseTitle": "Two territories,\none origin.",
+    "chooseTitle": "One company,\ntwo paths\nand one purpose:\nSustainability.",
     "consultingTitle": "Consulting",
     "consultingDesc": "Nature tourism specialists. We structure trails, routes and tourism products for municipalities and public entities, from diagnosis to implementation.",
     "consultingCta": "Explore Consulting",
@@ -139,6 +139,12 @@
     "consultingTagline": "We build trails and nature tourism products.",
     "walkingTagline": "We operate the trails we built.",
     "pageTitle": "Portugal NTN · Nature Tourism",
-    "lead": "Nature tourism specialists. Choose the territory you are looking for."
+    "lead": "Nature tourism creating authentic experiences, in tune with local communities and the territory, with sustainability at its core.",
+    "enterConsulting": "Enter Consulting",
+    "enterWalking": "Enter Walking",
+    "cardDescConsulting": "Specialists in planning and implementing pedestrian trails, accessible trails, Cyclin' Centres and Trail Running.",
+    "cardDescWalking": "Destination Management Company (DMC) specialised in Walking across northern and northeastern Portugal.",
+    "leadWalking": "We create authentic experiences, in tune with local communities and the territory, with genuine local knowledge of northern and northeastern Portugal.",
+    "leadConsulting": "We implement, signpost and develop walking routes that transform destinations. Every trail, every stop, every experience is the result of lived experience, deep study and technical implementation."
   }
 }

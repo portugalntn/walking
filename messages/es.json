@@ -128,7 +128,7 @@
   "portal": {
     "intro": "PORTUGALNTN es una empresa de animación turística y agencia de viajes que ofrece experiencias diferenciadoras, en entornos seguros pero desafiantes, donde el patrimonio y las personas asumen el papel más relevante. Valoramos la genuinidad y la autenticidad, en sintonía con la población y los agentes locales, generando valor para el territorio, sustentado en el respeto y la preservación del patrimonio material e inmaterial.",
     "chooseLabel": "Elige tu camino",
-    "chooseTitle": "Dos territorios,\nun mismo origen.",
+    "chooseTitle": "Una empresa,\ndos caminos\ny un propósito:\nSostenibilidad.",
     "consultingTitle": "Consulting",
     "consultingDesc": "Especialistas en turismo de naturaleza. Estructuramos rutas, senderos y productos turísticos para municipios y entidades, del diagnóstico a la implementación.",
     "consultingCta": "Explorar Consulting",
@@ -139,6 +139,12 @@
     "consultingTagline": "Estructuramos rutas y productos turísticos.",
     "walkingTagline": "Operamos los senderos que creamos.",
     "pageTitle": "Portugal NTN · Turismo de Naturaleza",
-    "lead": "Especialistas en turismo de naturaleza. Elige el territorio que buscas."
+    "lead": "Turismo de naturaleza que crea experiencias auténticas, en sintonía con las comunidades y el territorio, con la sostenibilidad como propósito.",
+    "enterConsulting": "Entrar en Consulting",
+    "enterWalking": "Entrar en Walking",
+    "cardDescConsulting": "Especialistas en planificar e implementar senderos, senderos accesibles, Centros de Cyclin' y Trail Running.",
+    "cardDescWalking": "Destination Management Company (DMC) especializada en Walking en el Norte y Nordeste de Portugal.",
+    "leadWalking": "Creamos experiencias auténticas, en sintonía con las comunidades y el territorio, con conocimiento local genuino sobre el Norte y Nordeste de Portugal.",
+    "leadConsulting": "Implementamos, señalizamos y desarrollamos rutas de walking que transforman destinos. Cada sendero, cada parada, cada experiencia es resultado de vivencia, estudio profundo e implementación técnica."
   }
 }
