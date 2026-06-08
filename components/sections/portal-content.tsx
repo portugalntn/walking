@@ -161,13 +161,13 @@ export function PortalContent() {
             style={{ marginBottom: "36px" }}
           >
             <Image
-              src="/images/portal/ntn-symbol.png"
+              src="/images/portal/ntn-symbol-v2.png"
               alt="Portugal NTN"
-              width={100}
-              height={100}
+              width={108}
+              height={108}
               style={{
-                width: "100px",
-                height: "100px",
+                width: "108px",
+                height: "108px",
                 objectFit: "contain",
                 filter: "brightness(0) invert(1)",
               }}
@@ -344,7 +344,7 @@ export function PortalContent() {
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                       <Image
-                        src="/images/portal/ntn-symbol.png"
+                        src="/images/portal/ntn-symbol-v2.png"
                         alt=""
                         width={20}
                         height={20}
