@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { MotionProvider } from "@/components/ui/motion-provider";
+import { HtmlLang } from "@/components/ui/html-lang";
 
 type Props = {
   children: React.ReactNode;
@@ -57,14 +58,13 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider messages={messages}>
-          <MotionProvider>
-            {children}
-          </MotionProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <HtmlLang locale={locale} />
+      <NextIntlClientProvider messages={messages}>
+        <MotionProvider>
+          {children}
+        </MotionProvider>
+      </NextIntlClientProvider>
+    </>
   );
 }
