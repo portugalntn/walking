@@ -19,6 +19,7 @@ type Loc = "en" | "pt" | "es";
 export function ProductPageContent({ program }: { program: Program }) {
   const t = useTranslations("productPage");
   const locale = useLocale() as Loc;
+  const priceLocale = { en: "en-GB", pt: "pt-PT", es: "es-ES" }[locale];
   const [lightbox, setLightbox] = useState<string | null>(null);
 
   const mealLabel = (k: string) =>
@@ -312,10 +313,13 @@ export function ProductPageContent({ program }: { program: Program }) {
             </div>
           </FadeUp>
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px", maxWidth: "760px" }}>
-            {([
-              { key: "low", note: t("lowSeasonNote"), label: t("lowSeason"), p: program.prices.low },
-              { key: "high", note: t("highSeasonNote"), label: t("highSeason"), p: program.prices.high },
-            ]).map((s, i) => (
+            {(program.prices.high
+              ? [
+                  { key: "low", note: t("lowSeasonNote"), label: t("lowSeason"), p: program.prices.low },
+                  { key: "high", note: t("highSeasonNote"), label: t("highSeason"), p: program.prices.high },
+                ]
+              : [{ key: "all", note: "", label: program.season[locale], p: program.prices.low }]
+            ).map((s, i) => (
               <m.div
                 key={s.key}
                 initial={{ opacity: 0, y: 24 }}
@@ -324,22 +328,29 @@ export function ProductPageContent({ program }: { program: Program }) {
                 transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
                 style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", padding: "28px 30px" }}
               >
-                <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>{s.label}</p>
-                <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "16px" }}>{s.note}</p>
+                <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: s.note ? 0 : "16px" }}>{s.label}</p>
+                {s.note && (
+                  <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "16px" }}>{s.note}</p>
+                )}
                 <p style={{ color: "var(--color-ntn-sage-200)", fontSize: "12px" }}>{t("from")}</p>
                 <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "2.5rem", lineHeight: 1 }}>
-                  {formatPrice(s.p.from)}
+                  {formatPrice(s.p.from, priceLocale)}
                   <span style={{ fontFamily: "var(--font-ui)", fontWeight: 400, fontSize: "13px", color: "var(--color-ntn-sage-200)", marginLeft: "8px" }}>
                     {t("perPerson")}
                   </span>
                 </p>
                 <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
-                  {t("singleSupp")}: {formatPrice(s.p.single)}
+                  {t("singleSupp")}: {formatPrice(s.p.single, priceLocale)}
                 </p>
               </m.div>
             ))}
           </div>
           <FadeUp delay={0.2}>
+            {program.priceCondition && (
+              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>
+                {program.priceCondition[locale]}
+              </p>
+            )}
             <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "24px" }}>{t("netNote")}</p>
             <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
           </FadeUp>

@@ -42,14 +42,32 @@ export type Program = {
   highlights: L[];
   prices: {
     low: { from: number; single: number };
-    high: { from: number; single: number };
+    /** Omit when the program has a single year-round price. */
+    high?: { from: number; single: number };
   };
+  /** Optional commercial condition shown under the price cards. */
+  priceCondition?: L;
   payment: L[];
   cancellation: L[];
 };
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 const G = "/images/programs/douro/";
+const T = "/images/programs/tras-os-montes/";
+const P = "/images/programs/geres/";
+
+const sharedPayment: L[] = [
+  tri("A 30% deposit confirms the booking.", "Um sinal de 30% confirma a reserva.", "Una señal del 30% confirma la reserva."),
+  tri("The remaining balance is due 30 days before arrival.", "O restante é liquidado 30 dias antes da chegada.", "El resto se abona 30 días antes de la llegada."),
+  tri("NET rates for agencies and tour operators.", "Tarifas NET para agências e operadores.", "Tarifas NET para agencias y operadores."),
+];
+
+const sharedCancellation: L[] = [
+  tri("Up to 30 days before arrival: full refund of the deposit.", "Até 30 dias antes da chegada: reembolso total do sinal.", "Hasta 30 días antes de la llegada: reembolso total de la señal."),
+  tri("15 to 29 days before: 50% of the total.", "Entre 15 e 29 dias antes: 50% do total.", "Entre 15 y 29 días antes: 50% del total."),
+  tri("Less than 15 days before: non-refundable.", "Menos de 15 dias antes: não reembolsável.", "Menos de 15 días antes: no reembolsable."),
+  tri("Travel insurance is recommended.", "Recomendamos seguro de viagem.", "Recomendamos seguro de viaje."),
+];
 
 export const programs: Record<string, Program> = {
   "douro-8days": {
@@ -231,17 +249,364 @@ export const programs: Record<string, Program> = {
       low: { from: 1340, single: 240 },
       high: { from: 1411, single: 295 },
     },
-    payment: [
-      tri("A 30% deposit confirms the booking.", "Um sinal de 30% confirma a reserva.", "Una señal del 30% confirma la reserva."),
-      tri("The remaining balance is due 30 days before arrival.", "O restante é liquidado 30 dias antes da chegada.", "El resto se abona 30 días antes de la llegada."),
-      tri("NET rates for agencies and tour operators.", "Tarifas NET para agências e operadores.", "Tarifas NET para agencias y operadores."),
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "tras-8days": {
+    id: "tras-8days",
+    format: "programa",
+    title: "The Essence of Trás-os-Montes",
+    subtitle: tri(
+      "Vast plateaus, deep valleys and timeless villages",
+      "Planaltos imensos, vales profundos e aldeias intemporais",
+      "Mesetas inmensas, valles profundos y aldeas atemporales"
+    ),
+    region: "Trás-os-Montes",
+    heroImage: `${T}miranda-1.jpg`,
+    duration: { days: 8, nights: 7 },
+    type: tri("Self-Guided", "Self-Guided", "Autoguiado"),
+    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Palácios, Bragança",
+    totalDistance: "104 km",
+    overview: tri(
+      "Discover the vast plateaus, deep river valleys and timeless rural villages of Trás-os-Montes. Each step reveals dramatic landscapes, olive groves, stone chapels and a living heritage rooted in daily life. This itinerary is an authentic journey into one of Portugal's most preserved and characterful regions, enriched by local gastronomy and genuine community encounters.",
+      "Descubra os planaltos imensos, os vales profundos e as aldeias rurais intemporais de Trás-os-Montes. Cada passo revela paisagens dramáticas, olivais, capelas de pedra e um património vivo enraizado no dia a dia. Este itinerário é uma viagem autêntica a uma das regiões mais preservadas e genuínas de Portugal, enriquecida pela gastronomia local e por encontros verdadeiros com as comunidades.",
+      "Descubra las inmensas mesetas, los valles profundos y las aldeas rurales atemporales de Trás-os-Montes. Cada paso revela paisajes dramáticos, olivares, capillas de piedra y un patrimonio vivo arraigado en la vida diaria. Este itinerario es un viaje auténtico a una de las regiones más preservadas y genuinas de Portugal, enriquecido por la gastronomía local y encuentros verdaderos con las comunidades."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Arrival in Palácios", "Chegada a Palácios", "Llegada a Palácios"),
+        description: tri(
+          "Arrival and transfer to Palácios, a small village in the Montesinho Natural Park. Settle into Casal de Palácios and enjoy a welcome dinner of regional cuisine.",
+          "Chegada e transfer para Palácios, uma pequena aldeia no Parque Natural de Montesinho. Instale-se no Casal de Palácios e desfrute de um jantar de boas-vindas com cozinha regional.",
+          "Llegada y traslado a Palácios, una pequeña aldea en el Parque Natural de Montesinho. Instálese en el Casal de Palácios y disfrute de una cena de bienvenida con cocina regional."
+        ),
+        meals: ["dinner"],
+        accommodation: "Casal de Palácios",
+        gallery: [`${T}palacios-1.jpg`],
+        note: tri("Transfer from the airport (225 km, 2h30).", "Transfer do aeroporto (225 km, 2h30).", "Traslado desde el aeropuerto (225 km, 2h30)."),
+      },
+      {
+        day: 2,
+        title: tri("Trilho do Aeródromo de Bragança", "Trilho do Aeródromo de Bragança", "Trilho do Aeródromo de Bragança"),
+        trail: "Trilho do Aeródromo de Bragança",
+        description: tri(
+          "A linear walk through the Montesinho Natural Park towards Bragança, crossing oak woods, streams and quiet hamlets such as Gimonde, with its medieval bridge.",
+          "Uma caminhada linear pelo Parque Natural de Montesinho em direcção a Bragança, atravessando carvalhais, ribeiras e aldeias tranquilas como Gimonde, com a sua ponte medieval.",
+          "Una caminata lineal por el Parque Natural de Montesinho en dirección a Braganza, atravesando robledales, arroyos y aldeas tranquilas como Gimonde, con su puente medieval."
+        ),
+        distance: "16,5 km",
+        shape: "linear",
+        ascent: "+540 / -348 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${T}gimonde-1.jpg`, `${T}palacios-4.jpg`],
+      },
+      {
+        day: 3,
+        title: tri("Trilho de São Julião de Palácios", "Trilho de São Julião de Palácios", "Trilho de São Julião de Palácios"),
+        trail: "Trilho de São Julião de Palácios",
+        description: tri(
+          "A circular route around São Julião de Palácios, among granite outcrops, chestnut groves and meadows where donkeys still graze. Rural Trás-os-Montes at its most genuine.",
+          "Um percurso circular em torno de São Julião de Palácios, entre afloramentos graníticos, soutos e lameiros onde ainda pastam burros. O Trás-os-Montes rural no seu estado mais genuíno.",
+          "Un recorrido circular en torno a São Julião de Palácios, entre afloramientos graníticos, sotos de castaños y prados donde aún pastan burros. El Trás-os-Montes rural en su estado más genuino."
+        ),
+        distance: "13 km",
+        shape: "circular",
+        ascent: "+429 / -429 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${T}palacios-2.jpg`, `${T}palacios-3.jpg`],
+      },
+      {
+        day: 4,
+        title: tri("Trilho dos Miradouros", "Trilho dos Miradouros", "Trilho dos Miradouros"),
+        trail: "Trilho dos Miradouros",
+        description: tri(
+          "The viewpoints trail leads you to the Mirandese Plateau and the canyons of the Douro International Natural Park. Night in Miranda do Douro, capital of a unique culture and language.",
+          "O trilho dos miradouros conduz ao Planalto Mirandês e aos canhões do Parque Natural do Douro Internacional. Noite em Miranda do Douro, capital de uma cultura e de uma língua únicas.",
+          "El sendero de los miradores conduce a la Meseta Mirandesa y a los cañones del Parque Natural del Duero Internacional. Noche en Miranda do Douro, capital de una cultura y una lengua únicas."
+        ),
+        distance: "17,8 km",
+        shape: "linear",
+        ascent: "+355 / -331 m",
+        meals: ["breakfast", "packedLunch"],
+        accommodation: "Hotel O Mirandês, Miranda do Douro",
+        gallery: [`${T}miranda-1.jpg`, `${T}picote-2.jpg`],
+      },
+      {
+        day: 5,
+        title: tri("Trilho de São João das Arribas", "Trilho de São João das Arribas", "Trilho de São João das Arribas"),
+        trail: "Trilho de São João das Arribas",
+        description: tri(
+          "The longest day, along the arribas: dramatic cliffs carved by the Douro on the border with Spain. Griffon vultures glide below the viewpoints of São João das Arribas and Picote.",
+          "O dia mais longo, pelas arribas: falésias dramáticas escavadas pelo Douro na fronteira com Espanha. Os grifos planam abaixo dos miradouros de São João das Arribas e de Picote.",
+          "El día más largo, por las arribes: acantilados dramáticos excavados por el Duero en la frontera con España. Los buitres leonados planean bajo los miradores de São João das Arribas y Picote."
+        ),
+        distance: "21,6 km",
+        shape: "circular",
+        ascent: "+479 / -479 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${T}picote-1.jpg`, `${T}picote-2.jpg`, `${T}miranda-1.jpg`],
+      },
+      {
+        day: 6,
+        title: tri("Trilho do Caminho de Santiago do Este", "Trilho do Caminho de Santiago do Este", "Trilho do Caminho de Santiago do Este"),
+        trail: "Trilho do Caminho de Santiago do Este",
+        description: tri(
+          "Follow a stretch of the eastern Way of Saint James through olive groves and quiet valleys, before the transfer to Mirandela, the olive oil capital of the Northeast.",
+          "Siga um troço do Caminho de Santiago do Este por entre olivais e vales tranquilos, antes do transfer para Mirandela, capital do azeite do Nordeste.",
+          "Siga un tramo del Camino de Santiago del Este entre olivares y valles tranquilos, antes del traslado a Mirandela, capital del aceite de oliva del Nordeste."
+        ),
+        distance: "17,3 km",
+        shape: "linear",
+        ascent: "+364 / -375 m",
+        meals: ["breakfast", "packedLunch"],
+        accommodation: "Coração do Tua Hotel, Mirandela",
+        gallery: [`${T}azeite-1.jpg`, `${T}palacios-4.jpg`],
+      },
+      {
+        day: 7,
+        title: tri("Trilho de Vila Verdinho a Mirandela", "Trilho de Vila Verdinho a Mirandela", "Trilho de Vila Verdinho a Mirandela"),
+        trail: "Trilho de Vila Verdinho a Mirandela",
+        description: tri(
+          "From Vila Verdinho down to Mirandela along the Tua valley. An educational olive oil tasting and a visit to the Olive Tree and Olive Oil Museum close the journey with the region's liquid gold.",
+          "De Vila Verdinho até Mirandela, pelo vale do Tua. Uma prova educativa de azeite e a visita ao Museu da Oliveira e do Azeite encerram a viagem com o ouro líquido da região.",
+          "De Vila Verdinho a Mirandela, por el valle del Tua. Una cata educativa de aceite y la visita al Museo del Olivo y del Aceite cierran el viaje con el oro líquido de la región."
+        ),
+        distance: "18,2 km",
+        shape: "linear",
+        ascent: "+592 / -365 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${T}tom-a.jpg`, `${T}azeite-1.jpg`],
+      },
+      {
+        day: 8,
+        title: tri("Departure", "Partida", "Salida"),
+        description: tri(
+          "Time to say goodbye after a final Trás-os-Montes breakfast. Transfer to Porto Airport can be arranged as an extra service.",
+          "Hora da despedida, depois de um último pequeno-almoço transmontano. O transfer para o Aeroporto do Porto pode ser organizado como serviço extra.",
+          "Hora de la despedida, después de un último desayuno tradicional. El traslado al Aeropuerto de Oporto puede organizarse como servicio extra."
+        ),
+        meals: ["breakfast"],
+      },
     ],
-    cancellation: [
-      tri("Up to 30 days before arrival: full refund of the deposit.", "Até 30 dias antes da chegada: reembolso total do sinal.", "Hasta 30 días antes de la llegada: reembolso total de la señal."),
-      tri("15 to 29 days before: 50% of the total.", "Entre 15 e 29 dias antes: 50% do total.", "Entre 15 y 29 días antes: 50% del total."),
-      tri("Less than 15 days before: non-refundable.", "Menos de 15 dias antes: não reembolsável.", "Menos de 15 días antes: no reembolsable."),
-      tri("Travel insurance is recommended.", "Recomendamos seguro de viagem.", "Recomendamos seguro de viaje."),
+    included: [
+      tri("Accommodation with breakfast", "Alojamento com pequeno-almoço", "Alojamiento con desayuno"),
+      tri("6 packed lunches, collected at the hotel reception", "6 almoços de piquenique, a levantar na recepção do hotel", "6 almuerzos de picnic, a recoger en la recepción del hotel"),
+      tri("Educational olive oil tasting", "Prova educativa de azeite", "Cata educativa de aceite de oliva"),
+      tri("Visit to the Palácios Rural Museum", "Visita ao Museu Rural de Palácios", "Visita al Museo Rural de Palácios"),
+      tri("Visit to the Olive Tree and Olive Oil Museum", "Visita ao Museu da Oliveira e do Azeite", "Visita al Museo del Olivo y del Aceite"),
+      tri("All transport in the program", "Todos os transportes do programa", "Todos los transportes del programa"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+      tri("PORTUGALNTN gift", "Oferta PORTUGALNTN", "Obsequio PORTUGALNTN"),
     ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [
+      tri("Accommodation upgrade from 3 to 4 stars", "Upgrade de alojamento de 3 para 4 estrelas", "Mejora de alojamiento de 3 a 4 estrellas"),
+      tri("Transfer to Porto Airport", "Transfer para o Aeroporto do Porto", "Traslado al Aeropuerto de Oporto"),
+      tri("Extra nights in Porto", "Noites extra no Porto", "Noches extra en Oporto"),
+    ],
+    highlights: [
+      tri("Montesinho Natural Park", "Parque Natural de Montesinho", "Parque Natural de Montesinho"),
+      tri("Douro International Natural Park", "Parque Natural do Douro Internacional", "Parque Natural del Duero Internacional"),
+      tri("The Mirandese Plateau", "Planalto Mirandês", "Meseta Mirandesa"),
+      tri("Authentic villages and preserved rural life", "Aldeias autênticas e vida rural preservada", "Aldeas auténticas y vida rural preservada"),
+      tri("Living cultural and ethnographic heritage", "Património cultural e etnográfico vivo", "Patrimonio cultural y etnográfico vivo"),
+      tri("Wild nature and biodiversity", "Natureza selvagem e biodiversidade", "Naturaleza salvaje y biodiversidad"),
+    ],
+    prices: {
+      low: { from: 1165, single: 131 },
+    },
+    priceCondition: tri(
+      "Single price all year round, based on double room occupancy.",
+      "Preço único todo o ano, com base em quarto duplo.",
+      "Precio único todo el año, en base a habitación doble."
+    ),
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "geres-8days": {
+    id: "geres-8days",
+    format: "programa",
+    title: "Peneda-Gerês National Park",
+    subtitle: tri(
+      "Portugal's only national park",
+      "O único parque nacional de Portugal",
+      "El único parque nacional de Portugal"
+    ),
+    region: "Peneda-Gerês",
+    heroImage: `${P}geres-i.jpg`,
+    duration: { days: 8, nights: 7 },
+    type: tri("Self-Guided", "Self-Guided", "Autoguiado"),
+    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Pitões das Júnias",
+    totalDistance: "74 km",
+    overview: tri(
+      "Discover Peneda-Gerês, Portugal's only national park, where mountains, rivers and ancient villages come together in a rich natural and cultural setting. This itinerary offers simple, meaningful experiences that blend nature, tradition and sustainability, in communities that still live by the rhythm of the land.",
+      "Descubra a Peneda-Gerês, o único parque nacional de Portugal, onde montanhas, rios e aldeias antigas se encontram num cenário natural e cultural riquíssimo. Este itinerário oferece experiências simples e com significado, juntando natureza, tradição e sustentabilidade, em comunidades que ainda vivem ao ritmo da terra.",
+      "Descubra Peneda-Gerês, el único parque nacional de Portugal, donde montañas, ríos y aldeas antiguas se unen en un entorno natural y cultural riquísimo. Este itinerario ofrece experiencias sencillas y con significado, uniendo naturaleza, tradición y sostenibilidad, en comunidades que aún viven al ritmo de la tierra."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Arrival in Pitões das Júnias", "Chegada a Pitões das Júnias", "Llegada a Pitões das Júnias"),
+        description: tri(
+          "Arrival and transfer to Pitões das Júnias, one of the highest villages in Portugal, on the Barroso plateau. Settle into Casa do Preto and breathe in the mountain air.",
+          "Chegada e transfer para Pitões das Júnias, uma das aldeias mais altas de Portugal, no planalto do Barroso. Instale-se na Casa do Preto e respire o ar da montanha.",
+          "Llegada y traslado a Pitões das Júnias, una de las aldeas más altas de Portugal, en la meseta del Barroso. Instálese en la Casa do Preto y respire el aire de la montaña."
+        ),
+        meals: [],
+        accommodation: "Casa do Preto, Pitões das Júnias",
+        gallery: [`${P}geres-e.jpg`],
+        note: tri("Transfer from the airport (168 km, 2h15).", "Transfer do aeroporto (168 km, 2h15).", "Traslado desde el aeropuerto (168 km, 2h15)."),
+      },
+      {
+        day: 2,
+        title: tri("Trilho do Pastoreio", "Trilho do Pastoreio", "Trilho do Pastoreio"),
+        trail: "Trilho do Pastoreio",
+        description: tri(
+          "The shepherding trail follows the vezeira, the communal herding tradition of the Barroso, across pastures where barrosã cattle graze under the peaks. A UNESCO recognised agricultural heritage.",
+          "O trilho do pastoreio segue a vezeira, a tradição comunitária de pastoreio do Barroso, por lameiros onde o gado barrosão pasta sob os picos. Um património agrícola reconhecido pela UNESCO.",
+          "El sendero del pastoreo sigue la vezeira, la tradición comunitaria de pastoreo del Barroso, por prados donde el ganado barrosano pasta bajo los picos. Un patrimonio agrícola reconocido por la UNESCO."
+        ),
+        distance: "14,6 km",
+        shape: "circular",
+        ascent: "+759 / -759 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${P}geres-d.jpg`, `${P}geres-f.jpg`],
+      },
+      {
+        day: 3,
+        title: tri("Trilho de Pitões a Outeiro", "Trilho de Pitões a Outeiro", "Trilho de Pitões a Outeiro"),
+        trail: "Trilho de Pitões a Outeiro",
+        description: tri(
+          "A gentler day, descending from Pitões to Outeiro past the medieval monastery of Santa Maria das Júnias and its waterfall, through oak woods draped in moss.",
+          "Um dia mais suave, a descer de Pitões para Outeiro, passando pelo mosteiro medieval de Santa Maria das Júnias e pela sua cascata, entre carvalhais cobertos de musgo.",
+          "Un día más suave, descendiendo de Pitões a Outeiro, pasando por el monasterio medieval de Santa Maria das Júnias y su cascada, entre robledales cubiertos de musgo."
+        ),
+        distance: "8,7 km",
+        shape: "linear",
+        ascent: "+309 / -626 m",
+        meals: ["breakfast", "packedLunch"],
+        accommodation: "Casa Albelo do Gerês, Outeiro",
+        gallery: [`${P}geres-c.jpg`, `${P}geres-e.jpg`],
+      },
+      {
+        day: 4,
+        title: tri("Trilho dos Miradouros", "Trilho dos Miradouros", "Trilho dos Miradouros"),
+        trail: "Trilho dos Miradouros",
+        description: tri(
+          "A circular route linking natural viewpoints over the valleys and peaks of the national park, with granite outcrops and endless horizons.",
+          "Um percurso circular que liga miradouros naturais sobre os vales e picos do parque nacional, entre afloramentos graníticos e horizontes sem fim.",
+          "Un recorrido circular que une miradores naturales sobre los valles y picos del parque nacional, entre afloramientos graníticos y horizontes infinitos."
+        ),
+        distance: "13 km",
+        shape: "circular",
+        ascent: "+595 / -595 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${P}geres-h.jpg`, `${P}geres-i.jpg`],
+      },
+      {
+        day: 5,
+        title: tri("Trilho do Rio", "Trilho do Rio", "Trilho do Rio"),
+        trail: "Trilho do Rio",
+        description: tri(
+          "The river trail follows crystal-clear waters between giant boulders, wooden footbridges and natural pools. The Gerês at its wildest.",
+          "O trilho do rio acompanha águas cristalinas entre penedos gigantes, passadiços de madeira e piscinas naturais. O Gerês no seu estado mais selvagem.",
+          "El sendero del río acompaña aguas cristalinas entre rocas gigantes, pasarelas de madera y piscinas naturales. El Gerês en su estado más salvaje."
+        ),
+        distance: "16,2 km",
+        shape: "linear",
+        ascent: "+523 / -625 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${P}geres-a.jpg`, `${P}geres-b.jpg`],
+      },
+      {
+        day: 6,
+        title: tri("Trilho dos Poços Verdes", "Trilho dos Poços Verdes", "Trilho dos Poços Verdes"),
+        trail: "Trilho dos Poços Verdes",
+        description: tri(
+          "Walk to the emerald pools that give this trail its name, then settle in Fafião, a village guarded by the wolf: its ancient fojo, a communal wolf trap, still stands.",
+          "Caminhe até aos poços verdes que dão nome ao trilho e instale-se depois em Fafião, aldeia guardada pelo lobo: o seu antigo fojo, armadilha comunitária para lobos, ainda se mantém de pé.",
+          "Camine hasta las pozas esmeralda que dan nombre al sendero e instálese después en Fafião, aldea guardada por el lobo: su antiguo fojo, trampa comunitaria para lobos, sigue en pie."
+        ),
+        distance: "10,4 km",
+        shape: "circular",
+        ascent: "+549 / -549 m",
+        meals: ["breakfast", "packedLunch"],
+        accommodation: "Hostel Retiro do Gerês, Fafião",
+        gallery: [`${P}geres-b.jpg`, `${P}geres-g.jpg`],
+      },
+      {
+        day: 7,
+        title: tri("Trilho do Pão, do Azeite e dos Miradouros", "Trilho do Pão, do Azeite e dos Miradouros", "Trilho do Pão, do Azeite e dos Miradouros"),
+        trail: "Trilho do Pão, do Azeite e dos Miradouros",
+        description: tri(
+          "The bread, olive oil and viewpoints trail: a final loop through terraces, communal ovens and balconies over the Cávado valley, celebrating what the mountain gives.",
+          "O trilho do pão, do azeite e dos miradouros: uma última volta por socalcos, fornos comunitários e varandas sobre o vale do Cávado, a celebrar o que a montanha dá.",
+          "El sendero del pan, del aceite y de los miradores: una última vuelta por bancales, hornos comunales y balcones sobre el valle del Cávado, celebrando lo que da la montaña."
+        ),
+        distance: "11,5 km",
+        shape: "circular",
+        ascent: "+801 / -801 m",
+        meals: ["breakfast", "packedLunch"],
+        gallery: [`${P}geres-f.jpg`, `${P}geres-h.jpg`],
+      },
+      {
+        day: 8,
+        title: tri("Departure", "Partida", "Salida"),
+        description: tri(
+          "Time to say goodbye. Transfer from Fafião to the airport, with the silence of the mountains still with you.",
+          "Hora da despedida. Transfer de Fafião para o aeroporto, com o silêncio das montanhas ainda consigo.",
+          "Hora de la despedida. Traslado de Fafião al aeropuerto, con el silencio de las montañas todavía con usted."
+        ),
+        meals: ["breakfast"],
+        note: tri("Transfer to the airport (99 km, 1h50).", "Transfer para o aeroporto (99 km, 1h50).", "Traslado al aeropuerto (99 km, 1h50)."),
+      },
+    ],
+    included: [
+      tri("Accommodation with breakfast", "Alojamento com pequeno-almoço", "Alojamiento con desayuno"),
+      tri("6 packed lunches, collected at the reception", "6 almoços de piquenique, a levantar na recepção", "6 almuerzos de picnic, a recoger en la recepción"),
+      tri("Visit to the Iberian Wolf Interpretive Center", "Visita ao Centro Interpretativo do Lobo Ibérico", "Visita al Centro Interpretativo del Lobo Ibérico"),
+      tri("Barroso Ecomuseum, Corte do Boi", "Ecomuseu do Barroso, Corte do Boi", "Ecomuseo del Barroso, Corte do Boi"),
+      tri("Barroso Ecomuseum, Vezeira e a Serra", "Ecomuseu do Barroso, Vezeira e a Serra", "Ecomuseo del Barroso, Vezeira e a Serra"),
+      tri("All transport in the program", "Todos os transportes do programa", "Todos los transportes del programa"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+      tri("PORTUGALNTN gift", "Oferta PORTUGALNTN", "Obsequio PORTUGALNTN"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [
+      tri("Extra nights in Porto", "Noites extra no Porto", "Noches extra en Oporto"),
+    ],
+    highlights: [
+      tri("Portugal's only national park", "O único parque nacional de Portugal", "El único parque nacional de Portugal"),
+      tri("UNESCO World Agricultural Heritage", "Património Agrícola Mundial UNESCO", "Patrimonio Agrícola Mundial UNESCO"),
+      tri("Gerês-Xurés Transboundary Biosphere Reserve", "Reserva da Biosfera Transfronteiriça Gerês-Xurés", "Reserva de la Biosfera Transfronteriza Gerês-Xurés"),
+      tri("Fojo dos Lobos and Silha de Ursos", "Fojo dos Lobos e Silha de Ursos", "Fojo dos Lobos y Silha de Ursos"),
+      tri("Small rural villages", "Pequenas aldeias rurais", "Pequeñas aldeas rurales"),
+      tri("Natural viewpoints and protected landscapes", "Miradouros naturais e paisagens protegidas", "Miradores naturales y paisajes protegidos"),
+    ],
+    prices: {
+      low: { from: 815, single: 360 },
+      high: { from: 875, single: 417 },
+    },
+    priceCondition: tri(
+      "Prices for groups of 6 to 8 people, based on double room occupancy.",
+      "Preços para grupos de 6 a 8 pessoas, com base em quarto duplo.",
+      "Precios para grupos de 6 a 8 personas, en base a habitación doble."
+    ),
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
   },
 };
 
