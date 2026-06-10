@@ -349,42 +349,52 @@ export function ProductPageContent({ program }: { program: Program }) {
           </FadeUp>
           {program.priceTiers && (
             <FadeUp>
-              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px", maxWidth: "760px" }}>
-                {[
-                  program.priceTiers.slice(0, Math.ceil(program.priceTiers.length / 2)),
-                  program.priceTiers.slice(Math.ceil(program.priceTiers.length / 2)),
-                ].map((group, ci) => (
-                  <div key={ci} style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
-                    {group.map((tier, i) => (
-                      <div
-                        key={tier.pax}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "baseline",
-                          padding: "16px 24px",
-                          borderTop: i > 0 ? "1px solid rgba(89,105,77,0.12)" : "none",
-                        }}
-                      >
-                        <span className="text-body-md" style={{ color: "var(--color-ntn-black-800)" }}>
-                          {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
-                        </span>
-                        <span className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem", lineHeight: 1 }}>
-                          {formatPrice(tier.price, priceLocale)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                ))}
+              {/* Two large columns across the full page width: table left, notes right */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "56px", alignItems: "flex-start" }}>
+                {/* Left: tier table in two sub-columns of three rows */}
+                <div className="grid grid-cols-1 sm:grid-cols-2" style={{ flex: "2 1 480px", gap: "24px" }}>
+                  {[
+                    program.priceTiers.slice(0, Math.ceil(program.priceTiers.length / 2)),
+                    program.priceTiers.slice(Math.ceil(program.priceTiers.length / 2)),
+                  ].map((group, ci) => (
+                    <div key={ci} style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
+                      {group.map((tier, i) => (
+                        <div
+                          key={tier.pax}
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "baseline",
+                            padding: "16px 24px",
+                            borderTop: i > 0 ? "1px solid rgba(89,105,77,0.12)" : "none",
+                          }}
+                        >
+                          <span className="text-body-md" style={{ color: "var(--color-ntn-black-800)" }}>
+                            {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
+                          </span>
+                          <span className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem", lineHeight: 1 }}>
+                            {formatPrice(tier.price, priceLocale)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right: pricing notes and conditions, filling the remaining width */}
+                <div style={{ flex: "1 1 280px" }}>
+                  <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)" }}>
+                    {t("groupPriceNote")}
+                  </p>
+                  {program.priceTiersNote && (
+                    <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
+                      {program.priceTiersNote[locale]}
+                    </p>
+                  )}
+                  <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "20px" }}>{t("netNote")}</p>
+                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+                </div>
               </div>
-              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "16px", maxWidth: "760px" }}>
-                {t("groupPriceNote")}
-              </p>
-              {program.priceTiersNote && (
-                <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "8px" }}>
-                  {program.priceTiersNote[locale]}
-                </p>
-              )}
             </FadeUp>
           )}
 
@@ -423,15 +433,17 @@ export function ProductPageContent({ program }: { program: Program }) {
             ))}
           </div>
           )}
-          <FadeUp delay={0.2}>
-            {program.priceCondition && (
-              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>
-                {program.priceCondition[locale]}
-              </p>
-            )}
-            <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "24px" }}>{t("netNote")}</p>
-            <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
-          </FadeUp>
+          {program.prices && (
+            <FadeUp delay={0.2}>
+              {program.priceCondition && (
+                <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>
+                  {program.priceCondition[locale]}
+                </p>
+              )}
+              <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "24px" }}>{t("netNote")}</p>
+              <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+            </FadeUp>
+          )}
 
           {/* Availability + Payment + Cancellation */}
           <FadeUp delay={0.25}>
