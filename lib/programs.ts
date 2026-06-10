@@ -63,12 +63,21 @@ const G = "/images/programs/douro/";
 const T = "/images/programs/tras-os-montes/";
 const P = "/images/programs/geres/";
 const D1 = "/images/programs/douro-1day/";
+const SI = "/images/programs/sintra-1day/";
+const AL = "/images/programs/algarve-1day/";
+const TR = "/images/programs/tras-1day/";
 
 const sharedPayment: L[] = [
   tri("A 30% deposit confirms the booking.", "Um sinal de 30% confirma a reserva.", "Una señal del 30% confirma la reserva."),
   tri("The remaining balance is due 30 days before arrival.", "O restante é liquidado 30 dias antes da chegada.", "El resto se abona 30 días antes de la llegada."),
   tri("NET rates for agencies and tour operators.", "Tarifas NET para agências e operadores.", "Tarifas NET para agencias y operadores."),
 ];
+
+const tiersNoteOver6: L = tri(
+  "For groups larger than 6 people, price on request.",
+  "Para grupos com mais de 6 pessoas, preço sob consulta.",
+  "Para grupos de más de 6 personas, precio bajo consulta."
+);
 
 const sharedCancellation: L[] = [
   tri("Up to 30 days before arrival: full refund of the deposit.", "Até 30 dias antes da chegada: reembolso total do sinal.", "Hasta 30 días antes de la llegada: reembolso total de la señal."),
@@ -683,11 +692,219 @@ export const programs: Record<string, Program> = {
       { pax: 5, price: 1334 },
       { pax: 6, price: 1491 },
     ],
-    priceTiersNote: tri(
-      "For groups larger than 6 people, price on request.",
-      "Para grupos com mais de 6 pessoas, preço sob consulta.",
-      "Para grupos de más de 6 personas, precio bajo consulta."
+    priceTiersNote: tiersNoteOver6,
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "sintra-1day": {
+    id: "sintra-1day",
+    format: "roteiro",
+    title: "Mystic Sintra",
+    subtitle: tri(
+      "The Sacred Mountain: a misty forest walk and a hidden convent",
+      "A Montanha Sagrada: uma caminhada na floresta enevoada e um convento escondido",
+      "La Montaña Sagrada: una caminata en el bosque brumoso y un convento escondido"
     ),
+    region: "Lisboa & Sintra",
+    heroImage: `${SI}hero-sintra-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Medium", "Média", "Media"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Lisboa",
+    totalDistance: "6 km",
+    overview: tri(
+      "A walk entirely within the Sintra-Cascais Natural Park, under the unique spell of the mystical Serra de Sintra. The trail links the village of Penedo, the Convent of the Capuchos, the Monge dolmen, the sanctuaries of São Saturnino and Peninha, Adro Nunes and Quinta da Urca. Along the way we visit the Convent of the Capuchos, and afterwards enjoy lunch at a traditional restaurant. A day of mist, myth and forest, a short drive from Lisbon.",
+      "Uma caminhada inteiramente no Parque Natural de Sintra-Cascais, sob o encanto único da mística Serra de Sintra. O trilho liga a aldeia do Penedo, o Convento dos Capuchos, o dólmen do Monge, os santuários de São Saturnino e da Peninha, o Adro Nunes e a Quinta da Urca. Pelo caminho visitamos o Convento dos Capuchos e, no final, almoçamos num restaurante tradicional. Um dia de névoa, mito e floresta, a poucos minutos de Lisboa.",
+      "Una caminata enteramente en el Parque Natural de Sintra-Cascais, bajo el encanto único de la mística Sierra de Sintra. El sendero une la aldea de Penedo, el Convento de los Capuchos, el dolmen del Monge, los santuarios de São Saturnino y Peninha, Adro Nunes y la Quinta da Urca. Por el camino visitamos el Convento de los Capuchos y, al final, almorzamos en un restaurante tradicional. Un día de niebla, mito y bosque, a pocos minutos de Lisboa."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("The mystic forest", "A floresta mística", "El bosque místico"),
+        trail: "Trilho Místico de Sintra",
+        description: tri(
+          "We walk the misty trails of the Serra de Sintra, between centuries-old trees draped in ivy and moss, to the Convent of the Capuchos, a hermitage carved into the rock. Past sanctuaries and dolmens, the day ends with lunch at the traditional O Apeadeiro restaurant.",
+          "Caminhamos pelos trilhos enevoados da Serra de Sintra, entre árvores centenárias cobertas de hera e musgo, até ao Convento dos Capuchos, um eremitério escavado na rocha. Por entre santuários e dólmenes, o dia termina com almoço no restaurante tradicional O Apeadeiro.",
+          "Caminamos por los senderos brumosos de la Sierra de Sintra, entre árboles centenarios cubiertos de hiedra y musgo, hasta el Convento de los Capuchos, una ermita excavada en la roca. Entre santuarios y dólmenes, el día termina con almuerzo en el restaurante tradicional O Apeadeiro."
+        ),
+        distance: "6 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${SI}walk-1.jpg`, `${SI}walk-2.jpg`, `${SI}walk-3.jpg`, `${SI}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Lunch at the traditional O Apeadeiro restaurant", "Almoço no restaurante tradicional O Apeadeiro", "Almuerzo en el restaurante tradicional O Apeadeiro"),
+      tri("Visit to the Convent of the Capuchos", "Visita ao Convento dos Capuchos", "Visita al Convento de los Capuchos"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("Sintra-Cascais Natural Park", "Parque Natural de Sintra-Cascais", "Parque Natural de Sintra-Cascais"),
+      tri("The mystical Serra de Sintra", "A mística Serra de Sintra", "La mística Sierra de Sintra"),
+      tri("Visit to the Convent of the Capuchos", "Visita ao Convento dos Capuchos", "Visita al Convento de los Capuchos"),
+      tri("Lunch at a traditional restaurant", "Almoço num restaurante tradicional", "Almuerzo en un restaurante tradicional"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 693 },
+      { pax: 2, price: 810 },
+      { pax: 3, price: 927 },
+      { pax: 4, price: 1044 },
+      { pax: 5, price: 1161 },
+      { pax: 6, price: 1285 },
+    ],
+    priceTiersNote: tiersNoteOver6,
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "algarve-1day": {
+    id: "algarve-1day",
+    format: "roteiro",
+    title: "Charneca do Farol",
+    subtitle: tri(
+      "The Vincentian Coast: cliffs and the wild Atlantic",
+      "A Costa Vicentina: falésias e o Atlântico selvagem",
+      "La Costa Vicentina: acantilados y el Atlántico salvaje"
+    ),
+    region: "Algarve",
+    heroImage: `${AL}hero-algarve-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Medium", "Média", "Media"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Portimão",
+    totalDistance: "6 km",
+    overview: tri(
+      "A trail along the Vincentian Coast, one of the best-preserved coastlines in Europe, certified by the European Ramblers Association as a Leading Quality Trail, Best of Europe. We walk in the company of the mighty Atlantic and its coloured cliffs, ending the day with a picnic of local products alongside your local guide.",
+      "Um trilho pela Costa Vicentina, uma das costas mais bem preservadas da Europa, certificada pela European Ramblers Association como Leading Quality Trail, Best of Europe. Caminhamos na companhia do imenso Atlântico e das suas falésias coloridas, terminando o dia com um piquenique de produtos locais ao lado do seu guia local.",
+      "Un sendero por la Costa Vicentina, una de las costas mejor conservadas de Europa, certificada por la European Ramblers Association como Leading Quality Trail, Best of Europe. Caminamos en compañía del inmenso Atlántico y sus acantilados de colores, terminando el día con un picnic de productos locales junto a su guía local."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("The Vincentian Coast", "A Costa Vicentina", "La Costa Vicentina"),
+        trail: "Trilho da Charneca do Farol",
+        description: tri(
+          "We follow the cliff tops above the Atlantic, where the wind shapes the heath and waves break on coloured rock far below. A relaxed walk on one of Europe's finest trails, closing with a traditional picnic of local products by the sea.",
+          "Seguimos pelo topo das falésias sobre o Atlântico, onde o vento molda a charneca e as ondas rebentam na rocha colorida lá em baixo. Uma caminhada tranquila num dos melhores trilhos da Europa, a fechar com um piquenique tradicional de produtos locais junto ao mar.",
+          "Seguimos por lo alto de los acantilados sobre el Atlántico, donde el viento moldea el matorral y las olas rompen en la roca de colores allá abajo. Una caminata tranquila en uno de los mejores senderos de Europa, cerrando con un picnic tradicional de productos locales junto al mar."
+        ),
+        distance: "6 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${AL}walk-1.jpg`, `${AL}walk-2.jpg`, `${AL}walk-3.jpg`, `${AL}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Traditional picnic with local products", "Piquenique tradicional com produtos locais", "Picnic tradicional con productos locales"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("The Vincentian Coast", "A Costa Vicentina", "La Costa Vicentina"),
+      tri("ERA Leading Quality Trail, Best of Europe", "Trilho ERA Leading Quality, Best of Europe", "Sendero ERA Leading Quality, Best of Europe"),
+      tri("Dramatic Atlantic cliffs", "Falésias atlânticas dramáticas", "Acantilados atlánticos dramáticos"),
+      tri("Traditional picnic with local products", "Piquenique tradicional com produtos locais", "Picnic tradicional con productos locales"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 704 },
+      { pax: 2, price: 848 },
+      { pax: 3, price: 992 },
+      { pax: 4, price: 1134 },
+      { pax: 5, price: 1291 },
+      { pax: 6, price: 1454 },
+    ],
+    priceTiersNote: tiersNoteOver6,
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "tras-1day": {
+    id: "tras-1day",
+    format: "roteiro",
+    title: "Quadrassal e Romeu",
+    subtitle: tri(
+      "Natura 2000: organic farmland, olive oil and a village table",
+      "Natura 2000: campos biológicos, azeite e uma mesa de aldeia",
+      "Natura 2000: campos ecológicos, aceite y una mesa de aldea"
+    ),
+    region: "Trás-os-Montes",
+    heroImage: `${TR}hero-tras-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Medium", "Média", "Media"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Romeu, Mirandela",
+    totalDistance: "6 km",
+    overview: tri(
+      "The Quadrassal trail crosses the Quinta do Romeu estate, managed entirely through certified organic farming and including areas protected by the Natura 2000 network. The walk ends at the Maria Rita restaurant, a charming space full of history, where Douro DOC wines and family recipes made with Romeu olive oil and fresh local vegetables are served with genuine warmth. After lunch, we visit the Olive Oil Museum for an olive oil tasting.",
+      "O trilho do Quadrassal atravessa a Quinta do Romeu, gerida inteiramente em Agricultura Biológica certificada e com áreas protegidas pela rede Natura 2000. A caminhada termina no restaurante Maria Rita, um espaço cheio de história, onde se servem vinhos DOC do Douro e receitas de família feitas com o azeite de Romeu e legumes frescos locais, com hospitalidade genuína. Depois do almoço, visitamos o Museu do Azeite para uma prova de azeite.",
+      "El sendero del Quadrassal atraviesa la Quinta do Romeu, gestionada enteramente con Agricultura Ecológica certificada y con áreas protegidas por la red Natura 2000. La caminata termina en el restaurante Maria Rita, un espacio lleno de historia, donde se sirven vinos DOC del Duero y recetas de familia hechas con el aceite de Romeu y verduras frescas locales, con hospitalidad genuina. Después del almuerzo, visitamos el Museo del Aceite para una cata de aceite."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Through the Quinta do Romeu", "Pela Quinta do Romeu", "Por la Quinta do Romeu"),
+        trail: "Trilho do Quadrassal",
+        description: tri(
+          "We cross the organic estate of Quinta do Romeu, through oak woods, granite outcrops and meadows of exceptional natural beauty, within the Natura 2000 network. The walk ends in the village of Romeu, with lunch at Maria Rita and an olive oil tasting at the museum.",
+          "Atravessamos a quinta biológica do Romeu, por carvalhais, afloramentos graníticos e lameiros de beleza natural excepcional, dentro da rede Natura 2000. A caminhada termina na aldeia de Romeu, com almoço no Maria Rita e prova de azeite no museu.",
+          "Atravesamos la finca ecológica de Romeu, por robledales, afloramientos graníticos y prados de belleza natural excepcional, dentro de la red Natura 2000. La caminata termina en la aldea de Romeu, con almuerzo en Maria Rita y cata de aceite en el museo."
+        ),
+        distance: "6 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${TR}walk-1.jpg`, `${TR}walk-2.jpg`, `${TR}walk-3.jpg`, `${TR}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Lunch at the traditional Maria Rita restaurant", "Almoço no restaurante tradicional Maria Rita", "Almuerzo en el restaurante tradicional Maria Rita"),
+      tri("Visit and olive oil tasting at the Olive Oil Museum", "Visita e prova de azeite no Museu do Azeite", "Visita y cata de aceite en el Museo del Aceite"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("Natura 2000 network", "Rede Natura 2000", "Red Natura 2000"),
+      tri("Certified organic farming estate", "Quinta em Agricultura Biológica certificada", "Finca de Agricultura Ecológica certificada"),
+      tri("Lunch at the Maria Rita restaurant", "Almoço no restaurante Maria Rita", "Almuerzo en el restaurante Maria Rita"),
+      tri("Olive oil tasting at the Olive Oil Museum", "Prova de azeite no Museu do Azeite", "Cata de aceite en el Museo del Aceite"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 568 },
+      { pax: 2, price: 674 },
+      { pax: 3, price: 781 },
+      { pax: 4, price: 887 },
+      { pax: 5, price: 993 },
+      { pax: 6, price: 1099 },
+    ],
+    priceTiersNote: tiersNoteOver6,
     payment: sharedPayment,
     cancellation: sharedCancellation,
   },
