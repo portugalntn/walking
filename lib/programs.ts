@@ -15,6 +15,8 @@ export type Day = {
   distance?: string;
   shape?: "circular" | "linear";
   ascent?: string;
+  /** Walking time for the day, e.g. "2h". Used mainly by 1-day routes. */
+  walkTime?: string;
   meals: ("breakfast" | "packedLunch" | "dinner")[];
   accommodation?: string;
   gallery?: string[];
@@ -40,11 +42,16 @@ export type Program = {
   notIncluded: L[];
   extras: L[];
   highlights: L[];
-  prices: {
+  /** Season-based pricing (multi-day programs). Omit for per-group day routes. */
+  prices?: {
     low: { from: number; single: number };
     /** Omit when the program has a single year-round price. */
     high?: { from: number; single: number };
   };
+  /** Per-group pricing tiers (1-day guided routes): total price by group size. */
+  priceTiers?: { pax: number; price: number }[];
+  /** Note shown under the price tiers, e.g. groups above 6 on request. */
+  priceTiersNote?: L;
   /** Optional commercial condition shown under the price cards. */
   priceCondition?: L;
   payment: L[];
@@ -55,6 +62,7 @@ const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 const G = "/images/programs/douro/";
 const T = "/images/programs/tras-os-montes/";
 const P = "/images/programs/geres/";
+const D1 = "/images/programs/douro-1day/";
 
 const sharedPayment: L[] = [
   tri("A 30% deposit confirms the booking.", "Um sinal de 30% confirma a reserva.", "Una señal del 30% confirma la reserva."),
@@ -604,6 +612,81 @@ export const programs: Record<string, Program> = {
       "Prices for groups of 6 to 8 people, based on double room occupancy.",
       "Preços para grupos de 6 a 8 pessoas, com base em quarto duplo.",
       "Precios para grupos de 6 a 8 personas, en base a habitación doble."
+    ),
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "douro-1day": {
+    id: "douro-1day",
+    format: "roteiro",
+    title: "Alto Douro Wine Region",
+    subtitle: tri(
+      "A guided day among UNESCO vineyards, with a walk and a great wine",
+      "Um dia guiado entre vinhas UNESCO, com caminhada e um grande vinho",
+      "Un día guiado entre viñedos UNESCO, con caminata y un gran vino"
+    ),
+    region: "Douro Valley",
+    heroImage: `${D1}hero-douro-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Medium", "Média", "Media"),
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Peso da Régua",
+    totalDistance: "6 km",
+    overview: tri(
+      "A relaxed day in the heart of the Alto Douro Wine Region, the oldest demarcated wine region in the world and a UNESCO World Heritage Site. We walk a trail flanked by the famous terraced vineyards, with the Douro River always in view, and then visit a winery to taste a wine rated by Wine Spectator as one of the best in the world. Walking, landscape and wine, in a single unforgettable day.",
+      "Um dia tranquilo no coração do Alto Douro Vinhateiro, a mais antiga região demarcada do mundo e Património Mundial UNESCO. Caminhamos por um trilho ladeado pelos famosos socalcos de vinha, com o rio Douro sempre à vista, e depois visitamos uma quinta para provar um vinho classificado pela Wine Spectator como um dos melhores do mundo. Caminhada, paisagem e vinho, num único dia inesquecível.",
+      "Un día tranquilo en el corazón del Alto Duero Vinícola, la región demarcada más antigua del mundo y Patrimonio Mundial UNESCO. Caminamos por un sendero flanqueado por los famosos bancales de viña, con el río Duero siempre a la vista, y después visitamos una quinta para catar un vino calificado por Wine Spectator como uno de los mejores del mundo. Caminata, paisaje y vino, en un solo día inolvidable."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("The vineyard trail", "O trilho das vinhas", "El sendero de los viñedos"),
+        trail: "Trilho do Alto Douro Vinhateiro",
+        description: tri(
+          "We set off on foot along trails framed by schist walls and terraced vineyards, with sweeping views over the Douro River. After the walk, we head to Quinta da Pacheca for a traditional picnic or lunch, followed by a guided visit and a wine tasting. An expert guide and private transport accompany you throughout the day.",
+          "Partimos a pé por trilhos enquadrados por muros de xisto e socalcos de vinha, com vistas amplas sobre o rio Douro. Depois da caminhada, seguimos para a Quinta da Pacheca para um piquenique tradicional ou almoço, seguido de visita guiada e prova de vinhos. Um guia especializado e transporte privado acompanham-no durante todo o dia.",
+          "Partimos a pie por senderos enmarcados por muros de esquisto y bancales de viña, con amplias vistas sobre el río Duero. Después de la caminata, vamos a la Quinta da Pacheca para un picnic tradicional o almuerzo, seguido de visita guiada y cata de vinos. Un guía especializado y transporte privado le acompañan durante todo el día."
+        ),
+        distance: "6 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${D1}walk-1.jpg`, `${D1}walk-2.jpg`, `${D1}walk-3.jpg`, `${D1}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Traditional picnic or lunch at Quinta da Pacheca", "Piquenique tradicional ou almoço na Quinta da Pacheca", "Picnic tradicional o almuerzo en la Quinta da Pacheca"),
+      tri("Visit and wine tasting at Quinta da Pacheca", "Visita e prova de vinhos na Quinta da Pacheca", "Visita y cata de vinos en la Quinta da Pacheca"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("UNESCO World Heritage vineyards", "Vinhas Património Mundial UNESCO", "Viñedos Patrimonio Mundial UNESCO"),
+      tri("Walking among the terraced vineyards", "Caminhada entre os socalcos de vinha", "Caminata entre los bancales de viña"),
+      tri("Traditional picnic or lunch at Quinta da Pacheca", "Piquenique tradicional ou almoço na Quinta da Pacheca", "Picnic tradicional o almuerzo en la Quinta da Pacheca"),
+      tri("Wine tasting rated among the world's best", "Prova de vinho classificado entre os melhores do mundo", "Cata de vino clasificado entre los mejores del mundo"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 708 },
+      { pax: 2, price: 864 },
+      { pax: 3, price: 1021 },
+      { pax: 4, price: 1178 },
+      { pax: 5, price: 1334 },
+      { pax: 6, price: 1491 },
+    ],
+    priceTiersNote: tri(
+      "For groups larger than 6 people, price on request.",
+      "Para grupos com mais de 6 pessoas, preço sob consulta.",
+      "Para grupos de más de 6 personas, precio bajo consulta."
     ),
     payment: sharedPayment,
     cancellation: sharedCancellation,

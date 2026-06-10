@@ -25,14 +25,125 @@ export function ProductPageContent({ program }: { program: Program }) {
   const mealLabel = (k: string) =>
     k === "breakfast" ? t("mealBreakfast") : k === "packedLunch" ? t("mealPackedLunch") : t("mealDinner");
 
+  const isDay = program.format === "roteiro";
+
   const facts = [
-    { icon: <Clock size={20} />, label: t("duration"), value: `${program.duration.days} ${t("daysWord")} · ${program.duration.nights} ${t("nights")}` },
+    {
+      icon: <Clock size={20} />,
+      label: t("duration"),
+      value: program.duration.nights > 0
+        ? `${program.duration.days} ${t("daysWord")} · ${program.duration.nights} ${t("nights")}`
+        : t("oneDay"),
+    },
     { icon: <Footprints size={20} />, label: t("format"), value: program.type[locale] },
     { icon: <TrendingUp size={20} />, label: t("difficulty"), value: program.difficulty[locale] },
-    { icon: <MapPin size={20} />, label: t("startPoint"), value: program.startPoint },
+    { icon: <MapPin size={20} />, label: isDay ? t("meetingPoint") : t("startPoint"), value: program.startPoint },
     { icon: <CalendarDays size={20} />, label: t("season"), value: program.season[locale] },
     { icon: <Footprints size={20} />, label: t("total"), value: program.totalDistance },
   ];
+
+  // Text column + rows-of-two photo grid, shared by multi-day timeline and 1-day walk.
+  const dayBody = (d: Program["days"][number]) => {
+    // House standard: photos always in clean rows of two (1 / 2 / 4).
+    const raw = d.gallery ?? [];
+    const gal = raw.length > 1 && raw.length % 2 === 1 ? raw.slice(0, -1) : raw;
+    return (
+      <div
+        style={{
+          flex: 1,
+          paddingTop: "4px",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "32px",
+          alignItems: "flex-start",
+        }}
+      >
+        {/* Text column, given more room than the photos */}
+        <div style={{ flex: "1.3 1 320px", minWidth: "280px" }}>
+          <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: "4px" }}>
+            {isDay ? d.trail : `${t("day")} ${d.day}`}
+          </p>
+          <h3 className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
+            {d.title[locale]}
+          </h3>
+          {d.description && (
+            <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "16px" }}>
+              {d.description[locale]}
+            </p>
+          )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+            {d.distance && <Chip>{d.distance}{d.shape ? ` · ${t(d.shape)}` : ""}</Chip>}
+            {d.walkTime && <Chip>{d.walkTime}</Chip>}
+            {d.ascent && <Chip>{d.ascent}</Chip>}
+            {d.meals.map((mk) => (
+              <Chip key={mk} accent>{mealLabel(mk)}</Chip>
+            ))}
+          </div>
+          {d.accommodation && (
+            <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
+              <span style={{ color: "var(--color-ntn-sage-200)" }}>{t("accommodation")}: </span>
+              {d.accommodation}
+            </p>
+          )}
+          {d.note && (
+            <p className="text-body-md" style={{ color: "var(--color-ntn-forest-600)", marginTop: "8px" }}>
+              {d.note[locale]}
+            </p>
+          )}
+        </div>
+
+        {/* Photos: clean grid in rows of two (1 / 2 / 4), each opens lightbox */}
+        {gal.length > 0 && (
+          <div
+            style={{
+              flex: "1 1 300px",
+              maxWidth: "440px",
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: gal.length === 1 ? "1fr" : "repeat(2, 1fr)",
+              gap: "10px",
+            }}
+          >
+            {gal.map((src, gi) => {
+              const spanFull = gal.length > 1 && gal.length % 2 === 1 && gi === gal.length - 1;
+              return (
+                <button
+                  key={gi}
+                  type="button"
+                  onClick={() => setLightbox(src)}
+                  className="group/img"
+                  style={{
+                    position: "relative",
+                    overflow: "hidden",
+                    borderRadius: "8px",
+                    aspectRatio: "3 / 2",
+                    cursor: "zoom-in",
+                    padding: 0,
+                    border: "none",
+                    background: "none",
+                    width: "100%",
+                    gridColumn: spanFull ? "1 / -1" : undefined,
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={d.title[locale]}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover/img:scale-[1.06]"
+                    sizes="(max-width: 1024px) 50vw, 220px"
+                  />
+                  <span
+                    className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100"
+                    style={{ background: "rgba(29,29,26,0.18)" }}
+                  />
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <main>
@@ -128,141 +239,46 @@ export function ProductPageContent({ program }: { program: Program }) {
         <div className="container-ntn">
           <FadeUp>
             <div style={{ marginBottom: "16px" }}>
-              <Overline color="var(--color-ntn-forest-400)">{t("itinerary")}</Overline>
+              <Overline color="var(--color-ntn-forest-400)">{isDay ? t("theWalk") : t("itinerary")}</Overline>
             </div>
             <h2 className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "clamp(2rem, 4vw, 3rem)", textTransform: "none", lineHeight: 1.1, marginBottom: "48px" }}>
               {program.title}
             </h2>
           </FadeUp>
 
-          <StaggerChildren speed="fast" className="relative">
-            {program.days.map((d) => {
-              // House standard: photos always in clean rows of two (1 / 2 / 4).
-              // Any odd count above one is trimmed to the nearest even number.
-              const raw = d.gallery ?? [];
-              const gal = raw.length > 1 && raw.length % 2 === 1 ? raw.slice(0, -1) : raw;
-              return (
-              <m.div
-                key={d.day}
-                variants={fadeUp}
-                style={{ display: "flex", gap: "24px", paddingBottom: "48px", position: "relative" }}
-              >
-                {/* Day number + line */}
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
-                  <div
-                    className="font-title"
-                    style={{
-                      width: "52px", height: "52px", borderRadius: "9999px",
-                      backgroundColor: "var(--color-ntn-forest-400)", color: "#fff",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: "13px", letterSpacing: "0.06em", flexShrink: 0,
-                    }}
-                  >
-                    {String(d.day).padStart(2, "0")}
-                  </div>
-                  {d.day !== program.days.length && (
-                    <div style={{ flex: 1, width: "1.5px", backgroundColor: "rgba(89,105,77,0.2)", marginTop: "8px" }} />
-                  )}
-                </div>
-
-                {/* Day content: text column (wider) + photo grid side by side */}
-                <div
-                  style={{
-                    flex: 1,
-                    paddingTop: "4px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "32px",
-                    alignItems: "flex-start",
-                  }}
+          {isDay ? (
+            <FadeUp>{dayBody(program.days[0])}</FadeUp>
+          ) : (
+            <StaggerChildren speed="fast" className="relative">
+              {program.days.map((d) => (
+                <m.div
+                  key={d.day}
+                  variants={fadeUp}
+                  style={{ display: "flex", gap: "24px", paddingBottom: "48px", position: "relative" }}
                 >
-                  {/* Text column, given more room than the photos */}
-                  <div style={{ flex: "1.3 1 320px", minWidth: "280px" }}>
-                    <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: "4px" }}>
-                      {t("day")} {d.day}
-                    </p>
-                    <h3 className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-                      {d.title[locale]}
-                    </h3>
-                    {d.description && (
-                      <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "16px" }}>
-                        {d.description[locale]}
-                      </p>
-                    )}
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                      {d.distance && <Chip>{d.distance}{d.shape ? ` · ${t(d.shape)}` : ""}</Chip>}
-                      {d.ascent && <Chip>{d.ascent}</Chip>}
-                      {d.meals.map((mk) => (
-                        <Chip key={mk} accent>{mealLabel(mk)}</Chip>
-                      ))}
-                    </div>
-                    {d.accommodation && (
-                      <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
-                        <span style={{ color: "var(--color-ntn-sage-200)" }}>{t("accommodation")}: </span>
-                        {d.accommodation}
-                      </p>
-                    )}
-                    {d.note && (
-                      <p className="text-body-md" style={{ color: "var(--color-ntn-forest-600)", marginTop: "8px" }}>
-                        {d.note[locale]}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Photos: clean grid in rows of two (1 / 2 / 4), each opens lightbox */}
-                  {gal.length > 0 && (
+                  {/* Day number + line */}
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
                     <div
+                      className="font-title"
                       style={{
-                        flex: "1 1 300px",
-                        maxWidth: "440px",
-                        width: "100%",
-                        display: "grid",
-                        gridTemplateColumns: gal.length === 1 ? "1fr" : "repeat(2, 1fr)",
-                        gap: "10px",
+                        width: "52px", height: "52px", borderRadius: "9999px",
+                        backgroundColor: "var(--color-ntn-forest-400)", color: "#fff",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "13px", letterSpacing: "0.06em", flexShrink: 0,
                       }}
                     >
-                      {gal.map((src, gi) => {
-                        const spanFull = gal.length > 1 && gal.length % 2 === 1 && gi === gal.length - 1;
-                        return (
-                          <button
-                            key={gi}
-                            type="button"
-                            onClick={() => setLightbox(src)}
-                            className="group/img"
-                            style={{
-                              position: "relative",
-                              overflow: "hidden",
-                              borderRadius: "8px",
-                              aspectRatio: "3 / 2",
-                              cursor: "zoom-in",
-                              padding: 0,
-                              border: "none",
-                              background: "none",
-                              width: "100%",
-                              gridColumn: spanFull ? "1 / -1" : undefined,
-                            }}
-                          >
-                            <Image
-                              src={src}
-                              alt={d.title[locale]}
-                              fill
-                              className="object-cover transition-transform duration-500 group-hover/img:scale-[1.06]"
-                              sizes="(max-width: 1024px) 50vw, 220px"
-                            />
-                            <span
-                              className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100"
-                              style={{ background: "rgba(29,29,26,0.18)" }}
-                            />
-                          </button>
-                        );
-                      })}
+                      {String(d.day).padStart(2, "0")}
                     </div>
-                  )}
-                </div>
-              </m.div>
-              );
-            })}
-          </StaggerChildren>
+                    {d.day !== program.days.length && (
+                      <div style={{ flex: 1, width: "1.5px", backgroundColor: "rgba(89,105,77,0.2)", marginTop: "8px" }} />
+                    )}
+                  </div>
+
+                  {dayBody(d)}
+                </m.div>
+              ))}
+            </StaggerChildren>
+          )}
         </div>
       </section>
 
@@ -293,17 +309,19 @@ export function ProductPageContent({ program }: { program: Program }) {
                 ))}
               </ul>
 
-              <div style={{ marginTop: "32px" }}>
-                <Overline color="var(--color-ntn-sage-200)">{t("extras")}</Overline>
-                <ul style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                  {program.extras.map((it, i) => (
-                    <li key={i} className="text-body-md" style={{ color: "var(--color-ntn-black-800)", paddingLeft: "28px", position: "relative" }}>
-                      <span style={{ position: "absolute", left: "8px", top: "8px", width: "5px", height: "5px", borderRadius: "9999px", backgroundColor: "var(--color-ntn-forest-400)" }} />
-                      {it[locale]}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {program.extras.length > 0 && (
+                <div style={{ marginTop: "32px" }}>
+                  <Overline color="var(--color-ntn-sage-200)">{t("extras")}</Overline>
+                  <ul style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                    {program.extras.map((it, i) => (
+                      <li key={i} className="text-body-md" style={{ color: "var(--color-ntn-black-800)", paddingLeft: "28px", position: "relative" }}>
+                        <span style={{ position: "absolute", left: "8px", top: "8px", width: "5px", height: "5px", borderRadius: "9999px", backgroundColor: "var(--color-ntn-forest-400)" }} />
+                        {it[locale]}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </FadeUp>
 
             <FadeUp delay={0.2}>
@@ -329,6 +347,41 @@ export function ProductPageContent({ program }: { program: Program }) {
               <Overline color="var(--color-ntn-forest-400)">{t("prices")}</Overline>
             </div>
           </FadeUp>
+          {program.priceTiers && (
+            <FadeUp>
+              <div style={{ maxWidth: "480px", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
+                {program.priceTiers.map((tier, i) => (
+                  <div
+                    key={tier.pax}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "baseline",
+                      padding: "16px 24px",
+                      borderTop: i > 0 ? "1px solid rgba(89,105,77,0.12)" : "none",
+                    }}
+                  >
+                    <span className="text-body-md" style={{ color: "var(--color-ntn-black-800)" }}>
+                      {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
+                    </span>
+                    <span className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem", lineHeight: 1 }}>
+                      {formatPrice(tier.price, priceLocale)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "16px", maxWidth: "480px" }}>
+                {t("groupPriceNote")}
+              </p>
+              {program.priceTiersNote && (
+                <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "8px" }}>
+                  {program.priceTiersNote[locale]}
+                </p>
+              )}
+            </FadeUp>
+          )}
+
+          {program.prices && (
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px", maxWidth: "760px" }}>
             {(program.prices.high
               ? [
@@ -362,6 +415,7 @@ export function ProductPageContent({ program }: { program: Program }) {
               </m.div>
             ))}
           </div>
+          )}
           <FadeUp delay={0.2}>
             {program.priceCondition && (
               <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>
