@@ -349,28 +349,35 @@ export function ProductPageContent({ program }: { program: Program }) {
           </FadeUp>
           {program.priceTiers && (
             <FadeUp>
-              <div style={{ maxWidth: "480px", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
-                {program.priceTiers.map((tier, i) => (
-                  <div
-                    key={tier.pax}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "baseline",
-                      padding: "16px 24px",
-                      borderTop: i > 0 ? "1px solid rgba(89,105,77,0.12)" : "none",
-                    }}
-                  >
-                    <span className="text-body-md" style={{ color: "var(--color-ntn-black-800)" }}>
-                      {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
-                    </span>
-                    <span className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem", lineHeight: 1 }}>
-                      {formatPrice(tier.price, priceLocale)}
-                    </span>
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px", maxWidth: "760px" }}>
+                {[
+                  program.priceTiers.slice(0, Math.ceil(program.priceTiers.length / 2)),
+                  program.priceTiers.slice(Math.ceil(program.priceTiers.length / 2)),
+                ].map((group, ci) => (
+                  <div key={ci} style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
+                    {group.map((tier, i) => (
+                      <div
+                        key={tier.pax}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "baseline",
+                          padding: "16px 24px",
+                          borderTop: i > 0 ? "1px solid rgba(89,105,77,0.12)" : "none",
+                        }}
+                      >
+                        <span className="text-body-md" style={{ color: "var(--color-ntn-black-800)" }}>
+                          {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
+                        </span>
+                        <span className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem", lineHeight: 1 }}>
+                          {formatPrice(tier.price, priceLocale)}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
-              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "16px", maxWidth: "480px" }}>
+              <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "16px", maxWidth: "760px" }}>
                 {t("groupPriceNote")}
               </p>
               {program.priceTiersNote && (
