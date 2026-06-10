@@ -137,7 +137,10 @@ export function ProductPageContent({ program }: { program: Program }) {
 
           <StaggerChildren speed="fast" className="relative">
             {program.days.map((d) => {
-              const gal = d.gallery ?? [];
+              // House standard: photos always in clean rows of two (1 / 2 / 4).
+              // Any odd count above one is trimmed to the nearest even number.
+              const raw = d.gallery ?? [];
+              const gal = raw.length > 1 && raw.length % 2 === 1 ? raw.slice(0, -1) : raw;
               return (
               <m.div
                 key={d.day}
@@ -162,10 +165,19 @@ export function ProductPageContent({ program }: { program: Program }) {
                   )}
                 </div>
 
-                {/* Day content: narrow text on top, 3 photos in a row below */}
-                <div style={{ flex: 1, paddingTop: "4px" }}>
-                  {/* Text (constrained so it wraps in ~2 lines) */}
-                  <div style={{ maxWidth: "640px" }}>
+                {/* Day content: text column (wider) + photo grid side by side */}
+                <div
+                  style={{
+                    flex: 1,
+                    paddingTop: "4px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "32px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  {/* Text column, given more room than the photos */}
+                  <div style={{ flex: "1.3 1 320px", minWidth: "280px" }}>
                     <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: "4px" }}>
                       {t("day")} {d.day}
                     </p>
@@ -197,48 +209,53 @@ export function ProductPageContent({ program }: { program: Program }) {
                     )}
                   </div>
 
-                  {/* 3 photos side by side, full width, each opens lightbox */}
+                  {/* Photos: clean grid in rows of two (1 / 2 / 4), each opens lightbox */}
                   {gal.length > 0 && (
                     <div
                       style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(3, 1fr)",
-                        gap: "10px",
-                        marginTop: "22px",
+                        flex: "1 1 300px",
+                        maxWidth: "440px",
                         width: "100%",
+                        display: "grid",
+                        gridTemplateColumns: gal.length === 1 ? "1fr" : "repeat(2, 1fr)",
+                        gap: "10px",
                       }}
                     >
-                      {gal.map((src, gi) => (
-                        <button
-                          key={gi}
-                          type="button"
-                          onClick={() => setLightbox(src)}
-                          className="group/img"
-                          style={{
-                            position: "relative",
-                            overflow: "hidden",
-                            borderRadius: "8px",
-                            aspectRatio: "3 / 2",
-                            cursor: "zoom-in",
-                            padding: 0,
-                            border: "none",
-                            background: "none",
-                            width: "100%",
-                          }}
-                        >
-                          <Image
-                            src={src}
-                            alt={d.title[locale]}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover/img:scale-[1.06]"
-                            sizes="(max-width: 1024px) 33vw, 360px"
-                          />
-                          <span
-                            className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100"
-                            style={{ background: "rgba(29,29,26,0.18)" }}
-                          />
-                        </button>
-                      ))}
+                      {gal.map((src, gi) => {
+                        const spanFull = gal.length > 1 && gal.length % 2 === 1 && gi === gal.length - 1;
+                        return (
+                          <button
+                            key={gi}
+                            type="button"
+                            onClick={() => setLightbox(src)}
+                            className="group/img"
+                            style={{
+                              position: "relative",
+                              overflow: "hidden",
+                              borderRadius: "8px",
+                              aspectRatio: "3 / 2",
+                              cursor: "zoom-in",
+                              padding: 0,
+                              border: "none",
+                              background: "none",
+                              width: "100%",
+                              gridColumn: spanFull ? "1 / -1" : undefined,
+                            }}
+                          >
+                            <Image
+                              src={src}
+                              alt={d.title[locale]}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover/img:scale-[1.06]"
+                              sizes="(max-width: 1024px) 50vw, 220px"
+                            />
+                            <span
+                              className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100"
+                              style={{ background: "rgba(29,29,26,0.18)" }}
+                            />
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
