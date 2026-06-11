@@ -6,7 +6,8 @@
     "contact": "Contact",
     "bookNow": "Book Now",
     "sustainable": "Sustainable",
-    "blog": "Blog"
+    "blog": "Blog",
+    "faq": "FAQ"
   },
   "home": {
     "hero": {
@@ -29,7 +30,8 @@
       "stat3Value": "3",
       "stat3Label": "Regions covered",
       "body2": "We are also a DMC (Destination Management Company) specialised in walking tourism. We create, certify and sell our own routes to agencies and operators worldwide, with NET rates and a guaranteed 24h response.",
-      "cta": "Work with us"
+      "cta": "Work with us",
+      "ctaAbout": "Discover our story"
     },
     "whyus": {
       "label": "The NTN difference",
@@ -98,6 +100,7 @@
     "routes": "Routes",
     "company": "Company",
     "about": "About NTN",
+    "faq": "FAQ",
     "consulting": "NTN Consulting",
     "contact": "Contact",
     "privacy": "Privacy Policy",
@@ -237,6 +240,51 @@
     "formSending": "Sending...",
     "formSuccessTitle": "Request sent",
     "formSuccess": "Thank you. Our team will get back to you within 24 hours.",
-    "formError": "Something went wrong. Please try again or email us directly."
+    "formError": "Something went wrong. Please try again or email us directly.",
+    "faqCardLabel": "Good to know",
+    "faqCardTitle": "Questions before you book?",
+    "faqCardBody": "Booking, payments, what to wear, group sizes and more, answered in one place.",
+    "faqCardCta": "Read the FAQs"
+  },
+  "aboutPage": {
+    "heroLabel": "About us",
+    "heroTitle": "Walking specialists who know\nthe ground beneath your feet",
+    "heroSubtitle": "Portugal NTN is a tourism and travel company offering distinctive experiences in safe yet challenging environments, where people and places take the leading role.",
+    "companyLabel": "Our company",
+    "companyTitle": "Genuine Portugal, at a human pace",
+    "companyBody1": "We design small-group and tailor-made programs around adventure, culture and gastronomy, built on privileged contact with the most genuine side of Portugal, in harmony with local communities and a sustainable approach to the territory.",
+    "companyBody2": "Our structured walking programs run from 1 to 15 days, in guided and self-guided formats, across northern Portugal, Lisbon and the Algarve.",
+    "stat1Value": "12",
+    "stat1Label": "Years of expertise",
+    "stat2Value": "1 to 15",
+    "stat2Label": "Days per program",
+    "stat3Value": "3",
+    "stat3Label": "Regions covered",
+    "teamLabel": "Our team",
+    "teamTitle": "Certified guides, real mountain experience",
+    "teamBody1": "Our team brings together people with military training and operational experience across several countries. Our guides are certified by the National School of Mountaineering in hiking, rope work and hiking instruction.",
+    "teamBody2": "Safety, customer satisfaction and the commitment of our people are at the heart of how we work.",
+    "conductLabel": "Code of conduct",
+    "conductTitle": "How we walk, and why it matters",
+    "conduct1Title": "Local communities",
+    "conduct1Body": "We work in partnership with local people and non-profit organisations, supporting local economies and keeping every program in tune with local traditions and culture.",
+    "conduct2Title": "Environment",
+    "conduct2Body": "We promote the territory in a sustainable way, with social and environmental responsibility, preserving the natural and cultural heritage that makes each route unique.",
+    "conduct3Title": "Safety first",
+    "conduct3Body": "Safety guides every decision. We assess conditions on the ground, follow strict standards and keep improving based on our guests' feedback.",
+    "ctaTitle": "Ready to walk with us?",
+    "ctaBody": "Explore our routes or learn how we operate, sustainably and with purpose.",
+    "ctaDestinations": "See destinations",
+    "ctaSustainable": "Our sustainability"
+  },
+  "faqPage": {
+    "heroLabel": "Help center",
+    "heroTitle": "Frequently asked questions",
+    "intro": "Everything you need to know before you walk with us, from booking and payments to what to pack and how our guides support you.",
+    "ctaLabel": "Still curious?",
+    "ctaTitle": "Can't find your answer?",
+    "ctaBody": "Tell us about your group and your dates, and our team will reply within 24 hours.",
+    "ctaDestinations": "Browse destinations",
+    "ctaContact": "Email us"
   }
 }

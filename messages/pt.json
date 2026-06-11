@@ -6,7 +6,8 @@
     "contact": "Contacto",
     "bookNow": "Reservar",
     "sustainable": "Sustentável",
-    "blog": "Blog"
+    "blog": "Blog",
+    "faq": "FAQ"
   },
   "home": {
     "hero": {
@@ -29,7 +30,8 @@
       "stat3Value": "3",
       "stat3Label": "Regiões cobertas",
       "body2": "Somos também uma DMC (Destination Management Company) especializada em turismo de caminhada. Criamos, certificamos e vendemos os nossos próprios roteiros a agências e operadores de todo o mundo, com tarifas NET e resposta garantida em 24h.",
-      "cta": "Trabalhar connosco"
+      "cta": "Trabalhar connosco",
+      "ctaAbout": "Conheça a nossa história"
     },
     "whyus": {
       "label": "A nossa diferença",
@@ -98,6 +100,7 @@
     "routes": "Roteiros",
     "company": "Empresa",
     "about": "Sobre a NTN",
+    "faq": "FAQ",
     "consulting": "NTN Consulting",
     "contact": "Contacto",
     "privacy": "Política de Privacidade",
@@ -237,6 +240,51 @@
     "formSending": "A enviar...",
     "formSuccessTitle": "Pedido enviado",
     "formSuccess": "Obrigado. A nossa equipa entrará em contacto dentro de 24 horas.",
-    "formError": "Ocorreu um erro. Tente novamente ou escreva-nos diretamente."
+    "formError": "Ocorreu um erro. Tente novamente ou escreva-nos diretamente.",
+    "faqCardLabel": "Bom saber",
+    "faqCardTitle": "Dúvidas antes de reservar?",
+    "faqCardBody": "Reservas, pagamentos, o que levar, dimensão dos grupos e muito mais, tudo num só lugar.",
+    "faqCardCta": "Ver as FAQ"
+  },
+  "aboutPage": {
+    "heroLabel": "Sobre nós",
+    "heroTitle": "Especialistas em caminhadas que\nconhecem o terreno que pisa",
+    "heroSubtitle": "A Portugal NTN é uma empresa de turismo e viagens que oferece experiências distintas, em ambientes seguros mas desafiantes, onde as pessoas e os lugares têm o papel principal.",
+    "companyLabel": "A nossa empresa",
+    "companyTitle": "O Portugal genuíno, a um ritmo humano",
+    "companyBody1": "Desenhamos programas em pequenos grupos e à medida, em torno da aventura, da cultura e da gastronomia, assentes num contacto privilegiado com o que há de mais genuíno em Portugal, em harmonia com as comunidades locais e com uma abordagem sustentável ao território.",
+    "companyBody2": "Os nossos programas de caminhada estruturados vão de 1 a 15 dias, em formato guiado e autoguiado, pelo Norte de Portugal, Lisboa e Algarve.",
+    "stat1Value": "12",
+    "stat1Label": "Anos de experiência",
+    "stat2Value": "1 a 15",
+    "stat2Label": "Dias por programa",
+    "stat3Value": "3",
+    "stat3Label": "Regiões abrangidas",
+    "teamLabel": "A nossa equipa",
+    "teamTitle": "Guias certificados, experiência real de montanha",
+    "teamBody1": "A nossa equipa reúne pessoas com formação militar e experiência operacional em vários países. Os nossos guias são certificados pela Escola Nacional de Montanhismo em pedestrianismo, manobras de cordas e técnicos de pedestrianismo.",
+    "teamBody2": "A segurança, a satisfação do cliente e o compromisso da nossa equipa estão no centro da forma como trabalhamos.",
+    "conductLabel": "Código de conduta",
+    "conductTitle": "Como caminhamos, e porque isso importa",
+    "conduct1Title": "Comunidades locais",
+    "conduct1Body": "Trabalhamos em parceria com as pessoas locais e com organizações sem fins lucrativos, apoiando as economias locais e mantendo cada programa em sintonia com as tradições e a cultura do território.",
+    "conduct2Title": "Ambiente",
+    "conduct2Body": "Promovemos o território de forma sustentável, com responsabilidade social e ambiental, preservando o património natural e cultural que torna cada percurso único.",
+    "conduct3Title": "Segurança primeiro",
+    "conduct3Body": "A segurança orienta cada decisão. Avaliamos as condições no terreno, seguimos normas exigentes e melhoramos continuamente com base no feedback dos nossos hóspedes.",
+    "ctaTitle": "Pronto para caminhar connosco?",
+    "ctaBody": "Explore os nossos percursos ou conheça a forma como operamos, de modo sustentável e com propósito.",
+    "ctaDestinations": "Ver destinos",
+    "ctaSustainable": "A nossa sustentabilidade"
+  },
+  "faqPage": {
+    "heroLabel": "Centro de ajuda",
+    "heroTitle": "Perguntas frequentes",
+    "intro": "Tudo o que precisa de saber antes de caminhar connosco, das reservas e pagamentos ao que levar na mochila e à forma como os nossos guias o acompanham.",
+    "ctaLabel": "Ainda com dúvidas?",
+    "ctaTitle": "Não encontrou a sua resposta?",
+    "ctaBody": "Conte-nos o seu grupo e as suas datas, e a nossa equipa responde em 24 horas.",
+    "ctaDestinations": "Ver destinos",
+    "ctaContact": "Escreva-nos"
   }
 }

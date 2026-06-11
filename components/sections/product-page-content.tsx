@@ -10,7 +10,7 @@ import { Overline } from "@/components/ui/overline";
 import { fadeUp } from "@/lib/motion";
 import { formatPrice } from "@/lib/utils";
 import type { Program } from "@/lib/programs";
-import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail } from "lucide-react";
+import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle } from "lucide-react";
 import { ProposalForm } from "@/components/sections/proposal-form";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -481,6 +481,42 @@ export function ProductPageContent({ program }: { program: Program }) {
                   </ul>
                 </div>
               </div>
+            </div>
+          </FadeUp>
+
+          {/* FAQ helper card */}
+          <FadeUp delay={0.3}>
+            <div
+              style={{
+                marginTop: "48px",
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "24px",
+                backgroundColor: "var(--color-ntn-cream-50)",
+                border: "1px solid rgba(89,105,77,0.16)",
+                borderLeft: "4px solid var(--color-ntn-lime)",
+                borderRadius: "10px",
+                padding: "30px 34px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "20px" }}>
+                <span style={{ color: "var(--color-ntn-forest-400)", flexShrink: 0, marginTop: "2px" }}>
+                  <HelpCircle size={30} strokeWidth={1.6} />
+                </span>
+                <div>
+                  <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: "6px" }}>{t("faqCardLabel")}</p>
+                  <p className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontWeight: 700, fontSize: "1.15rem", marginBottom: "4px" }}>{t("faqCardTitle")}</p>
+                  <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", maxWidth: "54ch" }}>{t("faqCardBody")}</p>
+                </div>
+              </div>
+              <Link href={`/${locale}/faqs`} className="btn btn-ghost-dark" style={{ flexShrink: 0 }}>
+                {t("faqCardCta")}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
           </FadeUp>
         </div>

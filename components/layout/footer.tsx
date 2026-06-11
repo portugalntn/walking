@@ -175,7 +175,8 @@ export function Footer() {
               </p>
               <ul className="space-y-2" style={{ lineHeight: 2 }}>
                 {[
-                  { label: t("about"), href: `/${locale}#about` },
+                  { label: t("about"), href: `/${locale}/about` },
+                  { label: t("faq"), href: `/${locale}/faqs` },
                   { label: t("consulting"), href: "https://portugalntn.com" },
                   { label: t("contact"), href: `/${locale}#contact` },
                   { label: t("privacy"), href: `/${locale}/privacy` },

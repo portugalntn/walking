@@ -153,16 +153,17 @@ export function IntroSection() {
 
             {/* CTA */}
             <FadeUp delay={0.2}>
-              <a
-                href={`/${locale}#contact`}
-                className="btn btn-primary"
-                style={{ marginTop: "40px" }}
-              >
-                {t("cta")}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
+              <div style={{ marginTop: "40px", display: "flex", flexWrap: "wrap", gap: "16px" }}>
+                <a href={`/${locale}/about`} className="btn btn-primary">
+                  {t("ctaAbout")}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+                <a href={`/${locale}#contact`} className="btn btn-ghost-dark">
+                  {t("cta")}
+                </a>
+              </div>
             </FadeUp>
           </div>
 

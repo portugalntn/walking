@@ -6,7 +6,8 @@
     "contact": "Contacto",
     "bookNow": "Reservar",
     "sustainable": "Sostenible",
-    "blog": "Blog"
+    "blog": "Blog",
+    "faq": "FAQ"
   },
   "home": {
     "hero": {
@@ -29,7 +30,8 @@
       "stat3Value": "3",
       "stat3Label": "Regiones cubiertas",
       "body2": "También somos una DMC (Destination Management Company) especializada en turismo de senderismo. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo, con tarifas NET y respuesta garantizada en 24h.",
-      "cta": "Trabajar con nosotros"
+      "cta": "Trabajar con nosotros",
+      "ctaAbout": "Conozca nuestra historia"
     },
     "whyus": {
       "label": "La diferencia NTN",
@@ -98,6 +100,7 @@
     "routes": "Rutas",
     "company": "Empresa",
     "about": "Sobre NTN",
+    "faq": "FAQ",
     "consulting": "NTN Consulting",
     "contact": "Contacto",
     "privacy": "Política de Privacidad",
@@ -237,6 +240,51 @@
     "formSending": "Enviando...",
     "formSuccessTitle": "Solicitud enviada",
     "formSuccess": "Gracias. Nuestro equipo se pondrá en contacto en un plazo de 24 horas.",
-    "formError": "Se ha producido un error. Inténtelo de nuevo o escríbanos directamente."
+    "formError": "Se ha producido un error. Inténtelo de nuevo o escríbanos directamente.",
+    "faqCardLabel": "Bueno saber",
+    "faqCardTitle": "¿Dudas antes de reservar?",
+    "faqCardBody": "Reservas, pagos, qué llevar, tamaño de los grupos y mucho más, todo en un solo lugar.",
+    "faqCardCta": "Ver las FAQ"
+  },
+  "aboutPage": {
+    "heroLabel": "Sobre nosotros",
+    "heroTitle": "Especialistas en caminatas que\nconocen el terreno que pisa",
+    "heroSubtitle": "Portugal NTN es una empresa de turismo y viajes que ofrece experiencias distintas, en entornos seguros pero desafiantes, donde las personas y los lugares tienen el papel principal.",
+    "companyLabel": "Nuestra empresa",
+    "companyTitle": "El Portugal genuino, a un ritmo humano",
+    "companyBody1": "Diseñamos programas en grupos pequeños y a medida, en torno a la aventura, la cultura y la gastronomía, basados en un contacto privilegiado con lo más genuino de Portugal, en armonía con las comunidades locales y con un enfoque sostenible del territorio.",
+    "companyBody2": "Nuestros programas de senderismo estructurados van de 1 a 15 días, en formato guiado y autoguiado, por el norte de Portugal, Lisboa y el Algarve.",
+    "stat1Value": "12",
+    "stat1Label": "Años de experiencia",
+    "stat2Value": "1 a 15",
+    "stat2Label": "Días por programa",
+    "stat3Value": "3",
+    "stat3Label": "Regiones cubiertas",
+    "teamLabel": "Nuestro equipo",
+    "teamTitle": "Guías certificados, experiencia real de montaña",
+    "teamBody1": "Nuestro equipo reúne a personas con formación militar y experiencia operativa en varios países. Nuestros guías están certificados por la Escuela Nacional de Montañismo en senderismo, maniobras de cuerda y técnicos de senderismo.",
+    "teamBody2": "La seguridad, la satisfacción del cliente y el compromiso de nuestro equipo están en el centro de nuestra forma de trabajar.",
+    "conductLabel": "Código de conducta",
+    "conductTitle": "Cómo caminamos, y por qué importa",
+    "conduct1Title": "Comunidades locales",
+    "conduct1Body": "Trabajamos en colaboración con la gente local y con organizaciones sin ánimo de lucro, apoyando las economías locales y manteniendo cada programa en sintonía con las tradiciones y la cultura del territorio.",
+    "conduct2Title": "Medio ambiente",
+    "conduct2Body": "Promovemos el territorio de forma sostenible, con responsabilidad social y ambiental, preservando el patrimonio natural y cultural que hace único cada recorrido.",
+    "conduct3Title": "La seguridad primero",
+    "conduct3Body": "La seguridad guía cada decisión. Evaluamos las condiciones sobre el terreno, seguimos normas exigentes y mejoramos continuamente con base en los comentarios de nuestros huéspedes.",
+    "ctaTitle": "¿Listo para caminar con nosotros?",
+    "ctaBody": "Explore nuestras rutas o conozca cómo operamos, de forma sostenible y con propósito.",
+    "ctaDestinations": "Ver destinos",
+    "ctaSustainable": "Nuestra sostenibilidad"
+  },
+  "faqPage": {
+    "heroLabel": "Centro de ayuda",
+    "heroTitle": "Preguntas frecuentes",
+    "intro": "Todo lo que necesita saber antes de caminar con nosotros, desde reservas y pagos hasta qué llevar en la mochila y cómo le acompañan nuestros guías.",
+    "ctaLabel": "¿Aún con dudas?",
+    "ctaTitle": "¿No encuentra su respuesta?",
+    "ctaBody": "Cuéntenos su grupo y sus fechas, y nuestro equipo responde en 24 horas.",
+    "ctaDestinations": "Ver destinos",
+    "ctaContact": "Escríbanos"
   }
 }
