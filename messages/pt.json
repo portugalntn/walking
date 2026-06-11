@@ -101,6 +101,7 @@
     "company": "Empresa",
     "about": "Sobre a NTN",
     "faq": "FAQ",
+    "grading": "Graus de dificuldade",
     "consulting": "NTN Consulting",
     "contact": "Contacto",
     "privacy": "Política de Privacidade",
@@ -244,7 +245,9 @@
     "faqCardLabel": "Bom saber",
     "faqCardTitle": "Dúvidas antes de reservar?",
     "faqCardBody": "Reservas, pagamentos, o que levar, dimensão dos grupos e muito mais, tudo num só lugar.",
-    "faqCardCta": "Ver as FAQ"
+    "faqCardCta": "Ver as FAQ",
+    "difficultyHeading": "Grau de dificuldade",
+    "gradeScaleLink": "Ver a escala completa"
   },
   "aboutPage": {
     "heroLabel": "Sobre nós",
@@ -286,5 +289,11 @@
     "ctaBody": "Conte-nos o seu grupo e as suas datas, e a nossa equipa responde em 24 horas.",
     "ctaDestinations": "Ver destinos",
     "ctaContact": "Escreva-nos"
+  },
+  "gradingPage": {
+    "heroLabel": "Graus de dificuldade",
+    "heroTitle": "Como classificamos as nossas caminhadas",
+    "intro": "Cada percurso tem um grau de dificuldade para saber o que esperar antes de partir. A escala vai de muito fácil a muito difícil, com base na distância, no ganho de elevação e no tipo de terreno.",
+    "ctaDestinations": "Ver destinos"
   }
 }

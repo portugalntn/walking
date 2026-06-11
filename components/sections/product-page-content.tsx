@@ -12,6 +12,7 @@ import { formatPrice } from "@/lib/utils";
 import type { Program } from "@/lib/programs";
 import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle } from "lucide-react";
 import { ProposalForm } from "@/components/sections/proposal-form";
+import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
@@ -229,6 +230,13 @@ export function ProductPageContent({ program }: { program: Program }) {
                   <p className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontWeight: 700, fontSize: "15px" }}>{f.value}</p>
                 </div>
               ))}
+            </div>
+          </FadeUp>
+
+          {/* Difficulty gauge */}
+          <FadeUp delay={0.15}>
+            <div style={{ marginTop: "40px" }}>
+              <DifficultyGauge level={program.grade} />
             </div>
           </FadeUp>
         </div>

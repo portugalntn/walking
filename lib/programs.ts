@@ -6,6 +6,7 @@
  */
 
 import type { L } from "./destinations";
+import type { GradeLevel } from "./grades";
 
 export type Day = {
   day: number;
@@ -33,6 +34,8 @@ export type Program = {
   duration: { days: number; nights: number };
   type: L;
   difficulty: L;
+  /** Walking difficulty grade (1 to 5) on the NTN scale. See lib/grades.ts. */
+  grade: GradeLevel;
   season: L;
   startPoint: string;
   totalDistance: string;
@@ -101,6 +104,7 @@ export const programs: Record<string, Program> = {
     duration: { days: 8, nights: 7 },
     type: tri("Self-Guided", "Self-Guided", "Autoguiado"),
     difficulty: tri("Moderate", "Moderada", "Moderada"),
+    grade: 3,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Peso da Régua",
     totalDistance: "75 km",
@@ -283,7 +287,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${T}miranda-1.jpg`,
     duration: { days: 8, nights: 7 },
     type: tri("Self-Guided", "Self-Guided", "Autoguiado"),
-    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    difficulty: tri("Difficult", "Difícil", "Difícil"),
+    grade: 4,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Palácios, Bragança",
     totalDistance: "104 km",
@@ -461,7 +466,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${P}geres-i.jpg`,
     duration: { days: 8, nights: 7 },
     type: tri("Self-Guided", "Self-Guided", "Autoguiado"),
-    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    difficulty: tri("Difficult", "Difícil", "Difícil"),
+    grade: 4,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Pitões das Júnias",
     totalDistance: "74 km",
@@ -639,7 +645,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${D1}hero-douro-1day.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
-    difficulty: tri("Medium", "Média", "Media"),
+    difficulty: tri("Moderate", "Moderada", "Moderado"),
+    grade: 3,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Peso da Régua",
     totalDistance: "6 km",
@@ -710,7 +717,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${SI}hero-sintra-1day.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
-    difficulty: tri("Medium", "Média", "Media"),
+    difficulty: tri("Moderate", "Moderada", "Moderado"),
+    grade: 3,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Lisboa",
     totalDistance: "6 km",
@@ -781,7 +789,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${AL}hero-algarve-1day.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
-    difficulty: tri("Medium", "Média", "Media"),
+    difficulty: tri("Moderate", "Moderada", "Moderado"),
+    grade: 3,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Portimão",
     totalDistance: "6 km",
@@ -851,7 +860,8 @@ export const programs: Record<string, Program> = {
     heroImage: `${TR}hero-tras-1day.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
-    difficulty: tri("Medium", "Média", "Media"),
+    difficulty: tri("Moderate", "Moderada", "Moderado"),
+    grade: 3,
     season: tri("All year", "Todo o ano", "Todo el año"),
     startPoint: "Romeu, Mirandela",
     totalDistance: "6 km",

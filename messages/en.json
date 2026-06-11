@@ -101,6 +101,7 @@
     "company": "Company",
     "about": "About NTN",
     "faq": "FAQ",
+    "grading": "Walking grades",
     "consulting": "NTN Consulting",
     "contact": "Contact",
     "privacy": "Privacy Policy",
@@ -244,7 +245,9 @@
     "faqCardLabel": "Good to know",
     "faqCardTitle": "Questions before you book?",
     "faqCardBody": "Booking, payments, what to wear, group sizes and more, answered in one place.",
-    "faqCardCta": "Read the FAQs"
+    "faqCardCta": "Read the FAQs",
+    "difficultyHeading": "Difficulty grade",
+    "gradeScaleLink": "See the full scale"
   },
   "aboutPage": {
     "heroLabel": "About us",
@@ -286,5 +289,11 @@
     "ctaBody": "Tell us about your group and your dates, and our team will reply within 24 hours.",
     "ctaDestinations": "Browse destinations",
     "ctaContact": "Email us"
+  },
+  "gradingPage": {
+    "heroLabel": "Walking grades",
+    "heroTitle": "How we grade our walks",
+    "intro": "Every route carries a difficulty grade so you know what to expect before you set off. The scale runs from very easy to very difficult, based on distance, elevation gain and terrain.",
+    "ctaDestinations": "See destinations"
   }
 }
