@@ -1,102 +1,61 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { geoMercator, geoPath } from "d3-geo";
-import type { Feature, Geometry } from "geojson";
+import { useState } from "react";
 import { m } from "framer-motion";
 
 /**
- * PortugalMap — real Portugal geometry (world-atlas 50m) projected with
- * d3-geo. Editorial style: clean forest outline, soft cream fill, dotted
- * ocean, and leader lines connecting each marker to a label OUTSIDE the
- * silhouette (so labels never sit on the border).
+ * PortugalMap — uses the high-res terrain relief PNG (1080×1920 RGBA).
+ * SVG viewBox matches the image aspect ratio (560 × 994 ≈ 9:16).
+ * Pin coordinates derived from visual analysis of the relief map.
  */
 
 const WIDTH = 560;
-const HEIGHT = 620;
-const LEFT_X = 150; // leader-line end on the left side
-const RIGHT_X = 410; // leader-line end on the right side
+const HEIGHT = 994;
+
+const LEFT_X = 50;
+const RIGHT_X = 510;
 
 type Region = {
   id: string;
-  coords: [number, number]; // [lng, lat]
+  x: number;
+  y: number;
   side: "left" | "right";
-  off: number; // vertical nudge of the label end (avoid crowding)
+  off: number;
   lines: string[];
 };
 
 const regions: Region[] = [
-  { id: "geres",    coords: [-8.20, 41.86], side: "left",  off: -10, lines: ["Peneda-Gerês"] },
-  { id: "santiago", coords: [-7.45, 41.74], side: "left",  off: 44,  lines: ["Caminho de", "Santiago Interior"] },
-  { id: "tras",     coords: [-6.78, 41.74], side: "right", off: -8,  lines: ["Trás-os-Montes"] },
-  { id: "douro",    coords: [-7.65, 41.10], side: "right", off: 8,   lines: ["Douro Valley"] },
-  { id: "lisboa",   coords: [-9.20, 38.72], side: "left",  off: 0,   lines: ["Lisboa & Sintra"] },
-  { id: "algarve",  coords: [-8.00, 37.10], side: "right", off: 0,   lines: ["Algarve"] },
+  { id: "geres",    x: 215, y: 182, side: "left",  off: 0,   lines: ["Peneda-Gerês"] },
+  { id: "santiago", x: 248, y: 278, side: "left",  off: 0,   lines: ["Caminho de", "Santiago Interior"] },
+  { id: "tras",     x: 382, y: 208, side: "right", off: 0,   lines: ["Trás-os-Montes"] },
+  { id: "douro",    x: 356, y: 336, side: "right", off: 0,   lines: ["Douro Valley"] },
+  { id: "lisboa",   x: 122, y: 676, side: "left",  off: 0,   lines: ["Lisboa & Sintra"] },
+  { id: "algarve",  x: 258, y: 905, side: "right", off: 0,   lines: ["Algarve"] },
 ];
 
-type Marker = Region & { x: number; y: number };
-
 export function PortugalMap() {
-  const [pathD, setPathD] = useState<string | null>(null);
-  const [markers, setMarkers] = useState<Marker[]>([]);
   const [hovered, setHovered] = useState<string | null>(null);
-  const mounted = useRef(false);
-
-  useEffect(() => {
-    if (mounted.current) return;
-    mounted.current = true;
-
-    fetch("/portugal.geojson")
-      .then((r) => r.json())
-      .then((geo: Feature<Geometry>) => {
-        const projection = geoMercator()
-          .center([-8.0, 39.6])
-          .scale(3400)
-          .translate([WIDTH / 2, HEIGHT / 2]);
-
-        const path = geoPath(projection);
-        setPathD(path(geo) ?? null);
-
-        setMarkers(
-          regions.map((reg) => {
-            const p = projection(reg.coords);
-            return { ...reg, x: p ? p[0] : 0, y: p ? p[1] : 0 };
-          })
-        );
-      })
-      .catch(() => {});
-  }, []);
 
   return (
-    <div className="relative w-full" style={{ maxWidth: "620px", margin: "0 auto" }}>
-      <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} fill="none" className="w-full h-auto">
-        <defs>
-          <pattern id="ocean-dots" width="7" height="7" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.7" fill="#a0b4c8" />
-          </pattern>
-        </defs>
-
-        {/* Ocean dots */}
-        <rect x="0" y="0" width={WIDTH} height={HEIGHT} fill="url(#ocean-dots)" opacity="0.20" />
-
-        {/* Country outline */}
-        {pathD && (
-          <m.path
-            d={pathD}
-            fill="#e8e4dc"
-            stroke="#2d3b1e"
-            strokeWidth={1}
-            strokeLinejoin="round"
-            strokeLinecap="round"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-          />
-        )}
+    <div className="relative w-full" style={{ maxWidth: "480px", margin: "0 auto" }}>
+      <svg
+        viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        fill="none"
+        className="w-full h-auto"
+        style={{ overflow: "visible" }}
+      >
+        {/* Relief map image — transparent PNG, ocean shows container bg */}
+        <image
+          href="/images/portugal-map-relief.png"
+          x="0"
+          y="0"
+          width={WIDTH}
+          height={HEIGHT}
+          preserveAspectRatio="xMidYMid meet"
+        />
 
         {/* Markers + leader lines + external labels */}
-        {markers.map((mk, i) => {
+        {regions.map((mk, i) => {
           const active = hovered === mk.id;
           const endX = mk.side === "left" ? LEFT_X : RIGHT_X;
           const labelY = mk.y + mk.off;
@@ -110,21 +69,21 @@ export function PortugalMap() {
               onMouseLeave={() => setHovered(null)}
               style={{ cursor: "pointer" }}
             >
-              {/* Leader line: marker -> elbow -> label end */}
+              {/* Leader line: pin → elbow → label endpoint */}
               <m.polyline
                 points={`${mk.x},${mk.y} ${endX},${labelY} ${textX},${labelY}`}
                 fill="none"
-                stroke={active ? "#3d5a1a" : "rgba(45,59,30,0.5)"}
+                stroke={active ? "#3d5a1a" : "rgba(45,59,30,0.65)"}
                 strokeWidth={active ? 1.2 : 0.8}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
               />
-              {/* Small dot at the label end */}
+              {/* Dot at label end */}
               <circle cx={endX} cy={labelY} r={2} fill="#2d3b1e" />
 
-              {/* Pulse */}
+              {/* Pulse ring */}
               <m.circle
                 cx={mk.x}
                 cy={mk.y}
@@ -135,8 +94,17 @@ export function PortugalMap() {
                 transition={{ duration: 2, repeat: Infinity, delay: i * 0.35, ease: "easeOut" }}
                 style={{ transformOrigin: `${mk.x}px ${mk.y}px` }}
               />
-              {/* Marker ring + dot */}
-              <circle cx={mk.x} cy={mk.y} r={8} fill="none" stroke="#bccf02" strokeWidth={1.2} opacity={active ? 1 : 0.7} />
+              {/* Marker outer ring */}
+              <circle
+                cx={mk.x}
+                cy={mk.y}
+                r={8}
+                fill="none"
+                stroke="#bccf02"
+                strokeWidth={1.2}
+                opacity={active ? 1 : 0.7}
+              />
+              {/* Marker centre dot */}
               <m.circle
                 cx={mk.x}
                 cy={mk.y}
@@ -150,7 +118,7 @@ export function PortugalMap() {
                 transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 300, damping: 18 }}
               />
 
-              {/* External label */}
+              {/* Label */}
               <text
                 x={textX}
                 y={labelY}
