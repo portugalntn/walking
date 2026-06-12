@@ -251,7 +251,7 @@
   },
   "aboutPage": {
     "heroLabel": "Sobre nós",
-    "heroTitle": "Especialistas em caminhadas que\nconhecem o terreno que pisa",
+    "heroTitle": "Especialistas em\ncaminhadas que conhecem\no terreno que pisa",
     "heroSubtitle": "A Portugal NTN é uma empresa de turismo e viagens que oferece experiências distintas, em ambientes seguros mas desafiantes, onde as pessoas e os lugares têm o papel principal.",
     "companyLabel": "A nossa empresa",
     "companyTitle": "O Portugal genuíno, a um ritmo humano",
@@ -278,7 +278,17 @@
     "ctaTitle": "Pronto para caminhar connosco?",
     "ctaBody": "Explore os nossos percursos ou conheça a forma como operamos, de modo sustentável e com propósito.",
     "ctaDestinations": "Ver destinos",
-    "ctaSustainable": "A nossa sustentabilidade"
+    "ctaSustainable": "A nossa sustentabilidade",
+    "consultingLabel": "12 anos no terreno",
+    "consultingTitle": "Estruturámos o território.\nAgora operamo-lo.",
+    "consultingBody": "Antes de criar qualquer programa de caminhada, a Portugal NTN passou 12 anos a estruturar, sinalizar e certificar percursos pedestres, centros Cyclin' Portugal e centros de Trail Running pelo Norte e Nordeste de Portugal. Esse trabalho de campo está na base de cada roteiro Walking que criamos.",
+    "consultingService1": "Percursos Pedestres e Sinalética",
+    "consultingService2": "Centros Cyclin' Portugal (BTT)",
+    "consultingService3": "Centros de Trail Running",
+    "consultingService4": "Percursos Acessíveis e Inclusivos",
+    "consultingService5": "Estudos e Projectos de Turismo de Natureza",
+    "consultingService6": "Aplicação Móvel de Turismo",
+    "consultingCta": "Conheça a NTN Consulting"
   },
   "faqPage": {
     "heroLabel": "Centro de ajuda",

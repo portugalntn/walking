@@ -177,8 +177,8 @@ export function IntroSection() {
                 style={{ aspectRatio: "4/5", borderRadius: "8px" }}
               >
                 <Image
-                  src="/images/routes/tras-os-montes-1.jpg"
-                  alt="Walking through Trás-os-Montes"
+                  src="/images/consulting/c-passadico-6.jpg"
+                  alt="Percurso pedestre Portugal NTN"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

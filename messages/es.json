@@ -251,7 +251,7 @@
   },
   "aboutPage": {
     "heroLabel": "Sobre nosotros",
-    "heroTitle": "Especialistas en caminatas que\nconocen el terreno que pisa",
+    "heroTitle": "Especialistas en caminatas\nque conocen el terreno\nque pisamos",
     "heroSubtitle": "Portugal NTN es una empresa de turismo y viajes que ofrece experiencias distintas, en entornos seguros pero desafiantes, donde las personas y los lugares tienen el papel principal.",
     "companyLabel": "Nuestra empresa",
     "companyTitle": "El Portugal genuino, a un ritmo humano",
@@ -278,7 +278,17 @@
     "ctaTitle": "¿Listo para caminar con nosotros?",
     "ctaBody": "Explore nuestras rutas o conozca cómo operamos, de forma sostenible y con propósito.",
     "ctaDestinations": "Ver destinos",
-    "ctaSustainable": "Nuestra sostenibilidad"
+    "ctaSustainable": "Nuestra sostenibilidad",
+    "consultingLabel": "12 años sobre el terreno",
+    "consultingTitle": "Estructuramos el territorio.\nAhora lo operamos.",
+    "consultingBody": "Antes de crear cualquier programa de senderismo, Portugal NTN pasó 12 años estructurando, señalizando y certificando senderos pedestres, Centros Cyclin' Portugal y Centros de Trail Running en el Norte y Nordeste de Portugal. Ese trabajo de campo está en la base de cada programa Walking que creamos.",
+    "consultingService1": "Senderos Pedestres y Señalética",
+    "consultingService2": "Centros Cyclin' Portugal (BTT)",
+    "consultingService3": "Centros de Trail Running",
+    "consultingService4": "Senderos Accesibles e Inclusivos",
+    "consultingService5": "Estudios y Proyectos de Turismo de Naturaleza",
+    "consultingService6": "Aplicación Móvil de Turismo",
+    "consultingCta": "Conozca NTN Consulting"
   },
   "faqPage": {
     "heroLabel": "Centro de ayuda",
