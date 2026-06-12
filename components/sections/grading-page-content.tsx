@@ -7,6 +7,7 @@ import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { grades } from "@/lib/grades";
 import { Route, Mountain } from "lucide-react";
+import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
 
 type Loc = "en" | "pt" | "es";
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -43,6 +44,13 @@ export function GradingPageContent() {
       {/* Scale */}
       <section style={{ backgroundColor: "var(--color-ntn-white)", paddingTop: "72px", paddingBottom: "80px" }}>
         <div className="container-ntn">
+          {/* Interactive gauge — hover each zone to explore */}
+          <FadeUp>
+            <div style={{ maxWidth: "760px", marginBottom: "56px" }}>
+              <DifficultyGauge hideOverline hideScaleLink />
+            </div>
+          </FadeUp>
+
           <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "880px" }}>
             {grades.map((g, i) => (
               <m.div

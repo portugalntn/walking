@@ -233,12 +233,6 @@ export function ProductPageContent({ program }: { program: Program }) {
             </div>
           </FadeUp>
 
-          {/* Difficulty gauge */}
-          <FadeUp delay={0.15}>
-            <div style={{ marginTop: "40px" }}>
-              <DifficultyGauge level={program.grade} />
-            </div>
-          </FadeUp>
         </div>
       </section>
 
@@ -287,6 +281,15 @@ export function ProductPageContent({ program }: { program: Program }) {
               ))}
             </StaggerChildren>
           )}
+        </div>
+      </section>
+
+      {/* ── Difficulty gauge ── */}
+      <section style={{ backgroundColor: "var(--color-ntn-cream-50)", paddingTop: "72px", paddingBottom: "72px" }}>
+        <div className="container-ntn">
+          <FadeUp>
+            <DifficultyGauge level={program.grade} />
+          </FadeUp>
         </div>
       </section>
 
