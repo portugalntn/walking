@@ -4,16 +4,16 @@ import { useState } from "react";
 import { m } from "framer-motion";
 
 /**
- * PortugalMap — uses the high-res terrain relief PNG (1080×1920 RGBA).
- * SVG viewBox matches the image aspect ratio (560 × 994 ≈ 9:16).
- * Pin coordinates derived from visual analysis of the relief map.
+ * PortugalMap — terrain relief PNG (1080×1920 RGBA).
+ * Coordinates calibrated from Google My Maps georef + visual reference.
+ * ViewBox 560×994 mirrors the 9:16 image ratio.
  */
 
 const WIDTH = 560;
 const HEIGHT = 994;
 
-const LEFT_X = 50;
-const RIGHT_X = 510;
+const LEFT_X = 46;
+const RIGHT_X = 514;
 
 type Region = {
   id: string;
@@ -25,13 +25,19 @@ type Region = {
 };
 
 const regions: Region[] = [
-  { id: "geres",    x: 215, y: 182, side: "left",  off: 0,   lines: ["Peneda-Gerês"] },
-  { id: "santiago", x: 248, y: 278, side: "left",  off: 0,   lines: ["Caminho de", "Santiago Interior"] },
-  { id: "tras",     x: 382, y: 208, side: "right", off: 0,   lines: ["Trás-os-Montes"] },
-  { id: "douro",    x: 356, y: 336, side: "right", off: 0,   lines: ["Douro Valley"] },
-  { id: "lisboa",   x: 122, y: 676, side: "left",  off: 0,   lines: ["Lisboa & Sintra"] },
-  { id: "algarve",  x: 258, y: 905, side: "right", off: 0,   lines: ["Algarve"] },
+  { id: "geres",    x: 192, y: 162, side: "left",  off:  0, lines: ["Peneda-Gerês"] },
+  { id: "tras",     x: 368, y: 112, side: "right", off:  0, lines: ["Trás-os-Montes"] },
+  { id: "santiago", x: 274, y: 228, side: "right", off:  0, lines: ["Caminho de", "Santiago Interior"] },
+  { id: "porto",    x: 148, y: 272, side: "left",  off:  0, lines: ["Porto"] },
+  { id: "douro",    x: 322, y: 300, side: "right", off:  8, lines: ["Douro Valley"] },
+  { id: "lisboa",   x:  96, y: 638, side: "left",  off:  0, lines: ["Lisboa & Sintra"] },
+  { id: "algarve",  x: 244, y: 878, side: "right", off:  0, lines: ["Algarve"] },
 ];
+
+const PIN_COLOR = "#ccff00";
+const PIN_STROKE = "rgba(255,255,255,0.9)";
+const LINE_COLOR = "rgba(20,20,20,0.75)";
+const LINE_COLOR_ACTIVE = "#1a2e0a";
 
 export function PortugalMap() {
   const [hovered, setHovered] = useState<string | null>(null);
@@ -44,7 +50,24 @@ export function PortugalMap() {
         className="w-full h-auto"
         style={{ overflow: "visible" }}
       >
-        {/* Relief map image — transparent PNG, ocean shows container bg */}
+        <defs>
+          {/* White glow filter for readable labels on terrain */}
+          <filter id="label-bg" x="-15%" y="-30%" width="130%" height="160%">
+            <feFlood floodColor="white" floodOpacity="0.75" result="bg" />
+            <feComposite in="bg" in2="SourceGraphic" operator="over" />
+          </filter>
+          <filter id="label-glow" x="-15%" y="-30%" width="130%" height="160%">
+            <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="expanded" />
+            <feFlood floodColor="white" floodOpacity="0.9" result="white" />
+            <feComposite in="white" in2="expanded" operator="in" result="halo" />
+            <feMerge>
+              <feMergeNode in="halo" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Relief map image — transparent PNG */}
         <image
           href="/images/portugal-map-relief.png"
           x="0"
@@ -54,12 +77,12 @@ export function PortugalMap() {
           preserveAspectRatio="xMidYMid meet"
         />
 
-        {/* Markers + leader lines + external labels */}
+        {/* Markers + leader lines + labels */}
         {regions.map((mk, i) => {
           const active = hovered === mk.id;
           const endX = mk.side === "left" ? LEFT_X : RIGHT_X;
           const labelY = mk.y + mk.off;
-          const textX = mk.side === "left" ? endX - 9 : endX + 9;
+          const textX = mk.side === "left" ? endX - 8 : endX + 8;
           const anchor = mk.side === "left" ? "end" : "start";
 
           return (
@@ -69,67 +92,66 @@ export function PortugalMap() {
               onMouseLeave={() => setHovered(null)}
               style={{ cursor: "pointer" }}
             >
-              {/* Leader line: pin → elbow → label endpoint */}
-              <m.polyline
-                points={`${mk.x},${mk.y} ${endX},${labelY} ${textX},${labelY}`}
-                fill="none"
-                stroke={active ? "#3d5a1a" : "rgba(45,59,30,0.65)"}
-                strokeWidth={active ? 1.2 : 0.8}
+              {/* Leader line */}
+              <m.line
+                x1={mk.x} y1={mk.y}
+                x2={endX} y2={labelY}
+                stroke={active ? LINE_COLOR_ACTIVE : LINE_COLOR}
+                strokeWidth={active ? 1.2 : 0.9}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.7 + i * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.6 + i * 0.08 }}
               />
               {/* Dot at label end */}
-              <circle cx={endX} cy={labelY} r={2} fill="#2d3b1e" />
+              <circle cx={endX} cy={labelY} r={2.5} fill={active ? LINE_COLOR_ACTIVE : "#1a1a1a"} />
+
+              {/* White halo for pin visibility on terrain */}
+              <circle cx={mk.x} cy={mk.y} r={14} fill="white" opacity={0.28} />
 
               {/* Pulse ring */}
               <m.circle
-                cx={mk.x}
-                cy={mk.y}
-                r={5}
-                fill="#bccf02"
-                initial={{ opacity: 0.4, scale: 1 }}
-                animate={{ opacity: [0.4, 0, 0.4], scale: [1, 2.6, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: i * 0.35, ease: "easeOut" }}
+                cx={mk.x} cy={mk.y} r={6}
+                fill={PIN_COLOR}
+                initial={{ opacity: 0.5, scale: 1 }}
+                animate={{ opacity: [0.5, 0, 0.5], scale: [1, 2.8, 1] }}
+                transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.3, ease: "easeOut" }}
                 style={{ transformOrigin: `${mk.x}px ${mk.y}px` }}
               />
-              {/* Marker outer ring */}
+              {/* Outer ring */}
               <circle
-                cx={mk.x}
-                cy={mk.y}
-                r={8}
+                cx={mk.x} cy={mk.y} r={9}
                 fill="none"
-                stroke="#bccf02"
-                strokeWidth={1.2}
-                opacity={active ? 1 : 0.7}
+                stroke={PIN_COLOR}
+                strokeWidth={1.6}
+                opacity={active ? 1 : 0.88}
               />
-              {/* Marker centre dot */}
+              {/* Centre dot */}
               <m.circle
-                cx={mk.x}
-                cy={mk.y}
-                r={active ? 5.5 : 4}
-                fill="#bccf02"
-                stroke="#2d3b1e"
-                strokeWidth={0.8}
+                cx={mk.x} cy={mk.y}
+                r={active ? 6.5 : 5}
+                fill={PIN_COLOR}
+                stroke={PIN_STROKE}
+                strokeWidth={1.4}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.6 + i * 0.1, type: "spring", stiffness: 300, damping: 18 }}
+                transition={{ delay: 0.5 + i * 0.08, type: "spring", stiffness: 320, damping: 18 }}
               />
 
-              {/* Label */}
+              {/* Label with white glow for readability */}
               <text
                 x={textX}
                 y={labelY}
                 textAnchor={anchor}
+                filter="url(#label-glow)"
                 style={{
                   fontFamily: "var(--font-ui)",
-                  fontSize: "11px",
+                  fontSize: "10.5px",
                   fontWeight: 700,
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.09em",
                   textTransform: "uppercase",
-                  fill: active ? "#3d5a1a" : "#2d3b1e",
+                  fill: active ? LINE_COLOR_ACTIVE : "#1a1a1a",
                   transition: "fill 0.2s",
                 }}
               >
