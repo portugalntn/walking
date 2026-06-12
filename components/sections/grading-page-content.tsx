@@ -47,7 +47,11 @@ export function GradingPageContent() {
           {/* Interactive gauge — hover each zone to explore */}
           <FadeUp>
             <div style={{ maxWidth: "760px", marginBottom: "56px" }}>
-              <DifficultyGauge hideOverline hideScaleLink />
+              <DifficultyGauge
+                hideOverline
+                hideScaleLink
+                cardStyle={{ backgroundColor: "var(--color-ntn-white)", border: "none", padding: "0" }}
+              />
             </div>
           </FadeUp>
 

@@ -285,7 +285,7 @@ export function ProductPageContent({ program }: { program: Program }) {
       </section>
 
       {/* ── Difficulty gauge ── */}
-      <section style={{ backgroundColor: "var(--color-ntn-cream-50)", paddingTop: "72px", paddingBottom: "72px" }}>
+      <section style={{ backgroundColor: "var(--color-ntn-white)", paddingTop: "72px", paddingBottom: "72px" }}>
         <div className="container-ntn">
           <FadeUp>
             <DifficultyGauge level={program.grade} />

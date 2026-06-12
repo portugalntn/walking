@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { grades, type GradeLevel } from "@/lib/grades";
@@ -29,10 +29,12 @@ export function DifficultyGauge({
   level,
   hideOverline = false,
   hideScaleLink,
+  cardStyle,
 }: {
   level?: GradeLevel;
   hideOverline?: boolean;
   hideScaleLink?: boolean;
+  cardStyle?: CSSProperties;
 }) {
   const t = useTranslations("productPage");
   const locale = useLocale() as Loc;
@@ -68,6 +70,7 @@ export function DifficultyGauge({
         border: "1px solid rgba(89,105,77,0.16)",
         borderRadius: "12px",
         padding: "28px 30px",
+        ...cardStyle,
       }}
     >
       {!hideOverline && (
