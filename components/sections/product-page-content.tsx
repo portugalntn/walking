@@ -410,55 +410,60 @@ export function ProductPageContent({ program }: { program: Program }) {
           )}
 
           {program.prices && (
-          <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px", maxWidth: "760px" }}>
-            {(program.prices.high
-              ? [
-                  { key: "low", note: t("lowSeasonNote"), label: t("lowSeason"), p: program.prices.low },
-                  { key: "high", note: t("highSeasonNote"), label: t("highSeason"), p: program.prices.high },
-                ]
-              : [{ key: "all", note: "", label: program.season[locale], p: program.prices.low }]
-            ).map((s, i) => (
-              <m.div
-                key={s.key}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
-                style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", padding: "28px 30px" }}
-              >
-                <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: s.note ? 0 : "16px" }}>{s.label}</p>
-                {s.note && (
-                  <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "16px" }}>{s.note}</p>
-                )}
-                <p style={{ color: "var(--color-ntn-sage-200)", fontSize: "12px" }}>{t("from")}</p>
-                <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "2.5rem", lineHeight: 1 }}>
-                  {formatPrice(s.p.from, priceLocale)}
-                  <span style={{ fontFamily: "var(--font-ui)", fontWeight: 400, fontSize: "13px", color: "var(--color-ntn-sage-200)", marginLeft: "8px" }}>
-                    {t("perPerson")}
-                  </span>
-                </p>
-                <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
-                  {t("singleSupp")}: {formatPrice(s.p.single, priceLocale)}
-                </p>
-              </m.div>
-            ))}
-          </div>
-          )}
-          {program.prices && (
-            <FadeUp delay={0.2}>
-              {program.priceCondition && (
-                <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>
-                  {program.priceCondition[locale]}
-                </p>
-              )}
-              <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "24px" }}>{t("netNote")}</p>
-              <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+            <FadeUp>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "32px", alignItems: "flex-start" }}>
+                {/* Cards época baixa + alta */}
+                <div className="grid grid-cols-1 sm:grid-cols-2" style={{ flex: "2 1 460px", gap: "24px" }}>
+                  {(program.prices.high
+                    ? [
+                        { key: "low", note: t("lowSeasonNote"), label: t("lowSeason"), p: program.prices.low },
+                        { key: "high", note: t("highSeasonNote"), label: t("highSeason"), p: program.prices.high },
+                      ]
+                    : [{ key: "all", note: "", label: program.season[locale], p: program.prices.low }]
+                  ).map((s, i) => (
+                    <m.div
+                      key={s.key}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
+                      style={{ border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", padding: "28px 30px" }}
+                    >
+                      <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: s.note ? 0 : "16px" }}>{s.label}</p>
+                      {s.note && (
+                        <p className="text-body-md" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "16px" }}>{s.note}</p>
+                      )}
+                      <p style={{ color: "var(--color-ntn-sage-200)", fontSize: "12px" }}>{t("from")}</p>
+                      <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "2.5rem", lineHeight: 1 }}>
+                        {formatPrice(s.p.from, priceLocale)}
+                        <span style={{ fontFamily: "var(--font-ui)", fontWeight: 400, fontSize: "13px", color: "var(--color-ntn-sage-200)", marginLeft: "8px" }}>
+                          {t("perPerson")}
+                        </span>
+                      </p>
+                      <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
+                        {t("singleSupp")}: {formatPrice(s.p.single, priceLocale)}
+                      </p>
+                    </m.div>
+                  ))}
+                </div>
+
+                {/* Nota Tarifas NET ao lado dos cards */}
+                <div style={{ flex: "1 1 220px", paddingTop: "4px" }}>
+                  {program.priceCondition && (
+                    <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginBottom: "12px" }}>
+                      {program.priceCondition[locale]}
+                    </p>
+                  )}
+                  <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a" }}>{t("netNote")}</p>
+                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+                </div>
+              </div>
             </FadeUp>
           )}
 
           {/* Availability + Payment + Cancellation */}
           <FadeUp delay={0.25}>
-            <div style={{ marginTop: "44px", paddingTop: "32px", borderTop: "1px solid rgba(89,105,77,0.12)" }}>
+            <div style={{ marginTop: "20px", paddingTop: "28px", borderTop: "1px solid rgba(89,105,77,0.12)" }}>
               <div className="grid grid-cols-1 md:grid-cols-3" style={{ gap: "40px" }}>
                 {/* Availability */}
                 <div>

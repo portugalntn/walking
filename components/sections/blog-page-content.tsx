@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
-import { HoverCard } from "@/components/ui/animated";
+import { HoverCard, FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { posts } from "@/lib/posts";
 
@@ -22,29 +22,47 @@ export function BlogPageContent() {
 
   return (
     <main style={{ backgroundColor: "var(--color-ntn-white)" }}>
-      {/* Header */}
-      <section
-        style={{ backgroundColor: "var(--color-ntn-cream-50)", paddingTop: "160px", paddingBottom: "80px" }}
-      >
-        <div className="container-ntn">
-          <div style={{ marginBottom: "16px" }}>
-            <Overline color="var(--color-ntn-forest-400)">{t("label")}</Overline>
-          </div>
-          <h1
-            className="font-title"
+      {/* Hero com imagem */}
+      <section className="relative flex items-end" style={{ minHeight: "58vh" }}>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero/hero-3.jpg"
+            alt="Diário de trilhos Portugal NTN Walking"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0"
             style={{
-              color: "var(--color-ntn-black-900)",
-              lineHeight: 1.05,
-              textTransform: "none",
-              fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-              marginBottom: "20px",
+              background:
+                "linear-gradient(to bottom, rgba(29,29,26,0.52) 0%, rgba(29,29,26,0.18) 40%, rgba(29,29,26,0.82) 100%)",
             }}
-          >
-            {t("title")}
-          </h1>
-          <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", maxWidth: "32rem" }}>
-            {t("body")}
-          </p>
+          />
+        </div>
+        <div className="container-ntn relative z-10" style={{ paddingTop: "160px", paddingBottom: "72px" }}>
+          <FadeUp>
+            <div style={{ marginBottom: "20px" }}>
+              <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("label")}</Overline>
+            </div>
+            <h1
+              className="font-title"
+              style={{
+                color: "#fff",
+                lineHeight: 1.05,
+                textTransform: "none",
+                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                marginBottom: "20px",
+                maxWidth: "18ch",
+              }}
+            >
+              {t("title")}
+            </h1>
+            <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.82)", maxWidth: "36rem" }}>
+              {t("body")}
+            </p>
+          </FadeUp>
         </div>
       </section>
 
