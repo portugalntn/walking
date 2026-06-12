@@ -25,13 +25,13 @@ type Region = {
 };
 
 const regions: Region[] = [
-  { id: "geres",    x: 192, y: 162, side: "left",  off:  0, lines: ["Peneda-Gerês"] },
-  { id: "tras",     x: 368, y: 112, side: "right", off:  0, lines: ["Trás-os-Montes"] },
-  { id: "santiago", x: 274, y: 228, side: "right", off:  0, lines: ["Caminho de", "Santiago Interior"] },
-  { id: "porto",    x: 148, y: 272, side: "left",  off:  0, lines: ["Porto"] },
-  { id: "douro",    x: 322, y: 300, side: "right", off:  8, lines: ["Douro Valley"] },
+  { id: "geres",    x: 162, y: 179, side: "left",  off:  0, lines: ["Peneda-Gerês"] },
+  { id: "tras",     x: 448, y: 129, side: "right", off:  0, lines: ["Trás-os-Montes"] },
+  { id: "santiago", x: 353, y: 209, side: "right", off:  0, lines: ["Caminho de", "Santiago Interior"] },
+  { id: "porto",    x: 207, y: 258, side: "left",  off:  0, lines: ["Porto"] },
+  { id: "douro",    x: 358, y: 298, side: "right", off:  8, lines: ["Douro Valley"] },
   { id: "lisboa",   x:  96, y: 638, side: "left",  off:  0, lines: ["Lisboa & Sintra"] },
-  { id: "algarve",  x: 244, y: 878, side: "right", off:  0, lines: ["Algarve"] },
+  { id: "algarve",  x: 258, y: 904, side: "right", off:  0, lines: ["Algarve"] },
 ];
 
 const PIN_COLOR = "#ccff00";
