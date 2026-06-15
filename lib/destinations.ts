@@ -123,6 +123,7 @@ export const regions: Region[] = [
 
 export type RouteProduct = {
   id: string;
+  regionId: string; // matches a Region.id (groups products under a destination)
   region: string;
   duration: string; // "1 Day" | "8 Days" | "11 Days"
   days: number;
@@ -136,6 +137,7 @@ export type RouteProduct = {
 export const routes: RouteProduct[] = [
   {
     id: "santiago-interior",
+    regionId: "santiago",
     region: "Caminho de Santiago",
     duration: "11 Days",
     days: 11,
@@ -151,6 +153,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "tras-8days",
+    regionId: "tras-os-montes",
     region: "Trás-os-Montes",
     duration: "8 Days",
     days: 8,
@@ -166,6 +169,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "douro-8days",
+    regionId: "douro",
     region: "Douro Valley",
     duration: "8 Days",
     days: 8,
@@ -181,6 +185,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "geres-8days",
+    regionId: "peneda-geres",
     region: "Peneda-Gerês",
     duration: "8 Days",
     days: 8,
@@ -196,6 +201,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "douro-1day",
+    regionId: "douro",
     region: "Douro Valley",
     duration: "1 Day",
     days: 1,
@@ -211,6 +217,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "sintra-1day",
+    regionId: "lisboa-sintra",
     region: "Lisboa & Sintra",
     duration: "1 Day",
     days: 1,
@@ -226,6 +233,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "tras-1day",
+    regionId: "tras-os-montes",
     region: "Trás-os-Montes",
     duration: "1 Day",
     days: 1,
@@ -241,6 +249,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "algarve-1day",
+    regionId: "algarve",
     region: "Algarve",
     duration: "1 Day",
     days: 1,
@@ -256,6 +265,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "cacela-1day",
+    regionId: "algarve",
     region: "Algarve",
     duration: "1 Day",
     days: 1,
@@ -271,6 +281,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "arrabida-1day",
+    regionId: "lisboa-sintra",
     region: "Lisboa & Sintra",
     duration: "1 Day",
     days: 1,
@@ -285,3 +296,13 @@ export const routes: RouteProduct[] = [
     },
   },
 ];
+
+/** Region (destination) by its id. */
+export function getRegion(id: string): Region | undefined {
+  return regions.find((r) => r.id === id);
+}
+
+/** All route products that belong to a given region (destination). */
+export function routesForRegion(regionId: string): RouteProduct[] {
+  return routes.filter((r) => r.regionId === regionId);
+}

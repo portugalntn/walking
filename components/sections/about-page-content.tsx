@@ -151,7 +151,7 @@ export function AboutPageContent() {
               </div>
               <FadeUp delay={0.15}>
                 <div style={{ marginTop: "36px", display: "flex", flexWrap: "wrap", gap: "16px" }}>
-                  <Link href={`/${locale}/destinations`} className="btn btn-primary">
+                  <Link href={`/${locale}/programas`} className="btn btn-primary">
                     {t("ctaDestinations")}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                       <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -319,7 +319,7 @@ export function AboutPageContent() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
-                <Link href={`/${locale}/destinations`} className="btn btn-primary">
+                <Link href={`/${locale}/programas`} className="btn btn-primary">
                   {t("ctaDestinations")}
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

@@ -161,7 +161,7 @@ export function ProductPageContent({ program }: { program: Program }) {
         <div className="container-ntn relative z-10" style={{ paddingTop: "150px", paddingBottom: "72px" }}>
           <FadeUp>
             <Link
-              href={`/${locale}/destinations`}
+              href={`/${locale}/programas`}
               className="text-label inline-flex items-center gap-2"
               style={{ color: "rgba(255,255,255,0.7)", marginBottom: "24px" }}
             >

@@ -53,7 +53,7 @@ export function RoutesSection() {
           {destinations.map((dest, i) => (
             <m.a
               key={dest.id}
-              href={`/${locale}/destinations/${dest.id}`}
+              href={`/${locale}/destinos/${dest.id}`}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}

@@ -321,7 +321,7 @@ export function DestinationsPageContent() {
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: EASE }}
               >
                 <HoverCard>
-                  <a href={`/${locale}/destinations/${route.id}`} className="group block">
+                  <a href={`/${locale}/programas/${route.id}`} className="group block">
                     <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/11", borderRadius: "8px", marginBottom: "22px" }}>
                       <Image
                         src={route.image}

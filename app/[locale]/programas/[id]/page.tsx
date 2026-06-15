@@ -47,8 +47,8 @@ export default async function ProductPage({ params }: Props) {
           <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", maxWidth: "32rem", marginBottom: "36px" }}>
             Itinerário detalhado em breve.
           </p>
-          <Link href={`/${locale}/destinations`} className="btn btn-ghost-dark" style={{ display: "inline-flex" }}>
-            ← Destinos
+          <Link href={`/${locale}/programas`} className="btn btn-ghost-dark" style={{ display: "inline-flex" }}>
+            ← Programas
           </Link>
         </main>
       )}

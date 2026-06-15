@@ -1,6 +1,7 @@
 {
   "nav": {
-    "routes": "Rutas",
+    "routes": "Programas",
+    "programs": "Programas",
     "destinations": "Destinos",
     "about": "Nosotros",
     "contact": "Contacto",
@@ -15,18 +16,18 @@
       "headline1": "Operamos",
       "headline2": "los senderos",
       "headline3": "que creamos",
-      "subheadline": "Rutas de senderismo guiadas y autoguiadas por los paisajes más extraordinarios de Portugal.",
-      "cta": "Explorar Rutas",
+      "subheadline": "Programas de senderismo guiados y autoguiados por los paisajes más extraordinarios de Portugal.",
+      "cta": "Explorar Programas",
       "ctaSecondary": "Conocer el Equipo"
     },
     "intro": {
       "label": "Nosotros · DMC",
       "title": "Nacidos del territorio.\nOperamos con propósito.",
-      "body": "Portugal NTN pasó 12 años construyendo y estructurando senderos en el Norte y Nordeste de Portugal. Ahora los operamos. Cada ruta que ofrecemos es una ruta que diseñamos, certificamos y conocemos de memoria.",
+      "body": "Portugal NTN pasó 12 años construyendo y estructurando senderos en el Norte y Nordeste de Portugal. Ahora los operamos. Cada programa que ofrecemos es un programa que diseñamos, certificamos y conocemos de memoria.",
       "stat1Value": "12",
       "stat1Label": "Años de experiencia",
       "stat2Value": "9+",
-      "stat2Label": "Rutas activas",
+      "stat2Label": "Programas activos",
       "stat3Value": "3",
       "stat3Label": "Regiones cubiertas",
       "body2": "También somos una DMC (Destination Management Company) especializada en turismo de senderismo. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo, con tarifas NET y respuesta garantizada en 24h.",
@@ -36,8 +37,8 @@
     "whyus": {
       "label": "La diferencia NTN",
       "title": "Por qué caminar con nosotros",
-      "value1Title": "Rutas a medida",
-      "value1Desc": "Adaptamos cada ruta a las necesidades del grupo.",
+      "value1Title": "Programas a medida",
+      "value1Desc": "Adaptamos cada programa a las necesidades del grupo.",
       "value2Title": "Soporte 24H",
       "value2Desc": "Nuestro equipo coordina toda la logística del viaje.",
       "value3Title": "Equipo comprometido",
@@ -59,11 +60,11 @@
       "filter8days": "8 Días",
       "guided": "Guiado",
       "selfGuided": "Autoguiado",
-      "viewRoute": "Ver Ruta",
+      "viewRoute": "Ver Programa",
       "from": "Desde",
       "perPerson": "/ persona",
       "discover": "Descubrir",
-      "routesWord": "rutas"
+      "routesWord": "programas"
     },
     "destinations": {
       "label": "Dónde Operamos",
@@ -97,7 +98,7 @@
   },
   "footer": {
     "tagline": "Los especialistas en senderismo en Portugal.",
-    "routes": "Rutas",
+    "routes": "Programas",
     "company": "Empresa",
     "about": "Sobre NTN",
     "faq": "FAQ",
@@ -111,7 +112,7 @@
   "sustainablePage": {
     "heroLabel": "Sostenibilidad",
     "heroTitle": "Caminar deja\nhuella. La nuestra\nes positiva.",
-    "heroBody": "Operamos turismo de naturaleza con un compromiso real: cada ruta contribuye a la preservación de los territorios, el desarrollo de las comunidades locales y la valorización del patrimonio.",
+    "heroBody": "Operamos turismo de naturaleza con un compromiso real: cada programa contribuye a la preservación de los territorios, el desarrollo de las comunidades locales y la valorización del patrimonio.",
     "p1Label": "Nuestro propósito",
     "p1Title": "Turismo que regenera",
     "p1Body": "Visitar no basta. Creemos en un turismo que devuelve más de lo que toma. Por eso estructuramos rutas que respetan el ritmo de la naturaleza, apoyan la economía local y preservan la memoria de los lugares.",
@@ -152,31 +153,31 @@
     "leadConsulting": "Implementamos, señalizamos y desarrollamos rutas de walking que transforman destinos. Cada sendero, cada parada, cada experiencia es resultado de vivencia, estudio profundo e implementación técnica."
   },
   "destinationsPage": {
-    "label": "Destinos",
+    "label": "Programas",
     "heroTitle": "Donde empieza el sendero",
-    "viewRoutes": "Ver rutas",
-    "routesWord": "rutas",
+    "viewRoutes": "Ver programas",
+    "routesWord": "programas",
     "days": "días",
-    "routesLabel": "Nuestras Rutas",
-    "routesTitle": "Rutas por todo el territorio",
+    "routesLabel": "Nuestros Programas",
+    "routesTitle": "Programas por todo el territorio",
     "discover": "Descubrir",
     "filterAll": "Todas",
     "intro": "Seis territorios que conocemos de memoria. Elige por dónde quieres caminar.",
     "formatsLabel": "Formatos",
     "formatsTitle": "¿Cómo prefieres caminar?",
-    "format1Title": "Rutas de 1 Día",
+    "format1Title": "Programas de 1 Día",
     "format1Desc": "Caminatas guiadas de un día, con degustación de productos locales y regreso al punto de partida.",
     "format1Tag": "1 Día · Guiado",
     "formatMultiTitle": "Programas Multidías",
     "formatMultiDesc": "Viajes de 3, 5, 8 u 11 días, autoguiados o guiados, con alojamiento y logística incluidos.",
     "formatMultiTag": "3 · 5 · 8 · 11 Días",
-    "filter1day": "Rutas de 1 Día",
+    "filter1day": "Programas de 1 Día",
     "filterMulti": "Programas Multidías"
   },
   "productPage": {
     "back": "Volver a los destinos",
     "formatMultiday": "Programa Multidías",
-    "formatDay": "Ruta de 1 Día",
+    "formatDay": "Programa de 1 Día",
     "overview": "Sobre el programa",
     "itinerary": "Itinerario día a día",
     "theWalk": "El paseo",
@@ -276,7 +277,7 @@
     "conduct3Title": "La seguridad primero",
     "conduct3Body": "La seguridad guía cada decisión. Evaluamos las condiciones sobre el terreno, seguimos normas exigentes y mejoramos continuamente con base en los comentarios de nuestros huéspedes.",
     "ctaTitle": "¿Listo para caminar con nosotros?",
-    "ctaBody": "Explore nuestras rutas o conozca cómo operamos, de forma sostenible y con propósito.",
+    "ctaBody": "Explore nuestros programas o conozca cómo operamos, de forma sostenible y con propósito.",
     "ctaDestinations": "Ver destinos",
     "ctaSustainable": "Nuestra sostenibilidad",
     "consultingLabel": "12 años sobre el terreno",
@@ -303,7 +304,7 @@
   "gradingPage": {
     "heroLabel": "Grados de dificultad",
     "heroTitle": "Cómo clasificamos nuestras caminatas",
-    "intro": "Cada ruta tiene un grado de dificultad para que sepa qué esperar antes de partir. La escala va de muy fácil a muy difícil, según la distancia, el desnivel acumulado y el tipo de terreno.",
+    "intro": "Cada programa tiene un grado de dificultad para que sepa qué esperar antes de partir. La escala va de muy fácil a muy difícil, según la distancia, el desnivel acumulado y el tipo de terreno.",
     "ctaDestinations": "Ver destinos"
   }
 }

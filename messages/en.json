@@ -1,6 +1,7 @@
 {
   "nav": {
-    "routes": "Routes",
+    "routes": "Programmes",
+    "programs": "Programmes",
     "destinations": "Destinations",
     "about": "About",
     "contact": "Contact",
@@ -16,28 +17,28 @@
       "headline2": "the trails",
       "headline3": "we built",
       "subheadline": "Premium guided and self-guided walking tours across Portugal's most extraordinary landscapes.",
-      "cta": "Explore Routes",
+      "cta": "Explore Programmes",
       "ctaSecondary": "Meet the Team"
     },
     "intro": {
       "label": "About Us · DMC",
       "title": "Born from the territory.\nOperating with purpose.",
-      "body": "Portugal NTN spent 12 years building and structuring walking trails across northern and northeastern Portugal. Now we operate them. Every route we offer is a route we designed, certified, and know by heart.",
+      "body": "Portugal NTN spent 12 years building and structuring walking trails across northern and northeastern Portugal. Now we operate them. Every programme we offer is a programme we designed, certified, and know by heart.",
       "stat1Value": "12",
       "stat1Label": "Years of expertise",
       "stat2Value": "9+",
-      "stat2Label": "Active routes",
+      "stat2Label": "Active programmes",
       "stat3Value": "3",
       "stat3Label": "Regions covered",
-      "body2": "We are also a DMC (Destination Management Company) specialised in walking tourism. We create, certify and sell our own routes to agencies and operators worldwide, with NET rates and a guaranteed 24h response.",
+      "body2": "We are also a DMC (Destination Management Company) specialised in walking tourism. We create, certify and sell our own programmes to agencies and operators worldwide, with NET rates and a guaranteed 24h response.",
       "cta": "Work with us",
       "ctaAbout": "Discover our story"
     },
     "whyus": {
       "label": "The NTN difference",
       "title": "Why walk with us",
-      "value1Title": "Tailored routes",
-      "value1Desc": "We adapt every route to the group's needs.",
+      "value1Title": "Tailored programmes",
+      "value1Desc": "We adapt every programme to the group's needs.",
       "value2Title": "24H support",
       "value2Desc": "Our team coordinates the full travel logistics.",
       "value3Title": "Committed team",
@@ -59,11 +60,11 @@
       "filter8days": "8 Days",
       "guided": "Guided",
       "selfGuided": "Self-Guided",
-      "viewRoute": "View Route",
+      "viewRoute": "View Programme",
       "from": "From",
       "perPerson": "/ person",
       "discover": "Discover",
-      "routesWord": "routes"
+      "routesWord": "programmes"
     },
     "destinations": {
       "label": "Where We Operate",
@@ -83,7 +84,7 @@
     "b2b": {
       "label": "For Travel Partners",
       "title": "Your local DMC in Portugal.",
-      "body": "We were born in the territory we operate. For 12 years we built and structured walking trails across northern Portugal. Today we are also a DMC. We create, certify and sell our own routes to agencies and operators worldwide.",
+      "body": "We were born in the territory we operate. For 12 years we built and structured walking trails across northern Portugal. Today we are also a DMC. We create, certify and sell our own programmes to agencies and operators worldwide.",
       "cta": "Request Brochure",
       "ctaSecondary": "Contact Us"
     },
@@ -97,7 +98,7 @@
   },
   "footer": {
     "tagline": "Portugal's walking specialists.",
-    "routes": "Routes",
+    "routes": "Programmes",
     "company": "Company",
     "about": "About NTN",
     "faq": "FAQ",
@@ -111,7 +112,7 @@
   "sustainablePage": {
     "heroLabel": "Sustainability",
     "heroTitle": "Walking leaves\na mark. Ours is\na positive one.",
-    "heroBody": "We operate nature tourism with a real commitment: every route contributes to preserving the territories, developing local communities and valuing heritage.",
+    "heroBody": "We operate nature tourism with a real commitment: every programme contributes to preserving the territories, developing local communities and valuing heritage.",
     "p1Label": "Our purpose",
     "p1Title": "Tourism that regenerates",
     "p1Body": "Visiting is not enough. We believe in tourism that gives back more than it takes. That is why we built routes that respect nature's pace, support the local economy and preserve the memory of places.",
@@ -137,7 +138,7 @@
     "consultingDesc": "Nature tourism specialists. We structure trails, routes and tourism products for municipalities and public entities, from diagnosis to implementation.",
     "consultingCta": "Explore Consulting",
     "walkingTitle": "Walking",
-    "walkingDesc": "Premium walking tour operator. We create, operate and sell our own routes across the territories we know by heart.",
+    "walkingDesc": "Premium walking tour operator. We create, operate and sell our own programmes across the territories we know by heart.",
     "walkingCta": "Explore Walking",
     "soon": "Coming soon",
     "consultingTagline": "We build trails and nature tourism products.",
@@ -152,13 +153,13 @@
     "leadConsulting": "We implement, signpost and develop walking routes that transform destinations. Every trail, every stop, every experience is the result of lived experience, deep study and technical implementation."
   },
   "destinationsPage": {
-    "label": "Destinations",
+    "label": "Programmes",
     "heroTitle": "Where the trail begins",
-    "viewRoutes": "View routes",
-    "routesWord": "routes",
+    "viewRoutes": "View programmes",
+    "routesWord": "programmes",
     "days": "days",
-    "routesLabel": "Our Routes",
-    "routesTitle": "Routes across the territory",
+    "routesLabel": "Our Programmes",
+    "routesTitle": "Programmes across the territory",
     "discover": "Discover",
     "filterAll": "All",
     "intro": "Six territories we know by heart. Choose where you want to walk.",
@@ -276,7 +277,7 @@
     "conduct3Title": "Safety first",
     "conduct3Body": "Safety guides every decision. We assess conditions on the ground, follow strict standards and keep improving based on our guests' feedback.",
     "ctaTitle": "Ready to walk with us?",
-    "ctaBody": "Explore our routes or learn how we operate, sustainably and with purpose.",
+    "ctaBody": "Explore our programmes or learn how we operate, sustainably and with purpose.",
     "ctaDestinations": "See destinations",
     "ctaSustainable": "Our sustainability",
     "consultingLabel": "12 years on the ground",
@@ -303,7 +304,7 @@
   "gradingPage": {
     "heroLabel": "Walking grades",
     "heroTitle": "How we grade our walks",
-    "intro": "Every route carries a difficulty grade so you know what to expect before you set off. The scale runs from very easy to very difficult, based on distance, elevation gain and terrain.",
+    "intro": "Every programme carries a difficulty grade so you know what to expect before you set off. The scale runs from very easy to very difficult, based on distance, elevation gain and terrain.",
     "ctaDestinations": "See destinations"
   }
 }
