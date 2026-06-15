@@ -26,11 +26,11 @@ type Region = {
 // Coordinates derived from user-placed green dots on the 1080×1920 source PNG.
 // Each value = dot_pixel_in_display × (560/839) for x, × (994/1491) for y.
 const regions: Region[] = [
-  { id: "geres",    x: 204, y:  99, side: "left",  lines: ["Peneda-Gerês"] },
-  { id: "tras",     x: 400, y:  67, side: "right", lines: ["Trás-os-Montes"] },
-  { id: "santiago", x: 302, y: 147, side: "right", lines: ["Caminho de", "Santiago Interior"] },
-  { id: "porto",    x: 132, y: 195, side: "left",  lines: ["Porto"] },
-  { id: "douro",    x: 286, y: 207, side: "right", lines: ["Douro Valley"] },
+  { id: "geres",    x: 244, y:  99, side: "left",  lines: ["Peneda-Gerês"] },
+  { id: "tras",     x: 440, y:  67, side: "right", lines: ["Trás-os-Montes"] },
+  { id: "santiago", x: 342, y: 147, side: "right", lines: ["Caminho de", "Santiago Interior"] },
+  { id: "porto",    x: 172, y: 195, side: "left",  lines: ["Porto"] },
+  { id: "douro",    x: 326, y: 207, side: "right", lines: ["Douro Valley"] },
   { id: "lisboa",   x:  92, y: 637, side: "left",  lines: ["Lisboa & Sintra"] },
   { id: "algarve",  x: 219, y: 929, side: "right", lines: ["Algarve"] },
 ];
