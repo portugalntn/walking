@@ -8,7 +8,10 @@
     "bookNow": "Book Now",
     "sustainable": "Sustainable",
     "blog": "Blog",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "all": "All",
+    "oneDay": "Day trips",
+    "multiDays": "Multi-day"
   },
   "home": {
     "hero": {
@@ -172,7 +175,9 @@
     "formatMultiDesc": "Journeys of 3, 5, 8 or 11 days, self-guided or guided, with accommodation and logistics included.",
     "formatMultiTag": "3 · 5 · 8 · 11 Days",
     "filter1day": "Day Walks",
-    "filterMulti": "Multi-day Programs"
+    "filterMulti": "Multi-day Programs",
+    "filterRegion": "Region",
+    "allRegions": "All regions"
   },
   "productPage": {
     "back": "Back to destinations",

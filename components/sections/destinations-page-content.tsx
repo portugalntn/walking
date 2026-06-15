@@ -17,12 +17,30 @@ export function DestinationsPageContent() {
   const locale = useLocale() as Loc;
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState<Filter>("all");
+  const [regionFilter, setRegionFilter] = useState<string>("all");
+  const [regionOpen, setRegionOpen] = useState(false);
   const pausedRef = useRef(false);
 
   const active = regions[index];
   const total = regions.length;
 
-  const filtered = filter === "all" ? routes : routes.filter((r) => r.format === filter);
+  // Deep-link: /programas?tipo=1dia | multidias opens the matching format tab
+  useEffect(() => {
+    const tipo = new URLSearchParams(window.location.search).get("tipo");
+    if (tipo === "1dia") setFilter("roteiro");
+    else if (tipo === "multidias") setFilter("programa");
+  }, []);
+
+  const filtered = routes.filter(
+    (r) =>
+      (filter === "all" || r.format === filter) &&
+      (regionFilter === "all" || r.regionId === regionFilter)
+  );
+
+  const activeRegionLabel =
+    regionFilter === "all"
+      ? t("allRegions")
+      : regions.find((r) => r.id === regionFilter)?.name ?? t("allRegions");
 
   const selectFormat = (f: Filter) => {
     setFilter(f);
@@ -266,46 +284,101 @@ export function DestinationsPageContent() {
               </p>
             </FadeUp>
 
-            {/* Filter tabs — larger, clearly separated */}
+            {/* Filters — region dropdown + format tabs */}
             <FadeUp delay={0.1}>
-              <div className="flex flex-wrap gap-6 sm:gap-8 self-start sm:self-auto">
-                {([
-                  { key: "all" as Filter, label: t("filterAll") },
-                  { key: "roteiro" as Filter, label: t("filter1day") },
-                  { key: "programa" as Filter, label: t("filterMulti") },
-                ]).map((f) => (
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8 self-start sm:self-auto">
+                {/* Region filter */}
+                <div className="relative">
                   <button
-                    key={f.key}
-                    onClick={() => setFilter(f.key)}
-                    className="relative pb-2 transition-colors duration-200"
+                    onClick={() => setRegionOpen((o) => !o)}
+                    className="flex items-center gap-2 pb-2 transition-colors duration-200"
                     style={{
-                      color: filter === f.key ? "var(--color-ntn-black-900)" : "var(--color-ntn-sage-200)",
+                      color: regionFilter === "all" ? "var(--color-ntn-sage-200)" : "var(--color-ntn-black-900)",
                       fontFamily: "var(--font-ui)",
                       fontSize: "13px",
                       fontWeight: 700,
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       whiteSpace: "nowrap",
+                      borderBottom: regionFilter === "all" ? "2px solid transparent" : "2px solid var(--color-ntn-lime)",
                     }}
                   >
-                    {f.label}
-                    {filter === f.key && (
-                      <m.div
-                        layoutId="dest-filter-line"
-                        className="absolute bottom-0 left-0 right-0"
-                        style={{ height: "2px", backgroundColor: "var(--color-ntn-lime)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
+                    <span style={{ color: "var(--color-ntn-sage-200)" }}>{t("filterRegion")}:</span>
+                    {activeRegionLabel}
+                    <svg width="9" height="6" viewBox="0 0 10 6" fill="none" className={`transition-transform duration-200 ${regionOpen ? "rotate-180" : ""}`}>
+                      <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
                   </button>
-                ))}
+                  <AnimatePresence>
+                    {regionOpen && (
+                      <m.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -4 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute left-0 top-full mt-2 py-2 rounded overflow-hidden z-30"
+                        style={{ backgroundColor: "var(--color-ntn-white)", border: "1px solid rgba(89,105,77,0.18)", minWidth: "210px", boxShadow: "0 10px 30px rgba(29,29,26,0.12)" }}
+                      >
+                        {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => (
+                          <button
+                            key={r.id}
+                            onClick={() => { setRegionFilter(r.id); setRegionOpen(false); }}
+                            className="block w-full text-left px-5 py-2.5 transition-colors"
+                            style={{
+                              color: regionFilter === r.id ? "var(--color-ntn-forest-400)" : "var(--color-ntn-black-800)",
+                              fontFamily: "var(--font-ui)",
+                              fontSize: "13px",
+                              fontWeight: regionFilter === r.id ? 700 : 500,
+                            }}
+                          >
+                            {r.name}
+                          </button>
+                        ))}
+                      </m.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Format tabs */}
+                <div className="flex flex-wrap gap-6 sm:gap-8">
+                  {([
+                    { key: "all" as Filter, label: t("filterAll") },
+                    { key: "roteiro" as Filter, label: t("filter1day") },
+                    { key: "programa" as Filter, label: t("filterMulti") },
+                  ]).map((f) => (
+                    <button
+                      key={f.key}
+                      onClick={() => setFilter(f.key)}
+                      className="relative pb-2 transition-colors duration-200"
+                      style={{
+                        color: filter === f.key ? "var(--color-ntn-black-900)" : "var(--color-ntn-sage-200)",
+                        fontFamily: "var(--font-ui)",
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {f.label}
+                      {filter === f.key && (
+                        <m.div
+                          layoutId="dest-filter-line"
+                          className="absolute bottom-0 left-0 right-0"
+                          style={{ height: "2px", backgroundColor: "var(--color-ntn-lime)" }}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
             </FadeUp>
           </div>
 
           <AnimatePresence mode="wait">
             <m.div
-              key={filter}
+              key={`${filter}-${regionFilter}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

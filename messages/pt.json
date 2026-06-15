@@ -8,7 +8,10 @@
     "bookNow": "Reservar",
     "sustainable": "Sustentável",
     "blog": "Blog",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "all": "Todos",
+    "oneDay": "1 dia",
+    "multiDays": "Multidias"
   },
   "home": {
     "hero": {
@@ -172,7 +175,9 @@
     "formatMultiDesc": "Jornadas de 3, 5, 8 ou 11 dias, self-guided ou guiadas, com alojamento e logística incluídos.",
     "formatMultiTag": "3 · 5 · 8 · 11 Dias",
     "filter1day": "Programas de 1 Dia",
-    "filterMulti": "Programas Multidias"
+    "filterMulti": "Programas Multidias",
+    "filterRegion": "Região",
+    "allRegions": "Todas as regiões"
   },
   "productPage": {
     "back": "Voltar aos destinos",
