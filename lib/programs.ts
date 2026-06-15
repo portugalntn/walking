@@ -69,6 +69,8 @@ const D1 = "/images/programs/douro-1day/";
 const SI = "/images/programs/sintra-1day/";
 const AL = "/images/programs/algarve-1day/";
 const TR = "/images/programs/tras-1day/";
+const CA = "/images/programs/cacela-1day/";
+const AB = "/images/programs/arrabida-1day/";
 
 const sharedPayment: L[] = [
   tri("A 30% deposit confirms the booking.", "Um sinal de 30% confirma a reserva.", "Una señal del 30% confirma la reserva."),
@@ -913,6 +915,150 @@ export const programs: Record<string, Program> = {
       { pax: 4, price: 887 },
       { pax: 5, price: 993 },
       { pax: 6, price: 1099 },
+    ],
+    priceTiersNote: tiersNoteOver6,
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "cacela-1day": {
+    id: "cacela-1day",
+    format: "roteiro",
+    title: "Barril Beach & Cacela Velha",
+    subtitle: tri(
+      "Two seaside walks, a tuna fishing trail and a picnic by the lagoon",
+      "Dois passeios à beira-mar, um trilho da pesca do atum e um piquenique junto à ria",
+      "Dos paseos junto al mar, un sendero de la pesca del atún y un picnic junto a la ría"
+    ),
+    region: "Algarve",
+    heroImage: `${CA}hero-cacela-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Moderate", "Moderada", "Moderado"),
+    grade: 3,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Vila Nova de Cacela",
+    totalDistance: "7 km",
+    overview: tri(
+      "A gentle day on the eastern Algarve, by the Ria Formosa. We walk two seaside trails, the longer one on Barril Beach and a shorter one around Cacela Velha, following an interpretive trail dedicated to the old tuna fishing tradition that ends at the curious Anchor Cemetery. We close the day with a picnic of local products in the company of your local guide.",
+      "Um dia tranquilo no Algarve oriental, junto à Ria Formosa. Caminhamos dois trilhos à beira-mar, o mais longo na Praia do Barril e um mais curto por Cacela Velha, seguindo um percurso interpretativo dedicado à antiga pesca do atum que termina no curioso Cemitério das Âncoras. Fechamos o dia com um piquenique de produtos locais na companhia do seu guia local.",
+      "Un día tranquilo en el Algarve oriental, junto a la Ría Formosa. Caminamos dos senderos junto al mar, el más largo en la Playa do Barril y uno más corto por Cacela Velha, siguiendo un recorrido interpretativo dedicado a la antigua pesca del atún que termina en el curioso Cementerio de Anclas. Cerramos el día con un picnic de productos locales en compañía de su guía local."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Barril Beach and Cacela Velha", "Praia do Barril e Cacela Velha", "Playa do Barril y Cacela Velha"),
+        trail: "Trilho da Pesca do Atum",
+        description: tri(
+          "We begin on Barril Beach, walking the interpretive tuna fishing trail to the Anchor Cemetery, where rows of rusted anchors stand in the dunes as a memorial to the old fishery. A second, shorter walk takes us around Cacela Velha, with its whitewashed houses above the lagoon, before a traditional picnic of local products by the sea.",
+          "Começamos na Praia do Barril, percorrendo o trilho interpretativo da pesca do atum até ao Cemitério das Âncoras, onde filas de âncoras enferrujadas se erguem nas dunas em memória da antiga pesca. Um segundo passeio, mais curto, leva-nos por Cacela Velha, com as suas casas caiadas sobre a ria, antes de um piquenique tradicional de produtos locais junto ao mar.",
+          "Empezamos en la Playa do Barril, recorriendo el sendero interpretativo de la pesca del atún hasta el Cementerio de Anclas, donde filas de anclas oxidadas se alzan en las dunas en memoria de la antigua pesca. Un segundo paseo, más corto, nos lleva por Cacela Velha, con sus casas encaladas sobre la ría, antes de un picnic tradicional de productos locales junto al mar."
+        ),
+        distance: "7 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${CA}walk-1.jpg`, `${CA}walk-2.jpg`, `${CA}walk-3.jpg`, `${CA}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Traditional picnic with local products", "Piquenique tradicional com produtos locais", "Picnic tradicional con productos locales"),
+      tri("Visit to the Anchor Cemetery", "Visita ao Cemitério das Âncoras", "Visita al Cementerio de Anclas"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("The Ria Formosa and Barril Beach", "A Ria Formosa e a Praia do Barril", "La Ría Formosa y la Playa do Barril"),
+      tri("Interpretive tuna fishing trail", "Trilho interpretativo da pesca do atum", "Sendero interpretativo de la pesca del atún"),
+      tri("Visit to the Anchor Cemetery", "Visita ao Cemitério das Âncoras", "Visita al Cementerio de Anclas"),
+      tri("Traditional picnic with local products", "Piquenique tradicional com produtos locais", "Picnic tradicional con productos locales"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 895 },
+      { pax: 2, price: 1048 },
+      { pax: 3, price: 1204 },
+      { pax: 4, price: 1363 },
+      { pax: 5, price: 1518 },
+      { pax: 6, price: 1668 },
+    ],
+    priceTiersNote: tiersNoteOver6,
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "arrabida-1day": {
+    id: "arrabida-1day",
+    format: "roteiro",
+    title: "Arrábida Natural Park",
+    subtitle: tri(
+      "Sea cliffs, a hike in the Arrábida and wine at Quinta da Bacalhôa",
+      "Falésias sobre o mar, uma caminhada na Arrábida e vinho na Quinta da Bacalhôa",
+      "Acantilados sobre el mar, una caminata en la Arrábida y vino en la Quinta da Bacalhôa"
+    ),
+    region: "Lisboa & Sintra",
+    heroImage: `${AB}hero-arrabida-1day.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Easy", "Fácil", "Fácil"),
+    grade: 2,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Lisbon",
+    totalDistance: "5 km",
+    overview: tri(
+      "An easy day a short drive from Lisbon, inside the Arrábida Natural Park, where limestone hills drop to a turquoise sea. After the hike we sit down to lunch at a traditional restaurant, and then visit Quinta da Bacalhôa in Azeitão for a wine tasting. Founded in 1922, Bacalhôa stands out for its innovation and quality, and the iconic palace and estate blend history into a truly unique setting.",
+      "Um dia tranquilo a curta distância de Lisboa, dentro do Parque Natural da Arrábida, onde as serras calcárias descem a um mar turquesa. Depois da caminhada, sentamo-nos para almoçar num restaurante tradicional e seguimos para a Quinta da Bacalhôa, em Azeitão, para uma prova de vinhos. Fundada em 1922, a Bacalhôa distingue-se pela inovação e qualidade, e o emblemático palácio e quinta fundem história num cenário verdadeiramente único.",
+      "Un día tranquilo a corta distancia de Lisboa, dentro del Parque Natural de Arrábida, donde las sierras calcáreas descienden a un mar turquesa. Después de la caminata, nos sentamos a almorzar en un restaurante tradicional y vamos a la Quinta da Bacalhôa, en Azeitão, para una cata de vinos. Fundada en 1922, Bacalhôa destaca por su innovación y calidad, y el emblemático palacio y quinta funden historia en un escenario verdaderamente único."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("The Arrábida and Quinta da Bacalhôa", "A Arrábida e a Quinta da Bacalhôa", "La Arrábida y la Quinta da Bacalhôa"),
+        trail: "Trilho do Parque Natural da Arrábida",
+        description: tri(
+          "We walk a relaxed trail inside the Arrábida Natural Park, with the limestone ridges on one side and the turquoise sea on the other. After the hike we enjoy lunch at a traditional restaurant, followed by a guided visit and wine tasting at the historic Quinta da Bacalhôa in Azeitão.",
+          "Caminhamos um trilho tranquilo dentro do Parque Natural da Arrábida, com as cristas calcárias de um lado e o mar turquesa do outro. Depois da caminhada, almoçamos num restaurante tradicional, seguido de visita guiada e prova de vinhos na histórica Quinta da Bacalhôa, em Azeitão.",
+          "Caminamos un sendero tranquilo dentro del Parque Natural de Arrábida, con las crestas calcáreas de un lado y el mar turquesa del otro. Después de la caminata, almorzamos en un restaurante tradicional, seguido de visita guiada y cata de vinos en la histórica Quinta da Bacalhôa, en Azeitão."
+        ),
+        distance: "5 km",
+        walkTime: "2h",
+        meals: [],
+        gallery: [`${AB}walk-1.jpg`, `${AB}walk-2.jpg`, `${AB}walk-3.jpg`, `${AB}walk-4.jpg`],
+      },
+    ],
+    included: [
+      tri("Expert guide", "Guia especializado", "Guía especializado"),
+      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
+      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
+      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
+      tri("Lunch at a traditional restaurant", "Almoço num restaurante tradicional", "Almuerzo en un restaurante tradicional"),
+      tri("Visit and wine tasting at Quinta da Bacalhôa", "Visita e prova de vinhos na Quinta da Bacalhôa", "Visita y cata de vinos en la Quinta da Bacalhôa"),
+      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+    ],
+    notIncluded: [
+      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+    ],
+    extras: [],
+    highlights: [
+      tri("Arrábida Natural Park", "Parque Natural da Arrábida", "Parque Natural de Arrábida"),
+      tri("Sea cliffs above a turquoise coast", "Falésias sobre uma costa turquesa", "Acantilados sobre una costa turquesa"),
+      tri("Lunch at a traditional restaurant", "Almoço num restaurante tradicional", "Almuerzo en un restaurante tradicional"),
+      tri("Visit and wine tasting at Quinta da Bacalhôa", "Visita e prova de vinhos na Quinta da Bacalhôa", "Visita y cata de vinos en la Quinta da Bacalhôa"),
+    ],
+    priceTiers: [
+      { pax: 1, price: 835 },
+      { pax: 2, price: 1030 },
+      { pax: 3, price: 1230 },
+      { pax: 4, price: 1420 },
+      { pax: 5, price: 1620 },
+      { pax: 6, price: 1807 },
     ],
     priceTiersNote: tiersNoteOver6,
     payment: sharedPayment,
