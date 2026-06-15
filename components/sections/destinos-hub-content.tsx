@@ -38,20 +38,27 @@ export function DestinosHubContent() {
 
   return (
     <main>
-      {/* Header */}
-      <section style={{ backgroundColor: "var(--color-ntn-white)", paddingTop: "160px", paddingBottom: "70px" }}>
-        <div className="container-ntn">
+      {/* Hero banner */}
+      <section className="relative flex items-end" style={{ minHeight: "78vh" }}>
+        <div className="absolute inset-0 z-0">
+          <Image src="/images/routes/hero-miranda.jpg" alt="Portugal NTN Walking" fill priority className="object-cover" sizes="100vw" />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(29,29,26,0.6) 0%, rgba(29,29,26,0.25) 38%, rgba(29,29,26,0.9) 100%)" }}
+          />
+        </div>
+        <div className="container-ntn relative z-10" style={{ paddingTop: "160px", paddingBottom: "80px" }}>
           <FadeUp>
-            <div style={{ marginBottom: "16px" }}>
-              <Overline color="var(--color-ntn-forest-400)">{L.overline[locale]}</Overline>
+            <div style={{ marginBottom: "20px" }}>
+              <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{L.overline[locale]}</Overline>
             </div>
             <h1
               className="font-title"
-              style={{ color: "var(--color-ntn-black-900)", lineHeight: 1.05, textTransform: "none", fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)", marginBottom: "28px" }}
+              style={{ color: "#fff", lineHeight: 1.02, textTransform: "none", fontSize: "clamp(2.5rem, 6vw, 5rem)", marginBottom: "24px", maxWidth: "20ch" }}
             >
               {L.title[locale]}
             </h1>
-            <p className="text-body-lg leading-relaxed" style={{ color: "var(--color-ntn-black-800)", maxWidth: "44rem" }}>
+            <p className="text-body-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44rem" }}>
               {L.intro[locale]}
             </p>
           </FadeUp>
@@ -59,7 +66,7 @@ export function DestinosHubContent() {
       </section>
 
       {/* Region grid */}
-      <section style={{ backgroundColor: "var(--color-ntn-white)", paddingBottom: "100px" }}>
+      <section style={{ backgroundColor: "var(--color-ntn-white)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="container-ntn">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: "20px" }}>
             {regions.map((region, i) => {

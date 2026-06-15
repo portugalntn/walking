@@ -44,7 +44,6 @@ export function Navbar() {
     { href: `/${locale}/programas`, label: t("programs") },
     { href: `/${locale}/about`, label: t("about") },
     { href: `/${locale}/sustainable`, label: t("sustainable") },
-    { href: `/${locale}/faqs`, label: t("faq") },
     { href: `/${locale}/blog`, label: t("blog") },
     { href: `/${locale}#contact`, label: t("contact") },
   ];
