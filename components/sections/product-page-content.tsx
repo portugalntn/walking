@@ -10,7 +10,7 @@ import { Overline } from "@/components/ui/overline";
 import { fadeUp } from "@/lib/motion";
 import { formatPrice } from "@/lib/utils";
 import type { Program } from "@/lib/programs";
-import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle } from "lucide-react";
+import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle, Sparkles } from "lucide-react";
 import { ProposalForm } from "@/components/sections/proposal-form";
 import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
 
@@ -203,7 +203,7 @@ export function ProductPageContent({ program }: { program: Program }) {
             </div>
             <p
               className="text-body-lg leading-relaxed"
-              style={{ color: "var(--color-ntn-black-800)", maxWidth: "62ch", marginBottom: "56px" }}
+              style={{ color: "var(--color-ntn-black-800)", maxWidth: "none", marginBottom: "56px" }}
             >
               {program.overview[locale]}
             </p>
@@ -230,6 +230,47 @@ export function ProductPageContent({ program }: { program: Program }) {
                   <p className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontWeight: 700, fontSize: "15px" }}>{f.value}</p>
                 </div>
               ))}
+            </div>
+          </FadeUp>
+
+          {/* Highlights as topics with icons */}
+          <FadeUp delay={0.15}>
+            <div style={{ marginTop: "56px" }}>
+              <Overline color="var(--color-ntn-forest-400)">{t("highlights")}</Overline>
+              <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "16px", marginTop: "28px" }}>
+                {program.highlights.map((it, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      gap: "16px",
+                      alignItems: "center",
+                      padding: "18px 22px",
+                      backgroundColor: "var(--color-ntn-white)",
+                      borderRadius: "10px",
+                      border: "1px solid rgba(89,105,77,0.12)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        flexShrink: 0,
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "9999px",
+                        backgroundColor: "var(--color-ntn-lime)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Sparkles size={20} style={{ color: "var(--color-ntn-black-900)" }} />
+                    </span>
+                    <p className="text-body-md" style={{ color: "var(--color-ntn-black-900)", fontWeight: 500, lineHeight: 1.45 }}>
+                      {it[locale]}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeUp>
 
@@ -296,7 +337,7 @@ export function ProductPageContent({ program }: { program: Program }) {
       {/* ── Included / Not included / Extras ── */}
       <section style={{ backgroundColor: "var(--color-ntn-cream-100)", paddingTop: "90px", paddingBottom: "90px" }}>
         <div className="container-ntn">
-          <div className="grid grid-cols-1 lg:grid-cols-3" style={{ gap: "48px" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "48px" }}>
             <FadeUp>
               <Overline color="var(--color-ntn-forest-400)">{t("included")}</Overline>
               <ul style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -333,18 +374,6 @@ export function ProductPageContent({ program }: { program: Program }) {
                   </ul>
                 </div>
               )}
-            </FadeUp>
-
-            <FadeUp delay={0.2}>
-              <Overline color="var(--color-ntn-forest-400)">{t("highlights")}</Overline>
-              <ul style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
-                {program.highlights.map((it, i) => (
-                  <li key={i} className="text-body-md" style={{ color: "var(--color-ntn-black-900)", fontWeight: 500, paddingLeft: "28px", position: "relative" }}>
-                    <span style={{ position: "absolute", left: "6px", top: "6px", width: "8px", height: "8px", borderRadius: "9999px", backgroundColor: "var(--color-ntn-lime)" }} />
-                    {it[locale]}
-                  </li>
-                ))}
-              </ul>
             </FadeUp>
           </div>
         </div>

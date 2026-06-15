@@ -653,9 +653,9 @@ export const programs: Record<string, Program> = {
     startPoint: "Peso da Régua",
     totalDistance: "6 km",
     overview: tri(
-      "A relaxed day in the heart of the Alto Douro Wine Region, the oldest demarcated wine region in the world and a UNESCO World Heritage Site. We walk a trail flanked by the famous terraced vineyards, with the Douro River always in view, and then visit a winery to taste a wine rated by Wine Spectator as one of the best in the world. Walking, landscape and wine, in a single unforgettable day.",
-      "Um dia tranquilo no coração do Alto Douro Vinhateiro, a mais antiga região demarcada do mundo e Património Mundial UNESCO. Caminhamos por um trilho ladeado pelos famosos socalcos de vinha, com o rio Douro sempre à vista, e depois visitamos uma quinta para provar um vinho classificado pela Wine Spectator como um dos melhores do mundo. Caminhada, paisagem e vinho, num único dia inesquecível.",
-      "Un día tranquilo en el corazón del Alto Duero Vinícola, la región demarcada más antigua del mundo y Patrimonio Mundial UNESCO. Caminamos por un sendero flanqueado por los famosos bancales de viña, con el río Duero siempre a la vista, y después visitamos una quinta para catar un vino calificado por Wine Spectator como uno de los mejores del mundo. Caminata, paisaje y vino, en un solo día inolvidable."
+      "Spend a relaxed day in the heart of the Alto Douro, the world's oldest demarcated wine region and a UNESCO World Heritage site. You walk gentle trails framed by terraced vineyards, with the Douro River opening up below at every turn, past family gardens and orchards that reveal the everyday life of the valley. The pace is easy but rewarding: enough walking to feel the day, enough time to take in the light and the silence. Then comes the part everyone remembers, a visit to a local winery to taste Douro wines rated by Wine Spectator among the best in the world. Walking, landscape and a great glass of wine, in one unforgettable day.",
+      "Passe um dia tranquilo no coração do Alto Douro, a mais antiga região vinhateira demarcada do mundo e Património Mundial UNESCO. Caminha por trilhos suaves ladeados de socalcos de vinha, com o rio Douro a abrir-se lá em baixo a cada curva, por entre hortas e pomares que mostram o dia a dia do vale. O ritmo é leve mas compensador: caminhada que chegue para sentir o dia, tempo que chegue para absorver a luz e o silêncio. Depois vem a parte que todos recordam: a visita a uma quinta para provar vinhos do Douro classificados pela Wine Spectator entre os melhores do mundo. Caminhada, paisagem e um grande copo de vinho, num dia inesquecível.",
+      "Pase un día tranquilo en el corazón del Alto Duero, la región vinícola demarcada más antigua del mundo y Patrimonio Mundial UNESCO. Camina por senderos suaves flanqueados por bancales de viña, con el río Duero abriéndose abajo en cada curva, entre huertas y vergeles que muestran el día a día del valle. El ritmo es ligero pero gratificante: caminata suficiente para sentir el día, tiempo suficiente para absorber la luz y el silencio. Luego llega la parte que todos recuerdan: la visita a una quinta para catar vinos del Duero reconocidos por Wine Spectator entre los mejores del mundo. Caminata, paisaje y una gran copa de vino, en un día inolvidable."
     ),
     days: [
       {
@@ -688,10 +688,11 @@ export const programs: Record<string, Program> = {
     ],
     extras: [],
     highlights: [
-      tri("UNESCO World Heritage vineyards", "Vinhas Património Mundial UNESCO", "Viñedos Patrimonio Mundial UNESCO"),
-      tri("Walking among the terraced vineyards", "Caminhada entre os socalcos de vinha", "Caminata entre los bancales de viña"),
-      tri("Traditional picnic or lunch at Quinta da Pacheca", "Piquenique tradicional ou almoço na Quinta da Pacheca", "Picnic tradicional o almuerzo en la Quinta da Pacheca"),
-      tri("Wine tasting rated among the world's best", "Prova de vinho classificado entre os melhores do mundo", "Cata de vino clasificado entre los mejores del mundo"),
+      tri("Vineyard trails through a UNESCO World Heritage landscape", "Trilhos entre vinhas, em paisagem Património Mundial UNESCO", "Senderos entre viñedos, en un paisaje Patrimonio Mundial UNESCO"),
+      tri("Panoramic views over the Douro River and its terraces", "Vistas panorâmicas sobre o rio Douro e os socalcos", "Vistas panorámicas sobre el río Duero y los bancales"),
+      tri("A guided walk of about 6 km, around 2 hours", "Caminhada guiada de cerca de 6 km, à volta de 2 horas", "Caminata guiada de unos 6 km, alrededor de 2 horas"),
+      tri("A premium tasting of award-winning Douro wines", "Prova premium de vinhos do Douro premiados", "Cata premium de vinos del Duero premiados"),
+      tri("A traditional picnic or a typical local lunch", "Piquenique tradicional ou almoço típico local", "Picnic tradicional o almuerzo típico local"),
     ],
     priceTiers: [
       { pax: 1, price: 708 },
