@@ -276,7 +276,7 @@ export function DestinationsPageContent() {
           {/* Intro + filter on the same line */}
           <div
             className="flex flex-col sm:flex-row sm:items-end justify-between"
-            style={{ gap: "24px", marginBottom: "56px" }}
+            style={{ gap: "24px", marginBottom: "56px", position: "relative", zIndex: 40 }}
           >
             <FadeUp>
               <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", maxWidth: "32rem" }}>
