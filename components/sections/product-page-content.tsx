@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
@@ -10,7 +10,7 @@ import { Overline } from "@/components/ui/overline";
 import { fadeUp } from "@/lib/motion";
 import { formatPrice } from "@/lib/utils";
 import type { Program } from "@/lib/programs";
-import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle, Sparkles } from "lucide-react";
+import { Check, X, Clock, Footprints, MapPin, CalendarDays, TrendingUp, Mail, HelpCircle, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { ProposalForm } from "@/components/sections/proposal-form";
 import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
 
@@ -21,7 +21,22 @@ export function ProductPageContent({ program }: { program: Program }) {
   const t = useTranslations("productPage");
   const locale = useLocale() as Loc;
   const priceLocale = { en: "en-GB", pt: "pt-PT", es: "es-ES" }[locale];
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+
+  const lbClose = useCallback(() => setLightbox(null), []);
+  const lbPrev = useCallback(() => setLightbox((lb) => lb && lb.index > 0 ? { ...lb, index: lb.index - 1 } : lb), []);
+  const lbNext = useCallback(() => setLightbox((lb) => lb && lb.index < lb.images.length - 1 ? { ...lb, index: lb.index + 1 } : lb), []);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") lbClose();
+      if (e.key === "ArrowLeft") lbPrev();
+      if (e.key === "ArrowRight") lbNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, lbClose, lbPrev, lbNext]);
 
   const mealLabel = (k: string) =>
     k === "breakfast" ? t("mealBreakfast") : k === "packedLunch" ? t("mealPackedLunch") : t("mealDinner");
@@ -93,8 +108,88 @@ export function ProductPageContent({ program }: { program: Program }) {
           )}
         </div>
 
+        {/* Photos: EXPERIMENTAL mosaic gallery (sintra-1day only) — fixed
+            2-row height, featured tile + "+N" overflow into the lightbox. */}
+        {gal.length > 0 && program.id === "sintra-1day" && (
+          <div
+            style={{
+              flex: "1 1 340px",
+              maxWidth: "500px",
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: "1.6fr 1fr",
+              gridTemplateRows: "1fr 1fr",
+              gap: "10px",
+              aspectRatio: "16 / 11",
+            }}
+          >
+            {raw.slice(0, 3).map((src, gi) => {
+              const isBig = gi === 0;
+              const isLastVisible = gi === 2;
+              const extra = raw.length - 3;
+              return (
+                <button
+                  key={gi}
+                  type="button"
+                  onClick={() => setLightbox({ images: raw, index: gi })}
+                  className="group/img"
+                  style={{
+                    position: "relative",
+                    overflow: "hidden",
+                    borderRadius: "8px",
+                    cursor: "zoom-in",
+                    padding: 0,
+                    border: "none",
+                    background: "none",
+                    width: "100%",
+                    height: "100%",
+                    gridRow: isBig ? "1 / 3" : undefined,
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={d.title[locale]}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover/img:scale-[1.06]"
+                    sizes="(max-width: 1024px) 50vw, 300px"
+                  />
+                  {isLastVisible && extra > 0 ? (
+                    <span
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "2px",
+                        background: "rgba(20,20,18,0.52)",
+                        color: "#fff",
+                        transition: "background 0.3s",
+                      }}
+                      className="group-hover/img:!bg-[rgba(20,20,18,0.62)]"
+                    >
+                      <span style={{ fontFamily: "var(--font-ui)", fontSize: "1.5rem", fontWeight: 700, lineHeight: 1 }}>
+                        +{extra}
+                      </span>
+                      <span style={{ fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", opacity: 0.85 }}>
+                        {t("photos")}
+                      </span>
+                    </span>
+                  ) : (
+                    <span
+                      className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100"
+                      style={{ background: "rgba(29,29,26,0.18)" }}
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {/* Photos: clean grid in rows of two (1 / 2 / 4), each opens lightbox */}
-        {gal.length > 0 && (
+        {gal.length > 0 && program.id !== "sintra-1day" && (
           <div
             style={{
               flex: "1 1 300px",
@@ -111,7 +206,7 @@ export function ProductPageContent({ program }: { program: Program }) {
                 <button
                   key={gi}
                   type="button"
-                  onClick={() => setLightbox(src)}
+                  onClick={() => setLightbox({ images: gal, index: gi })}
                   className="group/img"
                   style={{
                     position: "relative",
@@ -609,21 +704,66 @@ export function ProductPageContent({ program }: { program: Program }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            onClick={() => setLightbox(null)}
+            onClick={lbClose}
             style={{
               position: "fixed", inset: 0, zIndex: 300,
               backgroundColor: "rgba(20,20,18,0.92)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "clamp(20px, 5vw, 80px)", cursor: "zoom-out",
+              padding: "clamp(20px, 5vw, 80px)",
             }}
           >
+            {/* Close */}
             <button
-              aria-label="Close"
-              onClick={() => setLightbox(null)}
-              style={{ position: "absolute", top: "28px", right: "32px", color: "#fff", background: "none", border: "none", cursor: "pointer" }}
+              aria-label="Fechar"
+              onClick={lbClose}
+              style={{ position: "absolute", top: "28px", right: "32px", color: "#fff", background: "none", border: "none", cursor: "pointer", zIndex: 10 }}
             >
               <X size={28} />
             </button>
+
+            {/* Counter */}
+            {lightbox.images.length > 1 && (
+              <span style={{
+                position: "absolute", top: "32px", left: "50%", transform: "translateX(-50%)",
+                color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-ui)", fontSize: "13px", letterSpacing: "0.06em",
+              }}>
+                {lightbox.index + 1} / {lightbox.images.length}
+              </span>
+            )}
+
+            {/* Prev */}
+            {lightbox.index > 0 && (
+              <button
+                aria-label="Anterior"
+                onClick={(e) => { e.stopPropagation(); lbPrev(); }}
+                style={{
+                  position: "absolute", left: "clamp(8px, 3vw, 32px)", top: "50%", transform: "translateY(-50%)",
+                  color: "#fff", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: "50%",
+                  width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center",
+                  cursor: "pointer", zIndex: 10, backdropFilter: "blur(4px)",
+                }}
+              >
+                <ChevronLeft size={24} />
+              </button>
+            )}
+
+            {/* Next */}
+            {lightbox.index < lightbox.images.length - 1 && (
+              <button
+                aria-label="Seguinte"
+                onClick={(e) => { e.stopPropagation(); lbNext(); }}
+                style={{
+                  position: "absolute", right: "clamp(8px, 3vw, 32px)", top: "50%", transform: "translateY(-50%)",
+                  color: "#fff", background: "rgba(255,255,255,0.12)", border: "none", borderRadius: "50%",
+                  width: 48, height: 48, display: "flex", alignItems: "center", justifyContent: "center",
+                  cursor: "pointer", zIndex: 10, backdropFilter: "blur(4px)",
+                }}
+              >
+                <ChevronRight size={24} />
+              </button>
+            )}
+
+            {/* Image */}
             <m.div
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -632,7 +772,18 @@ export function ProductPageContent({ program }: { program: Program }) {
               onClick={(e) => e.stopPropagation()}
               style={{ position: "relative", width: "min(100%, 1100px)", aspectRatio: "16/10", maxHeight: "85vh" }}
             >
-              <Image src={lightbox} alt="" fill className="object-contain" sizes="100vw" />
+              <AnimatePresence mode="wait">
+                <m.div
+                  key={lightbox.index}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.22, ease: EASE }}
+                  style={{ position: "absolute", inset: 0 }}
+                >
+                  <Image src={lightbox.images[lightbox.index]} alt="" fill className="object-contain" sizes="100vw" />
+                </m.div>
+              </AnimatePresence>
             </m.div>
           </m.div>
         )}

@@ -717,7 +717,7 @@ export const programs: Record<string, Program> = {
       "La Montaña Sagrada: una caminata en el bosque brumoso y un convento escondido"
     ),
     region: "Lisboa & Sintra",
-    heroImage: `${SI}hero-sintra-1day.jpg`,
+    heroImage: `${SI}hero-sintra-1day-v2.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
     difficulty: tri("Moderate", "Moderada", "Moderado"),
@@ -743,7 +743,14 @@ export const programs: Record<string, Program> = {
         distance: "6 km",
         walkTime: "2h",
         meals: [],
-        gallery: [`${SI}walk-1.jpg`, `${SI}walk-2.jpg`, `${SI}walk-3.jpg`, `${SI}walk-4.jpg`],
+        gallery: [
+          `${SI}walk-3.jpg`,
+          `${SI}convento-capuchos-2.jpg`,
+          `${SI}parques-sintra-capuchos-06.jpg`,
+          `${SI}walk-1.jpg`,
+          `${SI}walk-2.jpg`,
+          `${SI}hotel-convento-capuchos.jpg`,
+        ],
       },
     ],
     included: [
