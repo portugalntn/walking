@@ -11,7 +11,8 @@
     "faq": "FAQ",
     "all": "Todos",
     "oneDay": "1 día",
-    "multiDays": "Multidías"
+    "multiDays": "Multidías",
+    "exclusive": "Exclusive"
   },
   "home": {
     "hero": {
@@ -333,5 +334,89 @@
     "heroTitle": "Cómo clasificamos nuestras caminatas",
     "intro": "Cada programa tiene un grado de dificultad para que sepa qué esperar antes de partir. La escala va de muy fácil a muy difícil, según la distancia, el desnivel acumulado y el tipo de terreno.",
     "ctaDestinations": "Ver destinos"
+  },
+  "exclusive": {
+    "nav": {
+      "journeys": "Viajes",
+      "dayTours": "Day tours",
+      "howWeWork": "Cómo trabajamos",
+      "enquire": "Contactar"
+    },
+    "hero": {
+      "overline": "La colección para el trade",
+      "title": "Exclusive",
+      "bracket": "Diseñado para un grupo cada vez",
+      "lead": "Viajes de senderismo privados por el Norte y el Nordeste de Portugal, construidos ruta a ruta para agencias y operadores a quienes les piden aquello que un catálogo no tiene.",
+      "metaA": "Destination Management Company",
+      "metaB": "Norte y Nordeste, Portugal",
+      "metaC": "Rutas propias",
+      "cta": "Solicitar el dosier"
+    },
+    "manifesto": {
+      "overline": "La propuesta",
+      "statement": "No vendemos un catálogo. Diseñamos el viaje, <accent>y después lo caminamos nosotros</accent>.",
+      "p1": "Cada ruta de esta colección fue levantada a pie, señalizada y certificada por el equipo que la opera. Nada se subcontrata a un nombre que usted nunca ha conocido, y nada se vende antes de haber sido caminado en la estación en la que su cliente lo va a caminar.",
+      "p2": "Por eso los itinerarios aquí no son fijos. Un programa puede alargarse, suavizarse, moverse a otro mes o rehacerse alrededor de un solo interés, y la operación sobre el terreno sigue con las mismas personas."
+    },
+    "journeys": {
+      "overline": "Multi-day",
+      "title": "Viajes de autor",
+      "lead": "Ocho días es la forma en la que creemos: bastante para que la región cambie alrededor del grupo, breve para seguir siendo exigente. Cada uno tiene una versión pública. Estos no son esa versión.",
+      "cta": "Ver el itinerario",
+      "daysLabel": "días"
+    },
+    "itinerary": {
+      "overline": "Itinerario destacado",
+      "lead": "Ocho días por los bancales del Duero, de Peso da Régua a Pinhão, con las quintas abiertas en privado para el grupo.",
+      "statDistance": "Distancia",
+      "statDays": "Días",
+      "statGrade": "Grado",
+      "note": "Trazado ilustrativo. Día a día completo, alojamiento y condiciones NET en el dosier."
+    },
+    "dayTours": {
+      "overline": "Day tours",
+      "title": "Un solo día, enteramente sostenido",
+      "lead": "Para programas que necesitan un día extraordinario dentro de una estancia mayor. Los mismos guías, el mismo acceso, la misma mesa.",
+      "walkLabel": "caminando"
+    },
+    "operators": {
+      "overline": "Para agencias y operadores",
+      "title": "Cómo trabajamos con el trade",
+      "one": {
+        "title": "Hecho a medida",
+        "text": "Envíe el briefing y las fechas. Respondemos con una ruta, un ritmo y una mesa, no con una página de catálogo."
+      },
+      "two": {
+        "title": "Operado por nosotros",
+        "text": "El diseño, la señalización, la guía y el apoyo sobre el terreno son nuestros. Un único interlocutor del primer correo al último traslado."
+      },
+      "three": {
+        "title": "White label",
+        "text": "El programa puede viajar con su marca, sus documentos y su voz. Nuestro nombre solo aparece si usted quiere."
+      },
+      "four": {
+        "title": "Condiciones NET",
+        "text": "Tarifas de trade, cupos y condiciones de cancelación quedan definidos en el dosier, por programa y por temporada."
+      }
+    },
+    "enquiry": {
+      "overline": "Contacto",
+      "title": "Solicitar el dosier",
+      "lead": "Díganos el mercado al que vende y el tipo de cliente que tiene en mente. Respondemos con el dosier completo, tarifas NET incluidas, en dos días laborables.",
+      "name": "Nombre",
+      "email": "Email",
+      "company": "Empresa",
+      "country": "País / mercado",
+      "message": "¿Qué está buscando?",
+      "submit": "Enviar solicitud",
+      "sending": "Enviando",
+      "sentTitle": "Gracias.",
+      "sentText": "El dosier va en camino. Si no llega en dos días laborables, escríbanos directamente.",
+      "error": "No hemos podido enviarlo ahora. Inténtelo de nuevo en un momento."
+    },
+    "footer": {
+      "line": "Portugal NTN es una Destination Management Company de senderismo en el Norte y el Nordeste de Portugal. Diseño, señalización, certificación y operación de rutas propias.",
+      "public": "Sitio público"
+    }
   }
 }

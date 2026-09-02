@@ -11,7 +11,8 @@
     "faq": "FAQ",
     "all": "All",
     "oneDay": "Day trips",
-    "multiDays": "Multi-day"
+    "multiDays": "Multi-day",
+    "exclusive": "Exclusive"
   },
   "home": {
     "hero": {
@@ -333,5 +334,89 @@
     "heroTitle": "How we grade our walks",
     "intro": "Every programme carries a difficulty grade so you know what to expect before you set off. The scale runs from very easy to very difficult, based on distance, elevation gain and terrain.",
     "ctaDestinations": "See destinations"
+  },
+  "exclusive": {
+    "nav": {
+      "journeys": "Journeys",
+      "dayTours": "Day tours",
+      "howWeWork": "How we work",
+      "enquire": "Enquire"
+    },
+    "hero": {
+      "overline": "The trade collection",
+      "title": "Exclusive",
+      "bracket": "Designed for one group at a time",
+      "lead": "Private walking journeys through the north and northeast of Portugal, built route by route for agencies and operators who are asked for something a catalogue does not hold.",
+      "metaA": "Destination Management Company",
+      "metaB": "Norte and Nordeste, Portugal",
+      "metaC": "Our own routes",
+      "cta": "Request the dossier"
+    },
+    "manifesto": {
+      "overline": "The proposition",
+      "statement": "We do not sell a catalogue. We design the journey, <accent>then we walk it ourselves</accent>.",
+      "p1": "Every route in this collection was surveyed on foot, waymarked and certified by the team that operates it. Nothing is subcontracted to a name you have never met, and nothing is sold before it has been walked in the season your client will walk it.",
+      "p2": "That is why the itineraries here are not fixed. A programme can be lengthened, softened, moved to another month or rebuilt around a single interest, and the operation on the ground stays with the same people."
+    },
+    "journeys": {
+      "overline": "Multi-day",
+      "title": "Signature journeys",
+      "lead": "Eight days is the form we believe in: long enough for a region to change around the group, short enough to stay demanding. Each one has a public version. These are not it.",
+      "cta": "See the itinerary",
+      "daysLabel": "days"
+    },
+    "itinerary": {
+      "overline": "Itinerary in focus",
+      "lead": "Eight days along the Douro terraces, from Peso da Régua to Pinhão, with the estates opened privately for the group.",
+      "statDistance": "Distance",
+      "statDays": "Days",
+      "statGrade": "Grade",
+      "note": "Route drawn for illustration. Full day by day, accommodation and NET conditions in the dossier."
+    },
+    "dayTours": {
+      "overline": "Day tours",
+      "title": "A single day, fully held",
+      "lead": "For programmes that need one extraordinary day inserted into a longer stay. Same guides, same access, same table.",
+      "walkLabel": "walking"
+    },
+    "operators": {
+      "overline": "For agencies and operators",
+      "title": "How we work with the trade",
+      "one": {
+        "title": "Built to order",
+        "text": "Send the brief and the dates. We come back with a route, a rhythm and a table, not with a page from a catalogue."
+      },
+      "two": {
+        "title": "Operated by us",
+        "text": "Design, waymarking, guiding and support on the ground are ours. One counterpart from the first email to the last transfer."
+      },
+      "three": {
+        "title": "White label",
+        "text": "The programme can travel under your brand, with your documents and your voice. Our name appears only if you want it to."
+      },
+      "four": {
+        "title": "NET conditions",
+        "text": "Trade rates, allotments and cancellation terms are set out in the dossier, per programme and per season."
+      }
+    },
+    "enquiry": {
+      "overline": "Enquiry",
+      "title": "Request the dossier",
+      "lead": "Tell us the market you sell to and the kind of client you have in mind. We answer with the full dossier, NET rates included, within two working days.",
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "country": "Country / market",
+      "message": "What are you looking for?",
+      "submit": "Send enquiry",
+      "sending": "Sending",
+      "sentTitle": "Thank you.",
+      "sentText": "The dossier is on its way. If it has not arrived within two working days, write to us directly.",
+      "error": "We could not send this right now. Please try again in a moment."
+    },
+    "footer": {
+      "line": "Portugal NTN is a Destination Management Company for walking in the north and northeast of Portugal. Design, waymarking, certification and operation of our own routes.",
+      "public": "Public site"
+    }
   }
 }

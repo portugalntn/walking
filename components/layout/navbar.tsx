@@ -96,8 +96,24 @@ export function Navbar() {
               ))}
             </nav>
 
-            {/* Right: Lang + CTA */}
+            {/* Right: Exclusive + Lang + CTA */}
             <div className="hidden lg:flex items-center gap-5">
+              {/* Porta para o site B2B. Tom de latão, para se ler como outro sítio. */}
+              <Link
+                href={`/${locale}/exclusive`}
+                className="font-ui text-label transition-colors duration-200"
+                style={{
+                  color: "#c8bd8a",
+                  letterSpacing: "0.22em",
+                  paddingRight: "1.25rem",
+                  borderRight: "1px solid rgba(255,255,255,0.14)",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ntn-white)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#c8bd8a")}
+              >
+                {t("exclusive")}
+              </Link>
+
               <div className="relative">
                 <button
                   onClick={() => setLangOpen(!langOpen)}
@@ -203,6 +219,21 @@ export function Navbar() {
                   </Link>
                 </m.div>
               ))}
+              <m.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.07 + 0.1 }}
+                style={{ marginTop: "0.5rem", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}
+              >
+                <Link
+                  href={`/${locale}/exclusive`}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-display text-display-md block"
+                  style={{ color: "#c8bd8a" }}
+                >
+                  {t("exclusive")}
+                </Link>
+              </m.div>
             </nav>
 
             {/* Mobile lang + CTA */}
