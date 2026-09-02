@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     template: "%s | Portugal NTN Walking",
   },
   description:
-    "Premium guided and self-guided walking tours across Portugal's most extraordinary landscapes. A DMC operator specialising in luxury walking tourism.",
-  keywords: ["Portugal walking tours", "hiking Portugal", "DMC Portugal", "walking operator", "Douro Valley", "Peneda Gerês", "Trás-os-Montes"],
+    "Premium guided and self-guided walking tours across Portugal's most extraordinary landscapes. Every route designed, waymarked and certified by the team that operates it.",
+  keywords: ["Portugal walking tours", "hiking Portugal", "walking holidays Portugal", "walking operator", "Douro Valley", "Peneda Gerês", "Trás-os-Montes"],
   openGraph: {
     type: "website",
     locale: "en_GB",

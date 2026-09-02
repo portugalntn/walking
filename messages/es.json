@@ -24,7 +24,7 @@
       "ctaSecondary": "Conocer el Equipo"
     },
     "intro": {
-      "label": "Nosotros · DMC",
+      "label": "Nosotros",
       "title": "Nacidos del territorio.\nOperamos con propósito.",
       "body": "Portugal NTN pasó 12 años construyendo y estructurando senderos en el Norte y Nordeste de Portugal. Ahora los operamos. Cada programa que ofrecemos es un programa que diseñamos, certificamos y conocemos de memoria.",
       "stat1Value": "12",
@@ -33,8 +33,8 @@
       "stat2Label": "Programas activos",
       "stat3Value": "3",
       "stat3Label": "Regiones cubiertas",
-      "body2": "También somos una DMC (Destination Management Company) especializada en turismo de senderismo. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo, con tarifas NET y respuesta garantizada en 24h.",
-      "cta": "Trabajar con nosotros",
+      "body2": "Cada itinerario que vendemos fue diseñado, señalizado y certificado por nosotros. No revendemos rutas de terceros: el equipo que te recibe en Portugal es el mismo que trazó el sendero.",
+      "cta": "Hablar con nosotros",
       "ctaAbout": "Conozca nuestra historia"
     },
     "whyus": {
@@ -84,12 +84,19 @@
       "pillar4": "Patrimonio Cultural",
       "cta": "Nuestro compromiso"
     },
-    "b2b": {
-      "label": "Para Socios Comerciales",
-      "title": "Tu operadora local en Portugal.",
-      "body": "Nacimos en el territorio que operamos. Durante 12 años estructuramos rutas de senderismo en el norte de Portugal. Hoy somos también DMC. Creamos, certificamos y vendemos nuestros propios itinerarios a agencias y operadores de todo el mundo.",
-      "cta": "Solicitar Brochure",
-      "ctaSecondary": "Contactarnos"
+    "contact": {
+      "label": "Hablemos",
+      "title": "Vamos a diseñar tu caminata.",
+      "body": "Cuéntanos las fechas, cuántos sois y el ritmo que buscáis. Respondemos en 24 horas con una propuesta a medida, hecha por quien conoce el terreno.",
+      "emailLabel": "¿Prefieres escribirnos directamente?",
+      "stat1Value": "12",
+      "stat1Label": "Años en el terreno",
+      "stat2Value": "9",
+      "stat2Label": "Itinerarios propios",
+      "stat3Value": "3",
+      "stat3Label": "Regiones",
+      "stat4Value": "24H",
+      "stat4Label": "Respuesta garantizada"
     },
     "blog": {
       "label": "Diario de Senderos",
@@ -110,7 +117,8 @@
     "contact": "Contacto",
     "privacy": "Política de Privacidad",
     "terms": "Términos y Condiciones",
-    "copyright": "© {year} Portugal NTN Walking. Todos los derechos reservados."
+    "copyright": "© {year} Portugal NTN Walking. Todos los derechos reservados.",
+    "walkingDesc": "Operadora de turismo de senderismo. Creamos, operamos y vendemos nuestros propios itinerarios por los territorios que conocemos de memoria."
   },
   "sustainablePage": {
     "heroLabel": "Sostenibilidad",
@@ -211,7 +219,6 @@
     "from": "Desde",
     "perPerson": "por persona",
     "singleSupp": "Suplemento de habitación individual",
-    "netNote": "Tarifas NET. Tu margen es tuyo.",
     "availability": "Disponibilidad",
     "availabilityNote": "Todo el año, excepto la semana de Navidad, la de Pascua y las dos primeras semanas de Agosto.",
     "facts": "En resumen",
@@ -229,17 +236,17 @@
     "mealPackedLunch": "Almuerzo de picnic",
     "mealDinner": "Cena",
     "ctaTitle": "¿Interesado en este programa?",
-    "ctaBody": "Solicita una propuesta a nuestro equipo. Respuesta garantizada en 24h, con tarifas NET para agencias y operadores.",
+    "ctaBody": "Solicita una propuesta a nuestro equipo. Respuesta garantizada en 24h, con un itinerario a tu medida.",
     "requestProposal": "Solicitar propuesta",
     "contact": "Contactar",
     "priceNote": "Tarifas válidas para 2026.",
     "payment": "Condiciones de pago",
     "cancellation": "Política de cancelación",
     "formTitle": "Solicitar una propuesta",
-    "formIntro": "Rellene el formulario y nuestro equipo responde en 24 horas, con tarifas NET para agencias y operadores.",
+    "formIntro": "Rellene el formulario y nuestro equipo responde en 24 horas con una propuesta a su medida.",
     "formName": "Nombre completo",
     "formEmail": "Email",
-    "formCompany": "Agencia / empresa",
+    "formGroupSize": "Número de personas",
     "formPhone": "Teléfono (opcional)",
     "formMessage": "Mensaje",
     "formMessagePlaceholder": "Indique fechas preferidas, tamaño del grupo y todo lo que ayude a personalizar la propuesta.",

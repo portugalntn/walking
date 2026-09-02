@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
@@ -13,6 +13,19 @@ const heroImages = [
   "/images/hero/hero-5.jpg",
 ];
 
+// The hero photo is drawn once per page load, on the client only.
+// useSyncExternalStore hands the server the first image and the browser the
+// drawn one, so hydration matches and the draw still happens on every load.
+let drawnImage: string | null = null;
+const subscribeToDraw = () => () => {};
+const getDrawnImage = () => {
+  if (drawnImage === null) {
+    drawnImage = heroImages[Math.floor(Math.random() * heroImages.length)];
+  }
+  return drawnImage;
+};
+const getBaseImage = () => heroImages[0];
+
 // Headline font-size per locale — Spanish is longer, needs to be smaller
 const headlineSize: Record<string, string> = {
   es: "clamp(2.8rem, 6vw, 7rem)",
@@ -24,10 +37,8 @@ export function HeroSection() {
   const t = useTranslations("home.hero");
   const locale = useLocale();
 
-  // Random hero image on each load
-  const [heroImg] = useState(
-    () => heroImages[Math.floor(Math.random() * heroImages.length)]
-  );
+  const heroImg = useSyncExternalStore(subscribeToDraw, getDrawnImage, getBaseImage);
+  const [drawnReady, setDrawnReady] = useState(false);
 
   const titleFontSize = headlineSize[locale] ?? headlineSize.en;
 
@@ -37,13 +48,26 @@ export function HeroSection() {
       {/* ── Background Image ── */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={heroImg}
+          src={heroImages[0]}
           alt="Portugal NTN Walking"
           fill
           priority
           quality={90}
           className="object-cover object-center"
         />
+        {/* The drawn photo fades in over the base one once it has decoded. */}
+        {heroImg !== heroImages[0] && (
+          <Image
+            src={heroImg}
+            alt=""
+            aria-hidden
+            fill
+            quality={90}
+            className="object-cover object-center"
+            style={{ opacity: drawnReady ? 1 : 0, transition: "opacity 700ms ease" }}
+            onLoad={() => setDrawnReady(true)}
+          />
+        )}
         {/* Gradient overlays — layered for depth */}
         <div
           className="absolute inset-0"

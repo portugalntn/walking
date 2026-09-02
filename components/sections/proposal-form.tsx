@@ -31,10 +31,10 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "7px",
 };
 
-export function ProposalForm({ program }: { program: string }) {
+export function ProposalForm({ program }: { program?: string }) {
   const t = useTranslations("productPage");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [form, setForm] = useState({ name: "", email: "", company: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", groupSize: "", phone: "", message: "" });
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -98,16 +98,18 @@ export function ProposalForm({ program }: { program: string }) {
             exit={{ opacity: 0 }}
             style={{ display: "flex", flexDirection: "column", gap: "18px" }}
           >
-            {/* Program of interest */}
-            <div
-              style={{
-                display: "flex", flexDirection: "column", gap: "4px",
-                borderLeft: "3px solid var(--color-ntn-lime)", paddingLeft: "12px",
-              }}
-            >
-              <span className="text-label" style={{ color: "var(--color-ntn-sage-200)" }}>{t("formProgramLabel")}</span>
-              <span className="font-ui" style={{ fontWeight: 700, color: "var(--color-ntn-black-900)", fontSize: "15px" }}>{program}</span>
-            </div>
+            {/* Program of interest, only on product pages */}
+            {program && (
+              <div
+                style={{
+                  display: "flex", flexDirection: "column", gap: "4px",
+                  borderLeft: "3px solid var(--color-ntn-lime)", paddingLeft: "12px",
+                }}
+              >
+                <span className="text-label" style={{ color: "var(--color-ntn-sage-200)" }}>{t("formProgramLabel")}</span>
+                <span className="font-ui" style={{ fontWeight: 700, color: "var(--color-ntn-black-900)", fontSize: "15px" }}>{program}</span>
+              </div>
+            )}
 
             <div>
               <label style={labelStyle} htmlFor="pf-name">{t("formName")}</label>
@@ -125,8 +127,8 @@ export function ProposalForm({ program }: { program: string }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "18px" }}>
               <div>
-                <label style={labelStyle} htmlFor="pf-company">{t("formCompany")}</label>
-                <input id="pf-company" style={field} value={form.company} onChange={set("company")}
+                <label style={labelStyle} htmlFor="pf-group-size">{t("formGroupSize")}</label>
+                <input id="pf-group-size" type="number" min="1" inputMode="numeric" style={field} value={form.groupSize} onChange={set("groupSize")}
                   onFocus={(e) => (e.target.style.borderColor = "var(--color-ntn-lime)")}
                   onBlur={(e) => (e.target.style.borderColor = "rgba(45,59,30,0.18)")} />
               </div>

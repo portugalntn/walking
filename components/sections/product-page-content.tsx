@@ -526,8 +526,7 @@ export function ProductPageContent({ program }: { program: Program }) {
                       {program.priceTiersNote[locale]}
                     </p>
                   )}
-                  <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a", marginTop: "20px" }}>{t("netNote")}</p>
-                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "20px" }}>{t("priceNote")}</p>
                 </div>
               </div>
             </FadeUp>
@@ -571,15 +570,14 @@ export function ProductPageContent({ program }: { program: Program }) {
                   ))}
                 </div>
 
-                {/* Nota Tarifas NET ao lado dos cards */}
+                {/* Notas de preço ao lado dos cards */}
                 <div style={{ flex: "1 1 220px", paddingTop: "4px" }}>
                   {program.priceCondition && (
                     <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginBottom: "12px" }}>
                       {program.priceCondition[locale]}
                     </p>
                   )}
-                  <p style={{ fontStyle: "italic", fontSize: "14px", color: "#6b7c5a" }}>{t("netNote")}</p>
-                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginTop: "8px" }}>{t("priceNote")}</p>
+                  <p className="text-label" style={{ color: "var(--color-ntn-sage-200)" }}>{t("priceNote")}</p>
                 </div>
               </div>
             </FadeUp>
@@ -662,7 +660,7 @@ export function ProductPageContent({ program }: { program: Program }) {
         </div>
       </section>
 
-      {/* ── CTA + proposal form (B2B) ── */}
+      {/* ── CTA + proposal form ── */}
       <section id="proposal" style={{ backgroundColor: "var(--color-ntn-lime)", paddingTop: "90px", paddingBottom: "90px", scrollMarginTop: "96px" }}>
         <div className="container-ntn">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-start" style={{ gap: "clamp(40px, 6vw, 80px)" }}>

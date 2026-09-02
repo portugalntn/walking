@@ -9,24 +9,27 @@ const nextConfig: NextConfig = {
     qualities: [75, 90],
   },
   async redirects() {
+    // The :locale segment is constrained to the real locales. Without it a
+    // source like "/:locale/portal/:path*" also matches "/images/portal/...",
+    // which sent every file under public/images/portal to a redirect.
     return [
       {
-        source: "/:locale/portal",
+        source: "/:locale(en|pt|es)/portal",
         destination: "/:locale",
         permanent: false,
       },
       {
-        source: "/:locale/portal/:path*",
+        source: "/:locale(en|pt|es)/portal/:path*",
         destination: "/:locale",
         permanent: false,
       },
       {
-        source: "/:locale/destinations",
+        source: "/:locale(en|pt|es)/destinations",
         destination: "/:locale/programas",
         permanent: true,
       },
       {
-        source: "/:locale/destinations/:id",
+        source: "/:locale(en|pt|es)/destinations/:id",
         destination: "/:locale/programas/:id",
         permanent: true,
       },

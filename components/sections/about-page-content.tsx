@@ -31,7 +31,7 @@ const features = [
   { text: "Certified trail network" },
   { text: "Expert local guides" },
   { text: "Sustainable operations" },
-  { text: "DMC for global agencies" },
+  { text: "Own certified programmes" },
 ];
 
 export function AboutPageContent() {

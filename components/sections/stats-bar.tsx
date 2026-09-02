@@ -8,7 +8,7 @@ const stats = [
   { value: 12, suffix: "", label: "Years of expertise", sublabel: "Building & operating trails" },
   { value: 9,  suffix: "+", label: "Active routes",     sublabel: "1 · 3 · 5 · 8 · 11 days" },
   { value: 4,  suffix: "",  label: "Regions covered",   sublabel: "North to South Portugal" },
-  { value: 100, suffix: "%", label: "B2B ready",        sublabel: "DMC for global operators" },
+  { value: 100, suffix: "%", label: "Own programmes",   sublabel: "Designed and certified by us" },
 ];
 
 export function StatsBar() {

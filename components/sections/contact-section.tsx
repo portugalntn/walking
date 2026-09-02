@@ -1,21 +1,19 @@
 "use client";
 
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
+import { m } from "framer-motion";
 import { FadeUp, StaggerChildren } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
-import { m } from "framer-motion";
+import { ProposalForm } from "@/components/sections/proposal-form";
 import { fadeUpSoft } from "@/lib/motion";
 
-const highlights = [
-  { value: "DMC", label: "Destination Management" },
-  { value: "B2B", label: "Trade-only pricing" },
-  { value: "NET", label: "Commission-friendly" },
-  { value: "24H", label: "Response guarantee" },
-];
+const CONTACT_EMAIL = "info@portugalntn.com";
 
-export function B2BSection() {
-  const t = useTranslations("home.b2b");
-  const locale = useLocale();
+/** Public proof points shown beside the form. Values and labels come from i18n. */
+const stats = ["stat1", "stat2", "stat3", "stat4"] as const;
+
+export function ContactSection() {
+  const t = useTranslations("home.contact");
 
   return (
     <section
@@ -25,12 +23,13 @@ export function B2BSection() {
         backgroundColor: "var(--color-ntn-cream-50)",
         paddingTop: "100px",
         paddingBottom: "100px",
+        scrollMarginTop: "96px",
       }}
     >
       <div className="container-ntn">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-          {/* Left — content */}
+          {/* Left, the pitch and the proof */}
           <div>
             <FadeUp>
               <div style={{ marginBottom: "12px" }}>
@@ -48,36 +47,19 @@ export function B2BSection() {
               </h2>
               <p
                 className="text-body-lg leading-relaxed"
-                style={{ color: "var(--color-ntn-black-800)", marginBottom: "40px" }}
+                style={{ color: "var(--color-ntn-black-800)", marginBottom: "48px" }}
               >
                 {t("body")}
               </p>
             </FadeUp>
 
-            <FadeUp delay={0.15}>
-              <div className="flex flex-wrap" style={{ gap: "16px" }}>
-                <a href={`/${locale}#contact`} className="btn btn-primary">
-                  {t("cta")}
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-                <a href="mailto:info@portugalntn.com" className="btn btn-ghost-dark">
-                  {t("ctaSecondary")}
-                </a>
-              </div>
-            </FadeUp>
-          </div>
-
-          {/* Right — minimalist 2×2 grid, no cards, no borders */}
-          <div>
             <StaggerChildren
               speed="fast"
               className="grid grid-cols-2"
               style={{ rowGap: "32px", columnGap: "40px" } as React.CSSProperties}
             >
-              {highlights.map((h) => (
-                <m.div key={h.value} variants={fadeUpSoft}>
+              {stats.map((s) => (
+                <m.div key={s} variants={fadeUpSoft}>
                   <p
                     className="font-title leading-none"
                     style={{
@@ -87,7 +69,7 @@ export function B2BSection() {
                       marginBottom: "10px",
                     }}
                   >
-                    {h.value}
+                    {t(`${s}Value`)}
                   </p>
                   <p
                     style={{
@@ -98,25 +80,38 @@ export function B2BSection() {
                       fontWeight: 600,
                     }}
                   >
-                    {h.label}
+                    {t(`${s}Label`)}
                   </p>
                 </m.div>
               ))}
             </StaggerChildren>
 
             <FadeUp delay={0.3}>
-              <p
-                style={{
-                  fontStyle: "italic",
-                  fontSize: "14px",
-                  color: "#6b7c5a",
-                  marginTop: "40px",
-                }}
-              >
-                All prices are NET rates. Your margin is yours.
-              </p>
+              <div style={{ marginTop: "48px" }}>
+                <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "6px" }}>
+                  {t("emailLabel")}
+                </p>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="font-ui"
+                  style={{
+                    color: "#2d3b1e",
+                    fontWeight: 700,
+                    fontSize: "17px",
+                    textDecoration: "underline",
+                    textUnderlineOffset: "4px",
+                  }}
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </div>
             </FadeUp>
           </div>
+
+          {/* Right, the form itself. This is the only conversion point on the home. */}
+          <FadeUp delay={0.15}>
+            <ProposalForm />
+          </FadeUp>
         </div>
       </div>
     </section>

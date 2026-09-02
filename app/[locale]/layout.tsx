@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         template: "%s | Portugal NTN Walking",
       },
       description:
-        "Roteiros de caminhada guiados e self-guided pelas paisagens mais extraordinárias de Portugal. Operadora DMC especializada em turismo de caminhada premium.",
+        "Roteiros de caminhada guiados e self-guided pelas paisagens mais extraordinárias de Portugal. Cada percurso desenhado, sinalizado e certificado por quem o opera.",
     }),
     ...(isSpanish && {
       title: {
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         template: "%s | Portugal NTN Walking",
       },
       description:
-        "Rutas de senderismo guiadas y autoguiadas por los paisajes más extraordinarios de Portugal. Operadora DMC especializada en turismo de senderismo premium.",
+        "Rutas de senderismo guiadas y autoguiadas por los paisajes más extraordinarios de Portugal. Cada ruta diseñada, señalizada y certificada por quien la opera.",
     }),
   };
 }

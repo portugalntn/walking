@@ -8,6 +8,7 @@ import { RoutesSection } from "@/components/sections/routes-section";
 import { DestinationsSection } from "@/components/sections/destinations-section";
 import { SustainabilitySection } from "@/components/sections/sustainability-section";
 import { BlogTeaserSection } from "@/components/sections/blog-teaser-section";
+import { ContactSection } from "@/components/sections/contact-section";
 import { BrandElements } from "@/components/ui/brand-elements";
 import { PageFadeIn } from "@/components/ui/page-fade-in";
 
@@ -26,6 +27,7 @@ export default function HomePage() {
         <DestinationsSection />
         <SustainabilitySection />
         <BlogTeaserSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

@@ -24,7 +24,7 @@
       "ctaSecondary": "Meet the Team"
     },
     "intro": {
-      "label": "About Us · DMC",
+      "label": "About Us",
       "title": "Born from the territory.\nOperating with purpose.",
       "body": "Portugal NTN spent 12 years building and structuring walking trails across northern and northeastern Portugal. Now we operate them. Every programme we offer is a programme we designed, certified, and know by heart.",
       "stat1Value": "12",
@@ -33,8 +33,8 @@
       "stat2Label": "Active programmes",
       "stat3Value": "3",
       "stat3Label": "Regions covered",
-      "body2": "We are also a DMC (Destination Management Company) specialised in walking tourism. We create, certify and sell our own programmes to agencies and operators worldwide, with NET rates and a guaranteed 24h response.",
-      "cta": "Work with us",
+      "body2": "Every programme we sell was designed, waymarked and certified by us. We do not resell other people's routes: the team that welcomes you in Portugal is the same one that mapped the trail.",
+      "cta": "Talk to us",
       "ctaAbout": "Discover our story"
     },
     "whyus": {
@@ -84,12 +84,19 @@
       "pillar4": "Cultural Heritage",
       "cta": "Our commitment"
     },
-    "b2b": {
-      "label": "For Travel Partners",
-      "title": "Your local DMC in Portugal.",
-      "body": "We were born in the territory we operate. For 12 years we built and structured walking trails across northern Portugal. Today we are also a DMC. We create, certify and sell our own programmes to agencies and operators worldwide.",
-      "cta": "Request Brochure",
-      "ctaSecondary": "Contact Us"
+    "contact": {
+      "label": "Get in touch",
+      "title": "Let's design your walk.",
+      "body": "Tell us your dates, how many you are and the pace you are looking for. We reply within 24 hours with a tailored proposal, written by the people who know the ground.",
+      "emailLabel": "Rather write to us directly?",
+      "stat1Value": "12",
+      "stat1Label": "Years on the ground",
+      "stat2Value": "9",
+      "stat2Label": "Own programmes",
+      "stat3Value": "3",
+      "stat3Label": "Regions",
+      "stat4Value": "24H",
+      "stat4Label": "Response guarantee"
     },
     "blog": {
       "label": "Trail Journal",
@@ -110,7 +117,8 @@
     "contact": "Contact",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "copyright": "© {year} Portugal NTN Walking. All rights reserved."
+    "copyright": "© {year} Portugal NTN Walking. All rights reserved.",
+    "walkingDesc": "Walking tour operator. We create, operate and sell our own programmes across the territories we know by heart."
   },
   "sustainablePage": {
     "heroLabel": "Sustainability",
@@ -211,7 +219,6 @@
     "from": "From",
     "perPerson": "per person",
     "singleSupp": "Single room supplement",
-    "netNote": "NET rates. Your margin is yours.",
     "availability": "Availability",
     "availabilityNote": "All year round, except the week of Christmas, the week of Easter, and the first two weeks of August.",
     "facts": "At a glance",
@@ -229,17 +236,17 @@
     "mealPackedLunch": "Packed lunch",
     "mealDinner": "Dinner",
     "ctaTitle": "Interested in this program?",
-    "ctaBody": "Request a proposal from our team. Guaranteed 24h response, with NET rates for agencies and operators.",
+    "ctaBody": "Request a proposal from our team. Guaranteed 24h response, with an itinerary tailored to you.",
     "requestProposal": "Request proposal",
     "contact": "Contact",
     "priceNote": "Rates valid for 2026.",
     "payment": "Payment terms",
     "cancellation": "Cancellation policy",
     "formTitle": "Request a proposal",
-    "formIntro": "Fill in the form and our team replies within 24 hours, with NET rates for agencies and operators.",
+    "formIntro": "Fill in the form and our team replies within 24 hours with a proposal tailored to you.",
     "formName": "Full name",
     "formEmail": "Email",
-    "formCompany": "Agency / company",
+    "formGroupSize": "Number of people",
     "formPhone": "Phone (optional)",
     "formMessage": "Message",
     "formMessagePlaceholder": "Tell us preferred dates, group size and anything else that helps us tailor the proposal.",
