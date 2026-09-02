@@ -27,12 +27,8 @@ const TEAM_IMAGES = [
   { src: "/images/about/team-4.jpg", alt: "Caminhada guiada NTN" },
 ];
 
-const features = [
-  { text: "Certified trail network" },
-  { text: "Expert local guides" },
-  { text: "Sustainable operations" },
-  { text: "Own certified programmes" },
-];
+/** Same four badges as the home intro, wording from home.intro.featureN. */
+const features = ["feature1", "feature2", "feature3", "feature4"];
 
 export function AboutPageContent() {
   const t = useTranslations("aboutPage");
@@ -138,12 +134,12 @@ export function AboutPageContent() {
                 <StaggerChildren speed="fast" className="flex flex-wrap gap-3">
                   {features.map((f) => (
                     <m.div
-                      key={f.text}
+                      key={f}
                       variants={fadeUpSoft}
                       style={{ padding: "8px 16px", border: "1px solid rgba(89,105,77,0.35)", borderRadius: "3px" }}
                     >
                       <span style={{ color: "var(--color-ntn-forest-600)", fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500 }}>
-                        {f.text}
+                        {tIntro(f)}
                       </span>
                     </m.div>
                   ))}

@@ -7,9 +7,10 @@ import { Overline } from "@/components/ui/overline";
 import { m } from "framer-motion";
 import { fadeUpSoft } from "@/lib/motion";
 
+/** Icons live here, the wording comes from home.intro.featureN. */
 const features = [
   {
-    text: "Certified trail network",
+    key: "feature1",
     icon: (
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M2 10L4.5 5L7 7.5L9.5 4L12 7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
@@ -17,7 +18,7 @@ const features = [
     ),
   },
   {
-    text: "Expert local guides",
+    key: "feature2",
     icon: (
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <circle cx="7" cy="4.5" r="2" stroke="currentColor" strokeWidth="1.3"/>
@@ -26,7 +27,7 @@ const features = [
     ),
   },
   {
-    text: "Sustainable operations",
+    key: "feature3",
     icon: (
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M7 2C4.24 2 2 4.24 2 7s2.24 5 5 5 5-2.24 5-5S9.76 2 7 2z" stroke="currentColor" strokeWidth="1.3"/>
@@ -35,7 +36,7 @@ const features = [
     ),
   },
   {
-    text: "Own certified programmes",
+    key: "feature4",
     icon: (
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.3"/>
@@ -122,7 +123,7 @@ export function IntroSection() {
               <StaggerChildren speed="fast" className="flex flex-wrap gap-3">
                 {features.map((f) => (
                   <m.div
-                    key={f.text}
+                    key={f.key}
                     variants={fadeUpSoft}
                     className="flex items-center gap-2"
                     style={{
@@ -144,7 +145,7 @@ export function IntroSection() {
                         fontWeight: 500,
                       }}
                     >
-                      {f.text}
+                      {t(f.key)}
                     </span>
                   </m.div>
                 ))}

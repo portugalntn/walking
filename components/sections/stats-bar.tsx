@@ -1,17 +1,21 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { StaggerChildren, CountUp } from "@/components/ui/animated";
 import { m } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
 
+/** Numbers stay here, the wording comes from home.statsBar in each locale. */
 const stats = [
-  { value: 12, suffix: "", label: "Years of expertise", sublabel: "Building & operating trails" },
-  { value: 9,  suffix: "+", label: "Active routes",     sublabel: "1 · 3 · 5 · 8 · 11 days" },
-  { value: 4,  suffix: "",  label: "Regions covered",   sublabel: "North to South Portugal" },
-  { value: 100, suffix: "%", label: "Own programmes",   sublabel: "Designed and certified by us" },
+  { key: "stat1", value: 12,  suffix: "" },
+  { key: "stat2", value: 9,   suffix: "+" },
+  { key: "stat3", value: 4,   suffix: "" },
+  { key: "stat4", value: 100, suffix: "%" },
 ];
 
 export function StatsBar() {
+  const t = useTranslations("home.statsBar");
+
   return (
     <section style={{ backgroundColor: "var(--color-ntn-forest-400)" }}>
       <div
@@ -24,7 +28,7 @@ export function StatsBar() {
         >
           {stats.map((stat, i) => (
             <m.div
-              key={stat.label}
+              key={stat.key}
               variants={fadeUp}
               className="flex flex-col items-center text-center px-6"
               style={{
@@ -44,7 +48,7 @@ export function StatsBar() {
                 className="text-label mb-1.5"
                 style={{ color: "var(--color-ntn-lime)", letterSpacing: "0.14em" }}
               >
-                {stat.label}
+                {t(`${stat.key}Label`)}
               </p>
               <p
                 style={{
@@ -53,7 +57,7 @@ export function StatsBar() {
                   lineHeight: 1.4,
                 }}
               >
-                {stat.sublabel}
+                {t(`${stat.key}Sub`)}
               </p>
             </m.div>
           ))}

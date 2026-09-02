@@ -23,6 +23,16 @@
       "cta": "Ver Programas",
       "ctaSecondary": "Conhecer a Equipa"
     },
+    "statsBar": {
+      "stat1Label": "Anos de experiência",
+      "stat1Sub": "A construir e a operar trilhos",
+      "stat2Label": "Percursos activos",
+      "stat2Sub": "1 · 3 · 5 · 8 · 11 dias",
+      "stat3Label": "Regiões cobertas",
+      "stat3Sub": "De norte a sul de Portugal",
+      "stat4Label": "Programas próprios",
+      "stat4Sub": "Desenhados e certificados por nós"
+    },
     "intro": {
       "label": "Quem Somos",
       "title": "Nascemos do território.\nOperamos com propósito.",
@@ -35,7 +45,11 @@
       "stat3Label": "Regiões cobertas",
       "body2": "Cada programa que vendemos foi desenhado, sinalizado e certificado por nós. Não revendemos percursos de terceiros: a equipa que o recebe em Portugal é a mesma que traçou o trilho.",
       "cta": "Falar connosco",
-      "ctaAbout": "Conheça a nossa história"
+      "ctaAbout": "Conheça a nossa história",
+      "feature1": "Rede de trilhos certificada",
+      "feature2": "Guias locais especializados",
+      "feature3": "Operação sustentável",
+      "feature4": "Programas próprios certificados"
     },
     "whyus": {
       "label": "A nossa diferença",

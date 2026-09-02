@@ -23,6 +23,16 @@
       "cta": "Explorar Programas",
       "ctaSecondary": "Conocer el Equipo"
     },
+    "statsBar": {
+      "stat1Label": "Años de experiencia",
+      "stat1Sub": "Construyendo y operando senderos",
+      "stat2Label": "Rutas activas",
+      "stat2Sub": "1 · 3 · 5 · 8 · 11 días",
+      "stat3Label": "Regiones cubiertas",
+      "stat3Sub": "De norte a sur de Portugal",
+      "stat4Label": "Itinerarios propios",
+      "stat4Sub": "Diseñados y certificados por nosotros"
+    },
     "intro": {
       "label": "Nosotros",
       "title": "Nacidos del territorio.\nOperamos con propósito.",
@@ -35,7 +45,11 @@
       "stat3Label": "Regiones cubiertas",
       "body2": "Cada itinerario que vendemos fue diseñado, señalizado y certificado por nosotros. No revendemos rutas de terceros: el equipo que te recibe en Portugal es el mismo que trazó el sendero.",
       "cta": "Hablar con nosotros",
-      "ctaAbout": "Conozca nuestra historia"
+      "ctaAbout": "Conozca nuestra historia",
+      "feature1": "Red de senderos certificada",
+      "feature2": "Guías locales especializados",
+      "feature3": "Operación sostenible",
+      "feature4": "Itinerarios propios certificados"
     },
     "whyus": {
       "label": "La diferencia NTN",

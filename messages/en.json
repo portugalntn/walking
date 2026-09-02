@@ -23,6 +23,16 @@
       "cta": "Explore Programmes",
       "ctaSecondary": "Meet the Team"
     },
+    "statsBar": {
+      "stat1Label": "Years of expertise",
+      "stat1Sub": "Building & operating trails",
+      "stat2Label": "Active routes",
+      "stat2Sub": "1 · 3 · 5 · 8 · 11 days",
+      "stat3Label": "Regions covered",
+      "stat3Sub": "North to South Portugal",
+      "stat4Label": "Own programmes",
+      "stat4Sub": "Designed and certified by us"
+    },
     "intro": {
       "label": "About Us",
       "title": "Born from the territory.\nOperating with purpose.",
@@ -35,7 +45,11 @@
       "stat3Label": "Regions covered",
       "body2": "Every programme we sell was designed, waymarked and certified by us. We do not resell other people's routes: the team that welcomes you in Portugal is the same one that mapped the trail.",
       "cta": "Talk to us",
-      "ctaAbout": "Discover our story"
+      "ctaAbout": "Discover our story",
+      "feature1": "Certified trail network",
+      "feature2": "Expert local guides",
+      "feature3": "Sustainable operations",
+      "feature4": "Own certified programmes"
     },
     "whyus": {
       "label": "The NTN difference",
