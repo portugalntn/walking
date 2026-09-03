@@ -9,6 +9,7 @@ import { DestinationsSection } from "@/components/sections/destinations-section"
 import { SustainabilitySection } from "@/components/sections/sustainability-section";
 import { BlogTeaserSection } from "@/components/sections/blog-teaser-section";
 import { ContactSection } from "@/components/sections/contact-section";
+import { TradeDoor } from "@/components/sections/trade-door";
 import { BrandElements } from "@/components/ui/brand-elements";
 import { PageFadeIn } from "@/components/ui/page-fade-in";
 
@@ -29,6 +30,7 @@ export default function HomePage() {
         <BlogTeaserSection />
         <ContactSection />
       </main>
+      <TradeDoor />
       <Footer />
     </>
   );

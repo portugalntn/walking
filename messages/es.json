@@ -418,5 +418,11 @@
       "line": "Portugal NTN es una Destination Management Company de senderismo en el Norte y el Nordeste de Portugal. Diseño, señalización, certificación y operación de rutas propias.",
       "public": "Sitio público"
     }
+  },
+  "tradeDoor": {
+    "overline": "Agencias y operadores",
+    "title": "Portugal NTN Exclusive",
+    "lead": "La colección reservada al trade: viajes privados, accesos que no se venden al público y condiciones NET para agencias y operadores.",
+    "cta": "Acceso B2B"
   }
 }

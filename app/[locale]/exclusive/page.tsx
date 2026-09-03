@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: { absolute: "Portugal NTN Exclusive" },
+    // Página de trade com copy ainda provisória: fica fora dos motores de
+    // busca até a copy estar fechada e o domínio próprio configurado.
+    robots: { index: false, follow: false },
     description: t("hero.lead"),
     alternates: {
       canonical: `https://exclusive.portugalntn.com/${locale}`,
