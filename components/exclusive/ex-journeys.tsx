@@ -65,6 +65,7 @@ export function ExJourneys() {
                 }}
               />
               <div
+                className="ex-dark"
                 style={{
                   position: "absolute",
                   inset: "auto 0 0 0",

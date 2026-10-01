@@ -340,7 +340,11 @@
       "journeys": "Journeys",
       "dayTours": "Day tours",
       "howWeWork": "How we work",
-      "enquire": "Enquire"
+      "enquire": "Enquire",
+      "themeLight": "Light",
+      "themeDark": "Dark",
+      "themeToLight": "Switch to light theme",
+      "themeToDark": "Switch to dark theme"
     },
     "hero": {
       "overline": "The trade collection",

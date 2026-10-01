@@ -10,7 +10,7 @@ export function ExHero() {
   const t = useTranslations("exclusive.hero");
 
   return (
-    <section style={{ position: "relative", minHeight: "100svh", display: "flex", flexDirection: "column" }}>
+    <section className="ex-dark" style={{ position: "relative", minHeight: "100svh", display: "flex", flexDirection: "column" }}>
       <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
         <m.div
           initial={{ scale: 1.12 }}

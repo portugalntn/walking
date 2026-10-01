@@ -340,7 +340,11 @@
       "journeys": "Jornadas",
       "dayTours": "Day tours",
       "howWeWork": "Como trabalhamos",
-      "enquire": "Contactar"
+      "enquire": "Contactar",
+      "themeLight": "Claro",
+      "themeDark": "Escuro",
+      "themeToLight": "Mudar para o tema claro",
+      "themeToDark": "Mudar para o tema escuro"
     },
     "hero": {
       "overline": "A coleção para o trade",

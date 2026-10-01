@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 
+import { ExThemeToggle } from "./ex-theme";
+
 const EASE = [0.19, 1, 0.22, 1] as const;
 
 /** Assinatura tipográfica. Enquanto não houver logótipo em versão clara,
@@ -45,6 +47,8 @@ export function ExNavbar() {
 
   return (
     <m.header
+      // Por cima do hero o navbar fica sempre escuro; ao descer segue o tema.
+      className={solid ? undefined : "ex-dark"}
       initial={{ opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: EASE }}
@@ -53,7 +57,7 @@ export function ExNavbar() {
         insetInline: 0,
         top: 0,
         zIndex: 50,
-        backgroundColor: solid ? "rgba(11, 12, 10, 0.86)" : "transparent",
+        backgroundColor: solid ? "var(--ex-glass)" : "transparent",
         backdropFilter: solid ? "blur(14px)" : "none",
         borderBottom: `1px solid ${solid ? "var(--ex-line)" : "transparent"}`,
         transition: "background-color 600ms, border-color 600ms, backdrop-filter 600ms",
@@ -73,6 +77,7 @@ export function ExNavbar() {
               </a>
             ))}
           </div>
+          <ExThemeToggle />
           <a href="#enquiry" className="ex-btn" style={{ padding: "0.8125rem 1.5rem" }}>
             {t("enquire")}
           </a>
@@ -103,7 +108,7 @@ export function ExFooter() {
           <Link href={`/${locale}`} className="ex-over" style={{ textDecoration: "none" }}>
             {t("public")}
           </Link>
-          <span className="ex-over" style={{ color: "rgba(145,143,131,0.5)" }}>
+          <span className="ex-over" style={{ opacity: 0.55 }}>
             © {new Date().getFullYear()} Portugal NTN
           </span>
         </div>

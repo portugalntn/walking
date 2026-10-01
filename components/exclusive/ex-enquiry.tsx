@@ -93,7 +93,7 @@ export function ExEnquiry() {
               />
 
               {status === "error" && (
-                <p className="ex-over" style={{ color: "#c98b7a" }}>
+                <p className="ex-over" style={{ color: "var(--ex-error)" }}>
                   {t("error")}
                 </p>
               )}

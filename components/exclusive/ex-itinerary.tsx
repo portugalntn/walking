@@ -40,7 +40,7 @@ export function ExItinerary() {
         </div>
 
         <m.div
-          className="ex-itin"
+          className="ex-itin ex-dark"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-8%" }}
@@ -143,7 +143,7 @@ export function ExItinerary() {
           </div>
         </m.div>
 
-        <p className="ex-over" style={{ marginTop: "1.25rem", color: "rgba(145,143,131,0.75)" }}>
+        <p className="ex-over" style={{ marginTop: "1.25rem", opacity: 0.75 }}>
           {t("note")}
         </p>
       </div>

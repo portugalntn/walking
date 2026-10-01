@@ -10,6 +10,7 @@ import { ExItinerary } from "@/components/exclusive/ex-itinerary";
 import { ExDayTours } from "@/components/exclusive/ex-daytours";
 import { ExOperators } from "@/components/exclusive/ex-operators";
 import { ExEnquiry } from "@/components/exclusive/ex-enquiry";
+import { exThemeScript } from "@/components/exclusive/ex-theme-script";
 
 /** Serifa de exibição só do EXCLUSIVE. O site público continua em DIN. */
 const exSerif = Cormorant_Garamond({
@@ -46,6 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function ExclusivePage() {
   return (
     <div className={`ex ${exSerif.variable}`}>
+      <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
       <ExNavbar />
       <main>
         <ExHero />
