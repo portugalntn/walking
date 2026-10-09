@@ -3,12 +3,13 @@
 /**
  * Product page, design proposal v2 (reference: /[locale]/programas/[id]/proposta).
  * Photos lead, the day is told as a sequence of moments placed on the real
- * trail, and a sticky booking card keeps the next step in reach.
+ * elevation profile (no map: the route is not published), and a sticky
+ * booking card keeps the next step in reach.
  * Same data as the live page (lib/programs.ts) plus lib/trails.ts.
  * pt-PT, no em dashes (house rule).
  */
 
-import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef, useId } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
@@ -38,13 +39,15 @@ const TX = {
   whyLabel: tri("Why this day", "Porquê este dia", "Por qué este día"),
   dayLabel: tri("The day, step by step", "O dia, passo a passo", "El día, paso a paso"),
   routeLabel: tri("The route", "O percurso", "El recorrido"),
-  routeTitle: tri("Every metre of the trail", "Cada metro do trilho", "Cada metro del sendero"),
+  routeTitle: tri("The shape of the day", "O relevo do dia", "El relieve del día"),
   routeHint: tri(
-    "Move along the elevation profile to follow the walk on the map.",
-    "Percorra o perfil de elevação para seguir a caminhada no mapa.",
-    "Recorra el perfil de elevación para seguir la caminata en el mapa."
+    "The walk drawn kilometre by kilometre. When it ends, move along the profile to see each point.",
+    "A caminhada desenhada quilómetro a quilómetro. No fim, percorra o perfil para ver cada ponto.",
+    "La caminata dibujada kilómetro a kilómetro. Al terminar, recorra el perfil para ver cada punto."
   ),
-  routeSource: tri("Drawn from our own GPS track.", "Desenhado a partir do nosso traçado GPS.", "Dibujado a partir de nuestro trazado GPS."),
+  replay: tri("Walk it again", "Rever o percurso", "Ver de nuevo"),
+  of: tri("of", "de", "de"),
+  altitude: tri("altitude", "altitude", "altitud"),
   start: tri("Start", "Partida", "Salida"),
   finish: tri("Finish", "Chegada", "Llegada"),
   ask: tri("Ask a question", "Fazer uma pergunta", "Hacer una pregunta"),
@@ -299,14 +302,15 @@ export function ProductPageV2({ program, trail }: { program: Program; trail?: Tr
               {/* The route: real GPS trace + linked elevation profile */}
               {trail && (
                 <FadeUp>
-                  <RoutePanel
+                  <ProfilePanel
                     trail={trail}
                     program={program}
                     locale={locale}
                     km={km}
                     labels={{
-                      over: tx("routeLabel"), title: tx("routeTitle"), hint: tx("routeHint"), source: tx("routeSource"),
-                      start: tx("start"), finish: tx("finish"),
+                      over: tx("routeLabel"), title: tx("routeTitle"), hint: tx("routeHint"),
+                      replay: tx("replay"), of: tx("of"), altitude: tx("altitude"),
+                      start: tx("start"), finish: tx("finish"), total: t("total"),
                       min: t("elevMin"), avg: t("elevAvg"), max: t("elevMax"), gain: t("elevGain"), loss: t("elevLoss"),
                     }}
                   />
@@ -652,33 +656,87 @@ function BentoGallery({ images, onOpen, soon, morePhotos }: { images: string[]; 
 }
 
 /**
- * The real GPS trace drawn on a dark panel, linked to an elevation profile:
- * moving along the profile moves a marker along the trail.
+ * Elevation profile of the day, drawn left to right as the walk unfolds:
+ * a marker follows the real relief, the km counter runs and each moment of
+ * the day lights up when it is reached. Afterwards it can be explored with
+ * the pointer. No map on purpose: the route itself is not published.
  */
-function RoutePanel({
+function ProfilePanel({
   trail, program, locale, km, labels,
 }: {
   trail: Trail;
   program: Program;
   locale: Loc;
   km: (n: number) => string;
-  labels: { over: string; title: string; hint: string; source: string; start: string; finish: string; min: string; avg: string; max: string; gain: string; loss: string };
+  labels: {
+    over: string; title: string; hint: string; replay: string; of: string; altitude: string; start: string; finish: string;
+    total: string; min: string; avg: string; max: string; gain: string; loss: string;
+  };
 }) {
   const day = program.days[0];
+  const moments = program.moments ?? [];
   const total = trail.profile[trail.profile.length - 1][0];
   const elevs = trail.profile.map((p) => p[1]);
   const eMin = Math.min(...elevs), eMax = Math.max(...elevs);
-  const peakKm = trail.profile[elevs.indexOf(eMax)][0];
-  const [activeKm, setActiveKm] = useState(peakKm);
-  const profileRef = useRef<SVGSVGElement>(null);
+  const clipId = useId().replace(/:/g, "");
 
-  // Profile geometry (viewBox 1000 x 220, 24 px padding top/bottom)
-  const PW = 1000, PH = 220, PT = 24, PB = 28;
+  // Animation state: km reached by the walk; pointer position overrides it once done.
+  const [progress, setProgress] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [hoverKm, setHoverKm] = useState<number | null>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const raf = useRef<number | null>(null);
+
+  const play = useCallback(() => {
+    if (raf.current) cancelAnimationFrame(raf.current);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(total);
+      return;
+    }
+    const DURATION = 6000;
+    const t0 = performance.now();
+    setPlaying(true);
+    setHoverKm(null);
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / DURATION);
+      const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      setProgress(eased * total);
+      if (t < 1) raf.current = requestAnimationFrame(step);
+      else setPlaying(false);
+    };
+    raf.current = requestAnimationFrame(step);
+  }, [total]);
+
+  // Start once, when the panel is well into view.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          play();
+          io.disconnect();
+        }
+      },
+      { threshold: 0.45 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      if (raf.current) cancelAnimationFrame(raf.current);
+    };
+  }, [play]);
+
+  // Geometry (viewBox 1000 x 220)
+  const PW = 1000, PH = 220, PT = 24, PB = 6;
   const yLo = Math.floor((eMin - 20) / 100) * 100, yHi = Math.ceil((eMax + 20) / 100) * 100;
   const px = (k: number) => (k / total) * PW;
   const py = (e: number) => PT + (1 - (e - yLo) / (yHi - yLo)) * (PH - PT - PB);
   const line = trail.profile.map(([k, e], i) => `${i ? "L" : "M"}${px(k).toFixed(1)},${py(e).toFixed(1)}`).join(" ");
   const area = `${line} L${PW},${PH - PB} L0,${PH - PB} Z`;
+  const yTicks = Array.from({ length: (yHi - yLo) / 100 + 1 }, (_, i) => yLo + i * 100);
+  const kmTicks = Array.from({ length: Math.floor(total) + 1 }, (_, i) => i).filter((k) => total - k > 0.8 || k === 0);
 
   const elevAt = (k: number) => {
     const p = trail.profile;
@@ -690,143 +748,190 @@ function RoutePanel({
     }
     return p[p.length - 1][1];
   };
-  const pointAt = (k: number) => trail.path.reduce((best, pt) => (Math.abs(pt[2] - k) < Math.abs(best[2] - k) ? pt : best), trail.path[0]);
+
+  const activeKm = !playing && hoverKm !== null ? hoverKm : progress;
+  const done = !playing && progress >= total;
+  const reachedIdx = moments.reduce((acc, mo, i) => (mo.km <= activeKm + 0.05 ? i : acc), -1);
+  const current = reachedIdx >= 0 ? moments[reachedIdx] : undefined;
 
   const onMove = (e: React.PointerEvent<SVGSVGElement>) => {
-    const r = profileRef.current?.getBoundingClientRect();
+    if (playing) return;
+    const r = svgRef.current?.getBoundingClientRect();
     if (!r) return;
-    const k = Math.min(total, Math.max(0, ((e.clientX - r.left) / r.width) * total));
-    setActiveKm(k);
+    setHoverKm(Math.min(total, Math.max(0, ((e.clientX - r.left) / r.width) * total)));
   };
 
-  const pad = 60;
-  const mapPts = trail.path.map(([x, y]) => `${x},${y}`).join(" ");
-  const start = trail.path[0], end = trail.path[trail.path.length - 1];
-  const active = pointAt(activeKm);
-  const moments = program.moments ?? [];
-  const yTicks = Array.from({ length: (yHi - yLo) / 100 + 1 }, (_, i) => yLo + i * 100);
+  const ratio = activeKm / total;
 
   return (
-    <div style={{ marginTop: "80px", backgroundColor: "var(--color-ntn-forest-600)", borderRadius: "16px", padding: "clamp(24px, 4vw, 44px)", color: "#fff", overflow: "hidden" }}>
-      <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{labels.over}</Overline>
-      <h2 className="font-title" style={{ fontSize: "clamp(1.9rem, 3.4vw, 2.75rem)", textTransform: "none", lineHeight: 1.1, margin: "14px 0 8px" }}>
-        {labels.title}
-      </h2>
-      <p className="text-body-md" style={{ color: "rgba(255,255,255,0.72)" }}>{labels.hint}</p>
+    <div
+      ref={wrapRef}
+      style={{ marginTop: "80px", backgroundColor: "var(--color-ntn-forest-600)", borderRadius: "16px", padding: "clamp(24px, 4vw, 44px)", color: "#fff", overflow: "hidden" }}
+    >
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", gap: "16px 32px" }}>
+        <div>
+          <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{labels.over}</Overline>
+          <h2 className="font-title" style={{ fontSize: "clamp(1.9rem, 3.4vw, 2.75rem)", textTransform: "none", lineHeight: 1.1, margin: "14px 0 8px" }}>
+            {labels.title}
+          </h2>
+          <p className="text-body-md" style={{ color: "rgba(255,255,255,0.72)", maxWidth: "46ch" }}>{labels.hint}</p>
+        </div>
+        {/* Live counter: distance walked and altitude */}
+        <div style={{ display: "flex", gap: "28px", fontFamily: "var(--font-ui)" }} aria-live="off">
+          <div>
+            <p className="font-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1, color: "var(--color-ntn-lime)", fontVariantNumeric: "tabular-nums" }}>
+              {km(activeKm)}<span style={{ fontSize: "0.45em", marginLeft: "4px" }}>km</span>
+            </p>
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", marginTop: "6px" }}>
+              {labels.of} {program.totalDistance}
+            </p>
+          </div>
+          <div>
+            <p className="font-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1, fontVariantNumeric: "tabular-nums" }}>
+              {elevAt(activeKm)}<span style={{ fontSize: "0.45em", marginLeft: "4px" }}>m</span>
+            </p>
+            <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", marginTop: "6px" }}>{labels.altitude}</p>
+          </div>
+        </div>
+      </div>
 
-      {/* Map */}
-      <svg
-        viewBox={`${-pad} ${-pad} ${trail.width + pad * 2} ${trail.height + pad * 2}`}
-        role="img"
-        aria-label={program.title}
-        style={{ width: "100%", height: "auto", maxHeight: "460px", display: "block", margin: "24px auto 8px" }}
-      >
-        <defs>
-          <pattern id="route-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M80 0H0V80" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-          </pattern>
-        </defs>
-        <rect x={-pad} y={-pad} width={trail.width + pad * 2} height={trail.height + pad * 2} fill="url(#route-grid)" />
-        <polyline points={mapPts} fill="none" stroke="rgba(188,207,2,0.22)" strokeWidth="22" strokeLinecap="round" strokeLinejoin="round" />
-        <m.polyline
-          points={mapPts}
-          fill="none"
-          stroke="var(--color-ntn-lime)"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2.2, ease: "easeInOut" }}
-        />
-        {/* Start / finish, under the numbered moments */}
-        <circle cx={start[0]} cy={start[1]} r="9" fill="#fff" />
-        <circle cx={end[0]} cy={end[1]} r="9" fill="var(--color-ntn-lime)" stroke="#fff" strokeWidth="3" />
-        {/* Moments */}
-        {moments.map((mo, i) => {
-          const [x, y] = pointAt(mo.km);
-          return (
-            <g key={i}>
-              <circle cx={x} cy={y} r="22" fill="var(--color-ntn-forest-600)" stroke="#fff" strokeWidth="3" />
-              <text x={x} y={y} textAnchor="middle" dominantBaseline="central" fill="#fff" style={{ font: "700 22px var(--font-ui)" }}>{i + 1}</text>
-            </g>
-          );
-        })}
-        {/* Active marker */}
-        <circle cx={active[0]} cy={active[1]} r="30" fill="rgba(188,207,2,0.25)" />
-        <circle cx={active[0]} cy={active[1]} r="13" fill="#fff" stroke="var(--color-ntn-lime)" strokeWidth="6" />
-      </svg>
+      {/* Moment reached */}
+      <div style={{ minHeight: "28px", marginTop: "28px", display: "flex", alignItems: "center", gap: "10px", fontFamily: "var(--font-ui)" }}>
+        {current && (
+          <>
+            <span style={{ width: "24px", height: "24px", borderRadius: "9999px", backgroundColor: "var(--color-ntn-lime)", color: "var(--color-ntn-black-900)", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: 700 }}>
+              {reachedIdx + 1}
+            </span>
+            <m.span
+              key={reachedIdx}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+              style={{ fontSize: "15px", fontWeight: 700 }}
+            >
+              {current.title[locale]}
+            </m.span>
+          </>
+        )}
+      </div>
 
       {/* Profile */}
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", marginTop: "18px", paddingTop: "26px" }}>
+        {/* Moment markers along the top */}
+        {moments.map((mo, i) => {
+          const reached = i <= reachedIdx;
+          return (
+            <span
+              key={i}
+              title={mo.title[locale]}
+              style={{
+                position: "absolute", top: 0, left: `${(mo.km / total) * 100}%`, transform: "translateX(-50%)",
+                width: "22px", height: "22px", borderRadius: "9999px",
+                border: `1.5px solid ${reached ? "var(--color-ntn-lime)" : "rgba(255,255,255,0.5)"}`,
+                backgroundColor: reached ? "var(--color-ntn-lime)" : "var(--color-ntn-forest-600)",
+                color: reached ? "var(--color-ntn-black-900)" : "rgba(255,255,255,0.75)",
+                fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 700,
+                display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none",
+                transition: "background-color 0.3s, color 0.3s, border-color 0.3s",
+              }}
+            >
+              {i + 1}
+            </span>
+          );
+        })}
+
+        <div style={{ position: "relative" }}>
         <svg
-          ref={profileRef}
+          ref={svgRef}
           viewBox={`0 0 ${PW} ${PH}`}
           preserveAspectRatio="none"
           onPointerMove={onMove}
           onPointerDown={onMove}
-          style={{ width: "100%", height: "clamp(150px, 20vw, 210px)", display: "block", cursor: "crosshair", touchAction: "pan-y" }}
+          onPointerLeave={() => setHoverKm(null)}
+          role="img"
+          aria-label={`${labels.over}: ${program.totalDistance}`}
+          style={{ width: "100%", height: "clamp(170px, 22vw, 240px)", display: "block", cursor: done ? "crosshair" : "default", touchAction: "pan-y" }}
         >
           <defs>
-            <linearGradient id="profile-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#bccf02" stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#bccf02" stopOpacity="0.02" />
+            <linearGradient id={`${clipId}-fill`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#bccf02" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#bccf02" stopOpacity="0.03" />
             </linearGradient>
+            <clipPath id={clipId}>
+              <rect x="0" y="0" width={px(progress)} height={PH} />
+            </clipPath>
           </defs>
           {yTicks.map((v) => (
             <line key={v} x1="0" x2={PW} y1={py(v)} y2={py(v)} stroke="rgba(255,255,255,0.1)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
           ))}
-          <path d={area} fill="url(#profile-fill)" />
-          <path d={line} fill="none" stroke="var(--color-ntn-lime)" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
           {moments.map((mo, i) => (
-            <line key={i} x1={px(mo.km)} x2={px(mo.km)} y1={PT - 6} y2={PH - PB} stroke="rgba(255,255,255,0.35)" strokeDasharray="3 4" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+            <line key={i} x1={px(mo.km)} x2={px(mo.km)} y1="0" y2={PH - PB} stroke="rgba(255,255,255,0.28)" strokeDasharray="3 4" strokeWidth="1" vectorEffect="non-scaling-stroke" />
           ))}
-          <line x1={px(activeKm)} x2={px(activeKm)} y1="0" y2={PH - PB} stroke="#fff" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+          {/* The day still to come, faint */}
+          <path d={line} fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5" strokeDasharray="2 5" vectorEffect="non-scaling-stroke" />
+          {/* The day walked so far */}
+          <g clipPath={`url(#${clipId})`}>
+            <path d={area} fill={`url(#${clipId}-fill)`} />
+            <path d={line} fill="none" stroke="var(--color-ntn-lime)" strokeWidth="2.5" vectorEffect="non-scaling-stroke" />
+          </g>
+          <line x1={px(activeKm)} x2={px(activeKm)} y1="0" y2={PH - PB} stroke="rgba(255,255,255,0.7)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
         </svg>
-        {/* HTML overlays keep text crisp on a stretched SVG */}
-        {moments.map((mo, i) => (
-          <span
-            key={i}
-            style={{
-              position: "absolute", top: 0, left: `${(mo.km / total) * 100}%`, transform: "translateX(-50%)",
-              width: "20px", height: "20px", borderRadius: "9999px", border: "1.5px solid #fff", backgroundColor: "var(--color-ntn-forest-600)",
-              fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none",
-            }}
-          >
-            {i + 1}
-          </span>
-        ))}
+
+        {/* Walker marker, as HTML so it stays round on a stretched SVG */}
+        <span
+          aria-hidden
+          style={{
+            position: "absolute", left: `${ratio * 100}%`,
+            top: `${(py(elevAt(activeKm)) / PH) * 100}%`,
+            width: "16px", height: "16px", marginLeft: "-8px", marginTop: "-8px", borderRadius: "9999px",
+            backgroundColor: "#fff", border: "4px solid var(--color-ntn-lime)", boxShadow: "0 0 0 8px rgba(188,207,2,0.25)", pointerEvents: "none",
+          }}
+        />
+
         {yTicks.slice(1, -1).map((v) => (
           <span key={v} style={{ position: "absolute", left: 0, top: `${(py(v) / PH) * 100}%`, transform: "translateY(-120%)", fontSize: "10px", color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-ui)", pointerEvents: "none" }}>
             {v} m
           </span>
         ))}
-        <span
-          style={{
-            position: "absolute", top: "28px", left: `${(activeKm / total) * 100}%`,
-            transform: `translateX(${activeKm / total > 0.8 ? "-105%" : "8px"})`,
-            backgroundColor: "#fff", color: "var(--color-ntn-black-900)", borderRadius: "6px", padding: "4px 8px",
-            fontFamily: "var(--font-ui)", fontSize: "12px", fontWeight: 700, whiteSpace: "nowrap", pointerEvents: "none",
-          }}
-        >
-          km {km(activeKm)} · {elevAt(activeKm)} m
-        </span>
-        <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(255,255,255,0.55)", marginTop: "6px" }}>
+
+        </div>
+
+        {/* Distance axis */}
+        <div style={{ position: "relative", height: "18px", marginTop: "8px", fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(255,255,255,0.55)" }}>
+          {kmTicks.map((k) => (
+            <span key={k} style={{ position: "absolute", left: `${(k / total) * 100}%`, transform: k === 0 ? "none" : "translateX(-50%)" }}>
+              {k} km
+            </span>
+          ))}
+          <span style={{ position: "absolute", right: 0, color: "#fff", fontWeight: 700 }}>{program.totalDistance}</span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(255,255,255,0.55)", marginTop: "10px" }}>
           <span>{labels.start} · {typeof program.startPoint === "string" ? program.startPoint : program.startPoint[locale]}</span>
-          <span>{km(trail.length)} km · {labels.finish}</span>
+          {done ? (
+            <button
+              type="button"
+              onClick={play}
+              style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "#fff", background: "none", border: "1px solid rgba(255,255,255,0.3)", borderRadius: "9999px", padding: "6px 12px", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase" }}
+            >
+              <RotateCcw size={12} />
+              {labels.replay}
+            </button>
+          ) : (
+            <span>{labels.finish}</span>
+          )}
         </div>
       </div>
 
-      {/* Stats from the program sheet */}
+      {/* Official figures from the program sheet */}
       {day.elevation && (
-        <dl className="grid grid-cols-2 sm:grid-cols-5" style={{ gap: "18px", marginTop: "28px", paddingTop: "22px", borderTop: "1px solid rgba(255,255,255,0.16)" }}>
+        <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" style={{ gap: "18px", marginTop: "28px", paddingTop: "22px", borderTop: "1px solid rgba(255,255,255,0.16)" }}>
           {[
-            [labels.min, `${day.elevation.min} m`],
-            [labels.avg, `${day.elevation.avg} m`],
-            [labels.max, `${day.elevation.max} m`],
+            [labels.total, program.totalDistance],
             [labels.gain, `+${day.elevation.gain} m`],
             [labels.loss, `-${day.elevation.loss} m`],
+            [labels.max, `${day.elevation.max} m`],
+            [labels.min, `${day.elevation.min} m`],
+            [labels.avg, `${day.elevation.avg} m`],
           ].map(([l, v]) => (
             <div key={l}>
               <dt className="text-label" style={{ color: "rgba(255,255,255,0.55)", marginBottom: "4px" }}>{l}</dt>
@@ -835,7 +940,6 @@ function RoutePanel({
           ))}
         </dl>
       )}
-      <p style={{ marginTop: "18px", fontSize: "11px", color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-ui)" }}>{labels.source}</p>
     </div>
   );
 }
