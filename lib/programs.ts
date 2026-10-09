@@ -18,10 +18,20 @@ export type Day = {
   ascent?: string;
   /** Walking time for the day, e.g. "2h". Used mainly by 1-day routes. */
   walkTime?: string;
+  /** Elevation profile of the trail, in metres. Shown as a small stats row. */
+  elevation?: { min: number; avg: number; max: number; gain: number; loss: number };
   meals: ("breakfast" | "packedLunch" | "dinner")[];
   accommodation?: string;
   gallery?: string[];
   note?: L;
+};
+
+/** A stop in the day, placed by its km on the trail. Drives the day timeline. */
+export type Moment = {
+  km: number;
+  title: L;
+  text: L;
+  image?: string;
 };
 
 export type Program = {
@@ -37,9 +47,15 @@ export type Program = {
   /** Walking difficulty grade (1 to 5) on the NTN scale. See lib/grades.ts. */
   grade: GradeLevel;
   season: L;
-  startPoint: string;
+  /** Proper noun (string) or a localised phrase such as "to be confirmed". */
+  startPoint: string | L;
   totalDistance: string;
+  /** Paragraphs separated by a blank line ("\n\n"). Same for Day.description. */
   overview: L;
+  /** Program-specific note shown under the difficulty gauge. */
+  difficultyNote?: L;
+  /** The day, step by step (1-day programs). */
+  moments?: Moment[];
   days: Day[];
   included: L[];
   notIncluded: L[];
@@ -90,6 +106,27 @@ const sharedCancellation: L[] = [
   tri("Less than 15 days before: non-refundable.", "Menos de 15 dias antes: não reembolsável.", "Menos de 15 días antes: no reembolsable."),
   tri("Travel insurance is recommended.", "Recomendamos seguro de viagem.", "Recomendamos seguro de viaje."),
 ];
+
+/** Items shared by the 2027 one-day programs. */
+const inc = {
+  guide: tri("Expert guide", "Guia especializado", "Guía especializado"),
+  walk: tri("Guided walk", "Caminhada guiada", "Caminata guiada"),
+  snacks: tri("Drinks and snacks during the walk", "Bebidas e snacks durante a caminhada", "Bebidas y aperitivos durante la caminata"),
+  insurance: tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+};
+
+const exc = {
+  /** Transfer to the meeting point. pt carries its own preposition ("no Pinhão", "em Vidago"). */
+  transfer: (en: string, pt: string, es: string): L =>
+    tri(
+      `Transfer between your accommodation and the meeting point in ${en}`,
+      `Transfer entre o alojamento e o ponto de encontro ${pt}`,
+      `Traslado entre el alojamiento y el punto de encuentro en ${es}`
+    ),
+  transport: tri("Transport during the program", "Transporte durante o programa", "Transporte durante el programa"),
+  personal: tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
+  rest: tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+};
 
 export const programs: Record<string, Program> = {
   "douro-8days": {
@@ -634,75 +671,482 @@ export const programs: Record<string, Program> = {
     cancellation: sharedCancellation,
   },
 
+  // ── 1-day programs 2027 (source: InfoTours1DiaWebsite.docx, 07/10/2026) ──
+  // Images are provisional until the product photos are uploaded.
+
   "douro-1day": {
     id: "douro-1day",
     format: "roteiro",
-    title: "Alto Douro Wine Region",
+    title: "Wine Town of Pinhão",
     subtitle: tri(
-      "A guided day among UNESCO vineyards, with a walk and a great wine",
-      "Um dia guiado entre vinhas UNESCO, com caminhada e um grande vinho",
-      "Un día guiado entre viñedos UNESCO, con caminata y un gran vino"
+      "Discover the heart of the Douro on foot, among vineyards, terraces and some of the most iconic views over the valley.",
+      "Descubra o coração do Douro a pé, entre vinhas, socalcos e algumas das vistas mais emblemáticas sobre o vale.",
+      "Descubra el corazón del Duero a pie, entre viñedos, bancales y algunas de las vistas más emblemáticas sobre el valle."
     ),
     region: "Douro Valley",
     heroImage: `${D1}hero-douro-1day.jpg`,
     duration: { days: 1, nights: 0 },
     type: tri("Guided", "Guiado", "Guiado"),
-    difficulty: tri("Moderate", "Moderada", "Moderado"),
-    grade: 3,
+    difficulty: tri("Easy", "Fácil", "Fácil"),
+    grade: 2,
     season: tri("All year", "Todo o ano", "Todo el año"),
-    startPoint: "Peso da Régua",
-    totalDistance: "6 km",
+    startPoint: "Pinhão",
+    totalDistance: "6,47 km",
     overview: tri(
-      "Spend a relaxed day in the heart of the Alto Douro, the world's oldest demarcated wine region and a UNESCO World Heritage site. You walk gentle trails framed by terraced vineyards, with the Douro River opening up below at every turn. The pace is easy but rewarding: enough walking to feel the day, enough time to take in the light and the silence. Then comes the part everyone remembers, a visit to a local winery to taste Douro wines rated by Wine Spectator among the best in the world. Walking, landscape and a great glass of wine, in one unforgettable day.",
-      "Passe um dia tranquilo no coração do Alto Douro, a mais antiga região vinhateira demarcada do mundo e Património Mundial UNESCO. Caminha por trilhos suaves ladeados de socalcos de vinha, com o rio Douro a abrir-se lá em baixo a cada curva. O ritmo é leve mas compensador: caminhada que chegue para sentir o dia, tempo que chegue para absorver a luz e o silêncio. Depois vem a parte que todos recordam: a visita a uma quinta para provar vinhos do Douro classificados pela Wine Spectator entre os melhores do mundo. Caminhada, paisagem e um grande copo de vinho, num dia inesquecível.",
-      "Pase un día tranquilo en el corazón del Alto Duero, la región vinícola demarcada más antigua del mundo y Patrimonio Mundial UNESCO. Camina por senderos suaves flanqueados por bancales de viña, con el río Duero abriéndose abajo en cada curva. El ritmo es ligero pero gratificante: caminata suficiente para sentir el día, tiempo suficiente para absorber la luz y el silencio. Luego llega la parte que todos recuerdan: la visita a una quinta para catar vinos del Duero reconocidos por Wine Spectator entre los mejores del mundo. Caminata, paisaje y una gran copa de vino, en un día inolvidable."
+      "Starting in Pinhão, this walk takes us up the slopes of the Cima Corgo to Casal de Loivos, through a landscape deeply shaped by the vine and by the terraces that mould the Alto Douro Wine Region.\n\nAlong the way, the altitude keeps revealing new perspectives over the valley, the Douro River and Pinhão. After reaching Casal de Loivos, the path gradually returns towards the town through the vineyards, ending at Quinta do Bomfim, where the experience continues with a picnic in a privileged setting above the Douro.",
+      "Partindo do Pinhão, esta caminhada leva-nos pelas encostas do Cima Corgo até Casal de Loivos, atravessando uma paisagem profundamente marcada pela cultura da vinha e pelos socalcos que moldam o Alto Douro Vinhateiro.\n\nAo longo do percurso, a altitude vai revelando novas perspetivas sobre o vale, o rio Douro e o Pinhão. Depois de alcançar Casal de Loivos, o caminho regressa progressivamente em direção à vila através das vinhas, terminando na Quinta do Bomfim, onde a experiência continua com um picnic num cenário privilegiado sobre o Douro.",
+      "Partiendo de Pinhão, esta caminata nos lleva por las laderas del Cima Corgo hasta Casal de Loivos, atravesando un paisaje profundamente marcado por la cultura de la viña y por los bancales que moldean el Alto Duero Vinícola.\n\nA lo largo del recorrido, la altitud va revelando nuevas perspectivas sobre el valle, el río Duero y Pinhão. Tras alcanzar Casal de Loivos, el camino regresa poco a poco hacia el pueblo entre viñedos, terminando en la Quinta do Bomfim, donde la experiencia continúa con un picnic en un escenario privilegiado sobre el Duero."
     ),
     days: [
       {
         day: 1,
-        title: tri("The vineyard trail", "O trilho das vinhas", "El sendero de los viñedos"),
-        trail: "Trilho do Alto Douro Vinhateiro",
+        title: tri("Pinhão to Casal de Loivos Trail", "Trilho do Pinhão – Casal de Loivos", "Sendero de Pinhão a Casal de Loivos"),
+        trail: "Pinhão · Casal de Loivos · Quinta do Bomfim",
         description: tri(
-          "The walk begins gently, on narrow paths edged by dry schist walls and rows of vines that climb the hillsides tier after tier. As we go, the valley keeps opening up: the river curls below, hamlets cling to the slopes, and the light shifts across the terraces. We pass close to everyday Douro life, with traditional yards, vegetable plots and orchards heavy with fruit, a reminder that this is a living, working landscape and not just a postcard. The rhythm is calm but real, with enough up and down to feel that you have walked. We finish at Quinta da Pacheca, where a traditional picnic or lunch gives way to a guided visit to the cellars and a tasting of the estate's wines. An expert guide and private transport are with you from start to finish.",
-          "A caminhada começa suave, por carreiros estreitos entre muros de xisto e fileiras de vinha que sobem a encosta, socalco após socalco. À medida que avançamos, o vale vai-se abrindo: o rio desenha-se lá em baixo, as aldeias agarram-se às vertentes e a luz muda sobre os terraços. Passamos rente ao dia a dia do Douro, com quintais tradicionais, hortas e pomares carregados de fruta, lembrando que esta é uma paisagem viva e de trabalho, não um postal. O ritmo é calmo mas verdadeiro, com subidas e descidas que chegam para sentir que caminhámos. Terminamos na Quinta da Pacheca, onde um piquenique tradicional ou almoço dá lugar a uma visita guiada às caves e à prova dos vinhos da casa. Um guia especializado e transporte privado acompanham-no do início ao fim.",
-          "La caminata empieza suave, por sendas estrechas entre muros de esquisto e hileras de viña que suben la ladera, bancal tras bancal. A medida que avanzamos, el valle se va abriendo: el río se dibuja abajo, las aldeas se aferran a las laderas y la luz cambia sobre las terrazas. Pasamos junto al día a día del Duero, con patios tradicionales, huertas y vergeles cargados de fruta, recordando que este es un paisaje vivo y de trabajo, no una postal. El ritmo es tranquilo pero real, con subidas y bajadas suficientes para sentir que has caminado. Terminamos en la Quinta da Pacheca, donde un picnic tradicional o almuerzo da paso a una visita guiada a las bodegas y a la cata de los vinos de la casa. Un guía especializado y transporte privado le acompañan de principio a fin."
+          "The walk begins in Pinhão and soon leaves the town behind to enter the wine slopes that surround the valley. The route follows rural paths between estates and vineyard plots, climbing gradually towards Casal de Loivos.\n\nThis first part is the most demanding of the route, but also the one where the landscape changes most visibly. As we gain altitude, ever wider views open up over Pinhão, the Douro River and the terraces that draw the slopes of the region.\n\nReaching Casal de Loivos, the route crosses one of the areas with the best perspective over the valley before heading back. From here the walk is mostly downhill, again between vineyards and farm tracks, offering a different reading of the Douro landscape.\n\nThe route ends at Quinta do Bomfim, next to Pinhão. A historic estate of the Symington family, linked to the production of Dow's Port since 1896, the quinta is surrounded by vineyards overlooking the Douro. Here the walk gives way to a picnic, a chance to enjoy the landscape and the flavours of the region at an easy pace.",
+          "A caminhada começa no Pinhão e rapidamente deixa o ambiente da vila para entrar nas encostas vinhateiras que rodeiam o vale. O percurso segue por caminhos rurais entre quintas e parcelas de vinha, acompanhando a subida gradual em direção a Casal de Loivos.\n\nEsta primeira parte é a mais exigente do percurso, mas também aquela em que a paisagem se transforma de forma mais evidente. À medida que ganhamos altitude, surgem vistas cada vez mais amplas sobre o Pinhão, o rio Douro e os socalcos que desenham as encostas da região.\n\nChegando a Casal de Loivos, o percurso atravessa uma das zonas com melhor perspetiva sobre o vale antes de iniciar o regresso. A partir daqui, a caminhada torna-se predominantemente descendente, novamente entre vinhas e caminhos agrícolas, proporcionando uma leitura diferente da paisagem duriense.\n\nO percurso termina na Quinta do Bomfim, junto ao Pinhão. Propriedade histórica da família Symington e ligada à produção do Porto Dow's desde 1896, a quinta encontra-se rodeada por vinhas com vista sobre o Douro. Aqui, a caminhada dá lugar a um picnic, permitindo desfrutar com calma da paisagem e dos sabores da região.",
+          "La caminata empieza en Pinhão y enseguida deja el ambiente del pueblo para entrar en las laderas vinícolas que rodean el valle. El recorrido sigue caminos rurales entre quintas y parcelas de viña, acompañando la subida gradual hacia Casal de Loivos.\n\nEsta primera parte es la más exigente del recorrido, pero también aquella en la que el paisaje se transforma de forma más evidente. A medida que ganamos altitud, aparecen vistas cada vez más amplias sobre Pinhão, el río Duero y los bancales que dibujan las laderas de la región.\n\nAl llegar a Casal de Loivos, el recorrido atraviesa una de las zonas con mejor perspectiva sobre el valle antes de iniciar el regreso. A partir de aquí la caminata es mayoritariamente descendente, de nuevo entre viñedos y caminos agrícolas, ofreciendo otra lectura del paisaje del Duero.\n\nEl recorrido termina en la Quinta do Bomfim, junto a Pinhão. Propiedad histórica de la familia Symington y ligada a la producción del Oporto Dow's desde 1896, la quinta está rodeada de viñedos con vistas al Duero. Aquí la caminata da paso a un picnic, para disfrutar con calma del paisaje y de los sabores de la región."
         ),
-        distance: "6 km",
-        walkTime: "2h",
+        distance: "6,47 km",
+        ascent: "+401 m",
+        elevation: { min: 87, avg: 248, max: 424, gain: 401, loss: 397 },
         meals: [],
         gallery: [`${D1}walk-1.jpg`, `${D1}walk-2.jpg`, `${D1}walk-3.jpg`, `${D1}walk-4.jpg`],
       },
     ],
+    difficultyNote: tri(
+      "A relatively short route, but with a significant climb in the first part up to Casal de Loivos. Recommended for participants in reasonable physical condition who are comfortable with walks that include some ascent.",
+      "Percurso de distância relativamente curta, mas com uma subida significativa na primeira parte até Casal de Loivos. Recomendado a participantes com uma condição física regular e confortáveis com caminhadas que incluam algum desnível.",
+      "Recorrido de distancia relativamente corta, pero con una subida significativa en la primera parte hasta Casal de Loivos. Recomendado para participantes con una condición física regular y cómodos con caminatas que incluyan algo de desnivel."
+    ),
+    moments: [
+      {
+        km: 0,
+        title: tri("Setting off from Pinhão", "Partida do Pinhão", "Salida desde Pinhão"),
+        text: tri(
+          "We meet in Pinhão, by the Douro, and soon leave the town behind for the wine slopes around the valley.",
+          "Encontramo-nos no Pinhão, junto ao Douro, e rapidamente deixamos a vila para entrar nas encostas vinhateiras que rodeiam o vale.",
+          "Nos encontramos en Pinhão, junto al Duero, y enseguida dejamos el pueblo para entrar en las laderas vinícolas que rodean el valle."
+        ),
+        image: `${D1}walk-4.jpg`,
+      },
+      {
+        km: 1.2,
+        title: tri("The climb between estates", "A subida entre quintas", "La subida entre quintas"),
+        text: tri(
+          "Rural paths between estates and vineyard plots. The most demanding part of the day, and the one where the landscape changes most.",
+          "Caminhos rurais entre quintas e parcelas de vinha. É a parte mais exigente do dia, e aquela em que a paisagem mais se transforma.",
+          "Caminos rurales entre quintas y parcelas de viña. Es la parte más exigente del día, y aquella en la que el paisaje más se transforma."
+        ),
+        image: `${D1}walk-1.jpg`,
+      },
+      {
+        km: 2.5,
+        title: tri("Casal de Loivos", "Casal de Loivos", "Casal de Loivos"),
+        text: tri(
+          "The high point of the walk, with one of the best perspectives over the valley, the river and the terraces of the Cima Corgo.",
+          "O ponto mais alto da caminhada, com uma das melhores perspetivas sobre o vale, o rio e os socalcos do Cima Corgo.",
+          "El punto más alto de la caminata, con una de las mejores perspectivas sobre el valle, el río y los bancales del Cima Corgo."
+        ),
+        image: `${D1}walk-2.jpg`,
+      },
+      {
+        km: 4.3,
+        title: tri("Back down through the vines", "Regresso pelas vinhas", "Regreso entre viñedos"),
+        text: tri(
+          "Mostly downhill now, between vineyards and farm tracks, for a different reading of the Douro landscape.",
+          "Agora predominantemente a descer, entre vinhas e caminhos agrícolas, numa leitura diferente da paisagem duriense.",
+          "Ahora sobre todo de bajada, entre viñedos y caminos agrícolas, con otra lectura del paisaje del Duero."
+        ),
+        image: `${D1}walk-3.jpg`,
+      },
+      {
+        km: 6.4,
+        title: tri("Picnic at Quinta do Bomfim", "Picnic na Quinta do Bomfim", "Picnic en la Quinta do Bomfim"),
+        text: tri(
+          "A historic Symington estate, linked to Dow's Port since 1896. A picnic and a wine experience among vines overlooking the Douro.",
+          "Propriedade histórica da família Symington, ligada ao Porto Dow's desde 1896. Picnic e experiência vínica entre vinhas com vista sobre o Douro.",
+          "Propiedad histórica de la familia Symington, ligada al Oporto Dow's desde 1896. Picnic y experiencia vinícola entre viñedos con vistas al Duero."
+        ),
+        image: `${D1}hero-douro-1day.jpg`,
+      },
+    ],
     included: [
-      tri("Expert guide", "Guia especializado", "Guía especializado"),
-      tri("Guided hiking trail", "Trilho pedestre guiado", "Sendero pedestre guiado"),
-      tri("Private driver and private car", "Motorista e viatura privados", "Conductor y vehículo privados"),
-      tri("Refreshments", "Bebidas e snacks", "Bebidas y aperitivos"),
-      tri("Traditional picnic or lunch at Quinta da Pacheca", "Piquenique tradicional ou almoço na Quinta da Pacheca", "Picnic tradicional o almuerzo en la Quinta da Pacheca"),
-      tri("Visit and wine tasting at Quinta da Pacheca", "Visita e prova de vinhos na Quinta da Pacheca", "Visita y cata de vinos en la Quinta da Pacheca"),
-      tri("Personal insurance", "Seguro pessoal", "Seguro personal"),
+      inc.guide,
+      inc.walk,
+      inc.snacks,
+      tri("Picnic at Quinta do Bomfim", "Picnic na Quinta do Bomfim", "Picnic en la Quinta do Bomfim"),
+      tri("Wine experience at Quinta do Bomfim", "Experiência vínica na Quinta do Bomfim", "Experiencia vinícola en la Quinta do Bomfim"),
+      inc.insurance,
     ],
     notIncluded: [
-      tri("Personal expenses", "Despesas pessoais", "Gastos personales"),
-      tri("Anything not listed as included", "Tudo o que não esteja indicado como incluído", "Todo lo que no figure como incluido"),
+      exc.transfer("Pinhão", "no Pinhão", "Pinhão"),
+      exc.transport,
+      exc.personal,
+      exc.rest,
     ],
     extras: [],
     highlights: [
-      tri("Vineyard trails through a UNESCO World Heritage landscape", "Trilhos entre vinhas, em paisagem Património Mundial UNESCO", "Senderos entre viñedos, en un paisaje Patrimonio Mundial UNESCO"),
-      tri("Panoramic views over the Douro River and its terraces", "Vistas panorâmicas sobre o rio Douro e os socalcos", "Vistas panorámicas sobre el río Duero y los bancales"),
-      tri("A guided walk of about 6 km, around 2 hours", "Caminhada guiada de cerca de 6 km, à volta de 2 horas", "Caminata guiada de unos 6 km, alrededor de 2 horas"),
-      tri("A premium tasting of award-winning Douro wines", "Prova premium de vinhos do Douro premiados", "Cata premium de vinos del Duero premiados"),
-      tri("A traditional picnic or a typical local lunch", "Piquenique tradicional ou almoço típico local", "Picnic tradicional o almuerzo típico local"),
+      tri("Vineyards and terraces of the Alto Douro", "Vinhas e socalcos do Alto Douro", "Viñedos y bancales del Alto Duero"),
+      tri("Panoramic views over Pinhão", "Vistas panorâmicas sobre o Pinhão", "Vistas panorámicas sobre Pinhão"),
+      tri("Casal de Loivos and the Douro landscape", "Casal de Loivos e paisagem do Douro", "Casal de Loivos y el paisaje del Duero"),
+      tri("Picnic at Quinta do Bomfim", "Picnic na Quinta do Bomfim", "Picnic en la Quinta do Bomfim"),
     ],
-    priceTiers: [
-      { pax: 1, price: 786 },
-      { pax: 2, price: 960 },
-      { pax: 3, price: 1134 },
-      { pax: 4, price: 1308 },
-      { pax: 5, price: 1482 },
-      { pax: 6, price: 1656 },
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "saomamede-1day": {
+    id: "saomamede-1day",
+    format: "roteiro",
+    title: "São Mamede Walkways",
+    subtitle: tri(
+      "Walk the Tua Valley and discover a Douro where nature, food, wine and art meet.",
+      "Caminhe pelo Vale do Tua e descubra um Douro onde natureza, gastronomia, vinho e arte se encontram.",
+      "Camine por el Valle del Tua y descubra un Duero donde naturaleza, gastronomía, vino y arte se encuentran."
+    ),
+    region: "Douro Valley",
+    heroImage: `${G}douro-b.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Easy", "Fácil", "Fácil"),
+    grade: 2,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: tri("To be confirmed", "A definir", "Por confirmar"),
+    totalDistance: "7,9 km",
+    overview: tri(
+      "Discover one of the most surprising landscapes in the municipality of Alijó on a walk along the São Mamede de Ribatua Walkways, in the heart of the Tua Valley Regional Natural Park. Along the route, the stream, the rocky slopes and the Mediterranean vegetation keep you company, with privileged views over the surrounding landscape.\n\nAfter the walk, the program continues with a regional lunch in Alijó, followed by a wine experience at Quanta Terra. Set in a former Casa do Douro distillery, Quanta Terra brings together winemaking and contemporary culture, for a close to the day where wine and art share the same space.",
+      "Descubra uma das paisagens mais surpreendentes do concelho de Alijó numa caminhada pelos Passadiços de São Mamede de Ribatua, no coração do Parque Natural Regional do Vale do Tua. Ao longo do percurso, a ribeira, as encostas rochosas e a vegetação mediterrânica acompanham o caminho, com vistas privilegiadas sobre a paisagem envolvente.\n\nDepois da caminhada, o programa continua com um almoço regional em Alijó, seguido de uma experiência vínica na Quanta Terra. Instalada numa antiga destilaria da Casa do Douro, a Quanta Terra combina produção de vinho e cultura contemporânea, proporcionando um final de dia onde o vinho e a arte partilham o mesmo espaço.",
+      "Descubra uno de los paisajes más sorprendentes del municipio de Alijó en una caminata por las Pasarelas de São Mamede de Ribatua, en el corazón del Parque Natural Regional del Valle del Tua. A lo largo del recorrido, el arroyo, las laderas rocosas y la vegetación mediterránea acompañan el camino, con vistas privilegiadas sobre el paisaje.\n\nDespués de la caminata, el programa continúa con un almuerzo regional en Alijó, seguido de una experiencia vinícola en Quanta Terra. Instalada en una antigua destilería de la Casa do Douro, Quanta Terra combina producción de vino y cultura contemporánea, para un final de día en el que el vino y el arte comparten el mismo espacio."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Nature, food, wine and art in the Douro", "Natureza, gastronomia, vinho e arte no Douro", "Naturaleza, gastronomía, vino y arte en el Duero"),
+        trail: "São Mamede de Ribatua · Alijó · Favaios",
+        description: tri(
+          "The day begins with a 7.9 km walk along the São Mamede de Ribatua Walkways, a route that follows the natural landscape of the Tua Valley through paths, boardwalks and steeper stretches. Waterfalls, streams, slopes and views over the valley make this walk a different way of getting to know the land of Alijó.\n\nDuring the experience there is also a chance to visit the Ujo Viewpoint, one of the most iconic panoramic points of the Tua Valley, with a wide view over the reservoir and the slopes around it.\n\nOnce the walk is over, we head to Alijó for lunch at a local restaurant, where regional cooking marks the transition between the morning walk and the afternoon experience.\n\nThe program ends at Quanta Terra, in Favaios, a wine tourism space set in a former Casa do Douro distillery. The visit brings the world of wine together with contemporary art, ending with a wine tasting and a different take on the wine culture of the Douro.",
+          "O dia começa com uma caminhada de 7,9 km pelos Passadiços de São Mamede de Ribatua, um percurso que acompanha a paisagem natural do Vale do Tua entre caminhos, passadiços e zonas de maior desnível. Cascatas, linhas de água, encostas e vistas sobre o vale fazem desta caminhada uma forma diferente de conhecer o território de Alijó.\n\nDurante a experiência, haverá também oportunidade de conhecer o Miradouro do Ujo, um dos pontos panorâmicos mais emblemáticos do Vale do Tua, com uma ampla vista sobre a albufeira e as encostas que a rodeiam.\n\nTerminada a caminhada, seguimos para Alijó para um almoço num restaurante local, onde a gastronomia regional marca a transição entre a manhã de caminhada e a experiência da tarde.\n\nO programa termina na Quanta Terra, em Favaios, num espaço de enoturismo instalado numa antiga destilaria da Casa do Douro. A visita cruza o universo do vinho com a arte contemporânea, terminando com uma prova de vinhos e uma abordagem diferente à cultura vínica do Douro.",
+          "El día empieza con una caminata de 7,9 km por las Pasarelas de São Mamede de Ribatua, un recorrido que acompaña el paisaje natural del Valle del Tua entre caminos, pasarelas y zonas de mayor desnivel. Cascadas, cursos de agua, laderas y vistas sobre el valle hacen de esta caminata una forma diferente de conocer el territorio de Alijó.\n\nDurante la experiencia habrá también ocasión de conocer el Mirador del Ujo, uno de los puntos panorámicos más emblemáticos del Valle del Tua, con una amplia vista sobre el embalse y las laderas que lo rodean.\n\nTerminada la caminata, seguimos hacia Alijó para almorzar en un restaurante local, donde la gastronomía regional marca la transición entre la mañana de caminata y la experiencia de la tarde.\n\nEl programa termina en Quanta Terra, en Favaios, un espacio de enoturismo instalado en una antigua destilería de la Casa do Douro. La visita cruza el universo del vino con el arte contemporáneo y termina con una cata de vinos y una mirada diferente a la cultura vinícola del Duero."
+        ),
+        distance: "7,9 km",
+        ascent: "+333 m",
+        elevation: { min: 168, avg: 266, max: 404, gain: 333, loss: 333 },
+        meals: [],
+        gallery: [],
+      },
     ],
-    priceTiersNote: tiersNoteOver6,
+    difficultyNote: tri(
+      "An easy route, with some changes in level and stretches of stairs along the walkways. Suitable for active participants used to occasional walks, with no technical experience needed.",
+      "Percurso de dificuldade fácil, com alguns desníveis e secções de escadas ao longo dos passadiços. Adequado a participantes ativos e habituados a caminhadas ocasionais, não sendo necessária experiência técnica.",
+      "Recorrido de dificultad fácil, con algunos desniveles y tramos de escaleras a lo largo de las pasarelas. Adecuado para participantes activos y habituados a caminatas ocasionales, sin necesidad de experiencia técnica."
+    ),
+    included: [
+      inc.guide,
+      inc.walk,
+      tri("Private driver and vehicle during the program", "Motorista e viatura privados durante o programa", "Conductor y vehículo privados durante el programa"),
+      tri("Transport between the different points of the experience", "Transporte entre os diferentes pontos da experiência", "Transporte entre los diferentes puntos de la experiencia"),
+      inc.snacks,
+      tri("Regional lunch", "Almoço regional", "Almuerzo regional"),
+      tri("Visit and wine tasting at Quanta Terra", "Visita e prova de vinhos na Quanta Terra", "Visita y cata de vinos en Quanta Terra"),
+      inc.insurance,
+    ],
+    notIncluded: [
+      tri("Transfer between your accommodation and the meeting point", "Transfer entre o alojamento e o ponto de encontro", "Traslado entre el alojamiento y el punto de encuentro"),
+      exc.personal,
+      exc.rest,
+    ],
+    extras: [],
+    highlights: [
+      tri("São Mamede de Ribatua Walkways", "Passadiços de São Mamede de Ribatua", "Pasarelas de São Mamede de Ribatua"),
+      tri("Ujo Viewpoint and the Tua Valley", "Miradouro do Ujo e Vale do Tua", "Mirador del Ujo y Valle del Tua"),
+      tri("Regional food in Alijó", "Gastronomia regional em Alijó", "Gastronomía regional en Alijó"),
+      tri("Wine and art at Quanta Terra", "Vinho e arte na Quanta Terra", "Vino y arte en Quanta Terra"),
+    ],
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "monks-1day": {
+    id: "monks-1day",
+    format: "roteiro",
+    title: "Douro Monks & Vineyards Trail",
+    subtitle: tri(
+      "A walk through the heart of the Douro, among vineyards, terraces and historic paths, with wine and regional flavours along the way.",
+      "Uma caminhada pelo coração do Douro, entre vinhas, socalcos e caminhos históricos, com vinho e sabores regionais pelo percurso.",
+      "Una caminata por el corazón del Duero, entre viñedos, bancales y caminos históricos, con vino y sabores regionales por el camino."
+    ),
+    region: "Douro Valley",
+    heroImage: `${G}monge-1.jpg`,
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Difficult", "Difícil", "Difícil"),
+    grade: 4,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Peso da Régua",
+    totalDistance: "16,7 km",
+    overview: tri(
+      "Starting in Peso da Régua, this circular walk is inspired by one of the final stretches of the historic Monks' Way and crosses a landscape deeply tied to the culture of the vine and of wine.\n\nThroughout the day, the route crosses wine slopes, rural paths and high ground with wide views over the Douro and the Varosa valley. Near the end of the walk, we stop at Quinta do Valdalágea for a wine experience with regional snacks.\n\nAfter the tasting, we walk the last kilometres back to Peso da Régua, where the program ends with a traditional lunch.",
+      "Partindo do Peso da Régua, esta caminhada circular inspira-se num dos troços finais do histórico Caminho dos Monges e percorre uma paisagem profundamente ligada à cultura da vinha e do vinho.\n\nAo longo do dia, o percurso atravessa encostas vinhateiras, caminhos rurais e zonas elevadas com amplas perspetivas sobre o Douro e o vale do Varosa. Já perto do final da caminhada, fazemos uma pausa na Quinta do Valdalágea para uma experiência vínica acompanhada por petiscos regionais.\n\nDepois da prova, retomamos os últimos quilómetros em direção ao Peso da Régua, onde o programa termina com um almoço tradicional.",
+      "Partiendo de Peso da Régua, esta caminata circular se inspira en uno de los tramos finales del histórico Camino de los Monjes y recorre un paisaje profundamente ligado a la cultura de la viña y del vino.\n\nA lo largo del día, el recorrido atraviesa laderas vinícolas, caminos rurales y zonas elevadas con amplias perspectivas sobre el Duero y el valle del Varosa. Ya cerca del final de la caminata, hacemos una pausa en la Quinta do Valdalágea para una experiencia vinícola acompañada de aperitivos regionales.\n\nDespués de la cata, retomamos los últimos kilómetros hacia Peso da Régua, donde el programa termina con un almuerzo tradicional."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("The Monks' Way among Douro vineyards", "Caminhos dos Monges entre vinhas do Douro", "Caminos de los Monjes entre viñedos del Duero"),
+        trail: "Peso da Régua · Valdigem · Peso da Régua",
+        description: tri(
+          "The walk begins in Peso da Régua and gradually leaves the town to enter the wine slopes that define this part of the Douro.\n\nFor much of the route we walk among vineyards, terraces and rural paths across a landscape shaped over centuries by winegrowing. The successive climbs and descents reveal different perspectives over the land, alternating between open areas, small villages and slopes facing the Douro and Varosa valleys.\n\nPart of this land is linked to the Monks' Way, a route inspired by the old paths used by the Cistercian monks and by the historic connection between the interior and the Douro. Here that heritage meets a landscape where the vine is the dominant element.\n\nAt km 12.9 we reach Quinta do Valdalágea, in Valdigem, a few kilometres from Peso da Régua. The estate has around 35 hectares of vineyards, spread across different exposures and altitudes, within the historic area of the Douro Demarcated Region. Here we stop for a wine tasting with snacks and produce from the estate, discovering the Douro through its flavours too. After the experience, we walk the last kilometres back to Peso da Régua. Back in town, the day ends with a traditional lunch, closing a demanding but complete walk through the Douro wine country.",
+          "A caminhada começa no Peso da Régua e deixa progressivamente a zona urbana para entrar nas encostas vinhateiras que caracterizam esta parte do Douro.\n\nDurante grande parte do percurso, caminhamos entre vinhas, socalcos e caminhos rurais que atravessam uma paisagem moldada durante séculos pela viticultura. As sucessivas subidas e descidas permitem descobrir diferentes perspetivas sobre o território, alternando entre zonas mais abertas, pequenas povoações e encostas voltadas para os vales do Douro e do Varosa.\n\nParte deste território está associada ao Caminho dos Monges, uma rota inspirada nos antigos percursos utilizados pelos monges de Cister e na ligação histórica entre o interior e o Douro. Aqui, essa herança cruza-se com uma paisagem onde a vinha é o elemento dominante.\n\nAo km 12,9 chegamos à Quinta do Valdalágea, situada em Valdigem, a poucos quilómetros do Peso da Régua. A propriedade possui cerca de 35 hectares de vinha, distribuídos por diferentes exposições e altitudes, e encontra-se dentro da área histórica da Região Demarcada do Douro. Aqui fazemos uma pausa para uma prova de vinhos acompanhada por petiscos e produtos da quinta, permitindo descobrir o Douro também através dos seus sabores. A própria propriedade promove experiências de degustação associadas aos vinhos e produtos locais. Depois da experiência, retomamos os últimos quilómetros do percurso em direção ao Peso da Régua. De volta à cidade, o dia termina com um almoço tradicional, encerrando uma caminhada exigente mas completa pelo território vinhateiro do Douro.",
+          "La caminata empieza en Peso da Régua y deja poco a poco la zona urbana para entrar en las laderas vinícolas que caracterizan esta parte del Duero.\n\nDurante gran parte del recorrido caminamos entre viñedos, bancales y caminos rurales que atraviesan un paisaje moldeado durante siglos por la viticultura. Las sucesivas subidas y bajadas permiten descubrir distintas perspectivas del territorio, alternando zonas más abiertas, pequeñas aldeas y laderas orientadas a los valles del Duero y del Varosa.\n\nParte de este territorio está asociada al Camino de los Monjes, una ruta inspirada en los antiguos caminos utilizados por los monjes del Císter y en la conexión histórica entre el interior y el Duero. Aquí esa herencia se cruza con un paisaje donde la viña es el elemento dominante.\n\nEn el km 12,9 llegamos a la Quinta do Valdalágea, en Valdigem, a pocos kilómetros de Peso da Régua. La propiedad tiene unas 35 hectáreas de viñedo, repartidas en distintas orientaciones y altitudes, dentro del área histórica de la Región Demarcada del Duero. Aquí hacemos una pausa para una cata de vinos acompañada de aperitivos y productos de la quinta, descubriendo el Duero también a través de sus sabores. Después de la experiencia, retomamos los últimos kilómetros hacia Peso da Régua. De vuelta en la ciudad, el día termina con un almuerzo tradicional, cerrando una caminata exigente pero completa por el territorio vinícola del Duero."
+        ),
+        distance: "16,7 km",
+        shape: "circular",
+        ascent: "+654 m",
+        elevation: { min: 49, avg: 165, max: 293, gain: 654, loss: 654 },
+        meals: [],
+        gallery: [],
+      },
+    ],
+    difficultyNote: tri(
+      "A long and demanding route, with several climbs and descents over the day. Recommended for participants in good physical condition with regular experience of medium and long distance walks. No mountaineering skills are needed, but it does require stamina.",
+      "Percurso longo e exigente, com várias subidas e descidas acumuladas ao longo do dia. Recomendado a participantes com boa condição física e experiência regular em caminhadas de média e longa distância. Não requer conhecimentos técnicos de montanhismo, mas exige resistência física.",
+      "Recorrido largo y exigente, con varias subidas y bajadas acumuladas a lo largo del día. Recomendado para participantes con buena condición física y experiencia regular en caminatas de media y larga distancia. No requiere conocimientos técnicos de montañismo, pero exige resistencia física."
+    ),
+    included: [
+      inc.guide,
+      inc.walk,
+      inc.snacks,
+      tri("Wine tasting at Quinta do Valdalágea", "Prova de vinhos na Quinta do Valdalágea", "Cata de vinos en la Quinta do Valdalágea"),
+      tri("Snacks and regional produce during the wine experience", "Petiscos e produtos regionais durante a experiência vínica", "Aperitivos y productos regionales durante la experiencia vinícola"),
+      tri("Traditional lunch in Peso da Régua", "Almoço tradicional no Peso da Régua", "Almuerzo tradicional en Peso da Régua"),
+      inc.insurance,
+    ],
+    notIncluded: [
+      exc.transfer("Peso da Régua", "no Peso da Régua", "Peso da Régua"),
+      exc.transport,
+      exc.personal,
+      exc.rest,
+    ],
+    extras: [],
+    highlights: [
+      tri("Douro vineyards and terraces", "Vinhas e socalcos do Douro", "Viñedos y bancales del Duero"),
+      tri("Historic paths between Régua and Valdigem", "Caminhos históricos entre Régua e Valdigem", "Caminos históricos entre Régua y Valdigem"),
+      tri("Wine tasting and snacks at Quinta do Valdalágea", "Prova de vinhos e petiscos na Quinta do Valdalágea", "Cata de vinos y aperitivos en la Quinta do Valdalágea"),
+      tri("Views over the Douro and Varosa valleys", "Paisagens sobre os vales do Douro e Varosa", "Paisajes sobre los valles del Duero y del Varosa"),
+    ],
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "vidago-1day": {
+    id: "vidago-1day",
+    format: "roteiro",
+    title: "Vidago & Arcossó Wine Trail",
+    subtitle: tri(
+      "A walk through the rural landscapes of Vidago, with vineyards, Trás-os-Montes wine and traditional flavours along the way.",
+      "Uma caminhada pelas paisagens rurais de Vidago, com vinhas, vinho de Trás-os-Montes e sabores tradicionais pelo caminho.",
+      "Una caminata por los paisajes rurales de Vidago, con viñedos, vino de Trás-os-Montes y sabores tradicionales por el camino."
+    ),
+    region: "Trás-os-Montes",
+    heroImage: "/images/routes/tras-os-montes-1.jpg",
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    grade: 3,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Vidago",
+    totalDistance: "13,8 km",
+    overview: tri(
+      "Starting in Vidago, this circular walk crosses the rural landscape around the town, following old paths, small villages and areas with wide views over the Tâmega valley. Along the way, local heritage meets a landscape of vineyards, fields and small inland Trás-os-Montes villages.\n\nAt km 9, the walk brings us to Quinta de Arcossó, where we stop to see the vineyards and taste the wines made on the estate. After the wine experience, we walk back towards Vidago, where the day ends with a regional lunch at a traditional restaurant.",
+      "Partindo de Vidago, esta caminhada circular percorre a paisagem rural que envolve a vila, seguindo por antigos caminhos, pequenas aldeias e zonas com amplas vistas sobre o vale do rio Tâmega. Ao longo do percurso, o património local cruza-se com uma paisagem de vinhas, campos e pequenas povoações do interior transmontano.\n\nAo km 9, a caminhada conduz-nos à Quinta de Arcossó, onde fazemos uma pausa para conhecer as vinhas e provar os vinhos produzidos nesta propriedade. Depois da experiência vínica, retomamos o percurso em direção a Vidago, onde o dia termina com um almoço de cozinha regional num restaurante tradicional.",
+      "Partiendo de Vidago, esta caminata circular recorre el paisaje rural que rodea el pueblo, siguiendo antiguos caminos, pequeñas aldeas y zonas con amplias vistas sobre el valle del río Tâmega. A lo largo del recorrido, el patrimonio local se cruza con un paisaje de viñedos, campos y pequeños pueblos del interior de Trás-os-Montes.\n\nEn el km 9, la caminata nos lleva a la Quinta de Arcossó, donde hacemos una pausa para conocer los viñedos y catar los vinos producidos en la propiedad. Después de la experiencia vinícola, retomamos el recorrido hacia Vidago, donde el día termina con un almuerzo de cocina regional en un restaurante tradicional."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("PR2 CHV · Vidago–Arcossó", "PR2 CHV · Vidago–Arcossó", "PR2 CHV · Vidago–Arcossó"),
+        trail: "Vidago · Arcossó · Vidago",
+        description: tri(
+          "The walk begins by the Tâmega River and gradually leaves Vidago behind to enter a rural landscape of old paths, farm fields and small villages.\n\nThe route passes through Arcossó, where the higher ground offers a new perspective over Vidago and the Tâmega valley. Between rural areas and small hamlets we also find traces of the old Corgo railway line, a memory of the rail link that marked this region.\n\nAt km 9 we reach Quinta de Arcossó. Here we pause the walk for a visit among the vines, followed by a tasting of the estate's wines. Set at around 400 metres of altitude on granite soils, these vineyards are part of the wine identity of this corner of Trás-os-Montes.\n\nAfter the tasting, we pick up the trail again for the final kilometres to Vidago. The route ends back by the Tâmega, before we sit down to a lunch of traditional Trás-os-Montes cooking, closing the day at the table after the walk.",
+          "A caminhada começa junto ao rio Tâmega e deixa progressivamente Vidago para entrar numa paisagem rural marcada por caminhos antigos, campos agrícolas e pequenas povoações.\n\nO percurso passa por Arcossó, onde a posição mais elevada permite observar Vidago e o vale do Tâmega a partir de uma nova perspetiva. Entre zonas rurais e pequenos núcleos habitados, encontramos também vestígios da antiga Linha do Corgo, uma memória da ligação ferroviária que marcou esta região.\n\nAo km 9 chegamos à Quinta de Arcossó. Aqui fazemos uma pausa na caminhada para uma visita entre as vinhas, seguida de uma prova dos vinhos da propriedade. Situadas a cerca de 400 metros de altitude e em solos de origem granítica, estas vinhas fazem parte da identidade vitivinícola desta zona de Trás-os-Montes.\n\nDepois da prova, retomamos o trilho para os quilómetros finais até Vidago. O percurso termina novamente junto ao Tâmega, antes de seguirmos para um almoço de cozinha tradicional transmontana, encerrando o dia à mesa depois da caminhada.",
+          "La caminata empieza junto al río Tâmega y deja poco a poco Vidago para entrar en un paisaje rural marcado por caminos antiguos, campos de cultivo y pequeñas aldeas.\n\nEl recorrido pasa por Arcossó, donde la posición más elevada permite observar Vidago y el valle del Tâmega desde una nueva perspectiva. Entre zonas rurales y pequeños núcleos habitados encontramos también vestigios de la antigua Línea del Corgo, memoria de la conexión ferroviaria que marcó esta región.\n\nEn el km 9 llegamos a la Quinta de Arcossó. Aquí hacemos una pausa en la caminata para una visita entre los viñedos, seguida de una cata de los vinos de la propiedad. Situados a unos 400 metros de altitud y en suelos de origen granítico, estos viñedos forman parte de la identidad vitivinícola de esta zona de Trás-os-Montes.\n\nDespués de la cata, retomamos el sendero para los últimos kilómetros hasta Vidago. El recorrido termina de nuevo junto al Tâmega, antes de seguir hacia un almuerzo de cocina tradicional transmontana, cerrando el día en la mesa después de la caminata."
+        ),
+        distance: "13,8 km",
+        shape: "circular",
+        ascent: "+433 m",
+        elevation: { min: 315, avg: 377, max: 457, gain: 433, loss: 433 },
+        meals: [],
+        gallery: [],
+      },
+    ],
+    difficultyNote: tri(
+      "A moderate route, mainly because of its distance and the accumulated ascent over the day. Suitable for active participants used to regular walks, with no technical experience needed.",
+      "Percurso de dificuldade moderada, sobretudo pela sua distância e pelo desnível acumulado ao longo do dia. Adequado a participantes ativos e habituados a caminhadas regulares, sem necessidade de experiência técnica.",
+      "Recorrido de dificultad moderada, sobre todo por su distancia y por el desnivel acumulado a lo largo del día. Adecuado para participantes activos y habituados a caminatas regulares, sin necesidad de experiencia técnica."
+    ),
+    included: [
+      inc.guide,
+      inc.walk,
+      inc.snacks,
+      tri("Visit to the vineyards of Quinta de Arcossó", "Visita às vinhas da Quinta de Arcossó", "Visita a los viñedos de la Quinta de Arcossó"),
+      tri("Wine tasting at Quinta de Arcossó", "Prova de vinhos na Quinta de Arcossó", "Cata de vinos en la Quinta de Arcossó"),
+      tri("Regional lunch in Vidago", "Almoço regional em Vidago", "Almuerzo regional en Vidago"),
+      inc.insurance,
+    ],
+    notIncluded: [
+      exc.transfer("Vidago", "em Vidago", "Vidago"),
+      exc.transport,
+      exc.personal,
+      exc.rest,
+    ],
+    extras: [],
+    highlights: [
+      tri("Rural landscape and the Tâmega valley", "Paisagem rural e vale do Tâmega", "Paisaje rural y valle del Tâmega"),
+      tri("Paths and villages around Vidago", "Caminhos e aldeias em redor de Vidago", "Caminos y aldeas alrededor de Vidago"),
+      tri("Vineyard visit and tasting at Quinta de Arcossó", "Visita às vinhas e prova na Quinta de Arcossó", "Visita a los viñedos y cata en la Quinta de Arcossó"),
+      tri("Traditional Trás-os-Montes cooking", "Gastronomia tradicional de Trás-os-Montes", "Gastronomía tradicional de Trás-os-Montes"),
+    ],
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "podence-1day": {
+    id: "podence-1day",
+    format: "roteiro",
+    title: "Podence & Azibo Experience",
+    subtitle: tri(
+      "Culture, nature and calm by the waters of the Azibo, in a day that combines a walk, local heritage and a boat trip with a picnic.",
+      "Cultura, natureza e tranquilidade junto às águas do Azibo, numa experiência que combina caminhada, património e um passeio de barco com picnic.",
+      "Cultura, naturaleza y tranquilidad junto a las aguas del Azibo, en una experiencia que combina caminata, patrimonio y un paseo en barco con picnic."
+    ),
+    region: "Trás-os-Montes",
+    heroImage: "/images/routes/tras-os-montes-2.jpg",
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Very easy", "Muito fácil", "Muy fácil"),
+    grade: 1,
+    season: tri("March to October", "Março a outubro", "Marzo a octubre"),
+    startPoint: "Podence",
+    totalDistance: "4,58 km",
+    overview: tri(
+      "The day begins in Podence, home of the famous Caretos, whose carnival tradition is inscribed on the UNESCO Representative List of the Intangible Cultural Heritage of Humanity.\n\nThe experience continues by the Azibo Reservoir, where we set off on an easy walk through the protected landscape around the reservoir. The route follows natural paths, wooded areas and open ground with views over the water and the surrounding hills.\n\nAt the end of the walk, we swap the trail for a boat for a relaxed trip on the Azibo Reservoir, with a picnic on board.",
+      "O dia começa em Podence, terra dos famosos Caretos, cuja tradição carnavalesca integra a Lista Representativa do Património Cultural Imaterial da Humanidade da UNESCO.\n\nA experiência continua junto à Albufeira do Azibo, onde iniciamos uma caminhada de baixa dificuldade pela paisagem protegida que envolve a albufeira. O percurso segue por caminhos naturais, zonas arborizadas e áreas abertas com vistas sobre a água e as colinas envolventes.\n\nNo final da caminhada, trocamos o trilho pelo barco para uma experiência tranquila na Albufeira do Azibo, acompanhada por um picnic a bordo.",
+      "El día empieza en Podence, tierra de los famosos Caretos, cuya tradición de carnaval forma parte de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad de la UNESCO.\n\nLa experiencia continúa junto al Embalse del Azibo, donde iniciamos una caminata de baja dificultad por el paisaje protegido que rodea el embalse. El recorrido sigue caminos naturales, zonas arboladas y áreas abiertas con vistas sobre el agua y las colinas.\n\nAl final de la caminata, cambiamos el sendero por el barco para una experiencia tranquila en el Embalse del Azibo, con un picnic a bordo."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Walk at the Azibo Reservoir", "Caminhada na Albufeira do Azibo", "Caminata en el Embalse del Azibo"),
+        trail: "Podence · Albufeira do Azibo",
+        description: tri(
+          "After meeting in Podence, we head to the Fraga da Pegada beach area, where the walk begins.\n\nThe route runs along the Azibo Reservoir, on easy natural paths with little change in level. Over its 4.58 km, the water is with you for much of the way, alternating with wooded areas, open spaces and different perspectives over the surrounding landscape.\n\nThe walk lies within an area of high natural and scenic value, making for a calm and accessible route, ideal for anyone who wants to enjoy the land without a high physical demand.\n\nOnce the trail is done, we reach the boarding point for the second part of the experience. From here we set off by boat across the waters of the Azibo, seeing the landscape from a different angle.\n\nDuring the trip a picnic is served on board, closing the day in a relaxed way and leaving time to take in the calm of the reservoir.",
+          "Depois do encontro em Podence, seguimos para a zona da Praia da Fraga da Pegada, onde começa a caminhada.\n\nO percurso desenvolve-se junto à Albufeira do Azibo, por caminhos naturais de baixa dificuldade e com pouco desnível. Ao longo dos 4,58 km, a água acompanha grande parte da experiência, alternando com zonas arborizadas, espaços abertos e diferentes perspetivas sobre a paisagem envolvente.\n\nA caminhada insere-se numa área de elevado valor natural e paisagístico, proporcionando um percurso calmo e acessível, ideal para quem procura desfrutar do território sem uma exigência física elevada.\n\nDepois de completar o trilho, chegamos ao ponto de embarque para a segunda parte da experiência. A partir daqui, seguimos de barco pelas águas do Azibo, observando a paisagem a partir de uma perspetiva diferente.\n\nDurante o passeio, é servido um picnic a bordo, encerrando o dia de forma descontraída e permitindo aproveitar com calma a tranquilidade da albufeira.",
+          "Después del encuentro en Podence, seguimos hacia la zona de la Playa de Fraga da Pegada, donde empieza la caminata.\n\nEl recorrido transcurre junto al Embalse del Azibo, por caminos naturales de baja dificultad y con poco desnivel. A lo largo de sus 4,58 km, el agua acompaña gran parte de la experiencia, alternando con zonas arboladas, espacios abiertos y distintas perspectivas sobre el paisaje.\n\nLa caminata se sitúa en un área de elevado valor natural y paisajístico, con un recorrido tranquilo y accesible, ideal para quien quiere disfrutar del territorio sin una gran exigencia física.\n\nAl completar el sendero, llegamos al punto de embarque para la segunda parte de la experiencia. Desde aquí seguimos en barco por las aguas del Azibo, observando el paisaje desde otra perspectiva.\n\nDurante el paseo se sirve un picnic a bordo, cerrando el día de forma relajada y permitiendo disfrutar con calma de la tranquilidad del embalse."
+        ),
+        distance: "4,58 km",
+        ascent: "+162 m",
+        elevation: { min: 601, avg: 627, max: 667, gain: 162, loss: 118 },
+        meals: [],
+        gallery: [],
+      },
+    ],
+    difficultyNote: tri(
+      "A short, accessible route with little change in level, mostly on natural paths along the Azibo Reservoir. Suitable for most participants in normal physical condition, with no previous walking experience needed.",
+      "Percurso curto, acessível e com pouco desnível, realizado maioritariamente por caminhos naturais junto à Albufeira do Azibo. Adequado à maioria dos participantes com uma condição física normal e sem necessidade de experiência prévia em caminhadas.",
+      "Recorrido corto, accesible y con poco desnivel, realizado mayoritariamente por caminos naturales junto al Embalse del Azibo. Adecuado para la mayoría de los participantes con una condición física normal y sin necesidad de experiencia previa en caminatas."
+    ),
+    included: [
+      inc.guide,
+      inc.walk,
+      inc.snacks,
+      tri("Boat trip on the Azibo Reservoir", "Passeio de barco na Albufeira do Azibo", "Paseo en barco por el Embalse del Azibo"),
+      tri("Picnic during the boat trip", "Picnic durante a experiência de barco", "Picnic durante la experiencia en barco"),
+      inc.insurance,
+    ],
+    notIncluded: [
+      exc.transfer("Podence", "em Podence", "Podence"),
+      exc.personal,
+      exc.rest,
+    ],
+    extras: [],
+    highlights: [
+      tri("The Caretos of Podence, UNESCO heritage", "Caretos de Podence e Património UNESCO", "Caretos de Podence y Patrimonio UNESCO"),
+      tri("Azibo Reservoir Protected Landscape", "Paisagem Protegida da Albufeira do Azibo", "Paisaje Protegido del Embalse del Azibo"),
+      tri("An easy walk by the reservoir", "Caminhada tranquila junto à albufeira", "Caminata tranquila junto al embalse"),
+      tri("Boat trip with a picnic", "Passeio de barco com picnic", "Paseo en barco con picnic"),
+    ],
+    payment: sharedPayment,
+    cancellation: sharedCancellation,
+  },
+
+  "chaves-1day": {
+    id: "chaves-1day",
+    format: "roteiro",
+    title: "Chaves & São Lourenço Walkways",
+    subtitle: tri(
+      "A walk between the city, the rural landscape and the flavours of Trás-os-Montes, ending in the historic heart of Chaves.",
+      "Uma caminhada entre a cidade, a paisagem rural e os sabores de Trás-os-Montes, com final no coração histórico de Chaves.",
+      "Una caminata entre la ciudad, el paisaje rural y los sabores de Trás-os-Montes, con final en el corazón histórico de Chaves."
+    ),
+    region: "Trás-os-Montes",
+    heroImage: "/images/routes/tras-os-montes-3.jpg",
+    duration: { days: 1, nights: 0 },
+    type: tri("Guided", "Guiado", "Guiado"),
+    difficulty: tri("Moderate", "Moderada", "Moderada"),
+    grade: 3,
+    season: tri("All year", "Todo o ano", "Todo el año"),
+    startPoint: "Chaves",
+    totalDistance: "14,7 km",
+    overview: tri(
+      "The day begins in Chaves and heads on foot towards São Lourenço, gradually leaving the city behind for a more rural landscape of traditional paths, high ground and views over the land around Chaves.\n\nHalfway through the walk, we stop for a tasting of regional produce, with cured ham, cheeses and local wine. Then we walk back towards Chaves, where the day ends with lunch in the historic centre, close to some of the most iconic remains of the ancient Aquae Flaviae.",
+      "O dia começa em Chaves e segue a pé em direção a São Lourenço, deixando progressivamente o ambiente urbano para entrar numa paisagem mais rural, marcada por caminhos tradicionais, zonas elevadas e vistas sobre o território flaviense.\n\nA meio da caminhada, fazemos uma pausa para uma degustação de produtos regionais, com presunto, queijos e vinho local. Depois, retomamos o percurso em direção a Chaves, onde o dia termina com um almoço no centro histórico, junto a alguns dos elementos mais emblemáticos da antiga Aquae Flaviae.",
+      "El día empieza en Chaves y sigue a pie hacia São Lourenço, dejando poco a poco el ambiente urbano para entrar en un paisaje más rural, marcado por caminos tradicionales, zonas elevadas y vistas sobre el territorio de Chaves.\n\nA mitad de la caminata hacemos una pausa para una degustación de productos regionales, con jamón curado, quesos y vino local. Después retomamos el recorrido hacia Chaves, donde el día termina con un almuerzo en el centro histórico, junto a algunos de los elementos más emblemáticos de la antigua Aquae Flaviae."
+    ),
+    days: [
+      {
+        day: 1,
+        title: tri("Walk between Chaves and São Lourenço", "Caminhada entre Chaves e São Lourenço", "Caminata entre Chaves y São Lourenço"),
+        trail: "Chaves · São Lourenço · Chaves",
+        description: tri(
+          "The walk begins in the city of Chaves and heads towards São Lourenço, gradually gaining height as we leave the centre behind. The route combines rural paths, natural areas and different perspectives over the surroundings of Chaves.\n\nAt 14.7 km long and with a moderate accumulated ascent, the trail offers a varied experience, alternating gradual climbs, more open areas and stretches heading back down to the valley. At km 6.5 we stop at Casa dos Presuntos Zeca Moura to get to know some of the most representative flavours of the region. The experience includes a tasting of cured ham and cheeses with regional wine, a moment of rest before the second half of the walk.\n\nAfter the tasting, we walk back towards Chaves. Arriving in the city makes a natural transition from nature to history, ending in the centre of a city deeply marked by its Roman past.\n\nKnown in antiquity as Aquae Flaviae, Chaves still preserves some of the most important remains of that period, including Trajan's Bridge over the Tâmega River and the old Roman baths. The bridge is one of the main symbols of the city and one of the most important legacies of the Romanisation of this region.\n\nThe day ends with lunch in the historic centre of Chaves, pairing local cooking with the atmosphere of a city where more than two thousand years of history are still present.",
+          "A caminhada começa na cidade de Chaves e segue em direção a São Lourenço, ganhando progressivamente altitude à medida que nos afastamos do centro urbano. O percurso combina caminhos rurais, zonas naturais e diferentes perspetivas sobre a envolvente de Chaves.\n\nCom 14,7 km de extensão e um desnível acumulado moderado, o trilho oferece uma experiência variada, alternando entre subidas graduais, zonas mais abertas e troços de regresso em direção ao vale. Ao km 6,5 fazemos uma pausa na Casa dos Presuntos Zeca Moura para conhecer alguns dos sabores mais representativos da região. A experiência inclui uma degustação de presunto e queijos, acompanhada por vinho regional, criando um momento de descanso antes da segunda metade da caminhada.\n\nDepois da degustação, retomamos o percurso em direção a Chaves. A chegada à cidade cria uma transição natural entre a componente de natureza e o património histórico, terminando no centro de uma cidade profundamente marcada pela presença romana.\n\nConhecida na Antiguidade como Aquae Flaviae, Chaves preserva ainda hoje alguns dos testemunhos mais importantes desse período, incluindo a Ponte de Trajano sobre o rio Tâmega e as antigas termas romanas. A ponte é um dos principais símbolos da cidade e um dos legados mais importantes da romanização desta região.\n\nO dia termina com um almoço no centro histórico de Chaves, combinando gastronomia local com o ambiente de uma cidade onde mais de dois mil anos de história continuam presentes.",
+          "La caminata empieza en la ciudad de Chaves y sigue hacia São Lourenço, ganando altitud poco a poco a medida que nos alejamos del centro urbano. El recorrido combina caminos rurales, zonas naturales y distintas perspectivas sobre los alrededores de Chaves.\n\nCon 14,7 km de longitud y un desnivel acumulado moderado, el sendero ofrece una experiencia variada, alternando subidas graduales, zonas más abiertas y tramos de regreso hacia el valle. En el km 6,5 hacemos una pausa en la Casa dos Presuntos Zeca Moura para conocer algunos de los sabores más representativos de la región. La experiencia incluye una degustación de jamón curado y quesos, acompañada de vino regional, un momento de descanso antes de la segunda mitad de la caminata.\n\nDespués de la degustación, retomamos el recorrido hacia Chaves. La llegada a la ciudad crea una transición natural entre la naturaleza y el patrimonio histórico, terminando en el centro de una ciudad profundamente marcada por la presencia romana.\n\nConocida en la Antigüedad como Aquae Flaviae, Chaves conserva aún hoy algunos de los testimonios más importantes de ese periodo, como el Puente de Trajano sobre el río Tâmega y las antiguas termas romanas. El puente es uno de los principales símbolos de la ciudad y uno de los legados más importantes de la romanización de esta región.\n\nEl día termina con un almuerzo en el centro histórico de Chaves, combinando gastronomía local con el ambiente de una ciudad donde más de dos mil años de historia siguen presentes."
+        ),
+        distance: "14,7 km",
+        ascent: "+485 m",
+        elevation: { min: 347, avg: 462, max: 649, gain: 485, loss: 485 },
+        meals: [],
+        gallery: [],
+      },
+    ],
+    difficultyNote: tri(
+      "A moderate route, mainly because of its distance and the accumulated ascent over the day. Recommended for active participants used to regular walks, with no technical experience needed.",
+      "Percurso de dificuldade moderada, sobretudo pela sua distância e pelo desnível acumulado ao longo do dia. Recomendado a participantes ativos e habituados a caminhadas regulares, sem necessidade de experiência técnica.",
+      "Recorrido de dificultad moderada, sobre todo por su distancia y por el desnivel acumulado a lo largo del día. Recomendado para participantes activos y habituados a caminatas regulares, sin necesidad de experiencia técnica."
+    ),
+    included: [
+      inc.guide,
+      inc.walk,
+      inc.snacks,
+      tri("Tasting of cured ham and cheeses", "Degustação de presunto e queijos", "Degustación de jamón curado y quesos"),
+      tri("Regional wine during the tasting", "Vinho regional durante a degustação", "Vino regional durante la degustación"),
+      tri("Lunch in the centre of Chaves", "Almoço no centro de Chaves", "Almuerzo en el centro de Chaves"),
+      inc.insurance,
+    ],
+    notIncluded: [
+      exc.transfer("Chaves", "em Chaves", "Chaves"),
+      exc.transport,
+      exc.personal,
+      exc.rest,
+    ],
+    extras: [],
+    highlights: [
+      tri("A walk between Chaves and São Lourenço", "Caminhada entre Chaves e São Lourenço", "Caminata entre Chaves y São Lourenço"),
+      tri("Rural landscapes and views over the valley", "Paisagens rurais e vistas sobre o vale", "Paisajes rurales y vistas sobre el valle"),
+      tri("Tasting of cured ham, cheeses and regional wine", "Degustação de presunto, queijos e vinho regional", "Degustación de jamón curado, quesos y vino regional"),
+      tri("The historic centre and Roman legacy of Chaves", "Centro histórico e legado romano de Chaves", "Centro histórico y legado romano de Chaves"),
+    ],
     payment: sharedPayment,
     cancellation: sharedCancellation,
   },

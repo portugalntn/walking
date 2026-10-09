@@ -87,7 +87,7 @@
     "destinations": {
       "label": "Onde Operamos",
       "title": "Onde caminhamos,\nsomos locais.",
-      "body": "Operamos nas regiões que conhecemos melhor, do Douro às montanhas de Trás-os-Montes, do Gerês ao Algarve. Cada destino é território onde temos raízes."
+      "body": "Operamos nas regiões que conhecemos melhor, do Douro às montanhas de Trás-os-Montes, do Gerês ao Caminho de Santiago Interior. Cada destino é território onde temos raízes."
     },
     "sustainability": {
       "label": "O Nosso Compromisso",
@@ -276,7 +276,14 @@
     "faqCardBody": "Reservas, pagamentos, o que levar, dimensão dos grupos e muito mais, tudo num só lugar.",
     "faqCardCta": "Ver as FAQ",
     "difficultyHeading": "Grau de dificuldade",
-    "gradeScaleLink": "Ver a escala completa"
+    "gradeScaleLink": "Ver a escala completa",
+    "elevMin": "Elevação mínima",
+    "elevAvg": "Elevação média",
+    "elevMax": "Elevação máxima",
+    "elevGain": "Ganho de elevação",
+    "elevLoss": "Perda de elevação",
+    "priceOnRequestTitle": "Preço sob consulta",
+    "priceOnRequestBody": "Os preços deste programa estão a ser finalizados. Diga-nos as datas e o número de pessoas e enviamos uma proposta à medida."
   },
   "aboutPage": {
     "heroLabel": "Sobre nós",
@@ -285,7 +292,7 @@
     "companyLabel": "A nossa empresa",
     "companyTitle": "O Portugal genuíno, a um ritmo humano",
     "companyBody1": "Desenhamos programas em pequenos grupos e à medida, em torno da aventura, da cultura e da gastronomia, assentes num contacto privilegiado com o que há de mais genuíno em Portugal, em harmonia com as comunidades locais e com uma abordagem sustentável ao território.",
-    "companyBody2": "Os nossos programas de caminhada estruturados vão de 1 a 15 dias, em formato guiado e autoguiado, pelo Norte de Portugal, Lisboa e Algarve.",
+    "companyBody2": "Os nossos programas de caminhada estruturados vão de 1 a 15 dias, em formato guiado e autoguiado, pelo Norte e Nordeste de Portugal.",
     "stat1Value": "12",
     "stat1Label": "Anos de experiência",
     "stat2Value": "1 a 15",

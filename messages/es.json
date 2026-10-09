@@ -87,7 +87,7 @@
     "destinations": {
       "label": "Dónde Operamos",
       "title": "Donde caminamos,\nsomos locales.",
-      "body": "Operamos en las regiones que mejor conocemos, del Duero a las montañas de Trás-os-Montes, del Gerês al Algarve. Cada destino es territorio donde tenemos raíces."
+      "body": "Operamos en las regiones que mejor conocemos, del Duero a las montañas de Trás-os-Montes, del Gerês al Camino de Santiago Interior. Cada destino es territorio donde tenemos raíces."
     },
     "sustainability": {
       "label": "Nuestro Compromiso",
@@ -276,7 +276,14 @@
     "faqCardBody": "Reservas, pagos, qué llevar, tamaño de los grupos y mucho más, todo en un solo lugar.",
     "faqCardCta": "Ver las FAQ",
     "difficultyHeading": "Grado de dificultad",
-    "gradeScaleLink": "Ver la escala completa"
+    "gradeScaleLink": "Ver la escala completa",
+    "elevMin": "Elevación mínima",
+    "elevAvg": "Elevación media",
+    "elevMax": "Elevación máxima",
+    "elevGain": "Desnivel positivo",
+    "elevLoss": "Desnivel negativo",
+    "priceOnRequestTitle": "Precio bajo consulta",
+    "priceOnRequestBody": "Los precios de este programa se están cerrando. Indíquenos las fechas y el número de personas y le enviaremos una propuesta a medida."
   },
   "aboutPage": {
     "heroLabel": "Sobre nosotros",
@@ -285,7 +292,7 @@
     "companyLabel": "Nuestra empresa",
     "companyTitle": "El Portugal genuino, a un ritmo humano",
     "companyBody1": "Diseñamos programas en grupos pequeños y a medida, en torno a la aventura, la cultura y la gastronomía, basados en un contacto privilegiado con lo más genuino de Portugal, en armonía con las comunidades locales y con un enfoque sostenible del territorio.",
-    "companyBody2": "Nuestros programas de senderismo estructurados van de 1 a 15 días, en formato guiado y autoguiado, por el norte de Portugal, Lisboa y el Algarve.",
+    "companyBody2": "Nuestros programas de senderismo estructurados van de 1 a 15 días, en formato guiado y autoguiado, por el Norte y Nordeste de Portugal.",
     "stat1Value": "12",
     "stat1Label": "Años de experiencia",
     "stat2Value": "1 a 15",

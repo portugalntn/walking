@@ -137,12 +137,12 @@ export function Footer() {
               </p>
               <ul className="space-y-2" style={{ lineHeight: 2 }}>
                 {[
-                  "Alto Douro Wine Region",
+                  "Wine Town of Pinhão",
+                  "Douro Monks & Vineyards Trail",
                   "Peneda-Gerês National Park",
                   "Trás-os-Montes",
-                  "Mystic Sintra",
-                  "Arrábida Natural Park",
-                  "Quadrassal e Romeu",
+                  "Vidago & Arcossó Wine Trail",
+                  "Podence & Azibo Experience",
                 ].map((name) => (
                   <li key={name}>
                     <Link

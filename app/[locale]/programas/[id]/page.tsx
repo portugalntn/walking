@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { BrandElements } from "@/components/ui/brand-elements";
 import { PageFadeIn } from "@/components/ui/page-fade-in";
 import { ProductPageContent } from "@/components/sections/product-page-content";
 import { getProgram } from "@/lib/programs";
-import { routes } from "@/lib/destinations";
+import { routes, isHiddenRoute } from "@/lib/destinations";
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { id, locale } = await params;
+  // Hidden programs stay in the data (the EXCLUSIVE reads them) but have no public page.
+  if (isHiddenRoute(id)) notFound();
   const program = getProgram(id);
   const route = routes.find((r) => r.id === id);
 

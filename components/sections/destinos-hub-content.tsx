@@ -13,11 +13,11 @@ type Loc = "en" | "pt" | "es";
 
 const L = {
   overline: { en: "Our destinations", pt: "Os nossos destinos", es: "Nuestros destinos" },
-  title: { en: "Portugal, north to south", pt: "Portugal, de norte a sul", es: "Portugal, de norte a sur" },
+  title: { en: "Northern Portugal", pt: "O Norte de Portugal", es: "El Norte de Portugal" },
   intro: {
-    en: "We are specialists in the North and Northeast of Portugal, the territories we know by heart and helped to shape. We also guide one-day walks in the Algarve and around Lisbon and Sintra.",
-    pt: "Somos especialistas no Norte e Nordeste de Portugal, os territórios que conhecemos de cor e ajudámos a estruturar. Também guiamos caminhadas de um dia no Algarve e em Lisboa e Sintra.",
-    es: "Somos especialistas en el Norte y Nordeste de Portugal, los territorios que conocemos de memoria y ayudamos a estructurar. También guiamos caminatas de un día en el Algarve y en Lisboa y Sintra.",
+    en: "We are specialists in the North and Northeast of Portugal, the territories we know by heart and helped to shape. Alongside the multi-day programs, we guide one-day walks in the Douro and Trás-os-Montes.",
+    pt: "Somos especialistas no Norte e Nordeste de Portugal, os territórios que conhecemos de cor e ajudámos a estruturar. Além dos programas de vários dias, guiamos caminhadas de um dia no Douro e em Trás-os-Montes.",
+    es: "Somos especialistas en el Norte y Nordeste de Portugal, los territorios que conocemos de memoria y ayudamos a estructurar. Además de los programas de varios días, guiamos caminatas de un día en el Duero y en Trás-os-Montes.",
   },
   programsWord: { en: "programmes", pt: "programas", es: "programas" },
   calloutTitle: {

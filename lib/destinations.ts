@@ -14,9 +14,11 @@ export type Region = {
   routes: number;
   tagline: L;
   description: L;
+  /** Kept in the data but left out of the public site (no visible programs). */
+  hidden?: boolean;
 };
 
-export const regions: Region[] = [
+const allRegions: Region[] = [
   {
     id: "douro",
     name: "Douro Valley",
@@ -39,7 +41,7 @@ export const regions: Region[] = [
     name: "Trás-os-Montes",
     image: "/images/routes/hero-miranda.jpg",
     durations: "1 · 8",
-    routes: 3,
+    routes: 4,
     tagline: {
       en: "Wild plateaus and deep valleys",
       pt: "Planaltos selvagens e vales profundos",
@@ -73,7 +75,8 @@ export const regions: Region[] = [
     name: "Algarve",
     image: "/images/routes/algarve-1.jpg",
     durations: "1",
-    routes: 3,
+    routes: 2,
+    hidden: true,
     tagline: {
       en: "Europe's wild Atlantic coast",
       pt: "A costa atlântica selvagem da Europa",
@@ -90,7 +93,8 @@ export const regions: Region[] = [
     name: "Lisboa & Sintra",
     image: "/images/routes/sintra-1.jpg",
     durations: "1",
-    routes: 3,
+    routes: 2,
+    hidden: true,
     tagline: {
       en: "Mist, myth and sacred forest",
       pt: "Névoa, mito e floresta sagrada",
@@ -132,9 +136,11 @@ export type RouteProduct = {
   image: string;
   title: string;
   tagline: L;
+  /** Kept for the EXCLUSIVE and for later, but not shown on the public site. */
+  hidden?: boolean;
 };
 
-export const routes: RouteProduct[] = [
+const allRoutes: RouteProduct[] = [
   {
     id: "santiago-interior",
     regionId: "santiago",
@@ -208,15 +214,96 @@ export const routes: RouteProduct[] = [
     format: "roteiro",
     type: { en: "Guided", pt: "Guiado", es: "Guiado" },
     image: "/images/routes/douro-2.jpg",
-    title: "Alto Douro Wine Region",
+    title: "Wine Town of Pinhão",
     tagline: {
-      en: "UNESCO vineyards and world-class wine",
-      pt: "Vinhas UNESCO e vinho de classe mundial",
-      es: "Viñedos UNESCO y vino de clase mundial",
+      en: "Vineyards, terraces and a picnic at Quinta do Bomfim",
+      pt: "Vinhas, socalcos e picnic na Quinta do Bomfim",
+      es: "Viñedos, bancales y picnic en la Quinta do Bomfim",
+    },
+  },
+  {
+    id: "saomamede-1day",
+    regionId: "douro",
+    region: "Douro Valley",
+    duration: "1 Day",
+    days: 1,
+    format: "roteiro",
+    type: { en: "Guided", pt: "Guiado", es: "Guiado" },
+    image: "/images/programs/douro/douro-b.jpg",
+    title: "São Mamede Walkways",
+    tagline: {
+      en: "Tua Valley walkways, wine and art",
+      pt: "Passadiços do Vale do Tua, vinho e arte",
+      es: "Pasarelas del Valle del Tua, vino y arte",
+    },
+  },
+  {
+    id: "monks-1day",
+    regionId: "douro",
+    region: "Douro Valley",
+    duration: "1 Day",
+    days: 1,
+    format: "roteiro",
+    type: { en: "Guided", pt: "Guiado", es: "Guiado" },
+    image: "/images/programs/douro/monge-1.jpg",
+    title: "Douro Monks & Vineyards Trail",
+    tagline: {
+      en: "The Monks' Way among Douro vineyards",
+      pt: "O Caminho dos Monges entre vinhas do Douro",
+      es: "El Camino de los Monjes entre viñedos del Duero",
+    },
+  },
+  {
+    id: "vidago-1day",
+    regionId: "tras-os-montes",
+    region: "Trás-os-Montes",
+    duration: "1 Day",
+    days: 1,
+    format: "roteiro",
+    type: { en: "Guided", pt: "Guiado", es: "Guiado" },
+    image: "/images/routes/tras-os-montes-1.jpg",
+    title: "Vidago & Arcossó Wine Trail",
+    tagline: {
+      en: "Rural paths and wine at Quinta de Arcossó",
+      pt: "Caminhos rurais e vinho na Quinta de Arcossó",
+      es: "Caminos rurales y vino en la Quinta de Arcossó",
+    },
+  },
+  {
+    id: "podence-1day",
+    regionId: "tras-os-montes",
+    region: "Trás-os-Montes",
+    duration: "1 Day",
+    days: 1,
+    format: "roteiro",
+    type: { en: "Guided", pt: "Guiado", es: "Guiado" },
+    image: "/images/routes/tras-os-montes-2.jpg",
+    title: "Podence & Azibo Experience",
+    tagline: {
+      en: "The Caretos, the Azibo and a boat picnic",
+      pt: "Caretos, Azibo e picnic de barco",
+      es: "Caretos, Azibo y picnic en barco",
+    },
+  },
+  {
+    id: "chaves-1day",
+    regionId: "tras-os-montes",
+    region: "Trás-os-Montes",
+    duration: "1 Day",
+    days: 1,
+    format: "roteiro",
+    type: { en: "Guided", pt: "Guiado", es: "Guiado" },
+    image: "/images/routes/tras-os-montes-3.jpg",
+    title: "Chaves & São Lourenço Walkways",
+    tagline: {
+      en: "Countryside, cured ham and Roman Chaves",
+      pt: "Campo, presunto e a Chaves romana",
+      es: "Campo, jamón curado y la Chaves romana",
     },
   },
   {
     id: "sintra-1day",
+    hidden: true,
     regionId: "lisboa-sintra",
     region: "Lisboa & Sintra",
     duration: "1 Day",
@@ -233,6 +320,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "tras-1day",
+    hidden: true,
     regionId: "tras-os-montes",
     region: "Trás-os-Montes",
     duration: "1 Day",
@@ -249,6 +337,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "algarve-1day",
+    hidden: true,
     regionId: "algarve",
     region: "Algarve",
     duration: "1 Day",
@@ -265,6 +354,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "cacela-1day",
+    hidden: true,
     regionId: "algarve",
     region: "Algarve",
     duration: "1 Day",
@@ -281,6 +371,7 @@ export const routes: RouteProduct[] = [
   },
   {
     id: "arrabida-1day",
+    hidden: true,
     regionId: "lisboa-sintra",
     region: "Lisboa & Sintra",
     duration: "1 Day",
@@ -296,6 +387,15 @@ export const routes: RouteProduct[] = [
     },
   },
 ];
+
+/** Public lists: hidden regions and routes stay in the data but are not shown. */
+export const regions: Region[] = allRegions.filter((r) => !r.hidden);
+export const routes: RouteProduct[] = allRoutes.filter((r) => !r.hidden);
+
+/** True when a route exists but is hidden from the public site. */
+export function isHiddenRoute(id: string): boolean {
+  return allRoutes.some((r) => r.id === id && r.hidden);
+}
 
 /** Region (destination) by its id. */
 export function getRegion(id: string): Region | undefined {

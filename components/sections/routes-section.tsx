@@ -6,13 +6,12 @@ import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 
+// Algarve and Lisboa & Sintra are hidden for now (no public programs, see lib/destinations.ts).
 const destinations = [
-  { id: "tras-os-montes", num: "01", name: "Trás-os-Montes", routes: 3, image: "/images/routes/hero-miranda.jpg" },
+  { id: "tras-os-montes", num: "01", name: "Trás-os-Montes", routes: 4, image: "/images/routes/hero-miranda.jpg" },
   { id: "douro",          num: "02", name: "Douro Valley",   routes: 4, image: "/images/routes/douro-1.jpg" },
   { id: "peneda-geres",   num: "03", name: "Peneda-Gerês",   routes: 2, image: "/images/routes/geres-1.jpg" },
-  { id: "algarve",        num: "04", name: "Algarve",        routes: 2, image: "/images/routes/algarve-1.jpg" },
-  { id: "lisboa-sintra",  num: "05", name: "Lisboa & Sintra", routes: 2, image: "/images/routes/sintra-1.jpg" },
-  { id: "santiago",       num: "06", name: "Caminho de Santiago", routes: 1, image: "/images/routes/santiago-1.jpg" },
+  { id: "santiago",       num: "04", name: "Caminho de Santiago", routes: 1, image: "/images/routes/santiago-1.jpg" },
 ];
 
 export function RoutesSection() {
@@ -45,9 +44,9 @@ export function RoutesSection() {
           </div>
         </FadeUp>
 
-        {/* Destination grid — 3 cols portrait */}
+        {/* Destination grid — 4 cols portrait */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
           style={{ gap: "20px" }}
         >
           {destinations.map((dest, i) => (
@@ -57,7 +56,7 @@ export function RoutesSection() {
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: [0.19, 1, 0.22, 1] }}
+              transition={{ duration: 0.6, delay: (i % 4) * 0.1, ease: [0.19, 1, 0.22, 1] }}
               className="group relative block overflow-hidden"
               style={{ aspectRatio: "3/4", borderRadius: "8px" }}
             >

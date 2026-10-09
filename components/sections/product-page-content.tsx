@@ -42,6 +42,9 @@ export function ProductPageContent({ program }: { program: Program }) {
     k === "breakfast" ? t("mealBreakfast") : k === "packedLunch" ? t("mealPackedLunch") : t("mealDinner");
 
   const isDay = program.format === "roteiro";
+  const startPoint = typeof program.startPoint === "string" ? program.startPoint : program.startPoint[locale];
+  /** Data text uses a blank line between paragraphs. */
+  const paragraphs = (text: string) => text.split("\n\n");
 
   const facts = [
     {
@@ -53,7 +56,7 @@ export function ProductPageContent({ program }: { program: Program }) {
     },
     { icon: <Footprints size={20} />, label: t("format"), value: program.type[locale] },
     { icon: <TrendingUp size={20} />, label: t("difficulty"), value: program.difficulty[locale] },
-    { icon: <MapPin size={20} />, label: isDay ? t("meetingPoint") : t("startPoint"), value: program.startPoint },
+    { icon: <MapPin size={20} />, label: isDay ? t("meetingPoint") : t("startPoint"), value: startPoint },
     { icon: <CalendarDays size={20} />, label: t("season"), value: program.season[locale] },
     { icon: <Footprints size={20} />, label: t("total"), value: program.totalDistance },
   ];
@@ -82,11 +85,12 @@ export function ProductPageContent({ program }: { program: Program }) {
           <h3 className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
             {d.title[locale]}
           </h3>
-          {d.description && (
-            <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "16px" }}>
-              {d.description[locale]}
-            </p>
-          )}
+          {d.description &&
+            paragraphs(d.description[locale]).map((para, pi) => (
+              <p key={pi} className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "16px" }}>
+                {para}
+              </p>
+            ))}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {d.distance && <Chip>{d.distance}{d.shape ? ` · ${t(d.shape)}` : ""}</Chip>}
             {d.walkTime && <Chip>{d.walkTime}</Chip>}
@@ -95,6 +99,33 @@ export function ProductPageContent({ program }: { program: Program }) {
               <Chip key={mk} accent>{mealLabel(mk)}</Chip>
             ))}
           </div>
+          {d.elevation && (
+            <dl
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(96px, 1fr))",
+                gap: "1px",
+                marginTop: "20px",
+                backgroundColor: "rgba(89,105,77,0.16)",
+                border: "1px solid rgba(89,105,77,0.16)",
+                borderRadius: "10px",
+                overflow: "hidden",
+              }}
+            >
+              {[
+                { label: t("elevMin"), value: `${d.elevation.min} m` },
+                { label: t("elevAvg"), value: `${d.elevation.avg} m` },
+                { label: t("elevMax"), value: `${d.elevation.max} m` },
+                { label: t("elevGain"), value: `+${d.elevation.gain} m` },
+                { label: t("elevLoss"), value: `-${d.elevation.loss} m` },
+              ].map((e) => (
+                <div key={e.label} style={{ backgroundColor: "var(--color-ntn-white)", padding: "12px 14px" }}>
+                  <dt className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "4px" }}>{e.label}</dt>
+                  <dd className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontWeight: 700, fontSize: "15px" }}>{e.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
           {d.accommodation && (
             <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "12px" }}>
               <span style={{ color: "var(--color-ntn-sage-200)" }}>{t("accommodation")}: </span>
@@ -296,12 +327,17 @@ export function ProductPageContent({ program }: { program: Program }) {
             <div style={{ marginBottom: "16px" }}>
               <Overline color="var(--color-ntn-forest-400)">{t("overview")}</Overline>
             </div>
-            <p
-              className="text-body-lg leading-relaxed"
-              style={{ color: "var(--color-ntn-black-800)", maxWidth: "none", marginBottom: "56px" }}
-            >
-              {program.overview[locale]}
-            </p>
+            <div style={{ marginBottom: "56px" }}>
+              {paragraphs(program.overview[locale]).map((para, pi) => (
+                <p
+                  key={pi}
+                  className="text-body-lg leading-relaxed"
+                  style={{ color: "var(--color-ntn-black-800)", maxWidth: "none", marginTop: pi > 0 ? "16px" : 0 }}
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
           </FadeUp>
 
           {/* Horizontal facts bar */}
@@ -426,6 +462,13 @@ export function ProductPageContent({ program }: { program: Program }) {
           <FadeUp>
             <DifficultyGauge level={program.grade} />
           </FadeUp>
+          {program.difficultyNote && (
+            <FadeUp delay={0.1}>
+              <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", maxWidth: "68ch", marginTop: "28px" }}>
+                {program.difficultyNote[locale]}
+              </p>
+            </FadeUp>
+          )}
         </div>
       </section>
 
@@ -579,6 +622,24 @@ export function ProductPageContent({ program }: { program: Program }) {
                   )}
                   <p className="text-label" style={{ color: "var(--color-ntn-sage-200)" }}>{t("priceNote")}</p>
                 </div>
+              </div>
+            </FadeUp>
+          )}
+
+          {!program.priceTiers && !program.prices && (
+            <FadeUp>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "24px 56px", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
+                <div style={{ flex: "1 1 420px" }}>
+                  <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "clamp(1.6rem, 3vw, 2.25rem)", textTransform: "none", lineHeight: 1.1, marginBottom: "12px" }}>
+                    {t("priceOnRequestTitle")}
+                  </p>
+                  <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", maxWidth: "60ch" }}>
+                    {t("priceOnRequestBody")}
+                  </p>
+                </div>
+                <a href="#proposal" className="btn btn-primary" style={{ flexShrink: 0 }}>
+                  {t("requestProposal")}
+                </a>
               </div>
             </FadeUp>
           )}

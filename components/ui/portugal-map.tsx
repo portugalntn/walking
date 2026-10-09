@@ -31,8 +31,9 @@ const regions: Region[] = [
   { id: "santiago", x: 342, y: 147, side: "right", lines: ["Caminho de", "Santiago Interior"] },
   { id: "porto",    x: 172, y: 195, side: "left",  lines: ["Porto"] },
   { id: "douro",    x: 326, y: 207, side: "right", lines: ["Douro Valley"] },
-  { id: "lisboa",   x:  92, y: 637, side: "left",  lines: ["Lisboa & Sintra"] },
-  { id: "algarve",  x: 219, y: 929, side: "right", lines: ["Algarve"] },
+  // Hidden for now, no public programs there (see lib/destinations.ts):
+  // { id: "lisboa",   x:  92, y: 637, side: "left",  lines: ["Lisboa & Sintra"] },
+  // { id: "algarve",  x: 219, y: 929, side: "right", lines: ["Algarve"] },
 ];
 
 const PIN_COLOR  = "#ccff00";

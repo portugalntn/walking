@@ -87,7 +87,7 @@
     "destinations": {
       "label": "Where We Operate",
       "title": "Where we walk,\nwe are local.",
-      "body": "We operate in the regions we know best, from the Douro to the mountains of Trás-os-Montes, from Gerês to the Algarve. Every destination is territory where we have roots."
+      "body": "We operate in the regions we know best, from the Douro to the mountains of Trás-os-Montes, from Gerês to the inland Way of Saint James. Every destination is territory where we have roots."
     },
     "sustainability": {
       "label": "Our Commitment",
@@ -276,7 +276,14 @@
     "faqCardBody": "Booking, payments, what to wear, group sizes and more, answered in one place.",
     "faqCardCta": "Read the FAQs",
     "difficultyHeading": "Difficulty grade",
-    "gradeScaleLink": "See the full scale"
+    "gradeScaleLink": "See the full scale",
+    "elevMin": "Min. elevation",
+    "elevAvg": "Avg. elevation",
+    "elevMax": "Max. elevation",
+    "elevGain": "Elevation gain",
+    "elevLoss": "Elevation loss",
+    "priceOnRequestTitle": "Price on request",
+    "priceOnRequestBody": "Prices for this program are being finalised. Tell us your dates and group size and we will send you a tailored proposal."
   },
   "aboutPage": {
     "heroLabel": "About us",
@@ -285,7 +292,7 @@
     "companyLabel": "Our company",
     "companyTitle": "Genuine Portugal, at a human pace",
     "companyBody1": "We design small-group and tailor-made programs around adventure, culture and gastronomy, built on privileged contact with the most genuine side of Portugal, in harmony with local communities and a sustainable approach to the territory.",
-    "companyBody2": "Our structured walking programs run from 1 to 15 days, in guided and self-guided formats, across northern Portugal, Lisbon and the Algarve.",
+    "companyBody2": "Our structured walking programs run from 1 to 15 days, in guided and self-guided formats, across the North and Northeast of Portugal.",
     "stat1Value": "12",
     "stat1Label": "Years of expertise",
     "stat2Value": "1 to 15",
