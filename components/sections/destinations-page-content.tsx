@@ -9,7 +9,7 @@ import { Overline } from "@/components/ui/overline";
 import { regions, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
 import { ProgramCard } from "@/components/ui/program-card";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
@@ -94,12 +94,20 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
     {
       key: "roteiro" as Filter, title: t("format1Title"), desc: t("format1Desc"), tag: t("format1Tag"),
       count: oneDay.length, image: oneDay[0]?.image, cta: TX.see1[locale],
-      points: [TX.p1a[locale], TX.p1b[locale], TX.p1c[locale]],
+      points: [
+        { Icon: Compass, text: TX.p1a[locale] },
+        { Icon: UtensilsCrossed, text: TX.p1b[locale] },
+        { Icon: Sun, text: TX.p1c[locale] },
+      ],
     },
     {
       key: "programa" as Filter, title: t("formatMultiTitle"), desc: TX.multiDesc[locale], tag: multiRange,
       count: multi.length, image: multi.find((r) => r.regionId === "douro")?.image ?? multi[0]?.image, cta: TX.seeMulti[locale],
-      points: [TX.pMa[locale], TX.pMb[locale], TX.pMc[locale]],
+      points: [
+        { Icon: Footprints, text: TX.pMa[locale] },
+        { Icon: BedDouble, text: TX.pMb[locale] },
+        { Icon: CalendarDays, text: TX.pMc[locale] },
+      ],
     },
   ];
 
@@ -272,46 +280,55 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
           <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "24px" }}>
             {formats.map((f, i) => (
-              <m.button
+              <m.article
                 key={f.key}
-                type="button"
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: EASE }}
-                onClick={() => selectFormat(f.key)}
-                className="group relative overflow-hidden text-left"
-                style={{ minHeight: "clamp(380px, 42vw, 520px)", borderRadius: "14px", display: "flex", alignItems: "flex-end", cursor: "pointer" }}
+                className="flex flex-col overflow-hidden"
+                style={{ borderRadius: "16px", backgroundColor: "var(--color-ntn-white)", border: "1px solid rgba(89,105,77,0.14)" }}
               >
-                {f.image && (
-                  <Image src={f.image} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 50vw" />
-                )}
-                <span className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,20,18,0.15) 0%, rgba(20,20,18,0.35) 40%, rgba(20,20,18,0.9) 100%)" }} />
-                <span
-                  className="absolute top-5 left-5 font-title"
-                  style={{ backgroundColor: "var(--color-ntn-lime)", color: "var(--color-ntn-black-900)", borderRadius: "9999px", padding: "6px 14px", fontSize: "13px", letterSpacing: "0.04em", textTransform: "none" }}
-                >
-                  {f.count} {TX.programs[locale]}
-                </span>
-                <span className="relative block w-full" style={{ padding: "clamp(24px, 3vw, 36px)" }}>
-                  <span className="text-label block" style={{ color: "var(--color-ntn-lime)", marginBottom: "10px" }}>{f.tag}</span>
-                  <span className="font-title block" style={{ color: "#fff", fontSize: "clamp(1.8rem, 3vw, 2.6rem)", textTransform: "uppercase", lineHeight: 1, marginBottom: "12px" }}>
+                {/* Photo: tags only */}
+                <button type="button" onClick={() => selectFormat(f.key)} className="group relative block w-full overflow-hidden aspect-[16/9]" aria-label={f.cta}>
+                  {f.image && (
+                    <Image src={f.image} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 50vw" />
+                  )}
+                  <span className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,20,18,0.3) 0%, transparent 30%, transparent 70%, rgba(20,20,18,0.35) 100%)" }} />
+                  <span
+                    className="absolute top-4 left-4 font-title"
+                    style={{ backgroundColor: "var(--color-ntn-lime)", color: "var(--color-ntn-black-900)", borderRadius: "9999px", padding: "6px 14px", fontSize: "13px", textTransform: "none" }}
+                  >
+                    {f.count} {TX.programs[locale]}
+                  </span>
+                  <span
+                    className="absolute bottom-4 left-4 text-label"
+                    style={{ color: "#fff", backgroundColor: "rgba(20,20,18,0.55)", backdropFilter: "blur(6px)", borderRadius: "9999px", padding: "6px 12px" }}
+                  >
+                    {f.tag}
+                  </span>
+                </button>
+
+                {/* Presentation */}
+                <div className="flex flex-1 flex-col" style={{ padding: "clamp(22px, 3vw, 32px)" }}>
+                  <h3 className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", textTransform: "uppercase", lineHeight: 1, marginBottom: "12px" }}>
                     {f.title}
-                  </span>
-                  <span className="text-body-md block" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "30rem", marginBottom: "18px" }}>{f.desc}</span>
-                  <span className="flex flex-wrap" style={{ gap: "8px", marginBottom: "22px" }}>
-                    {f.points.map((pt) => (
-                      <span key={pt} className="inline-flex items-center gap-1.5" style={{ color: "#fff", fontSize: "12px", fontFamily: "var(--font-ui)", fontWeight: 600, border: "1px solid rgba(255,255,255,0.35)", borderRadius: "9999px", padding: "5px 12px", backdropFilter: "blur(4px)" }}>
-                        <Check size={13} style={{ color: "var(--color-ntn-lime)" }} /> {pt}
-                      </span>
+                  </h3>
+                  <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "22px", maxWidth: "34rem" }}>{f.desc}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-3" style={{ gap: "10px", marginBottom: "26px" }}>
+                    {f.points.map(({ Icon, text }) => (
+                      <div key={text} style={{ padding: "14px", borderRadius: "12px", border: "1px solid rgba(89,105,77,0.16)", backgroundColor: "var(--color-ntn-cream-50)" }}>
+                        <Icon size={18} strokeWidth={1.6} style={{ color: "var(--color-ntn-forest-400)", marginBottom: "8px" }} />
+                        <p className="font-ui" style={{ color: "var(--color-ntn-black-900)", fontWeight: 600, fontSize: "13px", lineHeight: 1.35 }}>{text}</p>
+                      </div>
                     ))}
-                  </span>
-                  <span className="btn btn-primary" style={{ pointerEvents: "none" }}>
+                  </div>
+                  <button type="button" onClick={() => selectFormat(f.key)} className="btn btn-primary mt-auto self-start">
                     {f.cta}
                     <ArrowRight size={16} />
-                  </span>
-                </span>
-              </m.button>
+                  </button>
+                </div>
+              </m.article>
             ))}
           </div>
         </div>
