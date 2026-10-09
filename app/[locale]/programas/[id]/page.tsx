@@ -7,6 +7,7 @@ import { BrandElements } from "@/components/ui/brand-elements";
 import { PageFadeIn } from "@/components/ui/page-fade-in";
 import { ProductPageContent } from "@/components/sections/product-page-content";
 import { getProgram } from "@/lib/programs";
+import { getTrail } from "@/lib/trails";
 import { routes, isHiddenRoute } from "@/lib/destinations";
 
 type Props = { params: Promise<{ locale: string; id: string }> };
@@ -32,7 +33,7 @@ export default async function ProductPage({ params }: Props) {
       <BrandElements />
       <Navbar />
       {program ? (
-        <ProductPageContent program={program} />
+        <ProductPageContent program={program} trail={getTrail(id)} />
       ) : (
         <main
           className="flex flex-col items-center justify-center text-center"

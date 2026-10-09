@@ -51,14 +51,20 @@ export function AboutPageContent() {
   ];
 
   return (
-    <main>
+    // clip: the side fade-ins start offset and must not widen the page on phones
+    <main style={{ overflowX: "clip" }}>
       {/* Hero */}
       <section className="relative flex items-end" style={{ minHeight: "72vh" }}>
         <div className="absolute inset-0 z-0">
           <Image src="/images/routes/santiago-1.jpg" alt="Caminho de Santiago Portugal NTN" fill priority className="object-cover" sizes="100vw" />
+          {/* Two scrims: one from the left under the title, one from the bottom. White text never sits on a light patch of the photo. */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to bottom, rgba(29,29,26,0.55) 0%, rgba(29,29,26,0.2) 40%, rgba(29,29,26,0.88) 100%)" }}
+            style={{ background: "linear-gradient(to right, rgba(20,20,18,0.82) 0%, rgba(20,20,18,0.55) 45%, rgba(20,20,18,0.15) 100%)" }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, rgba(20,20,18,0.5) 0%, transparent 35%, rgba(20,20,18,0.85) 100%)" }}
           />
         </div>
         <div className="container-ntn relative z-10" style={{ paddingTop: "160px", paddingBottom: "80px" }}>
@@ -109,8 +115,8 @@ export function AboutPageContent() {
       <section style={{ backgroundColor: "var(--color-ntn-cream-100)", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="container-ntn">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
-            {/* Left — Text */}
-            <div>
+            {/* Text: right column on desktop, so the blocks alternate image left, right, left */}
+            <div className="lg:order-2">
               <FadeUp>
                 <div style={{ marginBottom: "24px" }}>
                   <Overline color="var(--color-ntn-forest-400)">{tIntro("label")}</Overline>
@@ -160,8 +166,8 @@ export function AboutPageContent() {
               </FadeUp>
             </div>
 
-            {/* Right — Image with badge */}
-            <FadeRight delay={0.2}>
+            {/* Image with badge: left column on desktop */}
+            <FadeRight delay={0.2} className="lg:order-1">
               <div className="relative" style={{ marginRight: "24px", marginBottom: "24px" }}>
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/5", borderRadius: "8px" }}>
                   <Image

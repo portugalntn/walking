@@ -6,6 +6,7 @@ import { BrandElements } from "@/components/ui/brand-elements";
 import { PageFadeIn } from "@/components/ui/page-fade-in";
 import { RegionPageContent } from "@/components/sections/region-page-content";
 import { getRegion, routesForRegion, regions } from "@/lib/destinations";
+import { cardFacts } from "@/lib/program-facts";
 
 type Loc = "en" | "pt" | "es";
 type Props = { params: Promise<{ locale: string; regiao: string }> };
@@ -31,7 +32,12 @@ export default async function RegionPage({ params }: Props) {
       <PageFadeIn />
       <BrandElements />
       <Navbar />
-      <RegionPageContent region={region} routes={routesForRegion(regiao)} locale={locale as Loc} />
+      <RegionPageContent
+        region={region}
+        routes={routesForRegion(regiao)}
+        locale={locale as Loc}
+        facts={cardFacts(routesForRegion(regiao).map((r) => r.id))}
+      />
       <Footer />
     </>
   );

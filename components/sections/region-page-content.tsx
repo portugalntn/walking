@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { m, AnimatePresence } from "framer-motion";
+import { m } from "framer-motion";
 import { FadeUp, FadeRight } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import type { Region, RouteProduct } from "@/lib/destinations";
+import type { CardFacts } from "@/lib/program-facts";
+import { ProgramCard } from "@/components/ui/program-card";
 import { regionContent } from "@/lib/region-content";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -19,7 +21,6 @@ const L = {
   programsLabel: { en: "Walk here", pt: "Caminhe aqui", es: "Camina aquí" },
   multiDays: { en: "Multi-day", pt: "Multidias", es: "Multidías" },
   oneDay: { en: "Day trips", pt: "1 dia", es: "1 día" },
-  discover: { en: "Discover", pt: "Descobrir", es: "Descubrir" },
   empty: {
     en: "Programmes for this destination are being prepared.",
     pt: "Os programas deste destino estão a ser preparados.",
@@ -39,10 +40,12 @@ export function RegionPageContent({
   region,
   routes,
   locale,
+  facts,
 }: {
   region: Region;
   routes: RouteProduct[];
   locale: Loc;
+  facts: Record<string, CardFacts>;
 }) {
   const content = regionContent[region.id];
   const multi = routes.filter((r) => r.format === "programa");
@@ -218,19 +221,37 @@ export function RegionPageContent({
 
           {groups.length === 0 && (
             <FadeUp>
-              <p className="text-body-lg" style={{ color: "var(--color-ntn-sage-200)" }}>{L.empty[locale]}</p>
+              <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)" }}>{L.empty[locale]}</p>
             </FadeUp>
           )}
 
-          {groups.length === 2 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "48px 40px", alignItems: "start" }}>
-              {groups.map((group) => (
-                <GroupColumn key={group.label} label={group.label} items={group.items} locale={locale} />
-              ))}
-            </div>
-          ) : groups.length === 1 ? (
-            <SingleGroup group={groups[0]} locale={locale} />
-          ) : null}
+          <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
+            {groups.map((group) => (
+              <div key={group.label}>
+                <FadeUp>
+                  <p className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginBottom: "24px", borderBottom: "1px solid rgba(89,105,77,0.2)", paddingBottom: "12px" }}>
+                    {group.label} · {group.items.length}
+                  </p>
+                </FadeUp>
+                <div
+                  className={group.items.length === 1 ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr]" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}
+                  style={{ gap: "28px" }}
+                >
+                  {group.items.map((route, i) => (
+                    <m.div
+                      key={route.id}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: EASE }}
+                    >
+                      <ProgramCard route={route} facts={facts[route.id]} locale={locale} feature={group.items.length === 1} />
+                    </m.div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -263,138 +284,5 @@ export function RegionPageContent({
         </div>
       </section>
     </main>
-  );
-}
-
-function GroupColumn({ label, items, locale }: { label: string; items: RouteProduct[]; locale: Loc }) {
-  return (
-    <div>
-      <FadeUp>
-        <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "24px", borderBottom: "1px solid rgba(89,105,77,0.16)", paddingBottom: "12px" }}>
-          {label}
-        </p>
-      </FadeUp>
-      <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
-        {items.map((route, i) => (
-          <ProgramCard key={route.id} route={route} locale={locale} i={i} discover={L.discover[locale]} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SingleGroup({ group, locale }: { group: { label: string; items: RouteProduct[] }; locale: Loc }) {
-  if (group.items.length === 1) {
-    return (
-      <div>
-        <FadeUp>
-          <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "24px", borderBottom: "1px solid rgba(89,105,77,0.16)", paddingBottom: "12px" }}>
-            {group.label}
-          </p>
-        </FadeUp>
-        <FeatureCard route={group.items[0]} locale={locale} discover={L.discover[locale]} />
-      </div>
-    );
-  }
-  return (
-    <div>
-      <FadeUp>
-        <p className="text-label" style={{ color: "var(--color-ntn-sage-200)", marginBottom: "24px", borderBottom: "1px solid rgba(89,105,77,0.16)", paddingBottom: "12px" }}>
-          {group.label}
-        </p>
-      </FadeUp>
-      <div className="grid grid-cols-1 md:grid-cols-2" style={{ gap: "40px 32px" }}>
-        {group.items.map((route, i) => (
-          <ProgramCard key={route.id} route={route} locale={locale} i={i} discover={L.discover[locale]} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ProgramCard({ route, locale, i, discover }: { route: RouteProduct; locale: Loc; i: number; discover: string }) {
-  return (
-    <AnimatePresence>
-      <m.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-40px" }}
-        transition={{ duration: 0.5, delay: (i % 2) * 0.08, ease: EASE }}
-      >
-        <Link href={`/${locale}/programas/${route.id}`} className="group block">
-          <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16/11", borderRadius: "8px", marginBottom: "20px" }}>
-            <Image src={route.image} alt={route.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.05]" sizes="(max-width: 768px) 100vw, 45vw" />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(29,29,26,0.55) 100%)" }} />
-            <span
-              className="absolute top-4 right-4"
-              style={{ backgroundColor: "var(--color-ntn-lime)", color: "var(--color-ntn-black-900)", fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "7px 14px", borderRadius: "5px" }}
-            >
-              {route.duration}
-            </span>
-            <p className="absolute bottom-4 text-label" style={{ left: "16px", color: "rgba(255,255,255,0.9)", textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>
-              {route.type[locale]}
-            </p>
-          </div>
-          <div style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-            <h3 className="font-ui mb-1.5 leading-snug" style={{ color: "var(--color-ntn-black-900)", fontSize: "var(--text-display-sm)", fontWeight: 600 }}>
-              {route.title}
-            </h3>
-            <p className="text-body-md mb-3" style={{ color: "var(--color-ntn-sage-200)" }}>
-              {route.tagline[locale]}
-            </p>
-            <span className="inline-flex items-center gap-1.5 transition-all duration-200 group-hover:gap-2.5" style={{ color: "var(--color-ntn-forest-400)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em" }}>
-              {discover}
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </div>
-        </Link>
-      </m.div>
-    </AnimatePresence>
-  );
-}
-
-function FeatureCard({ route, locale, discover }: { route: RouteProduct; locale: Loc; discover: string }) {
-  return (
-    <m.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, ease: EASE }}
-    >
-      <Link
-        href={`/${locale}/programas/${route.id}`}
-        className="group"
-        style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.1fr) minmax(0, 1fr)", gap: "0", borderRadius: "10px", overflow: "hidden", backgroundColor: "var(--color-ntn-white)", border: "1px solid rgba(89,105,77,0.14)" }}
-      >
-        <div className="relative" style={{ minHeight: "300px", aspectRatio: "4/3" }}>
-          <Image src={route.image} alt={route.title} fill className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 50vw" />
-          <span
-            className="absolute top-4 left-4"
-            style={{ backgroundColor: "var(--color-ntn-lime)", color: "var(--color-ntn-black-900)", fontFamily: "var(--font-ui)", fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", padding: "7px 14px", borderRadius: "5px" }}
-          >
-            {route.duration}
-          </span>
-        </div>
-        <div style={{ padding: "40px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <p className="text-label" style={{ color: "var(--color-ntn-forest-400)", marginBottom: "12px" }}>
-            {route.region} · {route.type[locale]}
-          </p>
-          <h3 className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "clamp(1.6rem, 2.4vw, 2.1rem)", textTransform: "none", lineHeight: 1.05, marginBottom: "12px" }}>
-            {route.title}
-          </h3>
-          <p className="text-body-md leading-relaxed" style={{ color: "var(--color-ntn-forest-600)", marginBottom: "24px" }}>
-            {route.tagline[locale]}
-          </p>
-          <span className="inline-flex items-center gap-2 transition-all duration-200 group-hover:gap-3" style={{ color: "var(--color-ntn-forest-400)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em" }}>
-            {discover}
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-        </div>
-      </Link>
-    </m.div>
   );
 }
