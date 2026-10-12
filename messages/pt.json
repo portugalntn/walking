@@ -12,7 +12,9 @@
     "all": "Todos",
     "oneDay": "1 dia",
     "multiDays": "Multidias",
-    "exclusive": "Exclusive"
+    "exclusive": "Exclusive",
+    "exclusiveTag": "B2B",
+    "exclusiveFor": "Para operadores"
   },
   "home": {
     "hero": {
@@ -344,10 +346,11 @@
       "themeLight": "Claro",
       "themeDark": "Escuro",
       "themeToLight": "Mudar para o tema claro",
-      "themeToDark": "Mudar para o tema escuro"
+      "themeToDark": "Mudar para o tema escuro",
+      "publicSite": "Site público"
     },
     "hero": {
-      "overline": "A coleção para o trade",
+      "overline": "B2B Exclusive · Para operadores",
       "title": "Exclusive",
       "bracket": "Desenhado para um grupo de cada vez",
       "lead": "Jornadas de caminhada privadas pelo Norte e Nordeste de Portugal, construídas percurso a percurso para agências e operadores a quem pedem aquilo que um catálogo não tem.",
@@ -421,12 +424,45 @@
     "footer": {
       "line": "A Portugal NTN é uma Destination Management Company de caminhada no Norte e Nordeste de Portugal. Desenho, sinalização, certificação e operação de percursos próprios.",
       "public": "Site público"
+    },
+    "gate": {
+      "overline": "B2B Exclusive · Só para operadores",
+      "title": "Portugal a pé, <em>para os seus clientes</em>.",
+      "lead": "Uma área reservada a operadores turísticos e agências de todo o mundo. Identifique-se para ver a coleção completa: jornadas, itinerários e experiências.",
+      "catalogTitle": "Roteiros prontos a vender",
+      "catalogText": "Os programas que já criámos e operamos, de vários dias e de um dia, no Norte e Nordeste de Portugal. Disponíveis para o seu catálogo, com tarifas de operador.",
+      "tailorTitle": "Tailor made",
+      "tailorText": "Programas desenhados à medida do seu mercado e do seu cliente: duração, ritmo, alojamento e experiências. Para operadores de qualquer parte do mundo.",
+      "formOverline": "Acesso para operadores",
+      "formTitle": "Abrir a coleção",
+      "name": "Nome e apelido",
+      "company": "Empresa / operador",
+      "type": "Tipo de empresa",
+      "types": {
+        "operador": "Operador turístico",
+        "agencia": "Agência de viagens",
+        "dmc": "DMC / recetivo",
+        "outro": "Outro"
+      },
+      "country": "País",
+      "email": "Email profissional",
+      "phone": "WhatsApp / telefone",
+      "interest": "O que procura",
+      "interests": {
+        "catalogo": "Roteiros prontos",
+        "tailor_made": "Tailor made",
+        "ambos": "Os dois"
+      },
+      "submit": "Aceder ao B2B Exclusive",
+      "sending": "A abrir",
+      "error": "Não foi possível registar agora. Tente de novo dentro de instantes ou escreva para info@portugalntn.com.",
+      "privacy": "Os seus dados ficam só com a Portugal NTN. Usamo-los para falar consigo sobre a parceria, nada mais."
     }
   },
   "tradeDoor": {
-    "overline": "Agências e operadores",
-    "title": "Portugal NTN Exclusive",
-    "lead": "A coleção reservada ao trade: jornadas privadas, acessos que não são vendidos ao público e condições NET para agências e operadores.",
-    "cta": "Acesso B2B"
+    "overline": "B2B · Só para operadores",
+    "title": "B2B Exclusive · Para operadores",
+    "lead": "Os roteiros que já criámos, prontos para o seu catálogo, e programas tailor made desenhados para operadores de todo o mundo. Identifique-se e abrimos-lhe a coleção.",
+    "cta": "Aceder ao B2B Exclusive"
   }
 }

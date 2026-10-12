@@ -16,7 +16,7 @@ function Wordmark() {
   return (
     <Link href={`/${locale}/exclusive`} style={{ textDecoration: "none", display: "block", lineHeight: 1 }}>
       <span className="ex-over" style={{ display: "block", marginBottom: "5px", letterSpacing: "0.34em" }}>
-        Portugal NTN
+        Portugal NTN · B2B
       </span>
       <span
         className="ex-serif"
@@ -28,8 +28,11 @@ function Wordmark() {
   );
 }
 
-export function ExNavbar() {
+/** `gate`: no portão não há hero com foto nem secções para onde saltar. */
+export function ExNavbar({ variant = "page" }: { variant?: "page" | "gate" }) {
   const t = useTranslations("exclusive.nav");
+  const locale = useLocale();
+  const gate = variant === "gate";
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -48,7 +51,7 @@ export function ExNavbar() {
   return (
     <m.header
       // Por cima do hero o navbar fica sempre escuro; ao descer segue o tema.
-      className={solid ? undefined : "ex-dark"}
+      className={solid || gate ? undefined : "ex-dark"}
       initial={{ opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: EASE }}
@@ -70,17 +73,25 @@ export function ExNavbar() {
         <Wordmark />
 
         <nav style={{ display: "flex", alignItems: "center", gap: "clamp(1.25rem, 3vw, 2.75rem)" }}>
-          <div className="hidden md:flex" style={{ gap: "clamp(1.25rem, 2.6vw, 2.5rem)" }}>
-            {links.map((l) => (
-              <a key={l.href} href={l.href} className="ex-over" style={{ textDecoration: "none" }}>
-                {l.label}
-              </a>
-            ))}
-          </div>
+          {!gate && (
+            <div className="hidden md:flex" style={{ gap: "clamp(1.25rem, 2.6vw, 2.5rem)" }}>
+              {links.map((l) => (
+                <a key={l.href} href={l.href} className="ex-over" style={{ textDecoration: "none" }}>
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          )}
           <ExThemeToggle />
-          <a href="#enquiry" className="ex-btn" style={{ padding: "0.8125rem 1.5rem" }}>
-            {t("enquire")}
-          </a>
+          {gate ? (
+            <Link href={`/${locale}`} className="ex-over hidden sm:inline" style={{ textDecoration: "none" }}>
+              {t("publicSite")}
+            </Link>
+          ) : (
+            <a href="#enquiry" className="ex-btn" style={{ padding: "0.8125rem 1.5rem" }}>
+              {t("enquire")}
+            </a>
+          )}
         </nav>
       </div>
     </m.header>

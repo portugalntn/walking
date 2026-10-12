@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { Cormorant_Garamond } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 
@@ -10,7 +11,9 @@ import { ExItinerary } from "@/components/exclusive/ex-itinerary";
 import { ExDayTours } from "@/components/exclusive/ex-daytours";
 import { ExOperators } from "@/components/exclusive/ex-operators";
 import { ExEnquiry } from "@/components/exclusive/ex-enquiry";
+import { ExGate } from "@/components/exclusive/ex-gate";
 import { exThemeScript } from "@/components/exclusive/ex-theme-script";
+import { EX_ACCESS_COOKIE } from "@/lib/flow-leads";
 
 /** Serifa de exibição só do EXCLUSIVE. O site público continua em DIN. */
 const exSerif = Cormorant_Garamond({
@@ -44,7 +47,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ExclusivePage() {
+export default async function ExclusivePage() {
+  // Portão comercial: só operadores que se identificaram veem a coleção.
+  const aberto = (await cookies()).get(EX_ACCESS_COOKIE)?.value === "1";
+
+  if (!aberto) {
+    return (
+      <div className={`ex ${exSerif.variable}`}>
+        <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
+        <ExNavbar variant="gate" />
+        <main>
+          <ExGate />
+        </main>
+        <ExFooter />
+      </div>
+    );
+  }
+
   return (
     <div className={`ex ${exSerif.variable}`}>
       <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
