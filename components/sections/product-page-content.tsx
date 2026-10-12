@@ -135,7 +135,9 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
           { value: startPoint, label: t("startPoint") },
         ]
   ).filter((f) => f && f.value) as { value: string; label: string }[];
-  const priceKind = program.priceTiers?.length ? "group" : program.prices ? "person" : null;
+  const perPaxTiers = Boolean(program.priceTiers?.some((p) => p.perPax));
+  const priceKind = program.priceTiers?.length ? (perPaxTiers ? "person" : "group") : program.prices ? "person" : null;
+  const minPax = program.priceTiers?.length ? Math.min(...program.priceTiers.map((p) => p.pax)) : null;
 
   // Reassurance lines come from the program's own conditions, never invented.
   const insurance = program.included.find((it) => /insurance/i.test(it.en));
@@ -481,13 +483,16 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
                 <div style={{ marginTop: "72px", paddingTop: "40px", borderTop: "1px solid rgba(89,105,77,0.18)" }}>
                   <Overline color="var(--color-ntn-forest-400)">{t("prices")}</Overline>
                   {program.priceTiers?.length ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3" style={{ gap: "1px", marginTop: "20px", backgroundColor: "rgba(89,105,77,0.16)", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
+                    <div className={`grid grid-cols-2 ${perPaxTiers ? "" : "sm:grid-cols-3"}`} style={{ gap: "1px", marginTop: "20px", backgroundColor: "rgba(89,105,77,0.16)", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
                       {program.priceTiers.map((tier) => (
                         <div key={tier.pax} style={{ backgroundColor: "var(--color-ntn-white)", padding: "16px 20px" }}>
                           <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>
-                            {tier.pax} {tier.pax === 1 ? t("paxOne") : t("paxMany")}
+                            {tier.maxPax ? `${tier.pax}–${tier.maxPax}` : tier.pax} {tier.pax === 1 && !tier.maxPax ? t("paxOne") : t("paxMany")}
                           </p>
-                          <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem" }}>{formatPrice(tier.price, numLocale)}</p>
+                          <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem" }}>
+                            {formatPrice(tier.price, numLocale)}
+                            {tier.perPax && <span style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 400, color: "var(--color-ntn-black-800)", marginLeft: "8px" }}>{t("perPerson")}</span>}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -525,6 +530,7 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
                   )}
                   {priceKind && (
                     <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                      {perPaxTiers && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("perPaxPriceNote", { min: minPax ?? 2 })}</p>}
                       {priceKind === "group" && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("groupPriceNote")}</p>}
                       {program.priceTiersNote && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{program.priceTiersNote[locale]}</p>}
                       {program.priceCondition && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{program.priceCondition[locale]}</p>}

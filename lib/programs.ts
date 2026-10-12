@@ -69,8 +69,12 @@ export type Program = {
     /** Omit when the program has a single year-round price. */
     high?: { from: number; single: number };
   };
-  /** Per-group pricing tiers (1-day guided routes): total price by group size. */
-  priceTiers?: { pax: number; price: number }[];
+  /**
+   * Pricing by group size (1-day guided routes). Either the group total for
+   * exactly `pax` people, or (perPax) a price per person for groups of
+   * `pax` to `maxPax` people, the commercial bands set in FLOW.
+   */
+  priceTiers?: { pax: number; price: number; maxPax?: number; perPax?: boolean }[];
   /** Note shown under the price tiers, e.g. groups above 6 on request. */
   priceTiersNote?: L;
   /** Optional commercial condition shown under the price cards. */
@@ -133,7 +137,12 @@ function toProgram(p: ProductEntry): Program {
             high: pr.highFrom != null ? { from: pr.highFrom, single: pr.highSingle ?? 0 } : undefined,
           }
         : undefined,
-    priceTiers: p.priceTiers?.length ? p.priceTiers.map((t) => ({ pax: t.pax, price: t.price })) : undefined,
+    priceTiers: p.priceTiers?.length ? p.priceTiers.map((t) => ({
+          pax: t.pax,
+          price: t.price,
+          ...(t.maxPax != null && t.maxPax > t.pax ? { maxPax: t.maxPax } : {}),
+          ...(t.perPax ? { perPax: true } : {}),
+        })) : undefined,
     priceTiersNote: optL(p.priceTiersNote),
     priceCondition: optL(p.priceCondition),
     payment: tlList(p.payment),

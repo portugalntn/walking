@@ -54,7 +54,7 @@ export type ProductEntry = {
   included?: LEntry[];
   notIncluded?: LEntry[];
   extras?: LEntry[];
-  priceTiers?: { pax: number; price: number }[];
+  priceTiers?: { pax: number; price: number; maxPax?: Opt<number>; perPax?: Opt<boolean> }[];
   priceTiersNote?: LEntry;
   prices?: Opt<{ lowFrom?: Opt<number>; lowSingle?: Opt<number>; highFrom?: Opt<number>; highSingle?: Opt<number> }>;
   priceCondition?: LEntry;

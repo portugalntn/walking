@@ -215,6 +215,7 @@
     "paxOne": "persona",
     "paxMany": "personas",
     "groupPriceNote": "Precio total por grupo, con guía especializado y transporte privado incluidos.",
+    "perPaxPriceNote": "Precio por persona, según el tamaño del grupo (mínimo {min} personas), con guía especializado y transporte privado incluidos.",
     "day": "Día",
     "distance": "Distancia",
     "ascent": "Desnivel",
