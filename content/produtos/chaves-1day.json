@@ -1,0 +1,228 @@
+{
+  "title": "Chaves & São Lourenço Walkways",
+  "order": 10,
+  "hidden": false,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "tras-os-montes",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/chaves-1day/tras-os-montes-3.jpg",
+  "cardTagline": {
+    "en": "Countryside, cured ham and Roman Chaves",
+    "pt": "Campo, presunto e a Chaves romana",
+    "es": "Campo, jamón curado y la Chaves romana"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "A walk between the city, the rural landscape and the flavours of Trás-os-Montes, ending in the historic heart of Chaves.",
+    "pt": "Uma caminhada entre a cidade, a paisagem rural e os sabores de Trás-os-Montes, com final no coração histórico de Chaves.",
+    "es": "Una caminata entre la ciudad, el paisaje rural y los sabores de Trás-os-Montes, con final en el corazón histórico de Chaves."
+  },
+  "heroImage": "/images/programs/chaves-1day/tras-os-montes-3.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderada"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Chaves",
+    "pt": "Chaves",
+    "es": "Chaves"
+  },
+  "totalDistance": "14,7 km",
+  "overview": {
+    "en": "The day begins in Chaves and heads on foot towards São Lourenço, gradually leaving the city behind for a more rural landscape of traditional paths, high ground and views over the land around Chaves.\n\nHalfway through the walk, we stop for a tasting of regional produce, with cured ham, cheeses and local wine. Then we walk back towards Chaves, where the day ends with lunch in the historic centre, close to some of the most iconic remains of the ancient Aquae Flaviae.",
+    "pt": "O dia começa em Chaves e segue a pé em direção a São Lourenço, deixando progressivamente o ambiente urbano para entrar numa paisagem mais rural, marcada por caminhos tradicionais, zonas elevadas e vistas sobre o território flaviense.\n\nA meio da caminhada, fazemos uma pausa para uma degustação de produtos regionais, com presunto, queijos e vinho local. Depois, retomamos o percurso em direção a Chaves, onde o dia termina com um almoço no centro histórico, junto a alguns dos elementos mais emblemáticos da antiga Aquae Flaviae.",
+    "es": "El día empieza en Chaves y sigue a pie hacia São Lourenço, dejando poco a poco el ambiente urbano para entrar en un paisaje más rural, marcado por caminos tradicionales, zonas elevadas y vistas sobre el territorio de Chaves.\n\nA mitad de la caminata hacemos una pausa para una degustación de productos regionales, con jamón curado, quesos y vino local. Después retomamos el recorrido hacia Chaves, donde el día termina con un almuerzo en el centro histórico, junto a algunos de los elementos más emblemáticos de la antigua Aquae Flaviae."
+  },
+  "difficultyNote": {
+    "en": "A moderate route, mainly because of its distance and the accumulated ascent over the day. Recommended for active participants used to regular walks, with no technical experience needed.",
+    "pt": "Percurso de dificuldade moderada, sobretudo pela sua distância e pelo desnível acumulado ao longo do dia. Recomendado a participantes ativos e habituados a caminhadas regulares, sem necessidade de experiência técnica.",
+    "es": "Recorrido de dificultad moderada, sobre todo por su distancia y por el desnivel acumulado a lo largo del día. Recomendado para participantes activos y habituados a caminatas regulares, sin necesidad de experiencia técnica."
+  },
+  "highlights": [
+    {
+      "en": "A walk between Chaves and São Lourenço",
+      "pt": "Caminhada entre Chaves e São Lourenço",
+      "es": "Caminata entre Chaves y São Lourenço"
+    },
+    {
+      "en": "Rural landscapes and views over the valley",
+      "pt": "Paisagens rurais e vistas sobre o vale",
+      "es": "Paisajes rurales y vistas sobre el valle"
+    },
+    {
+      "en": "Tasting of cured ham, cheeses and regional wine",
+      "pt": "Degustação de presunto, queijos e vinho regional",
+      "es": "Degustación de jamón curado, quesos y vino regional"
+    },
+    {
+      "en": "The historic centre and Roman legacy of Chaves",
+      "pt": "Centro histórico e legado romano de Chaves",
+      "es": "Centro histórico y legado romano de Chaves"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Walk between Chaves and São Lourenço",
+        "pt": "Caminhada entre Chaves e São Lourenço",
+        "es": "Caminata entre Chaves y São Lourenço"
+      },
+      "trail": "Chaves · São Lourenço · Chaves",
+      "description": {
+        "en": "The walk begins in the city of Chaves and heads towards São Lourenço, gradually gaining height as we leave the centre behind. The route combines rural paths, natural areas and different perspectives over the surroundings of Chaves.\n\nAt 14.7 km long and with a moderate accumulated ascent, the trail offers a varied experience, alternating gradual climbs, more open areas and stretches heading back down to the valley. At km 6.5 we stop at Casa dos Presuntos Zeca Moura to get to know some of the most representative flavours of the region. The experience includes a tasting of cured ham and cheeses with regional wine, a moment of rest before the second half of the walk.\n\nAfter the tasting, we walk back towards Chaves. Arriving in the city makes a natural transition from nature to history, ending in the centre of a city deeply marked by its Roman past.\n\nKnown in antiquity as Aquae Flaviae, Chaves still preserves some of the most important remains of that period, including Trajan's Bridge over the Tâmega River and the old Roman baths. The bridge is one of the main symbols of the city and one of the most important legacies of the Romanisation of this region.\n\nThe day ends with lunch in the historic centre of Chaves, pairing local cooking with the atmosphere of a city where more than two thousand years of history are still present.",
+        "pt": "A caminhada começa na cidade de Chaves e segue em direção a São Lourenço, ganhando progressivamente altitude à medida que nos afastamos do centro urbano. O percurso combina caminhos rurais, zonas naturais e diferentes perspetivas sobre a envolvente de Chaves.\n\nCom 14,7 km de extensão e um desnível acumulado moderado, o trilho oferece uma experiência variada, alternando entre subidas graduais, zonas mais abertas e troços de regresso em direção ao vale. Ao km 6,5 fazemos uma pausa na Casa dos Presuntos Zeca Moura para conhecer alguns dos sabores mais representativos da região. A experiência inclui uma degustação de presunto e queijos, acompanhada por vinho regional, criando um momento de descanso antes da segunda metade da caminhada.\n\nDepois da degustação, retomamos o percurso em direção a Chaves. A chegada à cidade cria uma transição natural entre a componente de natureza e o património histórico, terminando no centro de uma cidade profundamente marcada pela presença romana.\n\nConhecida na Antiguidade como Aquae Flaviae, Chaves preserva ainda hoje alguns dos testemunhos mais importantes desse período, incluindo a Ponte de Trajano sobre o rio Tâmega e as antigas termas romanas. A ponte é um dos principais símbolos da cidade e um dos legados mais importantes da romanização desta região.\n\nO dia termina com um almoço no centro histórico de Chaves, combinando gastronomia local com o ambiente de uma cidade onde mais de dois mil anos de história continuam presentes.",
+        "es": "La caminata empieza en la ciudad de Chaves y sigue hacia São Lourenço, ganando altitud poco a poco a medida que nos alejamos del centro urbano. El recorrido combina caminos rurales, zonas naturales y distintas perspectivas sobre los alrededores de Chaves.\n\nCon 14,7 km de longitud y un desnivel acumulado moderado, el sendero ofrece una experiencia variada, alternando subidas graduales, zonas más abiertas y tramos de regreso hacia el valle. En el km 6,5 hacemos una pausa en la Casa dos Presuntos Zeca Moura para conocer algunos de los sabores más representativos de la región. La experiencia incluye una degustación de jamón curado y quesos, acompañada de vino regional, un momento de descanso antes de la segunda mitad de la caminata.\n\nDespués de la degustación, retomamos el recorrido hacia Chaves. La llegada a la ciudad crea una transición natural entre la naturaleza y el patrimonio histórico, terminando en el centro de una ciudad profundamente marcada por la presencia romana.\n\nConocida en la Antigüedad como Aquae Flaviae, Chaves conserva aún hoy algunos de los testimonios más importantes de ese periodo, como el Puente de Trajano sobre el río Tâmega y las antiguas termas romanas. El puente es uno de los principales símbolos de la ciudad y uno de los legados más importantes de la romanización de esta región.\n\nEl día termina con un almuerzo en el centro histórico de Chaves, combinando gastronomía local con el ambiente de una ciudad donde más de dos mil años de historia siguen presentes."
+      },
+      "distance": "14,7 km",
+      "shape": "",
+      "ascent": "+485 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 347,
+        "avg": 462,
+        "max": 649,
+        "gain": 485,
+        "loss": 485
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Tasting of cured ham and cheeses",
+      "pt": "Degustação de presunto e queijos",
+      "es": "Degustación de jamón curado y quesos"
+    },
+    {
+      "en": "Regional wine during the tasting",
+      "pt": "Vinho regional durante a degustação",
+      "es": "Vino regional durante la degustación"
+    },
+    {
+      "en": "Lunch in the centre of Chaves",
+      "pt": "Almoço no centro de Chaves",
+      "es": "Almuerzo en el centro de Chaves"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point in Chaves",
+      "pt": "Transfer entre o alojamento e o ponto de encontro em Chaves",
+      "es": "Traslado entre el alojamiento y el punto de encuentro en Chaves"
+    },
+    {
+      "en": "Transport during the program",
+      "pt": "Transporte durante o programa",
+      "es": "Transporte durante el programa"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

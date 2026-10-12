@@ -1,0 +1,85 @@
+{
+  "name": "Trás-os-Montes",
+  "shortName": "",
+  "order": 1,
+  "hidden": false,
+  "image": "/images/destinos/tras-os-montes/hero-miranda.jpg",
+  "tagline": {
+    "en": "Wild plateaus and deep valleys",
+    "pt": "Planaltos selvagens e vales profundos",
+    "es": "Mesetas salvajes y valles profundos"
+  },
+  "description": {
+    "en": "Portugal's untamed northeast: vast plateaus, dramatic gorges and timeless villages where ancient traditions still shape daily life.",
+    "pt": "O nordeste indomado de Portugal: planaltos imensos, gargantas dramáticas e aldeias intemporais onde as tradições antigas ainda moldam o dia a dia.",
+    "es": "El nordeste indómito de Portugal: mesetas inmensas, gargantas dramáticas y aldeas atemporales donde las tradiciones antiguas aún moldean la vida diaria."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 440,
+    "y": 67,
+    "side": "right",
+    "lines": [
+      "Trás-os-Montes"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "The northeast time never rushed",
+      "pt": "O nordeste que o tempo não apressou",
+      "es": "El nordeste que el tiempo no apresuró"
+    },
+    "body": {
+      "en": "Trás-os-Montes is a land of vast plateaus, cold winters and villages where Mirandese, Portugal's second official language, is still spoken. Here the clock runs by the seasons. We walk through chestnut groves, granite outcrops and meadows where donkeys still graze.",
+      "pt": "Trás-os-Montes é terra de planaltos imensos, invernos frios e aldeias onde ainda se fala mirandês, a segunda língua oficial de Portugal. Aqui o relógio é o das estações. Caminhamos por soutos de castanheiros, afloramentos de granito e lameiros onde os burros ainda pastam.",
+      "es": "Trás-os-Montes es tierra de mesetas inmensas, inviernos fríos y aldeas donde aún se habla mirandés, la segunda lengua oficial de Portugal. Aquí el reloj es el de las estaciones. Caminamos por sotos de castaños, afloramientos de granito y prados donde aún pastan los burros."
+    },
+    "image": "/images/destinos/tras-os-montes/tras-os-montes-2.jpg",
+    "badgeValue": "2",
+    "badgeLabel": {
+      "en": "Official languages in the Land of Miranda",
+      "pt": "Línguas oficiais na Terra de Miranda",
+      "es": "Lenguas oficiales en la Tierra de Miranda"
+    }
+  },
+  "heritage": {
+    "show": true,
+    "title": {
+      "en": "Smoked meats, olive oil and a village table",
+      "pt": "Fumeiro, azeite e mesa de aldeia",
+      "es": "Embutidos, aceite y mesa de aldea"
+    },
+    "body": {
+      "en": "Trás-os-Montes cooking is generous and unhurried: cold-cured smoked meats, oil from old mills, beef, honey and convent sweets. We sit at family tables, in houses with history, where the recipe has not changed for generations and the welcome is genuine.",
+      "pt": "A cozinha transmontana é generosa e sem pressa: fumeiro curado ao frio, azeite de lagares antigos, posta, mel e doçaria conventual. Sentamo-nos a mesas de família, em casas com história, onde a receita é a mesma há gerações e a hospitalidade é genuína.",
+      "es": "La cocina transmontana es generosa y sin prisa: embutidos curados al frío, aceite de lagares antiguos, carne, miel y dulces conventuales. Nos sentamos a mesas de familia, en casas con historia, donde la receta es la misma desde hace generaciones y la hospitalidad es genuina."
+    },
+    "gallery": [
+      "/images/destinos/tras-os-montes/miranda-1.jpg",
+      "/images/destinos/tras-os-montes/azeite-1.jpg",
+      "/images/destinos/tras-os-montes/palacios-1.jpg"
+    ]
+  },
+  "highlights": [
+    {
+      "en": "Mirandese, Portugal's second official language",
+      "pt": "Mirandês, segunda língua oficial de Portugal",
+      "es": "Mirandés, segunda lengua oficial de Portugal"
+    },
+    {
+      "en": "Medieval villages and bridges (Gimonde, Romeu)",
+      "pt": "Aldeias e pontes medievais (Gimonde, Romeu)",
+      "es": "Aldeas y puentes medievales (Gimonde, Romeu)"
+    },
+    {
+      "en": "Montesinho Natural Park and the Natura 2000 network",
+      "pt": "Parque Natural de Montesinho e rede Natura 2000",
+      "es": "Parque Natural de Montesinho y red Natura 2000"
+    },
+    {
+      "en": "Olive oil, smoked meats and the local table",
+      "pt": "Azeite, fumeiro e mesa transmontana",
+      "es": "Aceite, embutidos y mesa transmontana"
+    }
+  ]
+}

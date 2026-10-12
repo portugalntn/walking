@@ -1,0 +1,85 @@
+{
+  "name": "Douro Valley",
+  "shortName": "",
+  "order": 2,
+  "hidden": false,
+  "image": "/images/destinos/douro/douro-1.jpg",
+  "tagline": {
+    "en": "UNESCO terraced vineyards",
+    "pt": "Socalcos vinhateiros UNESCO",
+    "es": "Bancales vinícolas UNESCO"
+  },
+  "description": {
+    "en": "Walk the world's oldest demarcated wine region, where terraced vineyards cascade to the river and every village tells a story of wine and stone.",
+    "pt": "Caminhe na mais antiga região vinhateira demarcada do mundo, onde os socalcos descem até ao rio e cada aldeia conta uma história de vinho e pedra.",
+    "es": "Camina por la región vinícola demarcada más antigua del mundo, donde los bancales descienden hasta el río y cada aldea cuenta una historia de vino y piedra."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 326,
+    "y": 207,
+    "side": "right",
+    "lines": [
+      "Douro Valley"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "Where wine is born from stone",
+      "pt": "Onde o vinho nasce da pedra",
+      "es": "Donde el vino nace de la piedra"
+    },
+    "body": {
+      "en": "The Douro is a work of human hands and patience. For centuries, generations carved terraces into the schist slopes to tame the river and the vine. Walking here means reading that story at every bend, with the river always below and the scent of the harvest in the air come September.",
+      "pt": "O Douro é uma obra de mão humana e de paciência. Durante séculos, gerações esculpiram socalcos na encosta de xisto para domar o rio e a vinha. Caminhar aqui é ler essa história a cada curva, com o rio sempre lá em baixo e o aroma do mosto no ar quando chega a vindima.",
+      "es": "El Duero es obra de manos humanas y de paciencia. Durante siglos, generaciones esculpieron bancales en la ladera de esquisto para domar el río y la viña. Caminar aquí es leer esa historia en cada curva, con el río siempre abajo y el aroma de la vendimia en el aire al llegar septiembre."
+    },
+    "image": "/images/destinos/douro/douro-a.jpg",
+    "badgeValue": "1756",
+    "badgeLabel": {
+      "en": "World's oldest demarcated wine region",
+      "pt": "Região vinhateira demarcada mais antiga do mundo",
+      "es": "La región vinícola demarcada más antigua del mundo"
+    }
+  },
+  "heritage": {
+    "show": true,
+    "title": {
+      "en": "Table, estate and harvest",
+      "pt": "Mesa, quinta e vindima",
+      "es": "Mesa, quinta y vendimia"
+    },
+    "body": {
+      "en": "Every estate has its grape and its story. We taste ports and award-winning reds where they are made, at the table with rooted cooking: slow-grilled beef, local olive oil and mountain cheeses. You enter the Douro on foot, but you stay for the taste.",
+      "pt": "Cada quinta tem a sua casta e a sua história. Provamos vinhos do Porto e tintos premiados onde foram criados, à mesa com cozinha de raiz: posta grelhada, azeite local e queijos de montanha. O Douro entra-se a pé, mas fica-se pelo paladar.",
+      "es": "Cada quinta tiene su uva y su historia. Catamos oportos y tintos premiados donde se crean, a la mesa con cocina de raíz: carne a la brasa, aceite local y quesos de montaña. Al Duero se entra a pie, pero te quedas por el paladar."
+    },
+    "gallery": [
+      "/images/destinos/douro/samodaes-1.jpg",
+      "/images/destinos/douro/monge-2.jpg",
+      "/images/destinos/douro/walk-2.jpg"
+    ]
+  },
+  "highlights": [
+    {
+      "en": "UNESCO World Heritage terraced vineyards",
+      "pt": "Socalcos vinhateiros Património Mundial UNESCO",
+      "es": "Bancales vinícolas Patrimonio Mundial UNESCO"
+    },
+    {
+      "en": "Tastings at historic Douro estates",
+      "pt": "Provas em quintas históricas do Douro",
+      "es": "Catas en quintas históricas del Duero"
+    },
+    {
+      "en": "The Douro River ever-present in the landscape",
+      "pt": "Rio Douro sempre presente na paisagem",
+      "es": "El río Duero siempre presente en el paisaje"
+    },
+    {
+      "en": "Food and wines with Denomination of Origin",
+      "pt": "Gastronomia e vinhos com Denominação de Origem",
+      "es": "Gastronomía y vinos con Denominación de Origen"
+    }
+  ]
+}

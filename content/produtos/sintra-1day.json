@@ -1,0 +1,250 @@
+{
+  "title": "Mystic Sintra",
+  "order": 11,
+  "hidden": true,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "lisboa-sintra",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/sintra-1day/sintra-1.jpg",
+  "cardTagline": {
+    "en": "Mist, myth and forest",
+    "pt": "Névoa, mito e floresta",
+    "es": "Niebla, mito y bosque"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "The Sacred Mountain: a misty forest walk and a hidden convent",
+    "pt": "A Montanha Sagrada: uma caminhada na floresta enevoada e um convento escondido",
+    "es": "La Montaña Sagrada: una caminata en el bosque brumoso y un convento escondido"
+  },
+  "heroImage": "/images/programs/sintra-1day/hero-sintra-1day-v2.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderado"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Lisboa",
+    "pt": "Lisboa",
+    "es": "Lisboa"
+  },
+  "totalDistance": "6 km",
+  "overview": {
+    "en": "A walk entirely within the Sintra-Cascais Natural Park, under the unique spell of the mystical Serra de Sintra. The trail links the village of Penedo, the Convent of the Capuchos, the Monge dolmen, the sanctuaries of São Saturnino and Peninha, Adro Nunes and Quinta da Urca. Along the way we visit the Convent of the Capuchos, and afterwards enjoy lunch at a traditional restaurant. A day of mist, myth and forest, a short drive from Lisbon.",
+    "pt": "Uma caminhada inteiramente no Parque Natural de Sintra-Cascais, sob o encanto único da mística Serra de Sintra. O trilho liga a aldeia do Penedo, o Convento dos Capuchos, o dólmen do Monge, os santuários de São Saturnino e da Peninha, o Adro Nunes e a Quinta da Urca. Pelo caminho visitamos o Convento dos Capuchos e, no final, almoçamos num restaurante tradicional. Um dia de névoa, mito e floresta, a poucos minutos de Lisboa.",
+    "es": "Una caminata enteramente en el Parque Natural de Sintra-Cascais, bajo el encanto único de la mística Sierra de Sintra. El sendero une la aldea de Penedo, el Convento de los Capuchos, el dolmen del Monge, los santuarios de São Saturnino y Peninha, Adro Nunes y la Quinta da Urca. Por el camino visitamos el Convento de los Capuchos y, al final, almorzamos en un restaurante tradicional. Un día de niebla, mito y bosque, a pocos minutos de Lisboa."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "Sintra-Cascais Natural Park",
+      "pt": "Parque Natural de Sintra-Cascais",
+      "es": "Parque Natural de Sintra-Cascais"
+    },
+    {
+      "en": "The mystical Serra de Sintra",
+      "pt": "A mística Serra de Sintra",
+      "es": "La mística Sierra de Sintra"
+    },
+    {
+      "en": "Visit to the Convent of the Capuchos",
+      "pt": "Visita ao Convento dos Capuchos",
+      "es": "Visita al Convento de los Capuchos"
+    },
+    {
+      "en": "Lunch at a traditional restaurant",
+      "pt": "Almoço num restaurante tradicional",
+      "es": "Almuerzo en un restaurante tradicional"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "The mystic forest",
+        "pt": "A floresta mística",
+        "es": "El bosque místico"
+      },
+      "trail": "Trilho Místico de Sintra",
+      "description": {
+        "en": "We walk the misty trails of the Serra de Sintra, between centuries-old trees draped in ivy and moss, to the Convent of the Capuchos, a hermitage carved into the rock. Past sanctuaries and dolmens, the day ends with lunch at the traditional O Apeadeiro restaurant.",
+        "pt": "Caminhamos pelos trilhos enevoados da Serra de Sintra, entre árvores centenárias cobertas de hera e musgo, até ao Convento dos Capuchos, um eremitério escavado na rocha. Por entre santuários e dólmenes, o dia termina com almoço no restaurante tradicional O Apeadeiro.",
+        "es": "Caminamos por los senderos brumosos de la Sierra de Sintra, entre árboles centenarios cubiertos de hiedra y musgo, hasta el Convento de los Capuchos, una ermita excavada en la roca. Entre santuarios y dólmenes, el día termina con almuerzo en el restaurante tradicional O Apeadeiro."
+      },
+      "distance": "6 km",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "2h",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/sintra-1day/walk-3.jpg",
+        "/images/programs/sintra-1day/convento-capuchos-2.jpg",
+        "/images/programs/sintra-1day/parques-sintra-capuchos-06.jpg",
+        "/images/programs/sintra-1day/walk-1.jpg",
+        "/images/programs/sintra-1day/walk-2.jpg",
+        "/images/programs/sintra-1day/hotel-convento-capuchos.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided hiking trail",
+      "pt": "Trilho pedestre guiado",
+      "es": "Sendero pedestre guiado"
+    },
+    {
+      "en": "Private driver and private car",
+      "pt": "Motorista e viatura privados",
+      "es": "Conductor y vehículo privados"
+    },
+    {
+      "en": "Refreshments",
+      "pt": "Bebidas e snacks",
+      "es": "Bebidas y aperitivos"
+    },
+    {
+      "en": "Lunch at the traditional O Apeadeiro restaurant",
+      "pt": "Almoço no restaurante tradicional O Apeadeiro",
+      "es": "Almuerzo en el restaurante tradicional O Apeadeiro"
+    },
+    {
+      "en": "Visit to the Convent of the Capuchos",
+      "pt": "Visita ao Convento dos Capuchos",
+      "es": "Visita al Convento de los Capuchos"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [
+    {
+      "pax": 1,
+      "price": 770
+    },
+    {
+      "pax": 2,
+      "price": 900
+    },
+    {
+      "pax": 3,
+      "price": 1030
+    },
+    {
+      "pax": 4,
+      "price": 1160
+    },
+    {
+      "pax": 5,
+      "price": 1290
+    },
+    {
+      "pax": 6,
+      "price": 1427
+    }
+  ],
+  "priceTiersNote": {
+    "en": "For groups larger than 6 people, price on request.",
+    "pt": "Para grupos com mais de 6 pessoas, preço sob consulta.",
+    "es": "Para grupos de más de 6 personas, precio bajo consulta."
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

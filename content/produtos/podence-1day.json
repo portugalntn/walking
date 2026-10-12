@@ -1,0 +1,218 @@
+{
+  "title": "Podence & Azibo Experience",
+  "order": 9,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "tras-os-montes",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/podence-1day/tras-os-montes-2.jpg",
+  "cardTagline": {
+    "en": "The Caretos, the Azibo and a boat picnic",
+    "pt": "Caretos, Azibo e picnic de barco",
+    "es": "Caretos, Azibo y picnic en barco"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Culture, nature and calm by the waters of the Azibo, in a day that combines a walk, local heritage and a boat trip with a picnic.",
+    "pt": "Cultura, natureza e tranquilidade junto às águas do Azibo, numa experiência que combina caminhada, património e um passeio de barco com picnic.",
+    "es": "Cultura, naturaleza y tranquilidad junto a las aguas del Azibo, en una experiencia que combina caminata, patrimonio y un paseo en barco con picnic."
+  },
+  "heroImage": "/images/programs/podence-1day/tras-os-montes-2.jpg",
+  "difficulty": {
+    "en": "Very easy",
+    "pt": "Muito fácil",
+    "es": "Muy fácil"
+  },
+  "grade": "1",
+  "season": {
+    "en": "March to October",
+    "pt": "Março a outubro",
+    "es": "Marzo a octubre"
+  },
+  "startPoint": {
+    "en": "Podence",
+    "pt": "Podence",
+    "es": "Podence"
+  },
+  "totalDistance": "4,58 km",
+  "overview": {
+    "en": "The day begins in Podence, home of the famous Caretos, whose carnival tradition is inscribed on the UNESCO Representative List of the Intangible Cultural Heritage of Humanity.\n\nThe experience continues by the Azibo Reservoir, where we set off on an easy walk through the protected landscape around the reservoir. The route follows natural paths, wooded areas and open ground with views over the water and the surrounding hills.\n\nAt the end of the walk, we swap the trail for a boat for a relaxed trip on the Azibo Reservoir, with a picnic on board.",
+    "pt": "O dia começa em Podence, terra dos famosos Caretos, cuja tradição carnavalesca integra a Lista Representativa do Património Cultural Imaterial da Humanidade da UNESCO.\n\nA experiência continua junto à Albufeira do Azibo, onde iniciamos uma caminhada de baixa dificuldade pela paisagem protegida que envolve a albufeira. O percurso segue por caminhos naturais, zonas arborizadas e áreas abertas com vistas sobre a água e as colinas envolventes.\n\nNo final da caminhada, trocamos o trilho pelo barco para uma experiência tranquila na Albufeira do Azibo, acompanhada por um picnic a bordo.",
+    "es": "El día empieza en Podence, tierra de los famosos Caretos, cuya tradición de carnaval forma parte de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad de la UNESCO.\n\nLa experiencia continúa junto al Embalse del Azibo, donde iniciamos una caminata de baja dificultad por el paisaje protegido que rodea el embalse. El recorrido sigue caminos naturales, zonas arboladas y áreas abiertas con vistas sobre el agua y las colinas.\n\nAl final de la caminata, cambiamos el sendero por el barco para una experiencia tranquila en el Embalse del Azibo, con un picnic a bordo."
+  },
+  "difficultyNote": {
+    "en": "A short, accessible route with little change in level, mostly on natural paths along the Azibo Reservoir. Suitable for most participants in normal physical condition, with no previous walking experience needed.",
+    "pt": "Percurso curto, acessível e com pouco desnível, realizado maioritariamente por caminhos naturais junto à Albufeira do Azibo. Adequado à maioria dos participantes com uma condição física normal e sem necessidade de experiência prévia em caminhadas.",
+    "es": "Recorrido corto, accesible y con poco desnivel, realizado mayoritariamente por caminos naturales junto al Embalse del Azibo. Adecuado para la mayoría de los participantes con una condición física normal y sin necesidad de experiencia previa en caminatas."
+  },
+  "highlights": [
+    {
+      "en": "The Caretos of Podence, UNESCO heritage",
+      "pt": "Caretos de Podence e Património UNESCO",
+      "es": "Caretos de Podence y Patrimonio UNESCO"
+    },
+    {
+      "en": "Azibo Reservoir Protected Landscape",
+      "pt": "Paisagem Protegida da Albufeira do Azibo",
+      "es": "Paisaje Protegido del Embalse del Azibo"
+    },
+    {
+      "en": "An easy walk by the reservoir",
+      "pt": "Caminhada tranquila junto à albufeira",
+      "es": "Caminata tranquila junto al embalse"
+    },
+    {
+      "en": "Boat trip with a picnic",
+      "pt": "Passeio de barco com picnic",
+      "es": "Paseo en barco con picnic"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Walk at the Azibo Reservoir",
+        "pt": "Caminhada na Albufeira do Azibo",
+        "es": "Caminata en el Embalse del Azibo"
+      },
+      "trail": "Podence · Albufeira do Azibo",
+      "description": {
+        "en": "After meeting in Podence, we head to the Fraga da Pegada beach area, where the walk begins.\n\nThe route runs along the Azibo Reservoir, on easy natural paths with little change in level. Over its 4.58 km, the water is with you for much of the way, alternating with wooded areas, open spaces and different perspectives over the surrounding landscape.\n\nThe walk lies within an area of high natural and scenic value, making for a calm and accessible route, ideal for anyone who wants to enjoy the land without a high physical demand.\n\nOnce the trail is done, we reach the boarding point for the second part of the experience. From here we set off by boat across the waters of the Azibo, seeing the landscape from a different angle.\n\nDuring the trip a picnic is served on board, closing the day in a relaxed way and leaving time to take in the calm of the reservoir.",
+        "pt": "Depois do encontro em Podence, seguimos para a zona da Praia da Fraga da Pegada, onde começa a caminhada.\n\nO percurso desenvolve-se junto à Albufeira do Azibo, por caminhos naturais de baixa dificuldade e com pouco desnível. Ao longo dos 4,58 km, a água acompanha grande parte da experiência, alternando com zonas arborizadas, espaços abertos e diferentes perspetivas sobre a paisagem envolvente.\n\nA caminhada insere-se numa área de elevado valor natural e paisagístico, proporcionando um percurso calmo e acessível, ideal para quem procura desfrutar do território sem uma exigência física elevada.\n\nDepois de completar o trilho, chegamos ao ponto de embarque para a segunda parte da experiência. A partir daqui, seguimos de barco pelas águas do Azibo, observando a paisagem a partir de uma perspetiva diferente.\n\nDurante o passeio, é servido um picnic a bordo, encerrando o dia de forma descontraída e permitindo aproveitar com calma a tranquilidade da albufeira.",
+        "es": "Después del encuentro en Podence, seguimos hacia la zona de la Playa de Fraga da Pegada, donde empieza la caminata.\n\nEl recorrido transcurre junto al Embalse del Azibo, por caminos naturales de baja dificultad y con poco desnivel. A lo largo de sus 4,58 km, el agua acompaña gran parte de la experiencia, alternando con zonas arboladas, espacios abiertos y distintas perspectivas sobre el paisaje.\n\nLa caminata se sitúa en un área de elevado valor natural y paisajístico, con un recorrido tranquilo y accesible, ideal para quien quiere disfrutar del territorio sin una gran exigencia física.\n\nAl completar el sendero, llegamos al punto de embarque para la segunda parte de la experiencia. Desde aquí seguimos en barco por las aguas del Azibo, observando el paisaje desde otra perspectiva.\n\nDurante el paseo se sirve un picnic a bordo, cerrando el día de forma relajada y permitiendo disfrutar con calma de la tranquilidad del embalse."
+      },
+      "distance": "4,58 km",
+      "shape": "",
+      "ascent": "+162 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 601,
+        "avg": 627,
+        "max": 667,
+        "gain": 162,
+        "loss": 118
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Boat trip on the Azibo Reservoir",
+      "pt": "Passeio de barco na Albufeira do Azibo",
+      "es": "Paseo en barco por el Embalse del Azibo"
+    },
+    {
+      "en": "Picnic during the boat trip",
+      "pt": "Picnic durante a experiência de barco",
+      "es": "Picnic durante la experiencia en barco"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point in Podence",
+      "pt": "Transfer entre o alojamento e o ponto de encontro em Podence",
+      "es": "Traslado entre el alojamiento y el punto de encuentro en Podence"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "title": "Wine Town of Pinhão",
+  "order": 5,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "douro",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/douro-1day/douro-2.jpg",
+  "cardTagline": {
+    "en": "Vineyards, terraces and a picnic at Quinta do Bomfim",
+    "pt": "Vinhas, socalcos e picnic na Quinta do Bomfim",
+    "es": "Viñedos, bancales y picnic en la Quinta do Bomfim"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Discover the heart of the Douro on foot, among vineyards, terraces and some of the most iconic views over the valley.",
+    "pt": "Descubra o coração do Douro a pé, entre vinhas, socalcos e algumas das vistas mais emblemáticas sobre o vale.",
+    "es": "Descubra el corazón del Duero a pie, entre viñedos, bancales y algunas de las vistas más emblemáticas sobre el valle."
+  },
+  "heroImage": "/images/programs/douro-1day/hero-douro-1day.jpg",
+  "difficulty": {
+    "en": "Easy",
+    "pt": "Fácil",
+    "es": "Fácil"
+  },
+  "grade": "2",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Pinhão",
+    "pt": "Pinhão",
+    "es": "Pinhão"
+  },
+  "totalDistance": "6,47 km",
+  "overview": {
+    "en": "Starting in Pinhão, this walk takes us up the slopes of the Cima Corgo to Casal de Loivos, through a landscape deeply shaped by the vine and by the terraces that mould the Alto Douro Wine Region.\n\nAlong the way, the altitude keeps revealing new perspectives over the valley, the Douro River and Pinhão. After reaching Casal de Loivos, the path gradually returns towards the town through the vineyards, ending at Quinta do Bomfim, where the experience continues with a picnic in a privileged setting above the Douro.",
+    "pt": "Partindo do Pinhão, esta caminhada leva-nos pelas encostas do Cima Corgo até Casal de Loivos, atravessando uma paisagem profundamente marcada pela cultura da vinha e pelos socalcos que moldam o Alto Douro Vinhateiro.\n\nAo longo do percurso, a altitude vai revelando novas perspetivas sobre o vale, o rio Douro e o Pinhão. Depois de alcançar Casal de Loivos, o caminho regressa progressivamente em direção à vila através das vinhas, terminando na Quinta do Bomfim, onde a experiência continua com um picnic num cenário privilegiado sobre o Douro.",
+    "es": "Partiendo de Pinhão, esta caminata nos lleva por las laderas del Cima Corgo hasta Casal de Loivos, atravesando un paisaje profundamente marcado por la cultura de la viña y por los bancales que moldean el Alto Duero Vinícola.\n\nA lo largo del recorrido, la altitud va revelando nuevas perspectivas sobre el valle, el río Duero y Pinhão. Tras alcanzar Casal de Loivos, el camino regresa poco a poco hacia el pueblo entre viñedos, terminando en la Quinta do Bomfim, donde la experiencia continúa con un picnic en un escenario privilegiado sobre el Duero."
+  },
+  "difficultyNote": {
+    "en": "A relatively short route, but with a significant climb in the first part up to Casal de Loivos. Recommended for participants in reasonable physical condition who are comfortable with walks that include some ascent.",
+    "pt": "Percurso de distância relativamente curta, mas com uma subida significativa na primeira parte até Casal de Loivos. Recomendado a participantes com uma condição física regular e confortáveis com caminhadas que incluam algum desnível.",
+    "es": "Recorrido de distancia relativamente corta, pero con una subida significativa en la primera parte hasta Casal de Loivos. Recomendado para participantes con una condición física regular y cómodos con caminatas que incluyan algo de desnivel."
+  },
+  "highlights": [
+    {
+      "en": "Vineyards and terraces of the Alto Douro",
+      "pt": "Vinhas e socalcos do Alto Douro",
+      "es": "Viñedos y bancales del Alto Duero"
+    },
+    {
+      "en": "Panoramic views over Pinhão",
+      "pt": "Vistas panorâmicas sobre o Pinhão",
+      "es": "Vistas panorámicas sobre Pinhão"
+    },
+    {
+      "en": "Casal de Loivos and the Douro landscape",
+      "pt": "Casal de Loivos e paisagem do Douro",
+      "es": "Casal de Loivos y el paisaje del Duero"
+    },
+    {
+      "en": "Picnic at Quinta do Bomfim",
+      "pt": "Picnic na Quinta do Bomfim",
+      "es": "Picnic en la Quinta do Bomfim"
+    }
+  ],
+  "moments": [
+    {
+      "km": 0,
+      "title": {
+        "en": "Setting off from Pinhão",
+        "pt": "Partida do Pinhão",
+        "es": "Salida desde Pinhão"
+      },
+      "text": {
+        "en": "We meet in Pinhão, by the Douro, and soon leave the town behind for the wine slopes around the valley.",
+        "pt": "Encontramo-nos no Pinhão, junto ao Douro, e rapidamente deixamos a vila para entrar nas encostas vinhateiras que rodeiam o vale.",
+        "es": "Nos encontramos en Pinhão, junto al Duero, y enseguida dejamos el pueblo para entrar en las laderas vinícolas que rodean el valle."
+      },
+      "image": "/images/programs/douro-1day/walk-4.jpg"
+    },
+    {
+      "km": 1.2,
+      "title": {
+        "en": "The climb between estates",
+        "pt": "A subida entre quintas",
+        "es": "La subida entre quintas"
+      },
+      "text": {
+        "en": "Rural paths between estates and vineyard plots. The most demanding part of the day, and the one where the landscape changes most.",
+        "pt": "Caminhos rurais entre quintas e parcelas de vinha. É a parte mais exigente do dia, e aquela em que a paisagem mais se transforma.",
+        "es": "Caminos rurales entre quintas y parcelas de viña. Es la parte más exigente del día, y aquella en la que el paisaje más se transforma."
+      },
+      "image": "/images/programs/douro-1day/walk-1.jpg"
+    },
+    {
+      "km": 2.5,
+      "title": {
+        "en": "Casal de Loivos",
+        "pt": "Casal de Loivos",
+        "es": "Casal de Loivos"
+      },
+      "text": {
+        "en": "The high point of the walk, with one of the best perspectives over the valley, the river and the terraces of the Cima Corgo.",
+        "pt": "O ponto mais alto da caminhada, com uma das melhores perspetivas sobre o vale, o rio e os socalcos do Cima Corgo.",
+        "es": "El punto más alto de la caminata, con una de las mejores perspectivas sobre el valle, el río y los bancales del Cima Corgo."
+      },
+      "image": "/images/programs/douro-1day/walk-2.jpg"
+    },
+    {
+      "km": 4.3,
+      "title": {
+        "en": "Back down through the vines",
+        "pt": "Regresso pelas vinhas",
+        "es": "Regreso entre viñedos"
+      },
+      "text": {
+        "en": "Mostly downhill now, between vineyards and farm tracks, for a different reading of the Douro landscape.",
+        "pt": "Agora predominantemente a descer, entre vinhas e caminhos agrícolas, numa leitura diferente da paisagem duriense.",
+        "es": "Ahora sobre todo de bajada, entre viñedos y caminos agrícolas, con otra lectura del paisaje del Duero."
+      },
+      "image": "/images/programs/douro-1day/walk-3.jpg"
+    },
+    {
+      "km": 6.4,
+      "title": {
+        "en": "Picnic at Quinta do Bomfim",
+        "pt": "Picnic na Quinta do Bomfim",
+        "es": "Picnic en la Quinta do Bomfim"
+      },
+      "text": {
+        "en": "A historic Symington estate, linked to Dow's Port since 1896. A picnic and a wine experience among vines overlooking the Douro.",
+        "pt": "Propriedade histórica da família Symington, ligada ao Porto Dow's desde 1896. Picnic e experiência vínica entre vinhas com vista sobre o Douro.",
+        "es": "Propiedad histórica de la familia Symington, ligada al Oporto Dow's desde 1896. Picnic y experiencia vinícola entre viñedos con vistas al Duero."
+      },
+      "image": "/images/programs/douro-1day/hero-douro-1day.jpg"
+    }
+  ],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Pinhão to Casal de Loivos Trail",
+        "pt": "Trilho do Pinhão – Casal de Loivos",
+        "es": "Sendero de Pinhão a Casal de Loivos"
+      },
+      "trail": "Pinhão · Casal de Loivos · Quinta do Bomfim",
+      "description": {
+        "en": "The walk begins in Pinhão and soon leaves the town behind to enter the wine slopes that surround the valley. The route follows rural paths between estates and vineyard plots, climbing gradually towards Casal de Loivos.\n\nThis first part is the most demanding of the route, but also the one where the landscape changes most visibly. As we gain altitude, ever wider views open up over Pinhão, the Douro River and the terraces that draw the slopes of the region.\n\nReaching Casal de Loivos, the route crosses one of the areas with the best perspective over the valley before heading back. From here the walk is mostly downhill, again between vineyards and farm tracks, offering a different reading of the Douro landscape.\n\nThe route ends at Quinta do Bomfim, next to Pinhão. A historic estate of the Symington family, linked to the production of Dow's Port since 1896, the quinta is surrounded by vineyards overlooking the Douro. Here the walk gives way to a picnic, a chance to enjoy the landscape and the flavours of the region at an easy pace.",
+        "pt": "A caminhada começa no Pinhão e rapidamente deixa o ambiente da vila para entrar nas encostas vinhateiras que rodeiam o vale. O percurso segue por caminhos rurais entre quintas e parcelas de vinha, acompanhando a subida gradual em direção a Casal de Loivos.\n\nEsta primeira parte é a mais exigente do percurso, mas também aquela em que a paisagem se transforma de forma mais evidente. À medida que ganhamos altitude, surgem vistas cada vez mais amplas sobre o Pinhão, o rio Douro e os socalcos que desenham as encostas da região.\n\nChegando a Casal de Loivos, o percurso atravessa uma das zonas com melhor perspetiva sobre o vale antes de iniciar o regresso. A partir daqui, a caminhada torna-se predominantemente descendente, novamente entre vinhas e caminhos agrícolas, proporcionando uma leitura diferente da paisagem duriense.\n\nO percurso termina na Quinta do Bomfim, junto ao Pinhão. Propriedade histórica da família Symington e ligada à produção do Porto Dow's desde 1896, a quinta encontra-se rodeada por vinhas com vista sobre o Douro. Aqui, a caminhada dá lugar a um picnic, permitindo desfrutar com calma da paisagem e dos sabores da região.",
+        "es": "La caminata empieza en Pinhão y enseguida deja el ambiente del pueblo para entrar en las laderas vinícolas que rodean el valle. El recorrido sigue caminos rurales entre quintas y parcelas de viña, acompañando la subida gradual hacia Casal de Loivos.\n\nEsta primera parte es la más exigente del recorrido, pero también aquella en la que el paisaje se transforma de forma más evidente. A medida que ganamos altitud, aparecen vistas cada vez más amplias sobre Pinhão, el río Duero y los bancales que dibujan las laderas de la región.\n\nAl llegar a Casal de Loivos, el recorrido atraviesa una de las zonas con mejor perspectiva sobre el valle antes de iniciar el regreso. A partir de aquí la caminata es mayoritariamente descendente, de nuevo entre viñedos y caminos agrícolas, ofreciendo otra lectura del paisaje del Duero.\n\nEl recorrido termina en la Quinta do Bomfim, junto a Pinhão. Propiedad histórica de la familia Symington y ligada a la producción del Oporto Dow's desde 1896, la quinta está rodeada de viñedos con vistas al Duero. Aquí la caminata da paso a un picnic, para disfrutar con calma del paisaje y de los sabores de la región."
+      },
+      "distance": "6,47 km",
+      "shape": "",
+      "ascent": "+401 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 87,
+        "avg": 248,
+        "max": 424,
+        "gain": 401,
+        "loss": 397
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/douro-1day/walk-1.jpg",
+        "/images/programs/douro-1day/walk-2.jpg",
+        "/images/programs/douro-1day/walk-3.jpg",
+        "/images/programs/douro-1day/walk-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Picnic at Quinta do Bomfim",
+      "pt": "Picnic na Quinta do Bomfim",
+      "es": "Picnic en la Quinta do Bomfim"
+    },
+    {
+      "en": "Wine experience at Quinta do Bomfim",
+      "pt": "Experiência vínica na Quinta do Bomfim",
+      "es": "Experiencia vinícola en la Quinta do Bomfim"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point in Pinhão",
+      "pt": "Transfer entre o alojamento e o ponto de encontro no Pinhão",
+      "es": "Traslado entre el alojamiento y el punto de encuentro en Pinhão"
+    },
+    {
+      "en": "Transport during the program",
+      "pt": "Transporte durante o programa",
+      "es": "Transporte durante el programa"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { m } from "framer-motion";
+import { regions as visibleRegions } from "@/lib/destinations";
 
 /**
  * PortugalMap — terrain relief PNG (1080×1920 RGBA).
@@ -23,18 +24,14 @@ type Region = {
   lines: string[];
 };
 
-// Coordinates derived from user-placed green dots on the 1080×1920 source PNG.
-// Each value = dot_pixel_in_display × (560/839) for x, × (994/1491) for y.
+// Pins come from the CMS (Região > Marcador no mapa), visible regions only.
+// Coordinates were derived from user-placed green dots on the 1080×1920 source PNG:
+// each value = dot_pixel_in_display × (560/839) for x, × (994/1491) for y.
+// Porto is a city reference, not a region, so it stays here.
 const regions: Region[] = [
-  { id: "geres",    x: 244, y:  99, side: "left",  lines: ["Peneda-Gerês"] },
-  { id: "tras",     x: 440, y:  67, side: "right", lines: ["Trás-os-Montes"] },
-  { id: "santiago", x: 342, y: 147, side: "right", lines: ["Caminho de", "Santiago Interior"] },
-  { id: "porto",    x: 172, y: 195, side: "left",  lines: ["Porto"] },
-  { id: "douro",    x: 326, y: 207, side: "right", lines: ["Douro Valley"] },
-  // Hidden for now, no public programs there (see lib/destinations.ts):
-  // { id: "lisboa",   x:  92, y: 637, side: "left",  lines: ["Lisboa & Sintra"] },
-  // { id: "algarve",  x: 219, y: 929, side: "right", lines: ["Algarve"] },
-];
+  ...visibleRegions.flatMap((r) => (r.mapPin ? [{ id: r.id, ...r.mapPin }] : [])),
+  { id: "porto", x: 172, y: 195, side: "left" as const, lines: ["Porto"] },
+].sort((a, b) => a.y - b.y);
 
 const PIN_COLOR  = "#ccff00";
 const PIN_STROKE = "rgba(255,255,255,0.9)";

@@ -1,0 +1,516 @@
+{
+  "title": "The Essence of Trás-os-Montes",
+  "order": 2,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "programa",
+  "regionId": "tras-os-montes",
+  "days": 8,
+  "nights": 7,
+  "cardImage": "/images/programs/tras-8days/hero-miranda.jpg",
+  "cardTagline": {
+    "en": "Vast plateaus and timeless villages",
+    "pt": "Planaltos imensos e aldeias intemporais",
+    "es": "Mesetas inmensas y aldeas atemporales"
+  },
+  "type": {
+    "en": "Self-Guided",
+    "pt": "Self-Guided",
+    "es": "Autoguiado"
+  },
+  "subtitle": {
+    "en": "Vast plateaus, deep valleys and timeless villages",
+    "pt": "Planaltos imensos, vales profundos e aldeias intemporais",
+    "es": "Mesetas inmensas, valles profundos y aldeas atemporales"
+  },
+  "heroImage": "/images/programs/tras-8days/miranda-1.jpg",
+  "difficulty": {
+    "en": "Difficult",
+    "pt": "Difícil",
+    "es": "Difícil"
+  },
+  "grade": "4",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Palácios, Bragança",
+    "pt": "Palácios, Bragança",
+    "es": "Palácios, Bragança"
+  },
+  "totalDistance": "104 km",
+  "overview": {
+    "en": "Discover the vast plateaus, deep river valleys and timeless rural villages of Trás-os-Montes. Each step reveals dramatic landscapes, olive groves, stone chapels and a living heritage rooted in daily life. This itinerary is an authentic journey into one of Portugal's most preserved and characterful regions, enriched by local gastronomy and genuine community encounters.",
+    "pt": "Descubra os planaltos imensos, os vales profundos e as aldeias rurais intemporais de Trás-os-Montes. Cada passo revela paisagens dramáticas, olivais, capelas de pedra e um património vivo enraizado no dia a dia. Este itinerário é uma viagem autêntica a uma das regiões mais preservadas e genuínas de Portugal, enriquecida pela gastronomia local e por encontros verdadeiros com as comunidades.",
+    "es": "Descubra las inmensas mesetas, los valles profundos y las aldeas rurales atemporales de Trás-os-Montes. Cada paso revela paisajes dramáticos, olivares, capillas de piedra y un patrimonio vivo arraigado en la vida diaria. Este itinerario es un viaje auténtico a una de las regiones más preservadas y genuinas de Portugal, enriquecido por la gastronomía local y encuentros verdaderos con las comunidades."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "Montesinho Natural Park",
+      "pt": "Parque Natural de Montesinho",
+      "es": "Parque Natural de Montesinho"
+    },
+    {
+      "en": "Douro International Natural Park",
+      "pt": "Parque Natural do Douro Internacional",
+      "es": "Parque Natural del Duero Internacional"
+    },
+    {
+      "en": "The Mirandese Plateau",
+      "pt": "Planalto Mirandês",
+      "es": "Meseta Mirandesa"
+    },
+    {
+      "en": "Authentic villages and preserved rural life",
+      "pt": "Aldeias autênticas e vida rural preservada",
+      "es": "Aldeas auténticas y vida rural preservada"
+    },
+    {
+      "en": "Living cultural and ethnographic heritage",
+      "pt": "Património cultural e etnográfico vivo",
+      "es": "Patrimonio cultural y etnográfico vivo"
+    },
+    {
+      "en": "Wild nature and biodiversity",
+      "pt": "Natureza selvagem e biodiversidade",
+      "es": "Naturaleza salvaje y biodiversidad"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Arrival in Palácios",
+        "pt": "Chegada a Palácios",
+        "es": "Llegada a Palácios"
+      },
+      "trail": "",
+      "description": {
+        "en": "Arrival and transfer to Palácios, a small village in the Montesinho Natural Park. Settle into Casal de Palácios and enjoy a welcome dinner of regional cuisine.",
+        "pt": "Chegada e transfer para Palácios, uma pequena aldeia no Parque Natural de Montesinho. Instale-se no Casal de Palácios e desfrute de um jantar de boas-vindas com cozinha regional.",
+        "es": "Llegada y traslado a Palácios, una pequeña aldea en el Parque Natural de Montesinho. Instálese en el Casal de Palácios y disfrute de una cena de bienvenida con cocina regional."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "dinner"
+      ],
+      "accommodation": "Casal de Palácios",
+      "gallery": [
+        "/images/programs/tras-8days/palacios-1.jpg"
+      ],
+      "note": {
+        "en": "Transfer from the airport (225 km, 2h30).",
+        "pt": "Transfer do aeroporto (225 km, 2h30).",
+        "es": "Traslado desde el aeropuerto (225 km, 2h30)."
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho do Aeródromo de Bragança",
+        "pt": "Trilho do Aeródromo de Bragança",
+        "es": "Trilho do Aeródromo de Bragança"
+      },
+      "trail": "Trilho do Aeródromo de Bragança",
+      "description": {
+        "en": "A linear walk through the Montesinho Natural Park towards Bragança, crossing oak woods, streams and quiet hamlets such as Gimonde, with its medieval bridge.",
+        "pt": "Uma caminhada linear pelo Parque Natural de Montesinho em direcção a Bragança, atravessando carvalhais, ribeiras e aldeias tranquilas como Gimonde, com a sua ponte medieval.",
+        "es": "Una caminata lineal por el Parque Natural de Montesinho en dirección a Braganza, atravesando robledales, arroyos y aldeas tranquilas como Gimonde, con su puente medieval."
+      },
+      "distance": "16,5 km",
+      "shape": "linear",
+      "ascent": "+540 / -348 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/tras-8days/gimonde-1.jpg",
+        "/images/programs/tras-8days/palacios-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho de São Julião de Palácios",
+        "pt": "Trilho de São Julião de Palácios",
+        "es": "Trilho de São Julião de Palácios"
+      },
+      "trail": "Trilho de São Julião de Palácios",
+      "description": {
+        "en": "A circular route around São Julião de Palácios, among granite outcrops, chestnut groves and meadows where donkeys still graze. Rural Trás-os-Montes at its most genuine.",
+        "pt": "Um percurso circular em torno de São Julião de Palácios, entre afloramentos graníticos, soutos e lameiros onde ainda pastam burros. O Trás-os-Montes rural no seu estado mais genuíno.",
+        "es": "Un recorrido circular en torno a São Julião de Palácios, entre afloramientos graníticos, sotos de castaños y prados donde aún pastan burros. El Trás-os-Montes rural en su estado más genuino."
+      },
+      "distance": "13 km",
+      "shape": "circular",
+      "ascent": "+429 / -429 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/tras-8days/palacios-2.jpg",
+        "/images/programs/tras-8days/palacios-3.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho dos Miradouros",
+        "pt": "Trilho dos Miradouros",
+        "es": "Trilho dos Miradouros"
+      },
+      "trail": "Trilho dos Miradouros",
+      "description": {
+        "en": "The viewpoints trail leads you to the Mirandese Plateau and the canyons of the Douro International Natural Park. Night in Miranda do Douro, capital of a unique culture and language.",
+        "pt": "O trilho dos miradouros conduz ao Planalto Mirandês e aos canhões do Parque Natural do Douro Internacional. Noite em Miranda do Douro, capital de uma cultura e de uma língua únicas.",
+        "es": "El sendero de los miradores conduce a la Meseta Mirandesa y a los cañones del Parque Natural del Duero Internacional. Noche en Miranda do Douro, capital de una cultura y una lengua únicas."
+      },
+      "distance": "17,8 km",
+      "shape": "linear",
+      "ascent": "+355 / -331 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "Hotel O Mirandês, Miranda do Douro",
+      "gallery": [
+        "/images/programs/tras-8days/miranda-1.jpg",
+        "/images/programs/tras-8days/picote-2.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho de São João das Arribas",
+        "pt": "Trilho de São João das Arribas",
+        "es": "Trilho de São João das Arribas"
+      },
+      "trail": "Trilho de São João das Arribas",
+      "description": {
+        "en": "The longest day, along the arribas: dramatic cliffs carved by the Douro on the border with Spain. Griffon vultures glide below the viewpoints of São João das Arribas and Picote.",
+        "pt": "O dia mais longo, pelas arribas: falésias dramáticas escavadas pelo Douro na fronteira com Espanha. Os grifos planam abaixo dos miradouros de São João das Arribas e de Picote.",
+        "es": "El día más largo, por las arribes: acantilados dramáticos excavados por el Duero en la frontera con España. Los buitres leonados planean bajo los miradores de São João das Arribas y Picote."
+      },
+      "distance": "21,6 km",
+      "shape": "circular",
+      "ascent": "+479 / -479 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/tras-8days/picote-1.jpg",
+        "/images/programs/tras-8days/picote-2.jpg",
+        "/images/programs/tras-8days/miranda-1.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho do Caminho de Santiago do Este",
+        "pt": "Trilho do Caminho de Santiago do Este",
+        "es": "Trilho do Caminho de Santiago do Este"
+      },
+      "trail": "Trilho do Caminho de Santiago do Este",
+      "description": {
+        "en": "Follow a stretch of the eastern Way of Saint James through olive groves and quiet valleys, before the transfer to Mirandela, the olive oil capital of the Northeast.",
+        "pt": "Siga um troço do Caminho de Santiago do Este por entre olivais e vales tranquilos, antes do transfer para Mirandela, capital do azeite do Nordeste.",
+        "es": "Siga un tramo del Camino de Santiago del Este entre olivares y valles tranquilos, antes del traslado a Mirandela, capital del aceite de oliva del Nordeste."
+      },
+      "distance": "17,3 km",
+      "shape": "linear",
+      "ascent": "+364 / -375 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "Coração do Tua Hotel, Mirandela",
+      "gallery": [
+        "/images/programs/tras-8days/azeite-1.jpg",
+        "/images/programs/tras-8days/palacios-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho de Vila Verdinho a Mirandela",
+        "pt": "Trilho de Vila Verdinho a Mirandela",
+        "es": "Trilho de Vila Verdinho a Mirandela"
+      },
+      "trail": "Trilho de Vila Verdinho a Mirandela",
+      "description": {
+        "en": "From Vila Verdinho down to Mirandela along the Tua valley. An educational olive oil tasting and a visit to the Olive Tree and Olive Oil Museum close the journey with the region's liquid gold.",
+        "pt": "De Vila Verdinho até Mirandela, pelo vale do Tua. Uma prova educativa de azeite e a visita ao Museu da Oliveira e do Azeite encerram a viagem com o ouro líquido da região.",
+        "es": "De Vila Verdinho a Mirandela, por el valle del Tua. Una cata educativa de aceite y la visita al Museo del Olivo y del Aceite cierran el viaje con el oro líquido de la región."
+      },
+      "distance": "18,2 km",
+      "shape": "linear",
+      "ascent": "+592 / -365 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/tras-8days/tom-a.jpg",
+        "/images/programs/tras-8days/azeite-1.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Departure",
+        "pt": "Partida",
+        "es": "Salida"
+      },
+      "trail": "",
+      "description": {
+        "en": "Time to say goodbye after a final Trás-os-Montes breakfast. Transfer to Porto Airport can be arranged as an extra service.",
+        "pt": "Hora da despedida, depois de um último pequeno-almoço transmontano. O transfer para o Aeroporto do Porto pode ser organizado como serviço extra.",
+        "es": "Hora de la despedida, después de un último desayuno tradicional. El traslado al Aeropuerto de Oporto puede organizarse como servicio extra."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Accommodation with breakfast",
+      "pt": "Alojamento com pequeno-almoço",
+      "es": "Alojamiento con desayuno"
+    },
+    {
+      "en": "6 packed lunches, collected at the hotel reception",
+      "pt": "6 almoços de piquenique, a levantar na recepção do hotel",
+      "es": "6 almuerzos de picnic, a recoger en la recepción del hotel"
+    },
+    {
+      "en": "Educational olive oil tasting",
+      "pt": "Prova educativa de azeite",
+      "es": "Cata educativa de aceite de oliva"
+    },
+    {
+      "en": "Visit to the Palácios Rural Museum",
+      "pt": "Visita ao Museu Rural de Palácios",
+      "es": "Visita al Museo Rural de Palácios"
+    },
+    {
+      "en": "Visit to the Olive Tree and Olive Oil Museum",
+      "pt": "Visita ao Museu da Oliveira e do Azeite",
+      "es": "Visita al Museo del Olivo y del Aceite"
+    },
+    {
+      "en": "All transport in the program",
+      "pt": "Todos os transportes do programa",
+      "es": "Todos los transportes del programa"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    },
+    {
+      "en": "PORTUGALNTN gift",
+      "pt": "Oferta PORTUGALNTN",
+      "es": "Obsequio PORTUGALNTN"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [
+    {
+      "en": "Accommodation upgrade from 3 to 4 stars",
+      "pt": "Upgrade de alojamento de 3 para 4 estrelas",
+      "es": "Mejora de alojamiento de 3 a 4 estrellas"
+    },
+    {
+      "en": "Transfer to Porto Airport",
+      "pt": "Transfer para o Aeroporto do Porto",
+      "es": "Traslado al Aeropuerto de Oporto"
+    },
+    {
+      "en": "Extra nights in Porto",
+      "pt": "Noites extra no Porto",
+      "es": "Noches extra en Oporto"
+    }
+  ],
+  "prices": {
+    "lowFrom": 1165,
+    "lowSingle": 131,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "Single price all year round, based on double room occupancy.",
+    "pt": "Preço único todo o ano, com base em quarto duplo.",
+    "es": "Precio único todo el año, en base a habitación doble."
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

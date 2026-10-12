@@ -1,0 +1,248 @@
+{
+  "title": "Barril Beach & Cacela Velha",
+  "order": 14,
+  "hidden": true,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "algarve",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/cacela-1day/cacela-1.jpg",
+  "cardTagline": {
+    "en": "Lagoon, sandbar and the Anchor Cemetery",
+    "pt": "Ria, ilha-barreira e o Cemitério das Âncoras",
+    "es": "Ría, isla barrera y el Cementerio de Anclas"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Two seaside walks, a tuna fishing trail and a picnic by the lagoon",
+    "pt": "Dois passeios à beira-mar, um trilho da pesca do atum e um piquenique junto à ria",
+    "es": "Dos paseos junto al mar, un sendero de la pesca del atún y un picnic junto a la ría"
+  },
+  "heroImage": "/images/programs/cacela-1day/hero-cacela-1day.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderado"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Vila Nova de Cacela",
+    "pt": "Vila Nova de Cacela",
+    "es": "Vila Nova de Cacela"
+  },
+  "totalDistance": "7 km",
+  "overview": {
+    "en": "A gentle day on the eastern Algarve, by the Ria Formosa. We walk two seaside trails, the longer one on Barril Beach and a shorter one around Cacela Velha, following an interpretive trail dedicated to the old tuna fishing tradition that ends at the curious Anchor Cemetery. We close the day with a picnic of local products in the company of your local guide.",
+    "pt": "Um dia tranquilo no Algarve oriental, junto à Ria Formosa. Caminhamos dois trilhos à beira-mar, o mais longo na Praia do Barril e um mais curto por Cacela Velha, seguindo um percurso interpretativo dedicado à antiga pesca do atum que termina no curioso Cemitério das Âncoras. Fechamos o dia com um piquenique de produtos locais na companhia do seu guia local.",
+    "es": "Un día tranquilo en el Algarve oriental, junto a la Ría Formosa. Caminamos dos senderos junto al mar, el más largo en la Playa do Barril y uno más corto por Cacela Velha, siguiendo un recorrido interpretativo dedicado a la antigua pesca del atún que termina en el curioso Cementerio de Anclas. Cerramos el día con un picnic de productos locales en compañía de su guía local."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "The Ria Formosa and Barril Beach",
+      "pt": "A Ria Formosa e a Praia do Barril",
+      "es": "La Ría Formosa y la Playa do Barril"
+    },
+    {
+      "en": "Interpretive tuna fishing trail",
+      "pt": "Trilho interpretativo da pesca do atum",
+      "es": "Sendero interpretativo de la pesca del atún"
+    },
+    {
+      "en": "Visit to the Anchor Cemetery",
+      "pt": "Visita ao Cemitério das Âncoras",
+      "es": "Visita al Cementerio de Anclas"
+    },
+    {
+      "en": "Traditional picnic with local products",
+      "pt": "Piquenique tradicional com produtos locais",
+      "es": "Picnic tradicional con productos locales"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Barril Beach and Cacela Velha",
+        "pt": "Praia do Barril e Cacela Velha",
+        "es": "Playa do Barril y Cacela Velha"
+      },
+      "trail": "Trilho da Pesca do Atum",
+      "description": {
+        "en": "We begin on Barril Beach, walking the interpretive tuna fishing trail to the Anchor Cemetery, where rows of rusted anchors stand in the dunes as a memorial to the old fishery. A second, shorter walk takes us around Cacela Velha, with its whitewashed houses above the lagoon, before a traditional picnic of local products by the sea.",
+        "pt": "Começamos na Praia do Barril, percorrendo o trilho interpretativo da pesca do atum até ao Cemitério das Âncoras, onde filas de âncoras enferrujadas se erguem nas dunas em memória da antiga pesca. Um segundo passeio, mais curto, leva-nos por Cacela Velha, com as suas casas caiadas sobre a ria, antes de um piquenique tradicional de produtos locais junto ao mar.",
+        "es": "Empezamos en la Playa do Barril, recorriendo el sendero interpretativo de la pesca del atún hasta el Cementerio de Anclas, donde filas de anclas oxidadas se alzan en las dunas en memoria de la antigua pesca. Un segundo paseo, más corto, nos lleva por Cacela Velha, con sus casas encaladas sobre la ría, antes de un picnic tradicional de productos locales junto al mar."
+      },
+      "distance": "7 km",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "2h",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/cacela-1day/walk-1.jpg",
+        "/images/programs/cacela-1day/walk-2.jpg",
+        "/images/programs/cacela-1day/walk-3.jpg",
+        "/images/programs/cacela-1day/walk-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided hiking trail",
+      "pt": "Trilho pedestre guiado",
+      "es": "Sendero pedestre guiado"
+    },
+    {
+      "en": "Private driver and private car",
+      "pt": "Motorista e viatura privados",
+      "es": "Conductor y vehículo privados"
+    },
+    {
+      "en": "Refreshments",
+      "pt": "Bebidas e snacks",
+      "es": "Bebidas y aperitivos"
+    },
+    {
+      "en": "Traditional picnic with local products",
+      "pt": "Piquenique tradicional com produtos locais",
+      "es": "Picnic tradicional con productos locales"
+    },
+    {
+      "en": "Visit to the Anchor Cemetery",
+      "pt": "Visita ao Cemitério das Âncoras",
+      "es": "Visita al Cementerio de Anclas"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [
+    {
+      "pax": 1,
+      "price": 994
+    },
+    {
+      "pax": 2,
+      "price": 1164
+    },
+    {
+      "pax": 3,
+      "price": 1337
+    },
+    {
+      "pax": 4,
+      "price": 1514
+    },
+    {
+      "pax": 5,
+      "price": 1686
+    },
+    {
+      "pax": 6,
+      "price": 1853
+    }
+  ],
+  "priceTiersNote": {
+    "en": "For groups larger than 6 people, price on request.",
+    "pt": "Para grupos com mais de 6 pessoas, preço sob consulta.",
+    "es": "Para grupos de más de 6 personas, precio bajo consulta."
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

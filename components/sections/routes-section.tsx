@@ -5,14 +5,16 @@ import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
+import { regions } from "@/lib/destinations";
 
-// Algarve and Lisboa & Sintra are hidden for now (no public programs, see lib/destinations.ts).
-const destinations = [
-  { id: "tras-os-montes", num: "01", name: "Trás-os-Montes", routes: 4, image: "/images/routes/hero-miranda.jpg" },
-  { id: "douro",          num: "02", name: "Douro Valley",   routes: 4, image: "/images/routes/douro-1.jpg" },
-  { id: "peneda-geres",   num: "03", name: "Peneda-Gerês",   routes: 2, image: "/images/routes/geres-1.jpg" },
-  { id: "santiago",       num: "04", name: "Caminho de Santiago", routes: 1, image: "/images/routes/santiago-1.jpg" },
-];
+// Visible regions in CMS order (hidden ones stay out, see lib/destinations.ts).
+const destinations = regions.map((r, i) => ({
+  id: r.id,
+  num: String(i + 1).padStart(2, "0"),
+  name: r.shortName ?? r.name,
+  routes: r.routes,
+  image: r.image,
+}));
 
 export function RoutesSection() {
   const t = useTranslations("home.routes");

@@ -1,0 +1,85 @@
+{
+  "name": "Algarve",
+  "shortName": "",
+  "order": 6,
+  "hidden": true,
+  "image": "/images/destinos/algarve/algarve-1.jpg",
+  "tagline": {
+    "en": "Europe's wild Atlantic coast",
+    "pt": "A costa atlântica selvagem da Europa",
+    "es": "La costa atlántica salvaje de Europa"
+  },
+  "description": {
+    "en": "The Vincentian Coast: one of Europe's best-preserved coastlines, where dramatic cliffs meet the Atlantic and trails carry the scent of the sea.",
+    "pt": "A Costa Vicentina: uma das costas mais bem preservadas da Europa, onde falésias dramáticas encontram o Atlântico e os trilhos trazem o cheiro do mar.",
+    "es": "La Costa Vicentina: una de las costas mejor conservadas de Europa, donde acantilados dramáticos encuentran el Atlántico y los senderos traen el aroma del mar."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 219,
+    "y": 929,
+    "side": "right",
+    "lines": [
+      "Algarve"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "The coast Europe kept wild",
+      "pt": "A costa que a Europa preservou",
+      "es": "La costa que Europa conservó"
+    },
+    "body": {
+      "en": "Far from the crowded-beach cliché, our Algarve is that of the Vincentian Coast and the Ria Formosa: Atlantic-battered cliffs, bird-filled marshes and fine-sand barrier islands. We walk the clifftops and old fishing trails, always with the sea for company.",
+      "pt": "Longe da imagem de praia cheia, o nosso Algarve é o da Costa Vicentina e da Ria Formosa: falésias batidas pelo Atlântico, sapais cheios de aves e ilhas-barreira de areia fina. Caminhamos pelo topo das arribas e por trilhos de pesca antigos, sempre com o mar por companhia.",
+      "es": "Lejos del tópico de playa llena, nuestro Algarve es el de la Costa Vicentina y la Ría Formosa: acantilados batidos por el Atlántico, marismas llenas de aves e islas barrera de arena fina. Caminamos por lo alto de los acantilados y por antiguos senderos de pesca, siempre con el mar de compañía."
+    },
+    "image": "/images/destinos/algarve/hero-cacela-1day.jpg",
+    "badgeValue": "300",
+    "badgeLabel": {
+      "en": "Days of sun a year",
+      "pt": "Dias de sol por ano",
+      "es": "Días de sol al año"
+    }
+  },
+  "heritage": {
+    "show": true,
+    "title": {
+      "en": "Sea, salt and the southern table",
+      "pt": "Mar, sal e mesa do sul",
+      "es": "Mar, sal y mesa del sur"
+    },
+    "body": {
+      "en": "The south lives by the sea and the rhythm of the tides. We taste fresh fish, shellfish from the lagoon, traditional salt and the almond and fig sweets of Moorish roots. We close the day with a picnic of local products, to the sound of the waves.",
+      "pt": "O sul vive do mar e do compasso das marés. Provamos peixe fresco, marisco da ria, sal tradicional e os doces de amêndoa e figo de raiz árabe. Terminamos o dia com um piquenique de produtos locais, ao som das ondas.",
+      "es": "El sur vive del mar y del compás de las mareas. Catamos pescado fresco, marisco de la ría, sal tradicional y los dulces de almendra e higo de raíz árabe. Terminamos el día con un picnic de productos locales, al son de las olas."
+    },
+    "gallery": [
+      "/images/destinos/algarve/walk-1.jpg",
+      "/images/destinos/algarve/cacela-1day-walk-1.jpg",
+      "/images/destinos/algarve/walk-3.jpg"
+    ]
+  },
+  "highlights": [
+    {
+      "en": "Vincentian Coast, ERA Best of Europe trail",
+      "pt": "Costa Vicentina, trilho Best of Europe (ERA)",
+      "es": "Costa Vicentina, sendero Best of Europe (ERA)"
+    },
+    {
+      "en": "Ria Formosa and its barrier islands",
+      "pt": "Ria Formosa e as ilhas-barreira",
+      "es": "Ría Formosa y sus islas barrera"
+    },
+    {
+      "en": "Anchor Cemetery and the tuna fishing heritage",
+      "pt": "Cemitério das Âncoras e a pesca do atum",
+      "es": "Cementerio de Anclas y la pesca del atún"
+    },
+    {
+      "en": "Picnic of local products by the sea",
+      "pt": "Piquenique de produtos locais junto ao mar",
+      "es": "Picnic de productos locales junto al mar"
+    }
+  ]
+}

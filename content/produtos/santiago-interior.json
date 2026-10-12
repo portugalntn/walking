@@ -1,0 +1,80 @@
+{
+  "title": "Caminho Português Interior",
+  "order": 1,
+  "hidden": false,
+  "footer": false,
+  "hasPage": false,
+  "format": "programa",
+  "regionId": "santiago",
+  "days": 11,
+  "nights": null,
+  "cardImage": "/images/programs/santiago-interior/santiago-1.jpg",
+  "cardTagline": {
+    "en": "From Vidago to Santiago de Compostela",
+    "pt": "De Vidago a Santiago de Compostela",
+    "es": "De Vidago a Santiago de Compostela"
+  },
+  "type": {
+    "en": "Self-Guided",
+    "pt": "Self-Guided",
+    "es": "Autoguiado"
+  },
+  "subtitle": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "heroImage": null,
+  "difficulty": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "grade": "3",
+  "season": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "startPoint": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "totalDistance": "",
+  "overview": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [],
+  "moments": [],
+  "itinerary": [],
+  "included": [],
+  "notIncluded": [],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [],
+  "cancellation": []
+}

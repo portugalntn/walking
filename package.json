@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/pull-content.mjs && next build",
+    "conteudo": "node scripts/pull-content.mjs",
     "start": "next start",
     "lint": "eslint",
     "trail": "node scripts/trail-profile.mjs"
