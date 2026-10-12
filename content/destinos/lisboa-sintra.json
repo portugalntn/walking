@@ -1,0 +1,85 @@
+{
+  "name": "Lisboa & Sintra",
+  "shortName": "",
+  "order": 5,
+  "hidden": true,
+  "image": "/images/destinos/lisboa-sintra/sintra-1.jpg",
+  "tagline": {
+    "en": "Mist, myth and sacred forest",
+    "pt": "Névoa, mito e floresta sagrada",
+    "es": "Niebla, mito y bosque sagrado"
+  },
+  "description": {
+    "en": "The mystical Serra de Sintra and the Arrábida Natural Park, a short walk from Lisbon: palaces, convents and forests wrapped in Atlantic mist.",
+    "pt": "A mística Serra de Sintra e o Parque Natural da Arrábida, a um passo de Lisboa: palácios, conventos e florestas envoltos em névoa atlântica.",
+    "es": "La mística Sierra de Sintra y el Parque Natural de Arrábida, a un paso de Lisboa: palacios, conventos y bosques envueltos en niebla atlántica."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 92,
+    "y": 637,
+    "side": "left",
+    "lines": [
+      "Lisboa & Sintra"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "Mist, palaces and the sea a step from Lisbon",
+      "pt": "Névoa, palácios e mar a um passo de Lisboa",
+      "es": "Niebla, palacios y mar a un paso de Lisboa"
+    },
+    "body": {
+      "en": "Between the Serra de Sintra and the Arrábida Natural Park lies a world of contrasts. To the north, the damp, mystical forest of Sintra, with its palaces and convents wrapped in mist. To the south, the limestone cliffs of Arrábida dropping into a turquoise sea. All less than an hour from the capital.",
+      "pt": "Entre a Serra de Sintra e o Parque Natural da Arrábida cabe um mundo de contrastes. A norte, a floresta húmida e mística de Sintra, com os seus palácios e conventos envoltos em névoa. A sul, as falésias calcárias da Arrábida a cair num mar turquesa. Tudo a menos de uma hora da capital.",
+      "es": "Entre la Sierra de Sintra y el Parque Natural de Arrábida cabe un mundo de contrastes. Al norte, el bosque húmedo y místico de Sintra, con sus palacios y conventos envueltos en niebla. Al sur, los acantilados calcáreos de Arrábida cayendo a un mar turquesa. Todo a menos de una hora de la capital."
+    },
+    "image": "/images/destinos/lisboa-sintra/hero-arrabida-1day.jpg",
+    "badgeValue": "UNESCO",
+    "badgeLabel": {
+      "en": "Cultural Landscape of Sintra",
+      "pt": "Paisagem Cultural de Sintra",
+      "es": "Paisaje Cultural de Sintra"
+    }
+  },
+  "heritage": {
+    "show": true,
+    "title": {
+      "en": "Myth, convent and wine",
+      "pt": "Mito, convento e vinho",
+      "es": "Mito, convento y vino"
+    },
+    "body": {
+      "en": "Sintra is a UNESCO Cultural Landscape, a land of romanticism, legend and the cork-lined Convent of the Capuchos. Arrábida adds the historic wine of Quinta da Bacalhôa and the calm of the sea. We walk the sacred and the sensory, and close with a good table.",
+      "pt": "Sintra é Paisagem Cultural da Humanidade, terra de romantismo, lendas e do Convento dos Capuchos forrado a cortiça. A Arrábida acrescenta o vinho histórico da Quinta da Bacalhôa e a calma do mar. Caminhamos no sagrado e no sensorial, e fechamos com uma boa mesa.",
+      "es": "Sintra es Paisaje Cultural de la Humanidad, tierra de romanticismo, leyendas y del Convento dos Capuchos forrado de corcho. Arrábida añade el vino histórico de la Quinta da Bacalhôa y la calma del mar. Caminamos en lo sagrado y lo sensorial, y cerramos con una buena mesa."
+    },
+    "gallery": [
+      "/images/destinos/lisboa-sintra/walk-1.jpg",
+      "/images/destinos/lisboa-sintra/arrabida-1day-walk-1.jpg",
+      "/images/destinos/lisboa-sintra/walk-2.jpg"
+    ]
+  },
+  "highlights": [
+    {
+      "en": "Sintra, UNESCO Cultural Landscape",
+      "pt": "Sintra, Paisagem Cultural UNESCO",
+      "es": "Sintra, Paisaje Cultural UNESCO"
+    },
+    {
+      "en": "Convent of the Capuchos and the mystical hills",
+      "pt": "Convento dos Capuchos e a serra mística",
+      "es": "Convento dos Capuchos y la sierra mística"
+    },
+    {
+      "en": "Arrábida Natural Park above the sea",
+      "pt": "Parque Natural da Arrábida sobre o mar",
+      "es": "Parque Natural de Arrábida sobre el mar"
+    },
+    {
+      "en": "Wine tasting at the historic Quinta da Bacalhôa",
+      "pt": "Prova de vinhos na histórica Quinta da Bacalhôa",
+      "es": "Cata de vinos en la histórica Quinta da Bacalhôa"
+    }
+  ]
+}

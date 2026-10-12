@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { SealsStrip } from "@/components/layout/seals-strip";
+import { routes } from "@/lib/destinations";
 
 const socialLinks = [
   {
@@ -136,17 +137,10 @@ export function Footer() {
                 {t("routes")}
               </p>
               <ul className="space-y-2" style={{ lineHeight: 2 }}>
-                {[
-                  "Wine Town of Pinhão",
-                  "Douro Monks & Vineyards Trail",
-                  "Peneda-Gerês National Park",
-                  "Trás-os-Montes",
-                  "Vidago & Arcossó Wine Trail",
-                  "Podence & Azibo Experience",
-                ].map((name) => (
-                  <li key={name}>
+                {routes.filter((r) => r.footer).map(({ id, title: name }) => (
+                  <li key={id}>
                     <Link
-                      href={`/${locale}#routes`}
+                      href={`/${locale}/programas/${id}`}
                       className="text-body-md transition-colors duration-150"
                       style={{ color: "rgba(190,194,181,0.65)" }}
                       onMouseEnter={(e) =>

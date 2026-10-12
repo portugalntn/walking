@@ -1,0 +1,503 @@
+{
+  "title": "Peneda-Gerês National Park",
+  "order": 4,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "programa",
+  "regionId": "peneda-geres",
+  "days": 8,
+  "nights": 7,
+  "cardImage": "/images/programs/geres-8days/geres-1.jpg",
+  "cardTagline": {
+    "en": "Granite peaks and emerald rivers",
+    "pt": "Picos de granito e rios esmeralda",
+    "es": "Picos de granito y ríos esmeralda"
+  },
+  "type": {
+    "en": "Self-Guided",
+    "pt": "Self-Guided",
+    "es": "Autoguiado"
+  },
+  "subtitle": {
+    "en": "Portugal's only national park",
+    "pt": "O único parque nacional de Portugal",
+    "es": "El único parque nacional de Portugal"
+  },
+  "heroImage": "/images/programs/geres-8days/geres-i.jpg",
+  "difficulty": {
+    "en": "Difficult",
+    "pt": "Difícil",
+    "es": "Difícil"
+  },
+  "grade": "4",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Pitões das Júnias",
+    "pt": "Pitões das Júnias",
+    "es": "Pitões das Júnias"
+  },
+  "totalDistance": "74 km",
+  "overview": {
+    "en": "Discover Peneda-Gerês, Portugal's only national park, where mountains, rivers and ancient villages come together in a rich natural and cultural setting. This itinerary offers simple, meaningful experiences that blend nature, tradition and sustainability, in communities that still live by the rhythm of the land.",
+    "pt": "Descubra a Peneda-Gerês, o único parque nacional de Portugal, onde montanhas, rios e aldeias antigas se encontram num cenário natural e cultural riquíssimo. Este itinerário oferece experiências simples e com significado, juntando natureza, tradição e sustentabilidade, em comunidades que ainda vivem ao ritmo da terra.",
+    "es": "Descubra Peneda-Gerês, el único parque nacional de Portugal, donde montañas, ríos y aldeas antiguas se unen en un entorno natural y cultural riquísimo. Este itinerario ofrece experiencias sencillas y con significado, uniendo naturaleza, tradición y sostenibilidad, en comunidades que aún viven al ritmo de la tierra."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "Portugal's only national park",
+      "pt": "O único parque nacional de Portugal",
+      "es": "El único parque nacional de Portugal"
+    },
+    {
+      "en": "UNESCO World Agricultural Heritage",
+      "pt": "Património Agrícola Mundial UNESCO",
+      "es": "Patrimonio Agrícola Mundial UNESCO"
+    },
+    {
+      "en": "Gerês-Xurés Transboundary Biosphere Reserve",
+      "pt": "Reserva da Biosfera Transfronteiriça Gerês-Xurés",
+      "es": "Reserva de la Biosfera Transfronteriza Gerês-Xurés"
+    },
+    {
+      "en": "Fojo dos Lobos and Silha de Ursos",
+      "pt": "Fojo dos Lobos e Silha de Ursos",
+      "es": "Fojo dos Lobos y Silha de Ursos"
+    },
+    {
+      "en": "Small rural villages",
+      "pt": "Pequenas aldeias rurais",
+      "es": "Pequeñas aldeas rurales"
+    },
+    {
+      "en": "Natural viewpoints and protected landscapes",
+      "pt": "Miradouros naturais e paisagens protegidas",
+      "es": "Miradores naturales y paisajes protegidos"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Arrival in Pitões das Júnias",
+        "pt": "Chegada a Pitões das Júnias",
+        "es": "Llegada a Pitões das Júnias"
+      },
+      "trail": "",
+      "description": {
+        "en": "Arrival and transfer to Pitões das Júnias, one of the highest villages in Portugal, on the Barroso plateau. Settle into Casa do Preto and breathe in the mountain air.",
+        "pt": "Chegada e transfer para Pitões das Júnias, uma das aldeias mais altas de Portugal, no planalto do Barroso. Instale-se na Casa do Preto e respire o ar da montanha.",
+        "es": "Llegada y traslado a Pitões das Júnias, una de las aldeas más altas de Portugal, en la meseta del Barroso. Instálese en la Casa do Preto y respire el aire de la montaña."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "Casa do Preto, Pitões das Júnias",
+      "gallery": [
+        "/images/programs/geres-8days/geres-e.jpg"
+      ],
+      "note": {
+        "en": "Transfer from the airport (168 km, 2h15).",
+        "pt": "Transfer do aeroporto (168 km, 2h15).",
+        "es": "Traslado desde el aeropuerto (168 km, 2h15)."
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho do Pastoreio",
+        "pt": "Trilho do Pastoreio",
+        "es": "Trilho do Pastoreio"
+      },
+      "trail": "Trilho do Pastoreio",
+      "description": {
+        "en": "The shepherding trail follows the vezeira, the communal herding tradition of the Barroso, across pastures where barrosã cattle graze under the peaks. A UNESCO recognised agricultural heritage.",
+        "pt": "O trilho do pastoreio segue a vezeira, a tradição comunitária de pastoreio do Barroso, por lameiros onde o gado barrosão pasta sob os picos. Um património agrícola reconhecido pela UNESCO.",
+        "es": "El sendero del pastoreo sigue la vezeira, la tradición comunitaria de pastoreo del Barroso, por prados donde el ganado barrosano pasta bajo los picos. Un patrimonio agrícola reconocido por la UNESCO."
+      },
+      "distance": "14,6 km",
+      "shape": "circular",
+      "ascent": "+759 / -759 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/geres-8days/geres-d.jpg",
+        "/images/programs/geres-8days/geres-f.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho de Pitões a Outeiro",
+        "pt": "Trilho de Pitões a Outeiro",
+        "es": "Trilho de Pitões a Outeiro"
+      },
+      "trail": "Trilho de Pitões a Outeiro",
+      "description": {
+        "en": "A gentler day, descending from Pitões to Outeiro past the medieval monastery of Santa Maria das Júnias and its waterfall, through oak woods draped in moss.",
+        "pt": "Um dia mais suave, a descer de Pitões para Outeiro, passando pelo mosteiro medieval de Santa Maria das Júnias e pela sua cascata, entre carvalhais cobertos de musgo.",
+        "es": "Un día más suave, descendiendo de Pitões a Outeiro, pasando por el monasterio medieval de Santa Maria das Júnias y su cascada, entre robledales cubiertos de musgo."
+      },
+      "distance": "8,7 km",
+      "shape": "linear",
+      "ascent": "+309 / -626 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "Casa Albelo do Gerês, Outeiro",
+      "gallery": [
+        "/images/programs/geres-8days/geres-c.jpg",
+        "/images/programs/geres-8days/geres-e.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho dos Miradouros",
+        "pt": "Trilho dos Miradouros",
+        "es": "Trilho dos Miradouros"
+      },
+      "trail": "Trilho dos Miradouros",
+      "description": {
+        "en": "A circular route linking natural viewpoints over the valleys and peaks of the national park, with granite outcrops and endless horizons.",
+        "pt": "Um percurso circular que liga miradouros naturais sobre os vales e picos do parque nacional, entre afloramentos graníticos e horizontes sem fim.",
+        "es": "Un recorrido circular que une miradores naturales sobre los valles y picos del parque nacional, entre afloramientos graníticos y horizontes infinitos."
+      },
+      "distance": "13 km",
+      "shape": "circular",
+      "ascent": "+595 / -595 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/geres-8days/geres-h.jpg",
+        "/images/programs/geres-8days/geres-i.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho do Rio",
+        "pt": "Trilho do Rio",
+        "es": "Trilho do Rio"
+      },
+      "trail": "Trilho do Rio",
+      "description": {
+        "en": "The river trail follows crystal-clear waters between giant boulders, wooden footbridges and natural pools. The Gerês at its wildest.",
+        "pt": "O trilho do rio acompanha águas cristalinas entre penedos gigantes, passadiços de madeira e piscinas naturais. O Gerês no seu estado mais selvagem.",
+        "es": "El sendero del río acompaña aguas cristalinas entre rocas gigantes, pasarelas de madera y piscinas naturales. El Gerês en su estado más salvaje."
+      },
+      "distance": "16,2 km",
+      "shape": "linear",
+      "ascent": "+523 / -625 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/geres-8days/geres-a.jpg",
+        "/images/programs/geres-8days/geres-b.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho dos Poços Verdes",
+        "pt": "Trilho dos Poços Verdes",
+        "es": "Trilho dos Poços Verdes"
+      },
+      "trail": "Trilho dos Poços Verdes",
+      "description": {
+        "en": "Walk to the emerald pools that give this trail its name, then settle in Fafião, a village guarded by the wolf: its ancient fojo, a communal wolf trap, still stands.",
+        "pt": "Caminhe até aos poços verdes que dão nome ao trilho e instale-se depois em Fafião, aldeia guardada pelo lobo: o seu antigo fojo, armadilha comunitária para lobos, ainda se mantém de pé.",
+        "es": "Camine hasta las pozas esmeralda que dan nombre al sendero e instálese después en Fafião, aldea guardada por el lobo: su antiguo fojo, trampa comunitaria para lobos, sigue en pie."
+      },
+      "distance": "10,4 km",
+      "shape": "circular",
+      "ascent": "+549 / -549 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "Hostel Retiro do Gerês, Fafião",
+      "gallery": [
+        "/images/programs/geres-8days/geres-b.jpg",
+        "/images/programs/geres-8days/geres-g.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Trilho do Pão, do Azeite e dos Miradouros",
+        "pt": "Trilho do Pão, do Azeite e dos Miradouros",
+        "es": "Trilho do Pão, do Azeite e dos Miradouros"
+      },
+      "trail": "Trilho do Pão, do Azeite e dos Miradouros",
+      "description": {
+        "en": "The bread, olive oil and viewpoints trail: a final loop through terraces, communal ovens and balconies over the Cávado valley, celebrating what the mountain gives.",
+        "pt": "O trilho do pão, do azeite e dos miradouros: uma última volta por socalcos, fornos comunitários e varandas sobre o vale do Cávado, a celebrar o que a montanha dá.",
+        "es": "El sendero del pan, del aceite y de los miradores: una última vuelta por bancales, hornos comunales y balcones sobre el valle del Cávado, celebrando lo que da la montaña."
+      },
+      "distance": "11,5 km",
+      "shape": "circular",
+      "ascent": "+801 / -801 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/geres-8days/geres-f.jpg",
+        "/images/programs/geres-8days/geres-h.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Departure",
+        "pt": "Partida",
+        "es": "Salida"
+      },
+      "trail": "",
+      "description": {
+        "en": "Time to say goodbye. Transfer from Fafião to the airport, with the silence of the mountains still with you.",
+        "pt": "Hora da despedida. Transfer de Fafião para o aeroporto, com o silêncio das montanhas ainda consigo.",
+        "es": "Hora de la despedida. Traslado de Fafião al aeropuerto, con el silencio de las montañas todavía con usted."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "Transfer to the airport (99 km, 1h50).",
+        "pt": "Transfer para o aeroporto (99 km, 1h50).",
+        "es": "Traslado al aeropuerto (99 km, 1h50)."
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Accommodation with breakfast",
+      "pt": "Alojamento com pequeno-almoço",
+      "es": "Alojamiento con desayuno"
+    },
+    {
+      "en": "6 packed lunches, collected at the reception",
+      "pt": "6 almoços de piquenique, a levantar na recepção",
+      "es": "6 almuerzos de picnic, a recoger en la recepción"
+    },
+    {
+      "en": "Visit to the Iberian Wolf Interpretive Center",
+      "pt": "Visita ao Centro Interpretativo do Lobo Ibérico",
+      "es": "Visita al Centro Interpretativo del Lobo Ibérico"
+    },
+    {
+      "en": "Barroso Ecomuseum, Corte do Boi",
+      "pt": "Ecomuseu do Barroso, Corte do Boi",
+      "es": "Ecomuseo del Barroso, Corte do Boi"
+    },
+    {
+      "en": "Barroso Ecomuseum, Vezeira e a Serra",
+      "pt": "Ecomuseu do Barroso, Vezeira e a Serra",
+      "es": "Ecomuseo del Barroso, Vezeira e a Serra"
+    },
+    {
+      "en": "All transport in the program",
+      "pt": "Todos os transportes do programa",
+      "es": "Todos los transportes del programa"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    },
+    {
+      "en": "PORTUGALNTN gift",
+      "pt": "Oferta PORTUGALNTN",
+      "es": "Obsequio PORTUGALNTN"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [
+    {
+      "en": "Extra nights in Porto",
+      "pt": "Noites extra no Porto",
+      "es": "Noches extra en Oporto"
+    }
+  ],
+  "prices": {
+    "lowFrom": 815,
+    "lowSingle": 360,
+    "highFrom": 875,
+    "highSingle": 417
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "Prices for groups of 6 to 8 people, based on double room occupancy.",
+    "pt": "Preços para grupos de 6 a 8 pessoas, com base em quarto duplo.",
+    "es": "Precios para grupos de 6 a 8 personas, en base a habitación doble."
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

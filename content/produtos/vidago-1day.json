@@ -1,0 +1,228 @@
+{
+  "title": "Vidago & Arcossó Wine Trail",
+  "order": 8,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "tras-os-montes",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/vidago-1day/tras-os-montes-1.jpg",
+  "cardTagline": {
+    "en": "Rural paths and wine at Quinta de Arcossó",
+    "pt": "Caminhos rurais e vinho na Quinta de Arcossó",
+    "es": "Caminos rurales y vino en la Quinta de Arcossó"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "A walk through the rural landscapes of Vidago, with vineyards, Trás-os-Montes wine and traditional flavours along the way.",
+    "pt": "Uma caminhada pelas paisagens rurais de Vidago, com vinhas, vinho de Trás-os-Montes e sabores tradicionais pelo caminho.",
+    "es": "Una caminata por los paisajes rurales de Vidago, con viñedos, vino de Trás-os-Montes y sabores tradicionales por el camino."
+  },
+  "heroImage": "/images/programs/vidago-1day/tras-os-montes-1.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderada"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Vidago",
+    "pt": "Vidago",
+    "es": "Vidago"
+  },
+  "totalDistance": "13,8 km",
+  "overview": {
+    "en": "Starting in Vidago, this circular walk crosses the rural landscape around the town, following old paths, small villages and areas with wide views over the Tâmega valley. Along the way, local heritage meets a landscape of vineyards, fields and small inland Trás-os-Montes villages.\n\nAt km 9, the walk brings us to Quinta de Arcossó, where we stop to see the vineyards and taste the wines made on the estate. After the wine experience, we walk back towards Vidago, where the day ends with a regional lunch at a traditional restaurant.",
+    "pt": "Partindo de Vidago, esta caminhada circular percorre a paisagem rural que envolve a vila, seguindo por antigos caminhos, pequenas aldeias e zonas com amplas vistas sobre o vale do rio Tâmega. Ao longo do percurso, o património local cruza-se com uma paisagem de vinhas, campos e pequenas povoações do interior transmontano.\n\nAo km 9, a caminhada conduz-nos à Quinta de Arcossó, onde fazemos uma pausa para conhecer as vinhas e provar os vinhos produzidos nesta propriedade. Depois da experiência vínica, retomamos o percurso em direção a Vidago, onde o dia termina com um almoço de cozinha regional num restaurante tradicional.",
+    "es": "Partiendo de Vidago, esta caminata circular recorre el paisaje rural que rodea el pueblo, siguiendo antiguos caminos, pequeñas aldeas y zonas con amplias vistas sobre el valle del río Tâmega. A lo largo del recorrido, el patrimonio local se cruza con un paisaje de viñedos, campos y pequeños pueblos del interior de Trás-os-Montes.\n\nEn el km 9, la caminata nos lleva a la Quinta de Arcossó, donde hacemos una pausa para conocer los viñedos y catar los vinos producidos en la propiedad. Después de la experiencia vinícola, retomamos el recorrido hacia Vidago, donde el día termina con un almuerzo de cocina regional en un restaurante tradicional."
+  },
+  "difficultyNote": {
+    "en": "A moderate route, mainly because of its distance and the accumulated ascent over the day. Suitable for active participants used to regular walks, with no technical experience needed.",
+    "pt": "Percurso de dificuldade moderada, sobretudo pela sua distância e pelo desnível acumulado ao longo do dia. Adequado a participantes ativos e habituados a caminhadas regulares, sem necessidade de experiência técnica.",
+    "es": "Recorrido de dificultad moderada, sobre todo por su distancia y por el desnivel acumulado a lo largo del día. Adecuado para participantes activos y habituados a caminatas regulares, sin necesidad de experiencia técnica."
+  },
+  "highlights": [
+    {
+      "en": "Rural landscape and the Tâmega valley",
+      "pt": "Paisagem rural e vale do Tâmega",
+      "es": "Paisaje rural y valle del Tâmega"
+    },
+    {
+      "en": "Paths and villages around Vidago",
+      "pt": "Caminhos e aldeias em redor de Vidago",
+      "es": "Caminos y aldeas alrededor de Vidago"
+    },
+    {
+      "en": "Vineyard visit and tasting at Quinta de Arcossó",
+      "pt": "Visita às vinhas e prova na Quinta de Arcossó",
+      "es": "Visita a los viñedos y cata en la Quinta de Arcossó"
+    },
+    {
+      "en": "Traditional Trás-os-Montes cooking",
+      "pt": "Gastronomia tradicional de Trás-os-Montes",
+      "es": "Gastronomía tradicional de Trás-os-Montes"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "PR2 CHV · Vidago–Arcossó",
+        "pt": "PR2 CHV · Vidago–Arcossó",
+        "es": "PR2 CHV · Vidago–Arcossó"
+      },
+      "trail": "Vidago · Arcossó · Vidago",
+      "description": {
+        "en": "The walk begins by the Tâmega River and gradually leaves Vidago behind to enter a rural landscape of old paths, farm fields and small villages.\n\nThe route passes through Arcossó, where the higher ground offers a new perspective over Vidago and the Tâmega valley. Between rural areas and small hamlets we also find traces of the old Corgo railway line, a memory of the rail link that marked this region.\n\nAt km 9 we reach Quinta de Arcossó. Here we pause the walk for a visit among the vines, followed by a tasting of the estate's wines. Set at around 400 metres of altitude on granite soils, these vineyards are part of the wine identity of this corner of Trás-os-Montes.\n\nAfter the tasting, we pick up the trail again for the final kilometres to Vidago. The route ends back by the Tâmega, before we sit down to a lunch of traditional Trás-os-Montes cooking, closing the day at the table after the walk.",
+        "pt": "A caminhada começa junto ao rio Tâmega e deixa progressivamente Vidago para entrar numa paisagem rural marcada por caminhos antigos, campos agrícolas e pequenas povoações.\n\nO percurso passa por Arcossó, onde a posição mais elevada permite observar Vidago e o vale do Tâmega a partir de uma nova perspetiva. Entre zonas rurais e pequenos núcleos habitados, encontramos também vestígios da antiga Linha do Corgo, uma memória da ligação ferroviária que marcou esta região.\n\nAo km 9 chegamos à Quinta de Arcossó. Aqui fazemos uma pausa na caminhada para uma visita entre as vinhas, seguida de uma prova dos vinhos da propriedade. Situadas a cerca de 400 metros de altitude e em solos de origem granítica, estas vinhas fazem parte da identidade vitivinícola desta zona de Trás-os-Montes.\n\nDepois da prova, retomamos o trilho para os quilómetros finais até Vidago. O percurso termina novamente junto ao Tâmega, antes de seguirmos para um almoço de cozinha tradicional transmontana, encerrando o dia à mesa depois da caminhada.",
+        "es": "La caminata empieza junto al río Tâmega y deja poco a poco Vidago para entrar en un paisaje rural marcado por caminos antiguos, campos de cultivo y pequeñas aldeas.\n\nEl recorrido pasa por Arcossó, donde la posición más elevada permite observar Vidago y el valle del Tâmega desde una nueva perspectiva. Entre zonas rurales y pequeños núcleos habitados encontramos también vestigios de la antigua Línea del Corgo, memoria de la conexión ferroviaria que marcó esta región.\n\nEn el km 9 llegamos a la Quinta de Arcossó. Aquí hacemos una pausa en la caminata para una visita entre los viñedos, seguida de una cata de los vinos de la propiedad. Situados a unos 400 metros de altitud y en suelos de origen granítico, estos viñedos forman parte de la identidad vitivinícola de esta zona de Trás-os-Montes.\n\nDespués de la cata, retomamos el sendero para los últimos kilómetros hasta Vidago. El recorrido termina de nuevo junto al Tâmega, antes de seguir hacia un almuerzo de cocina tradicional transmontana, cerrando el día en la mesa después de la caminata."
+      },
+      "distance": "13,8 km",
+      "shape": "circular",
+      "ascent": "+433 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 315,
+        "avg": 377,
+        "max": 457,
+        "gain": 433,
+        "loss": 433
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Visit to the vineyards of Quinta de Arcossó",
+      "pt": "Visita às vinhas da Quinta de Arcossó",
+      "es": "Visita a los viñedos de la Quinta de Arcossó"
+    },
+    {
+      "en": "Wine tasting at Quinta de Arcossó",
+      "pt": "Prova de vinhos na Quinta de Arcossó",
+      "es": "Cata de vinos en la Quinta de Arcossó"
+    },
+    {
+      "en": "Regional lunch in Vidago",
+      "pt": "Almoço regional em Vidago",
+      "es": "Almuerzo regional en Vidago"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point in Vidago",
+      "pt": "Transfer entre o alojamento e o ponto de encontro em Vidago",
+      "es": "Traslado entre el alojamiento y el punto de encuentro en Vidago"
+    },
+    {
+      "en": "Transport during the program",
+      "pt": "Transporte durante o programa",
+      "es": "Transporte durante el programa"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Peneda-Gerês",
+  "shortName": "",
+  "order": 3,
+  "hidden": false,
+  "image": "/images/destinos/peneda-geres/geres-1.jpg",
+  "tagline": {
+    "en": "Portugal's only national park",
+    "pt": "O único parque nacional de Portugal",
+    "es": "El único parque nacional de Portugal"
+  },
+  "description": {
+    "en": "Granite peaks, emerald rivers and ancient oak forests in Portugal's only national park, home to wild ponies and stone villages frozen in time.",
+    "pt": "Picos de granito, rios esmeralda e antigos carvalhais no único parque nacional de Portugal, lar de garranos selvagens e aldeias de pedra paradas no tempo.",
+    "es": "Picos de granito, ríos esmeralda y antiguos robledales en el único parque nacional de Portugal, hogar de garranos salvajes y aldeas de piedra detenidas en el tiempo."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 244,
+    "y": 99,
+    "side": "left",
+    "lines": [
+      "Peneda-Gerês"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "Portugal's only national park",
+      "pt": "O único parque nacional de Portugal",
+      "es": "El único parque nacional de Portugal"
+    },
+    "body": {
+      "en": "In the far northwest, Gerês holds the only landscape with National Park status in Portugal. Granite peaks, emerald rivers, ancient oak woods and waterfalls. Wild garrano ponies roam here, alongside stone villages that seem frozen in time, like Pitões das Júnias.",
+      "pt": "No extremo noroeste, o Gerês guarda a única paisagem com estatuto de Parque Nacional em Portugal. Picos de granito, rios de água esmeralda, carvalhais antigos e cascatas. Por aqui vivem os garranos selvagens e aldeias de pedra que parecem paradas no tempo, como Pitões das Júnias.",
+      "es": "En el extremo noroeste, Gerês guarda el único paisaje con estatus de Parque Nacional en Portugal. Picos de granito, ríos de agua esmeralda, robledales antiguos y cascadas. Aquí viven los garranos salvajes y aldeas de piedra que parecen detenidas en el tiempo, como Pitões das Júnias."
+    },
+    "image": "/images/destinos/peneda-geres/geres-a.jpg",
+    "badgeValue": "1",
+    "badgeLabel": {
+      "en": "The country's only National Park",
+      "pt": "O único Parque Nacional do país",
+      "es": "El único Parque Nacional del país"
+    }
+  },
+  "heritage": {
+    "show": true,
+    "title": {
+      "en": "Granite, water and community",
+      "pt": "Granito, água e comunidade",
+      "es": "Granito, agua y comunidad"
+    },
+    "body": {
+      "en": "Life in Gerês is built around water and stone: communal granaries, mills, Roman roads and the shared herding traditions that still bind the villages. We eat kid goat, corn bread and mountain honey, and drink the water that comes down from the peaks.",
+      "pt": "A vida do Gerês organiza-se em torno da água e da pedra: espigueiros comunitários, moinhos, calçadas romanas e a vezeira em que as aldeias partilham o gado. Comemos cabrito, broa e mel da serra, e bebemos a água que desce da montanha.",
+      "es": "La vida en Gerês se organiza en torno al agua y la piedra: hórreos comunitarios, molinos, calzadas romanas y la tradición de pastoreo compartido que une a las aldeas. Comemos cabrito, pan de maíz y miel de la sierra, y bebemos el agua que baja de la montaña."
+    },
+    "gallery": [
+      "/images/destinos/peneda-geres/geres-c.jpg",
+      "/images/destinos/peneda-geres/geres-e.jpg",
+      "/images/destinos/peneda-geres/geres-g.jpg"
+    ]
+  },
+  "highlights": [
+    {
+      "en": "Portugal's only National Park",
+      "pt": "Único Parque Nacional de Portugal",
+      "es": "El único Parque Nacional de Portugal"
+    },
+    {
+      "en": "Wild garrano ponies and ancient oak woods",
+      "pt": "Garranos selvagens e carvalhais antigos",
+      "es": "Garranos salvajes y robledales antiguos"
+    },
+    {
+      "en": "Stone villages and communal granaries",
+      "pt": "Aldeias de pedra e espigueiros comunitários",
+      "es": "Aldeas de piedra y hórreos comunitarios"
+    },
+    {
+      "en": "Waterfalls, lagoons and Roman roads",
+      "pt": "Cascatas, lagoas e calçadas romanas",
+      "es": "Cascadas, lagunas y calzadas romanas"
+    }
+  ]
+}

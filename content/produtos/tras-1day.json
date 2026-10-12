@@ -1,0 +1,248 @@
+{
+  "title": "Quadrassal e Romeu",
+  "order": 12,
+  "hidden": true,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "tras-os-montes",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/tras-1day/tras-os-montes-3.jpg",
+  "cardTagline": {
+    "en": "Organic farmland and olive groves",
+    "pt": "Campos biológicos e olivais",
+    "es": "Campos ecológicos y olivares"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Natura 2000: organic farmland, olive oil and a village table",
+    "pt": "Natura 2000: campos biológicos, azeite e uma mesa de aldeia",
+    "es": "Natura 2000: campos ecológicos, aceite y una mesa de aldea"
+  },
+  "heroImage": "/images/programs/tras-1day/hero-tras-1day.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderado"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Romeu, Mirandela",
+    "pt": "Romeu, Mirandela",
+    "es": "Romeu, Mirandela"
+  },
+  "totalDistance": "6 km",
+  "overview": {
+    "en": "The Quadrassal trail crosses the Quinta do Romeu estate, managed entirely through certified organic farming and including areas protected by the Natura 2000 network. The walk ends at the Maria Rita restaurant, a charming space full of history, where Douro DOC wines and family recipes made with Romeu olive oil and fresh local vegetables are served with genuine warmth. After lunch, we visit the Olive Oil Museum for an olive oil tasting.",
+    "pt": "O trilho do Quadrassal atravessa a Quinta do Romeu, gerida inteiramente em Agricultura Biológica certificada e com áreas protegidas pela rede Natura 2000. A caminhada termina no restaurante Maria Rita, um espaço cheio de história, onde se servem vinhos DOC do Douro e receitas de família feitas com o azeite de Romeu e legumes frescos locais, com hospitalidade genuína. Depois do almoço, visitamos o Museu do Azeite para uma prova de azeite.",
+    "es": "El sendero del Quadrassal atraviesa la Quinta do Romeu, gestionada enteramente con Agricultura Ecológica certificada y con áreas protegidas por la red Natura 2000. La caminata termina en el restaurante Maria Rita, un espacio lleno de historia, donde se sirven vinos DOC del Duero y recetas de familia hechas con el aceite de Romeu y verduras frescas locales, con hospitalidad genuina. Después del almuerzo, visitamos el Museo del Aceite para una cata de aceite."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "Natura 2000 network",
+      "pt": "Rede Natura 2000",
+      "es": "Red Natura 2000"
+    },
+    {
+      "en": "Certified organic farming estate",
+      "pt": "Quinta em Agricultura Biológica certificada",
+      "es": "Finca de Agricultura Ecológica certificada"
+    },
+    {
+      "en": "Lunch at the Maria Rita restaurant",
+      "pt": "Almoço no restaurante Maria Rita",
+      "es": "Almuerzo en el restaurante Maria Rita"
+    },
+    {
+      "en": "Olive oil tasting at the Olive Oil Museum",
+      "pt": "Prova de azeite no Museu do Azeite",
+      "es": "Cata de aceite en el Museo del Aceite"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Through the Quinta do Romeu",
+        "pt": "Pela Quinta do Romeu",
+        "es": "Por la Quinta do Romeu"
+      },
+      "trail": "Trilho do Quadrassal",
+      "description": {
+        "en": "We cross the organic estate of Quinta do Romeu, through oak woods, granite outcrops and meadows of exceptional natural beauty, within the Natura 2000 network. The walk ends in the village of Romeu, with lunch at Maria Rita and an olive oil tasting at the museum.",
+        "pt": "Atravessamos a quinta biológica do Romeu, por carvalhais, afloramentos graníticos e lameiros de beleza natural excepcional, dentro da rede Natura 2000. A caminhada termina na aldeia de Romeu, com almoço no Maria Rita e prova de azeite no museu.",
+        "es": "Atravesamos la finca ecológica de Romeu, por robledales, afloramientos graníticos y prados de belleza natural excepcional, dentro de la red Natura 2000. La caminata termina en la aldea de Romeu, con almuerzo en Maria Rita y cata de aceite en el museo."
+      },
+      "distance": "6 km",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "2h",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/tras-1day/walk-1.jpg",
+        "/images/programs/tras-1day/walk-2.jpg",
+        "/images/programs/tras-1day/walk-3.jpg",
+        "/images/programs/tras-1day/walk-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided hiking trail",
+      "pt": "Trilho pedestre guiado",
+      "es": "Sendero pedestre guiado"
+    },
+    {
+      "en": "Private driver and private car",
+      "pt": "Motorista e viatura privados",
+      "es": "Conductor y vehículo privados"
+    },
+    {
+      "en": "Refreshments",
+      "pt": "Bebidas e snacks",
+      "es": "Bebidas y aperitivos"
+    },
+    {
+      "en": "Lunch at the traditional Maria Rita restaurant",
+      "pt": "Almoço no restaurante tradicional Maria Rita",
+      "es": "Almuerzo en el restaurante tradicional Maria Rita"
+    },
+    {
+      "en": "Visit and olive oil tasting at the Olive Oil Museum",
+      "pt": "Visita e prova de azeite no Museu do Azeite",
+      "es": "Visita y cata de aceite en el Museo del Aceite"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [
+    {
+      "pax": 1,
+      "price": 631
+    },
+    {
+      "pax": 2,
+      "price": 748
+    },
+    {
+      "pax": 3,
+      "price": 867
+    },
+    {
+      "pax": 4,
+      "price": 985
+    },
+    {
+      "pax": 5,
+      "price": 1103
+    },
+    {
+      "pax": 6,
+      "price": 1221
+    }
+  ],
+  "priceTiersNote": {
+    "en": "For groups larger than 6 people, price on request.",
+    "pt": "Para grupos com mais de 6 pessoas, preço sob consulta.",
+    "es": "Para grupos de más de 6 personas, precio bajo consulta."
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

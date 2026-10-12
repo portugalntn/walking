@@ -1,0 +1,82 @@
+{
+  "name": "Caminho de Santiago Interior",
+  "shortName": "Caminho de Santiago",
+  "order": 4,
+  "hidden": false,
+  "image": "/images/destinos/santiago/santiago-1.jpg",
+  "tagline": {
+    "en": "The inland way to Compostela",
+    "pt": "O caminho interior para Compostela",
+    "es": "El camino interior a Compostela"
+  },
+  "description": {
+    "en": "From Vidago to Chaves and on towards Santiago de Compostela: a quieter, deeper pilgrimage through the heart of northern Portugal. Our flagship route.",
+    "pt": "De Vidago a Chaves e em direcção a Santiago de Compostela: uma peregrinação mais tranquila e profunda pelo coração do Norte de Portugal. O nosso roteiro de eleição.",
+    "es": "De Vidago a Chaves y rumbo a Santiago de Compostela: una peregrinación más tranquila y profunda por el corazón del Norte de Portugal. Nuestra ruta insignia."
+  },
+  "mapPin": {
+    "show": true,
+    "x": 342,
+    "y": 147,
+    "side": "right",
+    "lines": [
+      "Caminho de",
+      "Santiago Interior"
+    ]
+  },
+  "essence": {
+    "title": {
+      "en": "The inland way to Compostela",
+      "pt": "O caminho interior para Compostela",
+      "es": "El camino interior a Compostela"
+    },
+    "body": {
+      "en": "There is more than one way to Santiago. The Inland Portuguese Way climbs from Vidago and Chaves through the heart of the North, far from the crowds, past villages, spa towns and Roman bridges. A slower, deeper pilgrimage, and our flagship programme.",
+      "pt": "Há mais do que um caminho para Santiago. O Caminho Português Interior sobe de Vidago e Chaves pelo coração do Norte, longe das multidões, por aldeias, termas e pontes romanas. Uma peregrinação mais lenta e mais profunda, o nosso programa de eleição.",
+      "es": "Hay más de un camino a Santiago. El Camino Portugués Interior sube desde Vidago y Chaves por el corazón del Norte, lejos de las multitudes, por aldeas, termas y puentes romanos. Una peregrinación más lenta y profunda, nuestro programa insignia."
+    },
+    "image": "/images/destinos/santiago/santiago-1.jpg",
+    "badgeValue": "11",
+    "badgeLabel": {
+      "en": "Days to Compostela",
+      "pt": "Dias até Compostela",
+      "es": "Días hasta Compostela"
+    }
+  },
+  "heritage": {
+    "show": false,
+    "title": {
+      "en": "",
+      "pt": "",
+      "es": ""
+    },
+    "body": {
+      "en": "",
+      "pt": "",
+      "es": ""
+    },
+    "gallery": []
+  },
+  "highlights": [
+    {
+      "en": "11 days from Vidago to Santiago de Compostela",
+      "pt": "11 dias de Vidago a Santiago de Compostela",
+      "es": "11 días de Vidago a Santiago de Compostela"
+    },
+    {
+      "en": "Away from the crowds of the classic ways",
+      "pt": "Longe das multidões dos caminhos clássicos",
+      "es": "Lejos de las multitudes de los caminos clásicos"
+    },
+    {
+      "en": "Spa towns, villages and Roman bridges",
+      "pt": "Termas, aldeias e pontes romanas",
+      "es": "Termas, aldeas y puentes romanos"
+    },
+    {
+      "en": "A pilgrimage through inland northern Portugal",
+      "pt": "Peregrinação pelo interior do Norte de Portugal",
+      "es": "Una peregrinación por el interior del norte de Portugal"
+    }
+  ]
+}

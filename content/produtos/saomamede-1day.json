@@ -1,0 +1,228 @@
+{
+  "title": "São Mamede Walkways",
+  "order": 6,
+  "hidden": false,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "douro",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/saomamede-1day/douro-b.jpg",
+  "cardTagline": {
+    "en": "Tua Valley walkways, wine and art",
+    "pt": "Passadiços do Vale do Tua, vinho e arte",
+    "es": "Pasarelas del Valle del Tua, vino y arte"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Walk the Tua Valley and discover a Douro where nature, food, wine and art meet.",
+    "pt": "Caminhe pelo Vale do Tua e descubra um Douro onde natureza, gastronomia, vinho e arte se encontram.",
+    "es": "Camine por el Valle del Tua y descubra un Duero donde naturaleza, gastronomía, vino y arte se encuentran."
+  },
+  "heroImage": "/images/programs/saomamede-1day/douro-b.jpg",
+  "difficulty": {
+    "en": "Easy",
+    "pt": "Fácil",
+    "es": "Fácil"
+  },
+  "grade": "2",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "To be confirmed",
+    "pt": "A definir",
+    "es": "Por confirmar"
+  },
+  "totalDistance": "7,9 km",
+  "overview": {
+    "en": "Discover one of the most surprising landscapes in the municipality of Alijó on a walk along the São Mamede de Ribatua Walkways, in the heart of the Tua Valley Regional Natural Park. Along the route, the stream, the rocky slopes and the Mediterranean vegetation keep you company, with privileged views over the surrounding landscape.\n\nAfter the walk, the program continues with a regional lunch in Alijó, followed by a wine experience at Quanta Terra. Set in a former Casa do Douro distillery, Quanta Terra brings together winemaking and contemporary culture, for a close to the day where wine and art share the same space.",
+    "pt": "Descubra uma das paisagens mais surpreendentes do concelho de Alijó numa caminhada pelos Passadiços de São Mamede de Ribatua, no coração do Parque Natural Regional do Vale do Tua. Ao longo do percurso, a ribeira, as encostas rochosas e a vegetação mediterrânica acompanham o caminho, com vistas privilegiadas sobre a paisagem envolvente.\n\nDepois da caminhada, o programa continua com um almoço regional em Alijó, seguido de uma experiência vínica na Quanta Terra. Instalada numa antiga destilaria da Casa do Douro, a Quanta Terra combina produção de vinho e cultura contemporânea, proporcionando um final de dia onde o vinho e a arte partilham o mesmo espaço.",
+    "es": "Descubra uno de los paisajes más sorprendentes del municipio de Alijó en una caminata por las Pasarelas de São Mamede de Ribatua, en el corazón del Parque Natural Regional del Valle del Tua. A lo largo del recorrido, el arroyo, las laderas rocosas y la vegetación mediterránea acompañan el camino, con vistas privilegiadas sobre el paisaje.\n\nDespués de la caminata, el programa continúa con un almuerzo regional en Alijó, seguido de una experiencia vinícola en Quanta Terra. Instalada en una antigua destilería de la Casa do Douro, Quanta Terra combina producción de vino y cultura contemporánea, para un final de día en el que el vino y el arte comparten el mismo espacio."
+  },
+  "difficultyNote": {
+    "en": "An easy route, with some changes in level and stretches of stairs along the walkways. Suitable for active participants used to occasional walks, with no technical experience needed.",
+    "pt": "Percurso de dificuldade fácil, com alguns desníveis e secções de escadas ao longo dos passadiços. Adequado a participantes ativos e habituados a caminhadas ocasionais, não sendo necessária experiência técnica.",
+    "es": "Recorrido de dificultad fácil, con algunos desniveles y tramos de escaleras a lo largo de las pasarelas. Adecuado para participantes activos y habituados a caminatas ocasionales, sin necesidad de experiencia técnica."
+  },
+  "highlights": [
+    {
+      "en": "São Mamede de Ribatua Walkways",
+      "pt": "Passadiços de São Mamede de Ribatua",
+      "es": "Pasarelas de São Mamede de Ribatua"
+    },
+    {
+      "en": "Ujo Viewpoint and the Tua Valley",
+      "pt": "Miradouro do Ujo e Vale do Tua",
+      "es": "Mirador del Ujo y Valle del Tua"
+    },
+    {
+      "en": "Regional food in Alijó",
+      "pt": "Gastronomia regional em Alijó",
+      "es": "Gastronomía regional en Alijó"
+    },
+    {
+      "en": "Wine and art at Quanta Terra",
+      "pt": "Vinho e arte na Quanta Terra",
+      "es": "Vino y arte en Quanta Terra"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Nature, food, wine and art in the Douro",
+        "pt": "Natureza, gastronomia, vinho e arte no Douro",
+        "es": "Naturaleza, gastronomía, vino y arte en el Duero"
+      },
+      "trail": "São Mamede de Ribatua · Alijó · Favaios",
+      "description": {
+        "en": "The day begins with a 7.9 km walk along the São Mamede de Ribatua Walkways, a route that follows the natural landscape of the Tua Valley through paths, boardwalks and steeper stretches. Waterfalls, streams, slopes and views over the valley make this walk a different way of getting to know the land of Alijó.\n\nDuring the experience there is also a chance to visit the Ujo Viewpoint, one of the most iconic panoramic points of the Tua Valley, with a wide view over the reservoir and the slopes around it.\n\nOnce the walk is over, we head to Alijó for lunch at a local restaurant, where regional cooking marks the transition between the morning walk and the afternoon experience.\n\nThe program ends at Quanta Terra, in Favaios, a wine tourism space set in a former Casa do Douro distillery. The visit brings the world of wine together with contemporary art, ending with a wine tasting and a different take on the wine culture of the Douro.",
+        "pt": "O dia começa com uma caminhada de 7,9 km pelos Passadiços de São Mamede de Ribatua, um percurso que acompanha a paisagem natural do Vale do Tua entre caminhos, passadiços e zonas de maior desnível. Cascatas, linhas de água, encostas e vistas sobre o vale fazem desta caminhada uma forma diferente de conhecer o território de Alijó.\n\nDurante a experiência, haverá também oportunidade de conhecer o Miradouro do Ujo, um dos pontos panorâmicos mais emblemáticos do Vale do Tua, com uma ampla vista sobre a albufeira e as encostas que a rodeiam.\n\nTerminada a caminhada, seguimos para Alijó para um almoço num restaurante local, onde a gastronomia regional marca a transição entre a manhã de caminhada e a experiência da tarde.\n\nO programa termina na Quanta Terra, em Favaios, num espaço de enoturismo instalado numa antiga destilaria da Casa do Douro. A visita cruza o universo do vinho com a arte contemporânea, terminando com uma prova de vinhos e uma abordagem diferente à cultura vínica do Douro.",
+        "es": "El día empieza con una caminata de 7,9 km por las Pasarelas de São Mamede de Ribatua, un recorrido que acompaña el paisaje natural del Valle del Tua entre caminos, pasarelas y zonas de mayor desnivel. Cascadas, cursos de agua, laderas y vistas sobre el valle hacen de esta caminata una forma diferente de conocer el territorio de Alijó.\n\nDurante la experiencia habrá también ocasión de conocer el Mirador del Ujo, uno de los puntos panorámicos más emblemáticos del Valle del Tua, con una amplia vista sobre el embalse y las laderas que lo rodean.\n\nTerminada la caminata, seguimos hacia Alijó para almorzar en un restaurante local, donde la gastronomía regional marca la transición entre la mañana de caminata y la experiencia de la tarde.\n\nEl programa termina en Quanta Terra, en Favaios, un espacio de enoturismo instalado en una antigua destilería de la Casa do Douro. La visita cruza el universo del vino con el arte contemporáneo y termina con una cata de vinos y una mirada diferente a la cultura vinícola del Duero."
+      },
+      "distance": "7,9 km",
+      "shape": "",
+      "ascent": "+333 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 168,
+        "avg": 266,
+        "max": 404,
+        "gain": 333,
+        "loss": 333
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Private driver and vehicle during the program",
+      "pt": "Motorista e viatura privados durante o programa",
+      "es": "Conductor y vehículo privados durante el programa"
+    },
+    {
+      "en": "Transport between the different points of the experience",
+      "pt": "Transporte entre os diferentes pontos da experiência",
+      "es": "Transporte entre los diferentes puntos de la experiencia"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Regional lunch",
+      "pt": "Almoço regional",
+      "es": "Almuerzo regional"
+    },
+    {
+      "en": "Visit and wine tasting at Quanta Terra",
+      "pt": "Visita e prova de vinhos na Quanta Terra",
+      "es": "Visita y cata de vinos en Quanta Terra"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point",
+      "pt": "Transfer entre o alojamento e o ponto de encontro",
+      "es": "Traslado entre el alojamiento y el punto de encuentro"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

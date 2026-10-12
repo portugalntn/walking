@@ -1,0 +1,248 @@
+{
+  "title": "Arrábida Natural Park",
+  "order": 15,
+  "hidden": true,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "lisboa-sintra",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/arrabida-1day/arrabida-1.jpg",
+  "cardTagline": {
+    "en": "Sea cliffs and wine at Quinta da Bacalhôa",
+    "pt": "Falésias sobre o mar e vinho na Quinta da Bacalhôa",
+    "es": "Acantilados sobre el mar y vino en la Quinta da Bacalhôa"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "Sea cliffs, a hike in the Arrábida and wine at Quinta da Bacalhôa",
+    "pt": "Falésias sobre o mar, uma caminhada na Arrábida e vinho na Quinta da Bacalhôa",
+    "es": "Acantilados sobre el mar, una caminata en la Arrábida y vino en la Quinta da Bacalhôa"
+  },
+  "heroImage": "/images/programs/arrabida-1day/hero-arrabida-1day.jpg",
+  "difficulty": {
+    "en": "Easy",
+    "pt": "Fácil",
+    "es": "Fácil"
+  },
+  "grade": "2",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Lisbon",
+    "pt": "Lisbon",
+    "es": "Lisbon"
+  },
+  "totalDistance": "5 km",
+  "overview": {
+    "en": "An easy day a short drive from Lisbon, inside the Arrábida Natural Park, where limestone hills drop to a turquoise sea. After the hike we sit down to lunch at a traditional restaurant, and then visit Quinta da Bacalhôa in Azeitão for a wine tasting. Founded in 1922, Bacalhôa stands out for its innovation and quality, and the iconic palace and estate blend history into a truly unique setting.",
+    "pt": "Um dia tranquilo a curta distância de Lisboa, dentro do Parque Natural da Arrábida, onde as serras calcárias descem a um mar turquesa. Depois da caminhada, sentamo-nos para almoçar num restaurante tradicional e seguimos para a Quinta da Bacalhôa, em Azeitão, para uma prova de vinhos. Fundada em 1922, a Bacalhôa distingue-se pela inovação e qualidade, e o emblemático palácio e quinta fundem história num cenário verdadeiramente único.",
+    "es": "Un día tranquilo a corta distancia de Lisboa, dentro del Parque Natural de Arrábida, donde las sierras calcáreas descienden a un mar turquesa. Después de la caminata, nos sentamos a almorzar en un restaurante tradicional y vamos a la Quinta da Bacalhôa, en Azeitão, para una cata de vinos. Fundada en 1922, Bacalhôa destaca por su innovación y calidad, y el emblemático palacio y quinta funden historia en un escenario verdaderamente único."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "Arrábida Natural Park",
+      "pt": "Parque Natural da Arrábida",
+      "es": "Parque Natural de Arrábida"
+    },
+    {
+      "en": "Sea cliffs above a turquoise coast",
+      "pt": "Falésias sobre uma costa turquesa",
+      "es": "Acantilados sobre una costa turquesa"
+    },
+    {
+      "en": "Lunch at a traditional restaurant",
+      "pt": "Almoço num restaurante tradicional",
+      "es": "Almuerzo en un restaurante tradicional"
+    },
+    {
+      "en": "Visit and wine tasting at Quinta da Bacalhôa",
+      "pt": "Visita e prova de vinhos na Quinta da Bacalhôa",
+      "es": "Visita y cata de vinos en la Quinta da Bacalhôa"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "The Arrábida and Quinta da Bacalhôa",
+        "pt": "A Arrábida e a Quinta da Bacalhôa",
+        "es": "La Arrábida y la Quinta da Bacalhôa"
+      },
+      "trail": "Trilho do Parque Natural da Arrábida",
+      "description": {
+        "en": "We walk a relaxed trail inside the Arrábida Natural Park, with the limestone ridges on one side and the turquoise sea on the other. After the hike we enjoy lunch at a traditional restaurant, followed by a guided visit and wine tasting at the historic Quinta da Bacalhôa in Azeitão.",
+        "pt": "Caminhamos um trilho tranquilo dentro do Parque Natural da Arrábida, com as cristas calcárias de um lado e o mar turquesa do outro. Depois da caminhada, almoçamos num restaurante tradicional, seguido de visita guiada e prova de vinhos na histórica Quinta da Bacalhôa, em Azeitão.",
+        "es": "Caminamos un sendero tranquilo dentro del Parque Natural de Arrábida, con las crestas calcáreas de un lado y el mar turquesa del otro. Después de la caminata, almorzamos en un restaurante tradicional, seguido de visita guiada y cata de vinos en la histórica Quinta da Bacalhôa, en Azeitão."
+      },
+      "distance": "5 km",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "2h",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/arrabida-1day/walk-1.jpg",
+        "/images/programs/arrabida-1day/walk-2.jpg",
+        "/images/programs/arrabida-1day/walk-3.jpg",
+        "/images/programs/arrabida-1day/walk-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided hiking trail",
+      "pt": "Trilho pedestre guiado",
+      "es": "Sendero pedestre guiado"
+    },
+    {
+      "en": "Private driver and private car",
+      "pt": "Motorista e viatura privados",
+      "es": "Conductor y vehículo privados"
+    },
+    {
+      "en": "Refreshments",
+      "pt": "Bebidas e snacks",
+      "es": "Bebidas y aperitivos"
+    },
+    {
+      "en": "Lunch at a traditional restaurant",
+      "pt": "Almoço num restaurante tradicional",
+      "es": "Almuerzo en un restaurante tradicional"
+    },
+    {
+      "en": "Visit and wine tasting at Quinta da Bacalhôa",
+      "pt": "Visita e prova de vinhos na Quinta da Bacalhôa",
+      "es": "Visita y cata de vinos en la Quinta da Bacalhôa"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [
+    {
+      "pax": 1,
+      "price": 927
+    },
+    {
+      "pax": 2,
+      "price": 1144
+    },
+    {
+      "pax": 3,
+      "price": 1366
+    },
+    {
+      "pax": 4,
+      "price": 1577
+    },
+    {
+      "pax": 5,
+      "price": 1800
+    },
+    {
+      "pax": 6,
+      "price": 2007
+    }
+  ],
+  "priceTiersNote": {
+    "en": "For groups larger than 6 people, price on request.",
+    "pt": "Para grupos com mais de 6 pessoas, preço sob consulta.",
+    "es": "Para grupos de más de 6 personas, precio bajo consulta."
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

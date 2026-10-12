@@ -6,11 +6,17 @@ import { FadeUp, StaggerChildren } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { ProposalForm } from "@/components/sections/proposal-form";
 import { fadeUpSoft } from "@/lib/motion";
+import { regions, routes } from "@/lib/destinations";
 
 const CONTACT_EMAIL = "info@portugalntn.com";
 
-/** Public proof points shown beside the form. Values and labels come from i18n. */
+/** Public proof points shown beside the form. Labels come from i18n. */
 const stats = ["stat1", "stat2", "stat3", "stat4"] as const;
+/** Programs and regions are counted from the data (FLOW), not typed in. */
+const counted: Partial<Record<(typeof stats)[number], string>> = {
+  stat2: String(routes.length),
+  stat3: String(regions.length),
+};
 
 export function ContactSection() {
   const t = useTranslations("home.contact");
@@ -69,7 +75,7 @@ export function ContactSection() {
                       marginBottom: "10px",
                     }}
                   >
-                    {t(`${s}Value`)}
+                    {counted[s] ?? t(`${s}Value`)}
                   </p>
                   <p
                     style={{

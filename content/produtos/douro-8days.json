@@ -1,0 +1,536 @@
+{
+  "title": "Feel & Taste Douro Valley",
+  "order": 3,
+  "hidden": false,
+  "footer": false,
+  "hasPage": true,
+  "format": "programa",
+  "regionId": "douro",
+  "days": 8,
+  "nights": 7,
+  "cardImage": "/images/programs/douro-8days/douro-1.jpg",
+  "cardTagline": {
+    "en": "Terraced vineyards along the river",
+    "pt": "Socalcos vinhateiros ao longo do rio",
+    "es": "Bancales vinícolas a lo largo del río"
+  },
+  "type": {
+    "en": "Self-Guided",
+    "pt": "Self-Guided",
+    "es": "Autoguiado"
+  },
+  "subtitle": {
+    "en": "Douro Demarcated Region, UNESCO World Heritage",
+    "pt": "Região Demarcada do Douro, Património Mundial UNESCO",
+    "es": "Región Demarcada del Duero, Patrimonio Mundial UNESCO"
+  },
+  "heroImage": "/images/programs/douro-8days/hero-douro-v2.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderada"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Peso da Régua",
+    "pt": "Peso da Régua",
+    "es": "Peso da Régua"
+  },
+  "totalDistance": "75 km",
+  "overview": {
+    "en": "This itinerary invites you to discover natural beauty, ancestral traditions and a renowned wine heritage. From the terraced vineyards of the Douro Valley to historic towns and scenic trails, each day blends nature, culture and local identity at a balanced pace, combining discovery with moments of rest in one of Portugal's most captivating regions.",
+    "pt": "Este itinerário convida-o a descobrir beleza natural, tradições ancestrais e um património vinhateiro reconhecido. Dos socalcos do Vale do Douro às vilas históricas e trilhos cénicos, cada dia combina natureza, cultura e identidade local a um ritmo equilibrado, juntando a descoberta a momentos de descanso numa das regiões mais cativantes de Portugal.",
+    "es": "Este itinerario le invita a descubrir belleza natural, tradiciones ancestrales y un patrimonio vinícola reconocido. De los bancales del Valle del Duero a las villas históricas y senderos escénicos, cada día combina naturaleza, cultura e identidad local a un ritmo equilibrado, uniendo el descubrimiento a momentos de descanso en una de las regiones más cautivadoras de Portugal."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "UNESCO World Heritage Site",
+      "pt": "Património Mundial UNESCO",
+      "es": "Patrimonio Mundial UNESCO"
+    },
+    {
+      "en": "Small rural villages",
+      "pt": "Pequenas aldeias rurais",
+      "es": "Pequeñas aldeas rurales"
+    },
+    {
+      "en": "Protected landscapes",
+      "pt": "Paisagens protegidas",
+      "es": "Paisajes protegidos"
+    },
+    {
+      "en": "Regional and traditional products",
+      "pt": "Produtos regionais e tradicionais",
+      "es": "Productos regionales y tradicionales"
+    },
+    {
+      "en": "Douro and Trás-os-Montes wine region",
+      "pt": "Região vinhateira do Douro e Trás-os-Montes",
+      "es": "Región vinícola del Duero y Trás-os-Montes"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "Arrival in Peso da Régua",
+        "pt": "Chegada a Peso da Régua",
+        "es": "Llegada a Peso da Régua"
+      },
+      "trail": "",
+      "description": {
+        "en": "Arrival and transfer to your hotel in the heart of the Douro. Settle in and enjoy a first evening by the river, in the capital of the demarcated wine region.",
+        "pt": "Chegada e transfer para o seu hotel no coração do Douro. Instale-se e desfrute de um primeiro fim de tarde junto ao rio, na capital da região demarcada.",
+        "es": "Llegada y traslado a su hotel en el corazón del Duero. Instálese y disfrute de un primer atardecer junto al río, en la capital de la región demarcada."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "Hotel Régua Douro",
+      "gallery": [
+        "/images/programs/douro-8days/douro-a.jpg"
+      ],
+      "note": {
+        "en": "Transfer from the airport (120 km, 1h15).",
+        "pt": "Transfer do aeroporto (120 km, 1h15).",
+        "es": "Traslado desde el aeropuerto (120 km, 1h15)."
+      }
+    },
+    {
+      "title": {
+        "en": "Caminho dos Monges e Santiago",
+        "pt": "Caminho dos Monges e Santiago",
+        "es": "Caminho dos Monges e Santiago"
+      },
+      "trail": "Trilho do Caminho dos Monges e Santiago",
+      "description": {
+        "en": "A full day on the circular Monks and Santiago trail, climbing through terraced vineyards with sweeping views over the river. A packed lunch keeps you going between viewpoints.",
+        "pt": "Um dia inteiro no trilho circular dos Monges e Santiago, subindo por socalcos de vinha com vistas amplas sobre o rio. Um almoço de piquenique acompanha-o entre miradouros.",
+        "es": "Un día completo en el sendero circular de los Monjes y Santiago, subiendo por bancales de viña con amplias vistas sobre el río. Un almuerzo de picnic le acompaña entre miradores."
+      },
+      "distance": "16,7 km",
+      "shape": "circular",
+      "ascent": "+634 / -634 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/douro-8days/monge-1.jpg",
+        "/images/programs/douro-8days/monge-2.jpg",
+        "/images/programs/douro-8days/douro-b.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Caminhada de Samodães",
+        "pt": "Caminhada de Samodães",
+        "es": "Caminhada de Samodães"
+      },
+      "trail": "Trilho da Caminhada de Samodães",
+      "description": {
+        "en": "A gentler walk down to Samodães, with the Douro always in sight. Visit the Douro Museum with a tasting before the transfer to Alijó for the night.",
+        "pt": "Uma caminhada mais suave até Samodães, com o Douro sempre à vista. Visita ao Museu do Douro com prova antes do transfer para Alijó, onde passa a noite.",
+        "es": "Una caminata más suave hasta Samodães, con el Duero siempre a la vista. Visita al Museo del Duero con cata antes del traslado a Alijó, donde pasa la noche."
+      },
+      "distance": "9,4 km",
+      "shape": "linear",
+      "ascent": "+417 / -482 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "Forrester Essence Douro, Alijó",
+      "gallery": [
+        "/images/programs/douro-8days/samodaes-1.jpg",
+        "/images/programs/douro-8days/samodaes-2.jpg",
+        "/images/programs/douro-8days/douro-c.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Alijó to Castedo",
+        "pt": "Alijó a Castedo",
+        "es": "Alijó a Castedo"
+      },
+      "trail": "Trilho de Alijó a Castedo",
+      "description": {
+        "en": "The longest day, a circular route between Alijó and Castedo through vineyards and schist villages, across wide plateaus and quiet country roads.",
+        "pt": "O dia mais longo, um percurso circular entre Alijó e Castedo por vinhas e aldeias de xisto, por planaltos amplos e estradas rurais tranquilas.",
+        "es": "El día más largo, un recorrido circular entre Alijó y Castedo por viñedos y aldeas de esquisto, por amplias mesetas y caminos rurales tranquilos."
+      },
+      "distance": "19,6 km",
+      "shape": "circular",
+      "ascent": "+513 / -513 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/douro-8days/douro-b.jpg",
+        "/images/programs/douro-8days/monge-3.jpg",
+        "/images/programs/douro-8days/douro-d.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Alijó to Favaios",
+        "pt": "Alijó a Favaios",
+        "es": "Alijó a Favaios"
+      },
+      "trail": "Trilho de Alijó a Favaios",
+      "description": {
+        "en": "Walk to Favaios, one of the Douro wine villages, famous for its Moscatel and bread. Tastings at Quinta da Avessada and a visit to the Favaios Museum Center.",
+        "pt": "Caminhada até Favaios, uma das Aldeias Vinhateiras do Douro, famosa pelo Moscatel e pelo pão. Provas na Quinta da Avessada e visita ao Centro Museológico de Favaios.",
+        "es": "Caminata hasta Favaios, una de las Aldeas Vinícolas del Duero, famosa por su Moscatel y su pan. Catas en la Quinta da Avessada y visita al Centro Museológico de Favaios."
+      },
+      "distance": "13,2 km",
+      "shape": "circular",
+      "ascent": "+306 / -306 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast",
+        "packedLunch"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/douro-8days/douro-c.jpg",
+        "/images/programs/douro-8days/monge-4.jpg",
+        "/images/programs/douro-8days/douro-a.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Vineyards of Provesende",
+        "pt": "Trilho Vinhateiro de Provesende",
+        "es": "Viñedos de Provesende"
+      },
+      "trail": "Trilho Vinhateiro de Provesende",
+      "description": {
+        "en": "A short, scenic descent through the vineyards of Provesende, one of the region's most beautiful manor villages, before settling in Pinhão by the river.",
+        "pt": "Uma descida curta e cénica pelas vinhas de Provesende, uma das mais belas aldeias senhoriais da região, antes de se instalar no Pinhão, junto ao rio.",
+        "es": "Un descenso corto y escénico por los viñedos de Provesende, una de las aldeas señoriales más bellas de la región, antes de instalarse en Pinhão, junto al río."
+      },
+      "distance": "7,7 km",
+      "shape": "linear",
+      "ascent": "+186 / -635 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "LBV House Hotel, Pinhão",
+      "gallery": [
+        "/images/programs/douro-8days/douro-d.jpg",
+        "/images/programs/douro-8days/monge-5.jpg",
+        "/images/programs/douro-8days/samodaes-1.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Casal de Loivos to Pinhão",
+        "pt": "Casal de Loivos a Pinhão",
+        "es": "Casal de Loivos a Pinhão"
+      },
+      "trail": "Trilho de Casal de Loivos a Pinhão",
+      "description": {
+        "en": "From the legendary Casal de Loivos viewpoint down to Pinhão. A Rabelo boat ride and a tasting at Quinta do Bomfim round off the journey.",
+        "pt": "Do lendário miradouro de Casal de Loivos até ao Pinhão. Um passeio de barco rabelo e uma prova na Quinta do Bomfim coroam a viagem.",
+        "es": "Desde el legendario mirador de Casal de Loivos hasta Pinhão. Un paseo en barco rabelo y una cata en la Quinta do Bomfim coronan el viaje."
+      },
+      "distance": "8,8 km",
+      "shape": "circular",
+      "ascent": "+490 / -490 m",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/douro-8days/douro-a.jpg",
+        "/images/programs/douro-8days/monge-1.jpg",
+        "/images/programs/douro-8days/monge-2.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    },
+    {
+      "title": {
+        "en": "Departure",
+        "pt": "Partida",
+        "es": "Salida"
+      },
+      "trail": "",
+      "description": {
+        "en": "Time to say goodbye. Transfer to the station and a scenic train ride from Pinhão to Porto, included in your program.",
+        "pt": "Hora da despedida. Transfer para a estação e uma viagem cénica de comboio do Pinhão para o Porto, incluída no programa.",
+        "es": "Hora de la despedida. Traslado a la estación y un viaje escénico en tren de Pinhão a Oporto, incluido en el programa."
+      },
+      "distance": "",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [
+        "breakfast"
+      ],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "Transfer to the railway station (1 km). Train ticket from Pinhão to Porto included.",
+        "pt": "Transfer para a estação ferroviária (1 km). Bilhete de comboio de Pinhão para o Porto incluído.",
+        "es": "Traslado a la estación de tren (1 km). Billete de tren de Pinhão a Oporto incluido."
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Accommodation with breakfast",
+      "pt": "Alojamento com pequeno-almoço",
+      "es": "Alojamiento con desayuno"
+    },
+    {
+      "en": "3 packed lunches",
+      "pt": "3 almoços de piquenique",
+      "es": "3 almuerzos de picnic"
+    },
+    {
+      "en": "Douro Museum visit (with tasting)",
+      "pt": "Visita ao Museu do Douro (com prova)",
+      "es": "Visita al Museo del Duero (con cata)"
+    },
+    {
+      "en": "Quinta do Valdalágea (with tastings)",
+      "pt": "Quinta do Valdalágea (com provas)",
+      "es": "Quinta do Valdalágea (con catas)"
+    },
+    {
+      "en": "Quinta da Pacheca (tastings and light meal)",
+      "pt": "Quinta da Pacheca (provas e refeição ligeira)",
+      "es": "Quinta da Pacheca (catas y comida ligera)"
+    },
+    {
+      "en": "Enoteca da Quinta da Avessada (with tastings)",
+      "pt": "Enoteca da Quinta da Avessada (com provas)",
+      "es": "Enoteca da Quinta da Avessada (con catas)"
+    },
+    {
+      "en": "Favaios Museum Center (with tasting)",
+      "pt": "Centro Museológico de Favaios (com prova)",
+      "es": "Centro Museológico de Favaios (con cata)"
+    },
+    {
+      "en": "Quinta do Bomfim (with tastings)",
+      "pt": "Quinta do Bomfim (com provas)",
+      "es": "Quinta do Bomfim (con catas)"
+    },
+    {
+      "en": "Rabelo boat ride",
+      "pt": "Passeio de barco rabelo",
+      "es": "Paseo en barco rabelo"
+    },
+    {
+      "en": "Train ticket from Pinhão to Porto",
+      "pt": "Bilhete de comboio de Pinhão para o Porto",
+      "es": "Billete de tren de Pinhão a Oporto"
+    },
+    {
+      "en": "All transport in the program",
+      "pt": "Todos os transportes do programa",
+      "es": "Todos los transportes del programa"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [
+    {
+      "en": "Picnic",
+      "pt": "Piquenique",
+      "es": "Picnic"
+    },
+    {
+      "en": "Extra packed lunches",
+      "pt": "Almoços de piquenique extra",
+      "es": "Almuerzos de picnic extra"
+    },
+    {
+      "en": "Transfer to Porto Airport",
+      "pt": "Transfer para o Aeroporto do Porto",
+      "es": "Traslado al Aeropuerto de Oporto"
+    },
+    {
+      "en": "Extra nights in Porto",
+      "pt": "Noites extra no Porto",
+      "es": "Noches extra en Oporto"
+    }
+  ],
+  "prices": {
+    "lowFrom": 1340,
+    "lowSingle": 240,
+    "highFrom": 1411,
+    "highSingle": 295
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

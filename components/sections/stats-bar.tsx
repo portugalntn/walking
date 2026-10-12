@@ -4,12 +4,16 @@ import { useTranslations } from "next-intl";
 import { StaggerChildren, CountUp } from "@/components/ui/animated";
 import { m } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
+import { regions, routes } from "@/lib/destinations";
 
-/** Numbers stay here, the wording comes from home.statsBar in each locale. */
+/**
+ * The wording comes from home.statsBar in each locale. Active routes and
+ * regions are counted from the data, so a product published in FLOW counts.
+ */
 const stats = [
   { key: "stat1", value: 12,  suffix: "" },
-  { key: "stat2", value: 9,   suffix: "+" },
-  { key: "stat3", value: 4,   suffix: "" },
+  { key: "stat2", value: routes.length, suffix: "" },
+  { key: "stat3", value: regions.length, suffix: "" },
   { key: "stat4", value: 100, suffix: "%" },
 ];
 

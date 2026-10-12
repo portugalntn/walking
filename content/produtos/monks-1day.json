@@ -1,0 +1,228 @@
+{
+  "title": "Douro Monks & Vineyards Trail",
+  "order": 7,
+  "hidden": false,
+  "footer": true,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "douro",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/monks-1day/monge-1.jpg",
+  "cardTagline": {
+    "en": "The Monks' Way among Douro vineyards",
+    "pt": "O Caminho dos Monges entre vinhas do Douro",
+    "es": "El Camino de los Monjes entre viñedos del Duero"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "A walk through the heart of the Douro, among vineyards, terraces and historic paths, with wine and regional flavours along the way.",
+    "pt": "Uma caminhada pelo coração do Douro, entre vinhas, socalcos e caminhos históricos, com vinho e sabores regionais pelo percurso.",
+    "es": "Una caminata por el corazón del Duero, entre viñedos, bancales y caminos históricos, con vino y sabores regionales por el camino."
+  },
+  "heroImage": "/images/programs/monks-1day/monge-1.jpg",
+  "difficulty": {
+    "en": "Difficult",
+    "pt": "Difícil",
+    "es": "Difícil"
+  },
+  "grade": "4",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Peso da Régua",
+    "pt": "Peso da Régua",
+    "es": "Peso da Régua"
+  },
+  "totalDistance": "16,7 km",
+  "overview": {
+    "en": "Starting in Peso da Régua, this circular walk is inspired by one of the final stretches of the historic Monks' Way and crosses a landscape deeply tied to the culture of the vine and of wine.\n\nThroughout the day, the route crosses wine slopes, rural paths and high ground with wide views over the Douro and the Varosa valley. Near the end of the walk, we stop at Quinta do Valdalágea for a wine experience with regional snacks.\n\nAfter the tasting, we walk the last kilometres back to Peso da Régua, where the program ends with a traditional lunch.",
+    "pt": "Partindo do Peso da Régua, esta caminhada circular inspira-se num dos troços finais do histórico Caminho dos Monges e percorre uma paisagem profundamente ligada à cultura da vinha e do vinho.\n\nAo longo do dia, o percurso atravessa encostas vinhateiras, caminhos rurais e zonas elevadas com amplas perspetivas sobre o Douro e o vale do Varosa. Já perto do final da caminhada, fazemos uma pausa na Quinta do Valdalágea para uma experiência vínica acompanhada por petiscos regionais.\n\nDepois da prova, retomamos os últimos quilómetros em direção ao Peso da Régua, onde o programa termina com um almoço tradicional.",
+    "es": "Partiendo de Peso da Régua, esta caminata circular se inspira en uno de los tramos finales del histórico Camino de los Monjes y recorre un paisaje profundamente ligado a la cultura de la viña y del vino.\n\nA lo largo del día, el recorrido atraviesa laderas vinícolas, caminos rurales y zonas elevadas con amplias perspectivas sobre el Duero y el valle del Varosa. Ya cerca del final de la caminata, hacemos una pausa en la Quinta do Valdalágea para una experiencia vinícola acompañada de aperitivos regionales.\n\nDespués de la cata, retomamos los últimos kilómetros hacia Peso da Régua, donde el programa termina con un almuerzo tradicional."
+  },
+  "difficultyNote": {
+    "en": "A long and demanding route, with several climbs and descents over the day. Recommended for participants in good physical condition with regular experience of medium and long distance walks. No mountaineering skills are needed, but it does require stamina.",
+    "pt": "Percurso longo e exigente, com várias subidas e descidas acumuladas ao longo do dia. Recomendado a participantes com boa condição física e experiência regular em caminhadas de média e longa distância. Não requer conhecimentos técnicos de montanhismo, mas exige resistência física.",
+    "es": "Recorrido largo y exigente, con varias subidas y bajadas acumuladas a lo largo del día. Recomendado para participantes con buena condición física y experiencia regular en caminatas de media y larga distancia. No requiere conocimientos técnicos de montañismo, pero exige resistencia física."
+  },
+  "highlights": [
+    {
+      "en": "Douro vineyards and terraces",
+      "pt": "Vinhas e socalcos do Douro",
+      "es": "Viñedos y bancales del Duero"
+    },
+    {
+      "en": "Historic paths between Régua and Valdigem",
+      "pt": "Caminhos históricos entre Régua e Valdigem",
+      "es": "Caminos históricos entre Régua y Valdigem"
+    },
+    {
+      "en": "Wine tasting and snacks at Quinta do Valdalágea",
+      "pt": "Prova de vinhos e petiscos na Quinta do Valdalágea",
+      "es": "Cata de vinos y aperitivos en la Quinta do Valdalágea"
+    },
+    {
+      "en": "Views over the Douro and Varosa valleys",
+      "pt": "Paisagens sobre os vales do Douro e Varosa",
+      "es": "Paisajes sobre los valles del Duero y del Varosa"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "The Monks' Way among Douro vineyards",
+        "pt": "Caminhos dos Monges entre vinhas do Douro",
+        "es": "Caminos de los Monjes entre viñedos del Duero"
+      },
+      "trail": "Peso da Régua · Valdigem · Peso da Régua",
+      "description": {
+        "en": "The walk begins in Peso da Régua and gradually leaves the town to enter the wine slopes that define this part of the Douro.\n\nFor much of the route we walk among vineyards, terraces and rural paths across a landscape shaped over centuries by winegrowing. The successive climbs and descents reveal different perspectives over the land, alternating between open areas, small villages and slopes facing the Douro and Varosa valleys.\n\nPart of this land is linked to the Monks' Way, a route inspired by the old paths used by the Cistercian monks and by the historic connection between the interior and the Douro. Here that heritage meets a landscape where the vine is the dominant element.\n\nAt km 12.9 we reach Quinta do Valdalágea, in Valdigem, a few kilometres from Peso da Régua. The estate has around 35 hectares of vineyards, spread across different exposures and altitudes, within the historic area of the Douro Demarcated Region. Here we stop for a wine tasting with snacks and produce from the estate, discovering the Douro through its flavours too. After the experience, we walk the last kilometres back to Peso da Régua. Back in town, the day ends with a traditional lunch, closing a demanding but complete walk through the Douro wine country.",
+        "pt": "A caminhada começa no Peso da Régua e deixa progressivamente a zona urbana para entrar nas encostas vinhateiras que caracterizam esta parte do Douro.\n\nDurante grande parte do percurso, caminhamos entre vinhas, socalcos e caminhos rurais que atravessam uma paisagem moldada durante séculos pela viticultura. As sucessivas subidas e descidas permitem descobrir diferentes perspetivas sobre o território, alternando entre zonas mais abertas, pequenas povoações e encostas voltadas para os vales do Douro e do Varosa.\n\nParte deste território está associada ao Caminho dos Monges, uma rota inspirada nos antigos percursos utilizados pelos monges de Cister e na ligação histórica entre o interior e o Douro. Aqui, essa herança cruza-se com uma paisagem onde a vinha é o elemento dominante.\n\nAo km 12,9 chegamos à Quinta do Valdalágea, situada em Valdigem, a poucos quilómetros do Peso da Régua. A propriedade possui cerca de 35 hectares de vinha, distribuídos por diferentes exposições e altitudes, e encontra-se dentro da área histórica da Região Demarcada do Douro. Aqui fazemos uma pausa para uma prova de vinhos acompanhada por petiscos e produtos da quinta, permitindo descobrir o Douro também através dos seus sabores. A própria propriedade promove experiências de degustação associadas aos vinhos e produtos locais. Depois da experiência, retomamos os últimos quilómetros do percurso em direção ao Peso da Régua. De volta à cidade, o dia termina com um almoço tradicional, encerrando uma caminhada exigente mas completa pelo território vinhateiro do Douro.",
+        "es": "La caminata empieza en Peso da Régua y deja poco a poco la zona urbana para entrar en las laderas vinícolas que caracterizan esta parte del Duero.\n\nDurante gran parte del recorrido caminamos entre viñedos, bancales y caminos rurales que atraviesan un paisaje moldeado durante siglos por la viticultura. Las sucesivas subidas y bajadas permiten descubrir distintas perspectivas del territorio, alternando zonas más abiertas, pequeñas aldeas y laderas orientadas a los valles del Duero y del Varosa.\n\nParte de este territorio está asociada al Camino de los Monjes, una ruta inspirada en los antiguos caminos utilizados por los monjes del Císter y en la conexión histórica entre el interior y el Duero. Aquí esa herencia se cruza con un paisaje donde la viña es el elemento dominante.\n\nEn el km 12,9 llegamos a la Quinta do Valdalágea, en Valdigem, a pocos kilómetros de Peso da Régua. La propiedad tiene unas 35 hectáreas de viñedo, repartidas en distintas orientaciones y altitudes, dentro del área histórica de la Región Demarcada del Duero. Aquí hacemos una pausa para una cata de vinos acompañada de aperitivos y productos de la quinta, descubriendo el Duero también a través de sus sabores. Después de la experiencia, retomamos los últimos kilómetros hacia Peso da Régua. De vuelta en la ciudad, el día termina con un almuerzo tradicional, cerrando una caminata exigente pero completa por el territorio vinícola del Duero."
+      },
+      "distance": "16,7 km",
+      "shape": "circular",
+      "ascent": "+654 m",
+      "walkTime": "",
+      "elevation": {
+        "min": 49,
+        "avg": 165,
+        "max": 293,
+        "gain": 654,
+        "loss": 654
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided walk",
+      "pt": "Caminhada guiada",
+      "es": "Caminata guiada"
+    },
+    {
+      "en": "Drinks and snacks during the walk",
+      "pt": "Bebidas e snacks durante a caminhada",
+      "es": "Bebidas y aperitivos durante la caminata"
+    },
+    {
+      "en": "Wine tasting at Quinta do Valdalágea",
+      "pt": "Prova de vinhos na Quinta do Valdalágea",
+      "es": "Cata de vinos en la Quinta do Valdalágea"
+    },
+    {
+      "en": "Snacks and regional produce during the wine experience",
+      "pt": "Petiscos e produtos regionais durante a experiência vínica",
+      "es": "Aperitivos y productos regionales durante la experiencia vinícola"
+    },
+    {
+      "en": "Traditional lunch in Peso da Régua",
+      "pt": "Almoço tradicional no Peso da Régua",
+      "es": "Almuerzo tradicional en Peso da Régua"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Transfer between your accommodation and the meeting point in Peso da Régua",
+      "pt": "Transfer entre o alojamento e o ponto de encontro no Peso da Régua",
+      "es": "Traslado entre el alojamiento y el punto de encuentro en Peso da Régua"
+    },
+    {
+      "en": "Transport during the program",
+      "pt": "Transporte durante o programa",
+      "es": "Transporte durante el programa"
+    },
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [],
+  "priceTiersNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}

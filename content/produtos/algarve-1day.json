@@ -1,0 +1,243 @@
+{
+  "title": "Charneca do Farol",
+  "order": 13,
+  "hidden": true,
+  "footer": false,
+  "hasPage": true,
+  "format": "roteiro",
+  "regionId": "algarve",
+  "days": 1,
+  "nights": 0,
+  "cardImage": "/images/programs/algarve-1day/algarve-1.jpg",
+  "cardTagline": {
+    "en": "Cliffs and the wild Atlantic",
+    "pt": "Falésias e o Atlântico selvagem",
+    "es": "Acantilados y el Atlántico salvaje"
+  },
+  "type": {
+    "en": "Guided",
+    "pt": "Guiado",
+    "es": "Guiado"
+  },
+  "subtitle": {
+    "en": "The Vincentian Coast: cliffs and the wild Atlantic",
+    "pt": "A Costa Vicentina: falésias e o Atlântico selvagem",
+    "es": "La Costa Vicentina: acantilados y el Atlántico salvaje"
+  },
+  "heroImage": "/images/programs/algarve-1day/hero-algarve-1day.jpg",
+  "difficulty": {
+    "en": "Moderate",
+    "pt": "Moderada",
+    "es": "Moderado"
+  },
+  "grade": "3",
+  "season": {
+    "en": "All year",
+    "pt": "Todo o ano",
+    "es": "Todo el año"
+  },
+  "startPoint": {
+    "en": "Portimão",
+    "pt": "Portimão",
+    "es": "Portimão"
+  },
+  "totalDistance": "6 km",
+  "overview": {
+    "en": "A trail along the Vincentian Coast, one of the best-preserved coastlines in Europe, certified by the European Ramblers Association as a Leading Quality Trail, Best of Europe. We walk in the company of the mighty Atlantic and its coloured cliffs, ending the day with a picnic of local products alongside your local guide.",
+    "pt": "Um trilho pela Costa Vicentina, uma das costas mais bem preservadas da Europa, certificada pela European Ramblers Association como Leading Quality Trail, Best of Europe. Caminhamos na companhia do imenso Atlântico e das suas falésias coloridas, terminando o dia com um piquenique de produtos locais ao lado do seu guia local.",
+    "es": "Un sendero por la Costa Vicentina, una de las costas mejor conservadas de Europa, certificada por la European Ramblers Association como Leading Quality Trail, Best of Europe. Caminamos en compañía del inmenso Atlántico y sus acantilados de colores, terminando el día con un picnic de productos locales junto a su guía local."
+  },
+  "difficultyNote": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "highlights": [
+    {
+      "en": "The Vincentian Coast",
+      "pt": "A Costa Vicentina",
+      "es": "La Costa Vicentina"
+    },
+    {
+      "en": "ERA Leading Quality Trail, Best of Europe",
+      "pt": "Trilho ERA Leading Quality, Best of Europe",
+      "es": "Sendero ERA Leading Quality, Best of Europe"
+    },
+    {
+      "en": "Dramatic Atlantic cliffs",
+      "pt": "Falésias atlânticas dramáticas",
+      "es": "Acantilados atlánticos dramáticos"
+    },
+    {
+      "en": "Traditional picnic with local products",
+      "pt": "Piquenique tradicional com produtos locais",
+      "es": "Picnic tradicional con productos locales"
+    }
+  ],
+  "moments": [],
+  "itinerary": [
+    {
+      "title": {
+        "en": "The Vincentian Coast",
+        "pt": "A Costa Vicentina",
+        "es": "La Costa Vicentina"
+      },
+      "trail": "Trilho da Charneca do Farol",
+      "description": {
+        "en": "We follow the cliff tops above the Atlantic, where the wind shapes the heath and waves break on coloured rock far below. A relaxed walk on one of Europe's finest trails, closing with a traditional picnic of local products by the sea.",
+        "pt": "Seguimos pelo topo das falésias sobre o Atlântico, onde o vento molda a charneca e as ondas rebentam na rocha colorida lá em baixo. Uma caminhada tranquila num dos melhores trilhos da Europa, a fechar com um piquenique tradicional de produtos locais junto ao mar.",
+        "es": "Seguimos por lo alto de los acantilados sobre el Atlántico, donde el viento moldea el matorral y las olas rompen en la roca de colores allá abajo. Una caminata tranquila en uno de los mejores senderos de Europa, cerrando con un picnic tradicional de productos locales junto al mar."
+      },
+      "distance": "6 km",
+      "shape": "",
+      "ascent": "",
+      "walkTime": "2h",
+      "elevation": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "gain": null,
+        "loss": null
+      },
+      "meals": [],
+      "accommodation": "",
+      "gallery": [
+        "/images/programs/algarve-1day/walk-1.jpg",
+        "/images/programs/algarve-1day/walk-2.jpg",
+        "/images/programs/algarve-1day/walk-3.jpg",
+        "/images/programs/algarve-1day/walk-4.jpg"
+      ],
+      "note": {
+        "en": "",
+        "pt": "",
+        "es": ""
+      }
+    }
+  ],
+  "included": [
+    {
+      "en": "Expert guide",
+      "pt": "Guia especializado",
+      "es": "Guía especializado"
+    },
+    {
+      "en": "Guided hiking trail",
+      "pt": "Trilho pedestre guiado",
+      "es": "Sendero pedestre guiado"
+    },
+    {
+      "en": "Private driver and private car",
+      "pt": "Motorista e viatura privados",
+      "es": "Conductor y vehículo privados"
+    },
+    {
+      "en": "Refreshments",
+      "pt": "Bebidas e snacks",
+      "es": "Bebidas y aperitivos"
+    },
+    {
+      "en": "Traditional picnic with local products",
+      "pt": "Piquenique tradicional com produtos locais",
+      "es": "Picnic tradicional con productos locales"
+    },
+    {
+      "en": "Personal insurance",
+      "pt": "Seguro pessoal",
+      "es": "Seguro personal"
+    }
+  ],
+  "notIncluded": [
+    {
+      "en": "Personal expenses",
+      "pt": "Despesas pessoais",
+      "es": "Gastos personales"
+    },
+    {
+      "en": "Anything not listed as included",
+      "pt": "Tudo o que não esteja indicado como incluído",
+      "es": "Todo lo que no figure como incluido"
+    }
+  ],
+  "extras": [],
+  "prices": {
+    "lowFrom": null,
+    "lowSingle": null,
+    "highFrom": null,
+    "highSingle": null
+  },
+  "priceTiers": [
+    {
+      "pax": 1,
+      "price": 782
+    },
+    {
+      "pax": 2,
+      "price": 942
+    },
+    {
+      "pax": 3,
+      "price": 1102
+    },
+    {
+      "pax": 4,
+      "price": 1260
+    },
+    {
+      "pax": 5,
+      "price": 1434
+    },
+    {
+      "pax": 6,
+      "price": 1615
+    }
+  ],
+  "priceTiersNote": {
+    "en": "For groups larger than 6 people, price on request.",
+    "pt": "Para grupos com mais de 6 pessoas, preço sob consulta.",
+    "es": "Para grupos de más de 6 personas, precio bajo consulta."
+  },
+  "priceCondition": {
+    "en": "",
+    "pt": "",
+    "es": ""
+  },
+  "payment": [
+    {
+      "en": "A 30% deposit confirms the booking.",
+      "pt": "Um sinal de 30% confirma a reserva.",
+      "es": "Una señal del 30% confirma la reserva."
+    },
+    {
+      "en": "The remaining balance is due 30 days before arrival.",
+      "pt": "O restante é liquidado 30 dias antes da chegada.",
+      "es": "El resto se abona 30 días antes de la llegada."
+    },
+    {
+      "en": "Bank transfer, Multibanco or MB WAY.",
+      "pt": "Transferência bancária, Multibanco ou MB WAY.",
+      "es": "Transferencia bancaria, Multibanco o MB WAY."
+    }
+  ],
+  "cancellation": [
+    {
+      "en": "Up to 30 days before arrival: full refund of the deposit.",
+      "pt": "Até 30 dias antes da chegada: reembolso total do sinal.",
+      "es": "Hasta 30 días antes de la llegada: reembolso total de la señal."
+    },
+    {
+      "en": "15 to 29 days before: 50% of the total.",
+      "pt": "Entre 15 e 29 dias antes: 50% do total.",
+      "es": "Entre 15 y 29 días antes: 50% del total."
+    },
+    {
+      "en": "Less than 15 days before: non-refundable.",
+      "pt": "Menos de 15 dias antes: não reembolsável.",
+      "es": "Menos de 15 días antes: no reembolsable."
+    },
+    {
+      "en": "Travel insurance is recommended.",
+      "pt": "Recomendamos seguro de viagem.",
+      "es": "Recomendamos seguro de viaje."
+    }
+  ]
+}
