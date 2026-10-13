@@ -8,7 +8,8 @@ import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { regions, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
-import { ProgramCard } from "@/components/ui/program-card";
+import { ProgramGrid } from "@/components/ui/program-card";
+import { KeepWords } from "@/components/ui/keep-words";
 import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -166,7 +167,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
         {/* Content */}
         <div className="relative z-10 h-full container-ntn flex flex-col justify-center" style={{ paddingTop: "120px", paddingBottom: "100px" }}>
-          <div style={{ maxWidth: "40rem" }}>
+          {/* Wide enough for a region name on one line; the description keeps its own reading width */}
+          <div style={{ maxWidth: "min(100%, 64rem)" }}>
             <m.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ marginBottom: "18px" }}>
               <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("label")}</Overline>
             </m.div>
@@ -186,14 +188,15 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                   className="font-title"
                   style={{
                     color: "#fff",
-                    fontSize: "clamp(2.75rem, 6vw, 5.5rem)",
+                    fontSize: "clamp(2.1rem, 6vw, 5.5rem)",
+                    textWrap: "balance",
                     lineHeight: 0.98,
                     textTransform: "uppercase",
                     fontWeight: 900,
                     marginBottom: "22px",
                   }}
                 >
-                  {active.name}
+                  <KeepWords text={active.name} />
                 </h1>
                 <p
                   className="text-body-lg leading-relaxed"
@@ -323,7 +326,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                       </div>
                     ))}
                   </div>
-                  <button type="button" onClick={() => selectFormat(f.key)} className="btn btn-primary mt-auto self-start">
+                  <button type="button" onClick={() => selectFormat(f.key)} className="btn btn-primary !mt-auto self-start">
                     {f.cta}
                     <ArrowRight size={16} />
                   </button>
@@ -354,11 +357,12 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
           {/* Filters */}
           <div
-            className="flex flex-col"
+            // One line on desktop: format switch, a thin divider, then the regions (which wrap inside if space runs out)
+            className="flex flex-col lg:flex-row lg:items-center"
             style={{ gap: "16px", padding: "16px", marginBottom: "36px", backgroundColor: "var(--color-ntn-cream-50)", borderRadius: "14px", border: "1px solid rgba(89,105,77,0.12)" }}
           >
             {/* Format switch */}
-            <div role="tablist" aria-label={TX.formatAria[locale]} className="inline-flex max-w-full overflow-x-auto" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)", alignSelf: "flex-start" }}>
+            <div role="tablist" aria-label={TX.formatAria[locale]} className="inline-flex max-w-full shrink-0 self-start overflow-x-auto lg:self-center" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)" }}>
               {([
                 { key: "all" as Filter, label: t("filterAll") },
                 { key: "roteiro" as Filter, label: TX.oneDay[locale] },
@@ -385,8 +389,10 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               })}
             </div>
 
+            <span aria-hidden className="hidden lg:block" style={{ width: "1px", alignSelf: "stretch", backgroundColor: "rgba(89,105,77,0.2)" }} />
+
             {/* Region chips */}
-            <div className="flex flex-wrap items-center" style={{ gap: "8px" }}>
+            <div className="flex flex-1 flex-wrap items-center" style={{ gap: "8px" }}>
               <span className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginRight: "4px" }}>{t("filterRegion")}</span>
               {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
                 const active = regionFilter === r.id;
@@ -424,19 +430,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-              style={{ gap: "28px" }}
             >
-              {filtered.map((route, i) => (
-                <m.div
-                  key={route.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: (i % 3) * 0.07, ease: EASE }}
-                >
-                  <ProgramCard route={route} facts={facts[route.id]} locale={locale} />
-                </m.div>
-              ))}
+              <ProgramGrid routes={filtered} facts={facts} locale={locale} />
             </m.div>
           </AnimatePresence>
 

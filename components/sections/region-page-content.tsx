@@ -7,7 +7,8 @@ import { FadeUp, FadeRight } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import type { Region, RouteProduct } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
-import { ProgramCard } from "@/components/ui/program-card";
+import { ProgramGrid } from "@/components/ui/program-card";
+import { KeepWords } from "@/components/ui/keep-words";
 import { regionContent } from "@/lib/region-content";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -56,7 +57,8 @@ export function RegionPageContent({
   ].filter((g) => g.items.length > 0);
 
   return (
-    <main>
+    // clip: the side fade-ins start offset and must not widen the page on phones
+    <main style={{ overflowX: "clip" }}>
       {/* Hero */}
       <section className="relative flex items-end" style={{ minHeight: "82vh" }}>
         <div className="absolute inset-0 z-0">
@@ -75,9 +77,9 @@ export function RegionPageContent({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05, ease: EASE }}
             className="font-title"
-            style={{ color: "#fff", fontSize: "clamp(2.75rem, 6vw, 5.5rem)", lineHeight: 0.98, textTransform: "uppercase", fontWeight: 900, marginBottom: "18px" }}
+            style={{ color: "#fff", fontSize: "clamp(2.1rem, 6vw, 5.5rem)", textWrap: "balance", lineHeight: 0.98, textTransform: "uppercase", fontWeight: 900, marginBottom: "18px" }}
           >
-            {region.name}
+            <KeepWords text={region.name} />
           </m.h1>
           <m.p
             initial={{ opacity: 0, y: 18 }}
@@ -233,22 +235,7 @@ export function RegionPageContent({
                     {group.label} · {group.items.length}
                   </p>
                 </FadeUp>
-                <div
-                  className={group.items.length === 1 ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr]" : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}
-                  style={{ gap: "28px" }}
-                >
-                  {group.items.map((route, i) => (
-                    <m.div
-                      key={route.id}
-                      initial={{ opacity: 0, y: 24 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ duration: 0.5, delay: (i % 3) * 0.08, ease: EASE }}
-                    >
-                      <ProgramCard route={route} facts={facts[route.id]} locale={locale} feature={group.items.length === 1} />
-                    </m.div>
-                  ))}
-                </div>
+                <ProgramGrid routes={group.items} facts={facts} locale={locale} />
               </div>
             ))}
           </div>
