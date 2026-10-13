@@ -354,11 +354,12 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
           {/* Filters */}
           <div
-            className="flex flex-col"
+            // One line on desktop: format switch, a thin divider, then the regions (which wrap inside if space runs out)
+            className="flex flex-col lg:flex-row lg:items-center"
             style={{ gap: "16px", padding: "16px", marginBottom: "36px", backgroundColor: "var(--color-ntn-cream-50)", borderRadius: "14px", border: "1px solid rgba(89,105,77,0.12)" }}
           >
             {/* Format switch */}
-            <div role="tablist" aria-label={TX.formatAria[locale]} className="inline-flex max-w-full overflow-x-auto" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)", alignSelf: "flex-start" }}>
+            <div role="tablist" aria-label={TX.formatAria[locale]} className="inline-flex max-w-full shrink-0 self-start overflow-x-auto lg:self-center" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)" }}>
               {([
                 { key: "all" as Filter, label: t("filterAll") },
                 { key: "roteiro" as Filter, label: TX.oneDay[locale] },
@@ -385,8 +386,10 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               })}
             </div>
 
+            <span aria-hidden className="hidden lg:block" style={{ width: "1px", alignSelf: "stretch", backgroundColor: "rgba(89,105,77,0.2)" }} />
+
             {/* Region chips */}
-            <div className="flex flex-wrap items-center" style={{ gap: "8px" }}>
+            <div className="flex flex-1 flex-wrap items-center" style={{ gap: "8px" }}>
               <span className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginRight: "4px" }}>{t("filterRegion")}</span>
               {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
                 const active = regionFilter === r.id;
