@@ -4,14 +4,16 @@ import { useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
+import { pageImages } from "@/lib/pages";
 
-const heroImages = [
+// One is drawn per visit. Replaced by the list set in FLOW (Site > Páginas > Home), if any.
+const heroImages = pageImages("home", "topo", [
   "/images/hero/hero-1.jpg",
   "/images/hero/hero-2.jpg",
   "/images/hero/hero-3.jpg",
   "/images/hero/hero-4.jpg",
   "/images/hero/hero-5.jpg",
-];
+]);
 
 // The hero photo is drawn once per page load, on the client only.
 // useSyncExternalStore hands the server the first image and the browser the

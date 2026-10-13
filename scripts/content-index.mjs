@@ -11,6 +11,7 @@ const OUT = join(ROOT, "lib/content.generated.ts");
 const SOURCES = [
   { name: "productFiles", dir: "content/produtos", prefix: "p" },
   { name: "regionFiles", dir: "content/destinos", prefix: "r" },
+  { name: "pageFiles", dir: "content/paginas", prefix: "g" },
 ];
 
 function render() {

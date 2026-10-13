@@ -79,7 +79,7 @@ export function RegionPageContent({
             className="font-title"
             style={{ color: "#fff", fontSize: "clamp(2.1rem, 6vw, 5.5rem)", textWrap: "balance", lineHeight: 0.98, textTransform: "uppercase", fontWeight: 900, marginBottom: "18px" }}
           >
-            <KeepWords text={region.name} />
+            <KeepWords text={region.heroTitle ?? region.name} />
           </m.h1>
           <m.p
             initial={{ opacity: 0, y: 18 }}

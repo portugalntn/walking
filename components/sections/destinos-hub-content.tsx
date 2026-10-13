@@ -3,25 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { m } from "framer-motion";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { regions, routesForRegion } from "@/lib/destinations";
 import { regionContent } from "@/lib/region-content";
+import { pageImage } from "@/lib/pages";
 import { durationLabel } from "@/components/ui/program-card";
 import { ArrowRight, Clock, CalendarDays, Footprints } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 
+/** Short labels. The page's title, intro and closing call live in messages/*.json (destinosHub.*), editable in FLOW. */
 const L = {
-  overline: { en: "Our destinations", pt: "Os nossos destinos", es: "Nuestros destinos" },
-  title: { en: "Northern Portugal", pt: "O Norte de Portugal", es: "El Norte de Portugal" },
-  intro: {
-    en: "We are specialists in the North and Northeast of Portugal, the territories we know by heart and helped to shape. Alongside the multi-day programs, we guide one-day walks in the Douro and Trás-os-Montes.",
-    pt: "Somos especialistas no Norte e Nordeste de Portugal, os territórios que conhecemos de cor e ajudámos a estruturar. Além dos programas de vários dias, guiamos caminhadas de um dia no Douro e em Trás-os-Montes.",
-    es: "Somos especialistas en el Norte y Nordeste de Portugal, los territorios que conocemos de memoria y ayudamos a estructurar. Además de los programas de varios días, guiamos caminatas de un día en el Duero y en Trás-os-Montes.",
-  },
   programsWord: { en: "programmes", pt: "programas", es: "programas" },
   programWord: { en: "programme", pt: "programa", es: "programa" },
   daysWord: { en: "days", pt: "dias", es: "días" },
@@ -33,28 +28,18 @@ const L = {
   oneDay: { en: "1 day", pt: "1 dia", es: "1 día" },
   multiDay: { en: "Multi-day", pt: "Vários dias", es: "Varios días" },
   to: { en: "to", pt: "a", es: "a" },
-  calloutTitle: {
-    en: "Ready to choose how you walk?",
-    pt: "Pronto para escolher como caminhar?",
-    es: "¿Listo para elegir cómo caminar?",
-  },
-  calloutBody: {
-    en: "Browse every programme, filter by one-day or multi-day, and find the walk that fits.",
-    pt: "Veja todos os programas, filtre por um dia ou multidias, e encontre a caminhada certa.",
-    es: "Vea todos los programas, filtre por un día o multidías, y encuentre la caminata adecuada.",
-  },
-  calloutCta: { en: "See all programmes", pt: "Ver todos os programas", es: "Ver todos los programas" },
 };
 
 export function DestinosHubContent() {
   const locale = useLocale() as Loc;
+  const t = useTranslations("destinosHub");
 
   return (
     <main>
       {/* Hero banner */}
       <section className="relative flex items-end" style={{ minHeight: "78vh" }}>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/routes/hero-miranda.jpg" alt="Portugal NTN Walking" fill priority className="object-cover" sizes="100vw" />
+          <Image src={pageImage("destinos", "topo", "/images/routes/hero-miranda.jpg")} alt="Portugal NTN Walking" fill priority className="object-cover" sizes="100vw" />
           <div
             className="absolute inset-0"
             style={{ background: "linear-gradient(to bottom, rgba(29,29,26,0.6) 0%, rgba(29,29,26,0.25) 38%, rgba(29,29,26,0.9) 100%)" }}
@@ -63,16 +48,16 @@ export function DestinosHubContent() {
         <div className="container-ntn relative z-10" style={{ paddingTop: "160px", paddingBottom: "80px" }}>
           <FadeUp>
             <div style={{ marginBottom: "20px" }}>
-              <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{L.overline[locale]}</Overline>
+              <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("overline")}</Overline>
             </div>
             <h1
               className="font-title"
               style={{ color: "#fff", lineHeight: 1.02, textTransform: "none", fontSize: "clamp(2.5rem, 6vw, 5rem)", marginBottom: "24px", maxWidth: "20ch" }}
             >
-              {L.title[locale]}
+              {t("title")}
             </h1>
             <p className="text-body-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "44rem" }}>
-              {L.intro[locale]}
+              {t("intro")}
             </p>
           </FadeUp>
         </div>
@@ -241,13 +226,13 @@ export function DestinosHubContent() {
                 className="font-title"
                 style={{ color: "var(--color-ntn-black-900)", lineHeight: 1.1, textTransform: "none", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", marginBottom: "16px" }}
               >
-                {L.calloutTitle[locale]}
+                {t("calloutTitle")}
               </h2>
               <p className="text-body-lg leading-relaxed" style={{ color: "var(--color-ntn-black-800)", marginBottom: "32px" }}>
-                {L.calloutBody[locale]}
+                {t("calloutBody")}
               </p>
               <Link href={`/${locale}/programas`} className="btn btn-primary" style={{ display: "inline-flex" }}>
-                {L.calloutCta[locale]}
+                {t("calloutCta")}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

@@ -12,13 +12,14 @@ import { useTranslations, useLocale } from "next-intl";
 import { FadeUp, FadeLeft, FadeRight, StaggerChildren } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { fadeUp } from "@/lib/motion";
+import { pageImage } from "@/lib/pages";
 import { TreePine, TrendingUp, Users, Landmark, Check, BedDouble, UtensilsCrossed, Wheat, Compass, Camera } from "lucide-react";
 
 type Loc = "en" | "pt" | "es";
 const tri = (en: string, pt: string, es: string) => ({ en, pt, es });
 
-/** Photo for the local economy band (a local producer). Set the path when the photo arrives. */
-const ECONOMY_IMAGE: string | undefined = undefined;
+/** Photo for the local economy band (a local producer), set in FLOW: Site > Páginas > Sustentabilidade. */
+const ECONOMY_IMAGE = pageImage("sustentabilidade", "economia");
 
 const areas = [
   { n: 1, Icon: TreePine },
@@ -27,26 +28,14 @@ const areas = [
   { n: 4, Icon: Landmark },
 ];
 
-/** Strings of the redesign. Move to messages/*.json when approved. */
+/**
+ * Short labels of the redesign. The section titles and texts live in
+ * messages/*.json (sustainablePage.*) so FLOW can edit them.
+ */
 const TX = {
-  natureLabel: tri("Environmental sustainability", "Sustentabilidade ambiental", "Sostenibilidad ambiental"),
-  natureTitle: tri("Trails that protect what they show", "Trilhos que protegem o que mostram", "Senderos que protegen lo que muestran"),
-  natureBody: tri(
-    "We walk in small groups, on marked and certified paths, at the pace of the land. The landscape is the reason people come, so keeping it intact is part of the job.",
-    "Caminhamos em pequenos grupos, por caminhos sinalizados e certificados, ao ritmo do território. A paisagem é a razão da viagem, por isso mantê-la intacta faz parte do trabalho.",
-    "Caminamos en grupos pequeños, por caminos señalizados y certificados, al ritmo del territorio. El paisaje es la razón del viaje, por eso mantenerlo intacto forma parte del trabajo."
-  ),
   nature1: tri("Small groups", "Pequenos grupos", "Grupos pequeños"),
   nature2: tri("Marked, certified trails", "Trilhos sinalizados e certificados", "Senderos señalizados y certificados"),
   nature3: tri("Routes designed for low impact", "Percursos desenhados para baixo impacto", "Recorridos diseñados para bajo impacto"),
-  economyLabel: tri("Economic sustainability", "Sustentabilidade económica", "Sostenibilidad económica"),
-  economyTitle: tri("Every walk pays the people who live here", "Cada caminhada paga a quem vive no território", "Cada caminata paga a quien vive en el territorio"),
-  economyBody: tri(
-    "Sustainability goes beyond nature. A territory only stays alive if people can make a living from it. That is why each programme is built with local businesses, and the value of the trip stays where the trip happens.",
-    "Sustentabilidade vai além da natureza. Um território só se mantém vivo se as pessoas conseguirem viver dele. Por isso cada programa é construído com negócios locais, e o valor da viagem fica onde a viagem acontece.",
-    "La sostenibilidad va más allá de la naturaleza. Un territorio solo sigue vivo si la gente puede vivir de él. Por eso cada programa se construye con negocios locales, y el valor del viaje se queda donde ocurre el viaje."
-  ),
-  whereLabel: tri("Where the value of a walk goes", "Para onde vai o valor de uma caminhada", "A dónde va el valor de una caminata"),
   where1: tri("Local guesthouses and hotels", "Alojamentos locais", "Alojamientos locales"),
   where2: tri("Village restaurants", "Restaurantes das aldeias", "Restaurantes de los pueblos"),
   where3: tri("Producers, estates and wineries", "Produtores, quintas e adegas", "Productores, quintas y bodegas"),
@@ -64,7 +53,7 @@ export function SustainablePageContent() {
       {/* ── Hero: full-bleed nature, the purpose in one line ── */}
       <section className="relative flex items-end" style={{ minHeight: "92vh" }}>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/routes/geres-2.jpg" alt={TX.natureLabel[locale]} fill priority className="object-cover" sizes="100vw" />
+          <Image src={pageImage("sustentabilidade", "topo", "/images/routes/geres-2.jpg")} alt={t("natureLabel")} fill priority className="object-cover" sizes="100vw" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,20,18,0.78) 0%, rgba(20,20,18,0.35) 55%, rgba(20,20,18,0.1) 100%)" }} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(20,20,18,0.45) 0%, transparent 35%, rgba(20,20,18,0.85) 100%)" }} />
         </div>
@@ -110,20 +99,20 @@ export function SustainablePageContent() {
       {/* ── Band 1: nature, full-bleed photo ── */}
       <section className="relative flex items-center" style={{ minHeight: "88vh" }}>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/routes/geres-1.jpg" alt={TX.natureTitle[locale]} fill className="object-cover" sizes="100vw" />
+          <Image src={pageImage("sustentabilidade", "natureza", "/images/routes/geres-1.jpg")} alt={t("natureTitle")} fill className="object-cover" sizes="100vw" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(20,20,18,0.8) 0%, rgba(20,20,18,0.45) 50%, rgba(20,20,18,0.05) 100%)" }} />
         </div>
         <div className="container-ntn relative z-10" style={{ paddingTop: "100px", paddingBottom: "100px" }}>
           <FadeLeft>
             <div style={{ maxWidth: "36rem" }}>
               <div style={{ marginBottom: "18px" }}>
-                <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{TX.natureLabel[locale]}</Overline>
+                <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("natureLabel")}</Overline>
               </div>
               <h2 className="font-title" style={{ color: "#fff", fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)", lineHeight: 1.02, textTransform: "none", marginBottom: "22px" }}>
-                {TX.natureTitle[locale]}
+                {t("natureTitle")}
               </h2>
               <p className="text-body-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.86)", marginBottom: "28px" }}>
-                {TX.natureBody[locale]}
+                {t("natureBody")}
               </p>
               <ul style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                 {[TX.nature1, TX.nature2, TX.nature3].map((it) => (
@@ -161,15 +150,15 @@ export function SustainablePageContent() {
             </FadeLeft>
             <FadeRight delay={0.1}>
               <div style={{ marginBottom: "18px" }}>
-                <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{TX.economyLabel[locale]}</Overline>
+                <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("economyLabel")}</Overline>
               </div>
               <h2 className="font-title" style={{ color: "#fff", fontSize: "clamp(2.1rem, 4vw, 3.4rem)", lineHeight: 1.04, textTransform: "none", marginBottom: "22px" }}>
-                {TX.economyTitle[locale]}
+                {t("economyTitle")}
               </h2>
               <p className="text-body-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.84)", marginBottom: "32px" }}>
-                {TX.economyBody[locale]}
+                {t("economyBody")}
               </p>
-              <p className="text-label" style={{ color: "rgba(255,255,255,0.6)", marginBottom: "14px" }}>{TX.whereLabel[locale]}</p>
+              <p className="text-label" style={{ color: "rgba(255,255,255,0.6)", marginBottom: "14px" }}>{t("whereLabel")}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "12px" }}>
                 {[
                   { Icon: BedDouble, l: TX.where1 },

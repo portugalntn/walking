@@ -1,4 +1,4 @@
-// Pulls the site content edited in FLOW (Supabase: walking_produtos, walking_regioes)
+// Pulls the site content edited in FLOW (Supabase: walking_produtos, walking_regioes, walking_paginas)
 // into content/*.json, before `next build`. "Publicar" in FLOW triggers that build.
 //
 // Needs FLOW_SUPABASE_URL and FLOW_SUPABASE_KEY (the publishable key; the tables
@@ -59,5 +59,15 @@ if (!URL_ || !KEY) {
     console.log(`[conteudo] FLOW: ${write("content/produtos", produtos)} produtos, ${write("content/destinos", regioes)} regiões.`);
   } catch (e) {
     console.warn(`[conteudo] Não deu para ler o FLOW (${e.message}). Uso os content/*.json do repo.`);
+  }
+
+  // Page texts and images (Site > Páginas). Optional: until the table exists, or
+  // if it fails, the site keeps the texts in messages/*.json. An empty answer is
+  // valid here (no page edited yet), so it never stops the build.
+  try {
+    const paginas = await table("walking_paginas");
+    console.log(`[conteudo] FLOW: ${write("content/paginas", paginas)} páginas.`);
+  } catch (e) {
+    console.warn(`[conteudo] Páginas do FLOW indisponíveis (${e.message}). Ficam os textos do código.`);
   }
 }

@@ -66,6 +66,8 @@ export type RegionEntry = {
   id: string;
   name: string;
   shortName?: Opt<string>;
+  /** Title for the top of the region page, with manual line breaks (FLOW). */
+  heroTitle?: Opt<string>;
   hidden?: Opt<boolean>;
   order?: Opt<number>;
   image?: Opt<string>;

@@ -20,16 +20,6 @@ const tri = (en: string, pt: string, es: string) => ({ en, pt, es });
 
 /** Strings of the redesigned formats and list. Move to messages/*.json when approved. */
 const TX = {
-  formatsIntro: tri(
-    "Two ways to walk with us. Pick one and we show you the programmes that fit.",
-    "Duas formas de caminhar connosco. Escolha uma e mostramos os programas que encaixam.",
-    "Dos formas de caminar con nosotros. Elija una y le mostramos los programas que encajan."
-  ),
-  intro: tri(
-    "The territories we know by heart. Choose the format and the region, and find your walk.",
-    "Os territórios que conhecemos de cor. Escolha o formato e a região, e encontre a sua caminhada.",
-    "Los territorios que conocemos de memoria. Elija el formato y la región, y encuentre su caminata."
-  ),
   oneDay: tri("1 day", "1 dia", "1 día"),
   multiDay: tri("Multi-day", "Vários dias", "Varios días"),
   formatAria: tri("Programme format", "Formato do programa", "Formato del programa"),
@@ -45,11 +35,6 @@ const TX = {
   pMa: tri("Self-guided or guided", "Self-guided ou guiado", "Autoguiado o guiado"),
   pMb: tri("Accommodation and logistics included", "Alojamento e logística incluídos", "Alojamiento y logística incluidos"),
   pMc: tri("Day-by-day itinerary", "Itinerário dia a dia", "Itinerario día a día"),
-  multiDesc: tri(
-    "Journeys of several days, self-guided or guided, with accommodation and logistics taken care of.",
-    "Jornadas de vários dias, self-guided ou guiadas, com alojamento e logística tratados por nós.",
-    "Jornadas de varios días, autoguiadas o guiadas, con alojamiento y logística a nuestro cargo."
-  ),
   empty: tri("No programme matches this combination yet.", "Ainda não há programas para esta combinação.", "Aún no hay programas para esta combinación."),
   reset: tri("Show all programmes", "Ver todos os programas", "Ver todos los programas"),
 };
@@ -102,7 +87,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
       ],
     },
     {
-      key: "programa" as Filter, title: t("formatMultiTitle"), desc: TX.multiDesc[locale], tag: multiRange,
+      key: "programa" as Filter, title: t("formatMultiTitle"), desc: t("formatMultiDesc"), tag: multiRange,
       count: multi.length, image: multi.find((r) => r.regionId === "douro")?.image ?? multi[0]?.image, cta: TX.seeMulti[locale],
       points: [
         { Icon: Footprints, text: TX.pMa[locale] },
@@ -196,7 +181,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                     marginBottom: "22px",
                   }}
                 >
-                  <KeepWords text={active.name} />
+                  <KeepWords text={active.heroTitle ?? active.name} />
                 </h1>
                 <p
                   className="text-body-lg leading-relaxed"
@@ -277,7 +262,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               {t("formatsTitle")}
             </h2>
             <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", maxWidth: "40rem", marginBottom: "40px" }}>
-              {TX.formatsIntro[locale]}
+              {t("formatsIntro")}
             </p>
           </FadeUp>
 
@@ -351,7 +336,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               {t("routesTitle")}
             </h2>
             <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", maxWidth: "40rem", marginBottom: "36px" }}>
-              {TX.intro[locale]}
+              {t("intro")}
             </p>
           </FadeUp>
 

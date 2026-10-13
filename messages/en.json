@@ -154,7 +154,14 @@
     "area4Body": "We value villages, ancient paths and cultural legacy, interpreting them for those who visit us.",
     "ctaTitle": "Walk with us, with purpose.",
     "ctaBody": "Talk to our team and discover how we craft responsible, memorable walking experiences.",
-    "cta": "Talk to us"
+    "cta": "Talk to us",
+    "natureLabel": "Environmental sustainability",
+    "natureTitle": "Trails that protect what they show",
+    "natureBody": "We walk in small groups, on marked and certified paths, at the pace of the land. The landscape is the reason people come, so keeping it intact is part of the job.",
+    "economyLabel": "Economic sustainability",
+    "economyTitle": "Every walk pays the people who live here",
+    "economyBody": "Sustainability goes beyond nature. A territory only stays alive if people can make a living from it. That is why each programme is built with local businesses, and the value of the trip stays where the trip happens.",
+    "whereLabel": "Where the value of a walk goes"
   },
   "portal": {
     "intro": "PORTUGALNTN is a tourism and travel company that delivers distinctive experiences, in safe yet challenging environments, where heritage and local people take the leading role. We value genuineness and authenticity, in tune with local communities and partners, generating lasting value for the territory, grounded in respect for and preservation of tangible and intangible heritage.",
@@ -188,19 +195,20 @@
     "routesTitle": "Programmes across the territory",
     "discover": "Discover",
     "filterAll": "All",
-    "intro": "Six territories we know by heart. Choose where you want to walk.",
+    "intro": "The territories we know by heart. Choose the format and the region, and find your walk.",
     "formatsLabel": "Formats",
     "formatsTitle": "How do you prefer to walk?",
     "format1Title": "Day Walks",
     "format1Desc": "Guided single-day walks, with local food tastings and a return to the starting point.",
     "format1Tag": "1 Day · Guided",
     "formatMultiTitle": "Multi-day Programs",
-    "formatMultiDesc": "Journeys of 3, 5, 8 or 11 days, self-guided or guided, with accommodation and logistics included.",
+    "formatMultiDesc": "Journeys of several days, self-guided or guided, with accommodation and logistics taken care of.",
     "formatMultiTag": "3 · 5 · 8 · 11 Days",
     "filter1day": "Day Walks",
     "filterMulti": "Multi-day Programs",
     "filterRegion": "Region",
-    "allRegions": "All regions"
+    "allRegions": "All regions",
+    "formatsIntro": "Two ways to walk with us. Pick one and we show you the programmes that fit."
   },
   "productPage": {
     "back": "Back to destinations",
@@ -436,5 +444,13 @@
     "title": "Portugal NTN Exclusive",
     "lead": "The collection reserved for the trade: private journeys, access that is not sold to the public, and NET conditions for agencies and operators.",
     "cta": "B2B access"
+  },
+  "destinosHub": {
+    "overline": "Our destinations",
+    "title": "Northern Portugal",
+    "intro": "We are specialists in the North and Northeast of Portugal, the territories we know by heart and helped to shape. Alongside the multi-day programs, we guide one-day walks in the Douro and Trás-os-Montes.",
+    "calloutTitle": "Ready to choose how you walk?",
+    "calloutBody": "Browse every programme, filter by one-day or multi-day, and find the walk that fits.",
+    "calloutCta": "See all programmes"
   }
 }

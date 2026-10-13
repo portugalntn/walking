@@ -49,9 +49,6 @@ export const regionFiles = {
   "tras-os-montes": r5,
 };
 
-/** Identical image files: copy -> first path. */
-export const imageAliases: Record<string, string> = {
-  "/images/destinos/douro/samodaes-1.jpg": "/images/destinos/douro/douro-1.jpg",
-  "/images/programs/douro-8days/samodaes-1.jpg": "/images/programs/douro-8days/douro-1.jpg",
-  "/images/programs/sintra-1day/walk-3.jpg": "/images/programs/sintra-1day/hero-sintra-1day-v2.jpg"
+export const pageFiles = {
+
 };

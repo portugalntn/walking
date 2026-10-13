@@ -14,6 +14,8 @@ export type Region = {
   name: string;
   /** Shorter name for cards, when the full one is long. */
   shortName?: string;
+  /** Title for the top of the page, where a typed line break chooses where it wraps. Falls back to the name. */
+  heroTitle?: string;
   image: string;
   /** Durations on offer, e.g. "1 · 8". Derived from the visible products. */
   durations: string;
@@ -72,6 +74,7 @@ const allRegions: Region[] = regionEntries.map((r) => {
     id: r.id,
     name: r.name,
     shortName: r.shortName || undefined,
+    heroTitle: r.heroTitle?.trim() || undefined,
     image: r.image || "",
     durations: [...new Set(own.map((p) => p.days))].sort((a, b) => a - b).join(" · "),
     routes: own.length,

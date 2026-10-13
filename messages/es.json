@@ -154,7 +154,14 @@
     "area4Body": "Valoramos aldeas, caminos antiguos y el legado cultural, interpretándolos para quienes nos visitan.",
     "ctaTitle": "Camina con nosotros, con propósito.",
     "ctaBody": "Habla con nuestro equipo y descubre cómo creamos experiencias de senderismo responsables y memorables.",
-    "cta": "Hablar con nosotros"
+    "cta": "Hablar con nosotros",
+    "natureLabel": "Sostenibilidad ambiental",
+    "natureTitle": "Senderos que protegen lo que muestran",
+    "natureBody": "Caminamos en grupos pequeños, por caminos señalizados y certificados, al ritmo del territorio. El paisaje es la razón del viaje, por eso mantenerlo intacto forma parte del trabajo.",
+    "economyLabel": "Sostenibilidad económica",
+    "economyTitle": "Cada caminata paga a quien vive en el territorio",
+    "economyBody": "La sostenibilidad va más allá de la naturaleza. Un territorio solo sigue vivo si la gente puede vivir de él. Por eso cada programa se construye con negocios locales, y el valor del viaje se queda donde ocurre el viaje.",
+    "whereLabel": "A dónde va el valor de una caminata"
   },
   "portal": {
     "intro": "PORTUGALNTN es una empresa de animación turística y agencia de viajes que ofrece experiencias diferenciadoras, en entornos seguros pero desafiantes, donde el patrimonio y las personas asumen el papel más relevante. Valoramos la genuinidad y la autenticidad, en sintonía con la población y los agentes locales, generando valor para el territorio, sustentado en el respeto y la preservación del patrimonio material e inmaterial.",
@@ -188,19 +195,20 @@
     "routesTitle": "Programas por todo el territorio",
     "discover": "Descubrir",
     "filterAll": "Todas",
-    "intro": "Seis territorios que conocemos de memoria. Elige por dónde quieres caminar.",
+    "intro": "Los territorios que conocemos de memoria. Elija el formato y la región, y encuentre su caminata.",
     "formatsLabel": "Formatos",
     "formatsTitle": "¿Cómo prefieres caminar?",
     "format1Title": "Programas de 1 Día",
     "format1Desc": "Caminatas guiadas de un día, con degustación de productos locales y regreso al punto de partida.",
     "format1Tag": "1 Día · Guiado",
     "formatMultiTitle": "Programas Multidías",
-    "formatMultiDesc": "Viajes de 3, 5, 8 u 11 días, autoguiados o guiados, con alojamiento y logística incluidos.",
+    "formatMultiDesc": "Jornadas de varios días, autoguiadas o guiadas, con alojamiento y logística a nuestro cargo.",
     "formatMultiTag": "3 · 5 · 8 · 11 Días",
     "filter1day": "Programas de 1 Día",
     "filterMulti": "Programas Multidías",
     "filterRegion": "Región",
-    "allRegions": "Todas las regiones"
+    "allRegions": "Todas las regiones",
+    "formatsIntro": "Dos formas de caminar con nosotros. Elija una y le mostramos los programas que encajan."
   },
   "productPage": {
     "back": "Volver a los destinos",
@@ -436,5 +444,13 @@
     "title": "Portugal NTN Exclusive",
     "lead": "La colección reservada al trade: viajes privados, accesos que no se venden al público y condiciones NET para agencias y operadores.",
     "cta": "Acceso B2B"
+  },
+  "destinosHub": {
+    "overline": "Nuestros destinos",
+    "title": "El Norte de Portugal",
+    "intro": "Somos especialistas en el Norte y Nordeste de Portugal, los territorios que conocemos de memoria y ayudamos a estructurar. Además de los programas de varios días, guiamos caminatas de un día en el Duero y en Trás-os-Montes.",
+    "calloutTitle": "¿Listo para elegir cómo caminar?",
+    "calloutBody": "Vea todos los programas, filtre por un día o multidías, y encuentre la caminata adecuada.",
+    "calloutCta": "Ver todos los programas"
   }
 }

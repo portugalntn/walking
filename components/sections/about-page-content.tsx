@@ -8,6 +8,7 @@ import { FadeUp, FadeRight, StaggerChildren } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { ShieldCheck, Users, Leaf } from "lucide-react";
 import { fadeUpSoft } from "@/lib/motion";
+import { pageImage } from "@/lib/pages";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 
@@ -56,7 +57,7 @@ export function AboutPageContent() {
       {/* Hero */}
       <section className="relative flex items-end" style={{ minHeight: "72vh" }}>
         <div className="absolute inset-0 z-0">
-          <Image src="/images/routes/santiago-1.jpg" alt="Caminho de Santiago Portugal NTN" fill priority className="object-cover" sizes="100vw" />
+          <Image src={pageImage("sobre", "topo", "/images/routes/santiago-1.jpg")} alt="Caminho de Santiago Portugal NTN" fill priority className="object-cover" sizes="100vw" />
           {/* Two scrims: one from the left under the title, one from the bottom. White text never sits on a light patch of the photo. */}
           <div
             className="absolute inset-0"
