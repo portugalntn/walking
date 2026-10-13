@@ -8,6 +8,7 @@ import { Overline } from "@/components/ui/overline";
 import type { Region, RouteProduct } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
+import { KeepWords } from "@/components/ui/keep-words";
 import { regionContent } from "@/lib/region-content";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -76,9 +77,9 @@ export function RegionPageContent({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.05, ease: EASE }}
             className="font-title"
-            style={{ color: "#fff", fontSize: "clamp(2.75rem, 6vw, 5.5rem)", lineHeight: 0.98, textTransform: "uppercase", fontWeight: 900, marginBottom: "18px" }}
+            style={{ color: "#fff", fontSize: "clamp(2.1rem, 6vw, 5.5rem)", textWrap: "balance", lineHeight: 0.98, textTransform: "uppercase", fontWeight: 900, marginBottom: "18px" }}
           >
-            {region.name}
+            <KeepWords text={region.name} />
           </m.h1>
           <m.p
             initial={{ opacity: 0, y: 18 }}

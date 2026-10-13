@@ -9,6 +9,7 @@ import { Overline } from "@/components/ui/overline";
 import { regions, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
+import { KeepWords } from "@/components/ui/keep-words";
 import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -166,7 +167,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
         {/* Content */}
         <div className="relative z-10 h-full container-ntn flex flex-col justify-center" style={{ paddingTop: "120px", paddingBottom: "100px" }}>
-          <div style={{ maxWidth: "40rem" }}>
+          {/* Wide enough for a region name on one line; the description keeps its own reading width */}
+          <div style={{ maxWidth: "min(100%, 64rem)" }}>
             <m.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} style={{ marginBottom: "18px" }}>
               <Overline color="var(--color-ntn-lime)" lineColor="var(--color-ntn-lime)">{t("label")}</Overline>
             </m.div>
@@ -186,14 +188,15 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                   className="font-title"
                   style={{
                     color: "#fff",
-                    fontSize: "clamp(2.75rem, 6vw, 5.5rem)",
+                    fontSize: "clamp(2.1rem, 6vw, 5.5rem)",
+                    textWrap: "balance",
                     lineHeight: 0.98,
                     textTransform: "uppercase",
                     fontWeight: 900,
                     marginBottom: "22px",
                   }}
                 >
-                  {active.name}
+                  <KeepWords text={active.name} />
                 </h1>
                 <p
                   className="text-body-lg leading-relaxed"
