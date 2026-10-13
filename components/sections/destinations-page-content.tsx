@@ -8,7 +8,7 @@ import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { regions, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
-import { ProgramCard } from "@/components/ui/program-card";
+import { ProgramGrid } from "@/components/ui/program-card";
 import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -323,7 +323,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                       </div>
                     ))}
                   </div>
-                  <button type="button" onClick={() => selectFormat(f.key)} className="btn btn-primary mt-auto self-start">
+                  <button type="button" onClick={() => selectFormat(f.key)} className="btn btn-primary !mt-auto self-start">
                     {f.cta}
                     <ArrowRight size={16} />
                   </button>
@@ -424,19 +424,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-              style={{ gap: "28px" }}
             >
-              {filtered.map((route, i) => (
-                <m.div
-                  key={route.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: (i % 3) * 0.07, ease: EASE }}
-                >
-                  <ProgramCard route={route} facts={facts[route.id]} locale={locale} />
-                </m.div>
-              ))}
+              <ProgramGrid routes={filtered} facts={facts} locale={locale} />
             </m.div>
           </AnimatePresence>
 
