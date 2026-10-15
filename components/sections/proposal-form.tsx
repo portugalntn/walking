@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Check, Loader2 } from "lucide-react";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -31,10 +31,25 @@ const labelStyle: React.CSSProperties = {
   marginBottom: "7px",
 };
 
-export function ProposalForm({ program }: { program?: string }) {
+/** The product page buttons ("Pedir proposta", "Fazer uma pergunta") switch the form by this event. */
+export const PEDIDO_EVENT = "ntn:pedido";
+
+export function ProposalForm({ program, programId }: { program?: string; programId?: string }) {
   const t = useTranslations("productPage");
+  const locale = useLocale();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [form, setForm] = useState({ name: "", email: "", groupSize: "", phone: "", message: "" });
+  const [kind, setKind] = useState<"proposta" | "pergunta">("proposta");
+  const [consent, setConsent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", groupSize: "", phone: "", message: "", website: "" });
+
+  useEffect(() => {
+    const on = (e: Event) => {
+      const d = (e as CustomEvent<string>).detail;
+      if (d === "pergunta" || d === "proposta") setKind(d);
+    };
+    window.addEventListener(PEDIDO_EVENT, on);
+    return () => window.removeEventListener(PEDIDO_EVENT, on);
+  }, []);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -46,7 +61,7 @@ export function ProposalForm({ program }: { program?: string }) {
       const res = await fetch("/api/proposal", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, program }),
+        body: JSON.stringify({ ...form, kind, consent, locale, program, programId }),
       });
       setStatus(res.ok ? "sent" : "error");
     } catch {
@@ -98,6 +113,30 @@ export function ProposalForm({ program }: { program?: string }) {
             exit={{ opacity: 0 }}
             style={{ display: "flex", flexDirection: "column", gap: "18px" }}
           >
+            {/* Proposal or question: the same lead in FLOW, marked by kind */}
+            {program && (
+              <div role="tablist" aria-label={t("formKindLabel")} style={{ display: "inline-flex", alignSelf: "flex-start", background: "rgba(45,59,30,0.08)", borderRadius: "8px", padding: "3px" }}>
+                {(["proposta", "pergunta"] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    role="tab"
+                    aria-selected={kind === k}
+                    onClick={() => setKind(k)}
+                    style={{
+                      border: 0, cursor: "pointer", borderRadius: "6px", padding: "8px 14px",
+                      fontFamily: "var(--font-ui)", fontWeight: 700, fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase",
+                      background: kind === k ? "var(--color-ntn-white)" : "transparent",
+                      color: kind === k ? "#1a2510" : "#3d5a1a",
+                      boxShadow: kind === k ? "0 1px 2px rgba(26,37,16,0.12)" : "none",
+                    }}
+                  >
+                    {k === "proposta" ? t("formKindProposal") : t("formKindQuestion")}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Program of interest, only on product pages */}
             {program && (
               <div
@@ -125,6 +164,10 @@ export function ProposalForm({ program }: { program?: string }) {
                 onBlur={(e) => (e.target.style.borderColor = "rgba(45,59,30,0.18)")} />
             </div>
 
+            {/* Hidden from people: only a bot fills it */}
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set("website")}
+              style={{ position: "absolute", left: "-10000px", width: "1px", height: "1px", opacity: 0 }} />
+
             <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "18px" }}>
               <div>
                 <label style={labelStyle} htmlFor="pf-group-size">{t("formGroupSize")}</label>
@@ -141,12 +184,17 @@ export function ProposalForm({ program }: { program?: string }) {
             </div>
 
             <div>
-              <label style={labelStyle} htmlFor="pf-message">{t("formMessage")}</label>
+              <label style={labelStyle} htmlFor="pf-message">{kind === "pergunta" ? t("formQuestion") : t("formMessage")}</label>
               <textarea id="pf-message" rows={4} style={{ ...field, resize: "vertical" }}
-                placeholder={t("formMessagePlaceholder")} value={form.message} onChange={set("message")} required
+                placeholder={kind === "pergunta" ? t("formQuestionPlaceholder") : t("formMessagePlaceholder")} value={form.message} onChange={set("message")} required
                 onFocus={(e) => (e.target.style.borderColor = "var(--color-ntn-lime)")}
                 onBlur={(e) => (e.target.style.borderColor = "rgba(45,59,30,0.18)")} />
             </div>
+
+            <label style={{ display: "flex", gap: "10px", alignItems: "flex-start", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "13px", lineHeight: 1.45, color: "var(--color-ntn-black-800)" }}>
+              <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} style={{ marginTop: "3px", accentColor: "#3d5a1a", flexShrink: 0 }} />
+              <span>{t("formConsent")}</span>
+            </label>
 
             {status === "error" && (
               <p className="text-body-md" style={{ color: "#b3261e" }}>{t("formError")}</p>

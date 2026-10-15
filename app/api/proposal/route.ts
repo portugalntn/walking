@@ -1,18 +1,23 @@
 import { NextResponse } from "next/server";
 
+import { flowConfigurado, registarPedidoNoFlow } from "@/lib/flow-leads";
+
 /**
  * Proposal / contact request endpoint.
  *
  * Receives the proposal form from the home contact section and from every
- * product page, and delivers it by email through Resend.
+ * product page ("Pedir proposta" and "Fazer uma pergunta").
  *
- * Required environment variables (set them in Vercel and in .env.local):
- *   RESEND_API_KEY   API key from resend.com
- *   PROPOSAL_TO      inbox that receives the leads   (default info@portugalntn.com)
- *   PROPOSAL_FROM    verified sender on that domain  (default site@portugalntn.com)
+ * 1. It is saved as a lead in FLOW (Comercial > Atendimento), through
+ *    registar_pedido_site() (flow-ntn/supabase/016). Needs FLOW_SUPABASE_URL
+ *    and FLOW_SUPABASE_KEY, the same pair the build uses to read the content.
+ * 2. It is also emailed through Resend when RESEND_API_KEY is set:
+ *      RESEND_API_KEY   API key from resend.com
+ *      PROPOSAL_TO      inbox that receives the leads   (default info@portugalntn.com)
+ *      PROPOSAL_FROM    verified sender on that domain  (default site@portugalntn.com)
  *
- * If the key is missing we never pretend the lead was delivered: in production
- * the request fails so the form shows its error and its direct email fallback.
+ * The request succeeds when at least one of the two delivered it. Otherwise,
+ * in production, it fails so the form shows its error and the direct email.
  */
 
 const TO = process.env.PROPOSAL_TO || "info@portugalntn.com";
@@ -20,24 +25,31 @@ const FROM = process.env.PROPOSAL_FROM || "site@portugalntn.com";
 const MAX = 4000;
 
 type Lead = {
+  kind: "proposta" | "pergunta";
   name: string;
   email: string;
   groupSize: string;
   phone: string;
   message: string;
   program: string;
+  programId: string;
+  locale: string;
+  consent: boolean;
 };
 
-const clean = (v: unknown) => (typeof v === "string" ? v.trim().slice(0, MAX) : "");
+const clean = (v: unknown, max = MAX) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const looksLikeEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
 function plainBody(lead: Lead) {
   return [
+    `Tipo:      ${lead.kind === "pergunta" ? "Pergunta" : "Pedido de proposta"}`,
     `Nome:      ${lead.name}`,
     `Email:     ${lead.email}`,
     `Telefone:  ${lead.phone || "não indicado"}`,
     `Pessoas:   ${lead.groupSize || "não indicado"}`,
     `Programa:  ${lead.program || "pedido geral (homepage)"}`,
+    `Idioma:    ${lead.locale || "—"}`,
+    `Aceita e-mails: ${lead.consent ? "sim" : "não"}`,
     "",
     "Mensagem:",
     lead.message,
@@ -60,9 +72,12 @@ async function sendByEmail(lead: Lead) {
       from: `Portugal NTN Walking <${FROM}>`,
       to: [TO],
       reply_to: lead.email,
-      subject: lead.program
-        ? `Pedido de proposta: ${lead.program} (${lead.name})`
-        : `Pedido de contacto: ${lead.name}`,
+      subject:
+        lead.kind === "pergunta"
+          ? `Pergunta${lead.program ? `: ${lead.program}` : ""} (${lead.name})`
+          : lead.program
+            ? `Pedido de proposta: ${lead.program} (${lead.name})`
+            : `Pedido de contacto: ${lead.name}`,
       text: plainBody(lead),
     }),
   });
@@ -82,13 +97,21 @@ export async function POST(request: Request) {
   }
 
   const raw = (data ?? {}) as Record<string, unknown>;
+
+  // Hidden field: only a bot fills it. Pretend success without saving.
+  if (clean(raw.website)) return NextResponse.json({ ok: true });
+
   const lead: Lead = {
-    name: clean(raw.name),
-    email: clean(raw.email),
-    groupSize: clean(raw.groupSize),
-    phone: clean(raw.phone),
+    kind: raw.kind === "pergunta" ? "pergunta" : "proposta",
+    name: clean(raw.name, 160),
+    email: clean(raw.email, 200).toLowerCase(),
+    groupSize: clean(raw.groupSize, 6),
+    phone: clean(raw.phone, 60),
     message: clean(raw.message),
-    program: clean(raw.program),
+    program: clean(raw.program, 200),
+    programId: clean(raw.programId, 80),
+    locale: clean(raw.locale, 8),
+    consent: raw.consent === true,
   };
 
   if (!lead.name || !lead.email || !lead.message || !looksLikeEmail(lead.email)) {
@@ -98,10 +121,30 @@ export async function POST(request: Request) {
   // Always log the lead first, so a delivery failure never loses it.
   console.log("[proposal] new request\n" + plainBody(lead));
 
-  const { sent, reason } = await sendByEmail(lead);
-  if (sent) return NextResponse.json({ ok: true });
+  let saved = false;
+  if (flowConfigurado()) {
+    const pessoas = Number(lead.groupSize);
+    const r = await registarPedidoNoFlow({
+      tipo: lead.kind,
+      nome: lead.name,
+      email: lead.email,
+      telefone: lead.phone,
+      pessoas: Number.isFinite(pessoas) && pessoas > 0 ? Math.round(pessoas) : null,
+      mensagem: lead.message,
+      produtoId: lead.programId,
+      produtoTitulo: lead.program,
+      idioma: lead.locale,
+      consentimento: lead.consent,
+      dados: { pagina: clean(request.headers.get("referer"), 300) },
+    });
+    saved = r.ok;
+    if (!r.ok) console.error("[proposal] NOT saved in FLOW:", r.motivo);
+  }
 
-  console.error("[proposal] NOT delivered by email:", reason);
+  const { sent, reason } = await sendByEmail(lead);
+  if (!sent) console.error("[proposal] NOT delivered by email:", reason);
+
+  if (saved || sent) return NextResponse.json({ ok: true });
 
   // In development the lead in the log is enough to work on the flow.
   if (process.env.NODE_ENV !== "production") {

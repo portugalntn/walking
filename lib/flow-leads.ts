@@ -53,3 +53,46 @@ export async function registarLeadNoFlow(lead: LeadSite): Promise<{ ok: true } |
 
 /** Cookie que abre a página depois do formulário de acesso. */
 export const EX_ACCESS_COOKIE = "ex-acesso";
+
+/** Pedido B2C do site: "Pedir proposta" ou "Fazer uma pergunta" (flow-ntn/supabase/016). */
+export type PedidoSite = {
+  tipo: "proposta" | "pergunta";
+  nome: string;
+  email: string;
+  telefone: string;
+  pessoas: number | null;
+  mensagem: string;
+  produtoId: string;
+  produtoTitulo: string;
+  idioma: string;
+  consentimento: boolean;
+  dados: Record<string, string>;
+};
+
+export async function registarPedidoNoFlow(p: PedidoSite): Promise<{ ok: true } | { ok: false; motivo: string }> {
+  const url = process.env.FLOW_SUPABASE_URL;
+  const key = process.env.FLOW_SUPABASE_KEY;
+  if (!url || !key) return { ok: false, motivo: "FLOW_SUPABASE_URL / FLOW_SUPABASE_KEY em falta" };
+
+  const res = await fetch(`${url.replace(/\/$/, "")}/rest/v1/rpc/registar_pedido_site`, {
+    method: "POST",
+    headers: { apikey: key, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      p_tipo: p.tipo,
+      p_nome: p.nome,
+      p_email: p.email,
+      p_telefone: p.telefone,
+      p_pessoas: p.pessoas,
+      p_mensagem: p.mensagem,
+      p_produto_id: p.produtoId,
+      p_produto_titulo: p.produtoTitulo,
+      p_idioma: p.idioma,
+      p_consentimento: p.consentimento,
+      p_dados: p.dados,
+    }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) return { ok: false, motivo: `FLOW respondeu ${res.status}: ${await res.text()}` };
+  return { ok: true };
+}

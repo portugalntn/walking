@@ -24,7 +24,7 @@ import {
   Check, X, ChevronLeft, ChevronRight, Images, Mail, Clock, MapPin, CalendarDays,
   ShieldCheck, Wallet, RotateCcw, ArrowRight, Camera, HelpCircle, BedDouble,
 } from "lucide-react";
-import { ProposalForm } from "@/components/sections/proposal-form";
+import { PEDIDO_EVENT, ProposalForm } from "@/components/sections/proposal-form";
 import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
@@ -135,6 +135,8 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
           { value: startPoint, label: t("startPoint") },
         ]
   ).filter((f) => f && f.value) as { value: string; label: string }[];
+  // The two card buttons open the same form below, as a proposal or as a question.
+  const pedir = (kind: "proposta" | "pergunta") => window.dispatchEvent(new CustomEvent(PEDIDO_EVENT, { detail: kind }));
   const perPaxTiers = Boolean(program.priceTiers?.some((p) => p.perPax));
   const priceKind = program.priceTiers?.length ? (perPaxTiers ? "person" : "group") : program.prices ? "person" : null;
   const minPax = program.priceTiers?.length ? Math.min(...program.priceTiers.map((p) => p.pax)) : null;
@@ -592,12 +594,13 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
                     <CardFact icon={<MapPin size={16} />} text={`${t(isDay ? "meetingPoint" : "startPoint")}: ${startPoint}`} />
                     <CardFact icon={<CalendarDays size={16} />} text={`${t("season")}: ${program.season[locale]}`} />
                   </ul>
-                  <a href="#proposal" className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
+                  <a href="#proposal" onClick={() => pedir("proposta")} className="btn btn-primary" style={{ width: "100%", justifyContent: "center" }}>
                     {t("requestProposal")}
                     <ArrowRight size={16} />
                   </a>
                   <a
-                    href={`mailto:info@portugalntn.com?subject=${encodeURIComponent(program.title)}`}
+                    href="#proposal"
+                    onClick={() => pedir("pergunta")}
                     className="btn btn-ghost-dark"
                     style={{ width: "100%", justifyContent: "center", marginTop: "10px" }}
                   >
@@ -645,7 +648,7 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
               </a>
             </FadeUp>
             <FadeUp delay={0.12}>
-              <ProposalForm program={program.title} />
+              <ProposalForm program={program.title} programId={program.id} />
             </FadeUp>
           </div>
         </div>
