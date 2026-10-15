@@ -12,7 +12,9 @@
     "all": "All",
     "oneDay": "Day trips",
     "multiDays": "Multi-day",
-    "exclusive": "Exclusive"
+    "exclusive": "Exclusive",
+    "exclusiveTag": "B2B",
+    "exclusiveFor": "For operators"
   },
   "home": {
     "hero": {
@@ -360,10 +362,11 @@
       "themeLight": "Light",
       "themeDark": "Dark",
       "themeToLight": "Switch to light theme",
-      "themeToDark": "Switch to dark theme"
+      "themeToDark": "Switch to dark theme",
+      "publicSite": "Public site"
     },
     "hero": {
-      "overline": "The trade collection",
+      "overline": "B2B Exclusive · For operators",
       "title": "Exclusive",
       "bracket": "Designed for one group at a time",
       "lead": "Private walking journeys through the north and northeast of Portugal, built route by route for agencies and operators who are asked for something a catalogue does not hold.",
@@ -437,13 +440,46 @@
     "footer": {
       "line": "Portugal NTN is a Destination Management Company for walking in the north and northeast of Portugal. Design, waymarking, certification and operation of our own routes.",
       "public": "Public site"
+    },
+    "gate": {
+      "overline": "B2B Exclusive · Operators only",
+      "title": "Portugal on foot, <em>for your clients</em>.",
+      "lead": "An area reserved for tour operators and travel agencies worldwide. Tell us who you are to see the full collection: journeys, itineraries and experiences.",
+      "catalogTitle": "Ready-to-sell itineraries",
+      "catalogText": "The programmes we have built and operate, multi-day and single-day, across the North and Northeast of Portugal. Available for your catalogue, at operator rates.",
+      "tailorTitle": "Tailor made",
+      "tailorText": "Programmes designed around your market and your client: length, pace, accommodation and experiences. For operators anywhere in the world.",
+      "formOverline": "Operator access",
+      "formTitle": "Open the collection",
+      "name": "Full name",
+      "company": "Company / operator",
+      "type": "Type of company",
+      "types": {
+        "operador": "Tour operator",
+        "agencia": "Travel agency",
+        "dmc": "DMC / inbound",
+        "outro": "Other"
+      },
+      "country": "Country",
+      "email": "Work email",
+      "phone": "WhatsApp / phone",
+      "interest": "What are you looking for",
+      "interests": {
+        "catalogo": "Ready itineraries",
+        "tailor_made": "Tailor made",
+        "ambos": "Both"
+      },
+      "submit": "Enter B2B Exclusive",
+      "sending": "Opening",
+      "error": "We could not register you right now. Please try again shortly or write to info@portugalntn.com.",
+      "privacy": "Your details stay with Portugal NTN. We use them to talk to you about the partnership, nothing else."
     }
   },
   "tradeDoor": {
-    "overline": "Agencies and operators",
-    "title": "Portugal NTN Exclusive",
-    "lead": "The collection reserved for the trade: private journeys, access that is not sold to the public, and NET conditions for agencies and operators.",
-    "cta": "B2B access"
+    "overline": "B2B · Operators only",
+    "title": "B2B Exclusive · For operators",
+    "lead": "The itineraries we have already built, ready for your catalogue, and tailor-made programmes designed for operators worldwide. Tell us who you are and we will open the collection.",
+    "cta": "Enter B2B Exclusive"
   },
   "destinosHub": {
     "overline": "Our destinations",

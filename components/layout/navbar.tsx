@@ -100,18 +100,33 @@ export function Navbar() {
             {/* Right: Exclusive + Lang + CTA */}
             <div className="hidden lg:flex items-center gap-5">
               {/* Porta para o site B2B. Tom de latão, para se ler como outro sítio. */}
+              {/* A etiqueta B2B é sólida para se ler sobre qualquer fotografia do hero. */}
               <Link
                 href={`/${locale}/exclusive`}
-                className="font-ui text-label transition-colors duration-200"
+                title={t("exclusiveFor")}
+                className="font-ui text-label transition-opacity duration-200 hover:opacity-80"
                 style={{
-                  color: "#c8bd8a",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.55rem",
+                  color: "var(--color-ntn-white)",
                   letterSpacing: "0.22em",
                   paddingRight: "1.25rem",
                   borderRight: "1px solid rgba(255,255,255,0.14)",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ntn-white)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#c8bd8a")}
               >
+                <span
+                  style={{
+                    backgroundColor: "#b9ad72",
+                    color: "var(--color-ntn-black-900)",
+                    padding: "0.2rem 0.4rem",
+                    borderRadius: "2px",
+                    letterSpacing: "0.14em",
+                    lineHeight: 1,
+                  }}
+                >
+                  {t("exclusiveTag")}
+                </span>
                 {t("exclusive")}
               </Link>
 
@@ -232,7 +247,10 @@ export function Navbar() {
                   className="font-display text-display-md block"
                   style={{ color: "#c8bd8a" }}
                 >
-                  {t("exclusive")}
+                  {t("exclusiveTag")} {t("exclusive")}
+                  <span className="font-ui text-label block" style={{ color: "rgba(255,255,255,0.55)", marginTop: "0.4rem", letterSpacing: "0.22em" }}>
+                    {t("exclusiveFor")}
+                  </span>
                 </Link>
               </m.div>
             </nav>

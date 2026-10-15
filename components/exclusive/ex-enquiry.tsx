@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 
 export function ExEnquiry() {
   const t = useTranslations("exclusive.enquiry");
+  const locale = useLocale();
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [form, setForm] = useState({ name: "", email: "", company: "", country: "", message: "" });
 
@@ -19,14 +20,18 @@ export function ExEnquiry() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("/api/proposal", {
+      // Vai para o FLOW (área Comercial), como o formulário de acesso.
+      const res = await fetch("/api/exclusive/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.name,
+          nome: form.name,
           email: form.email,
-          message: `${form.message}\n\nEmpresa: ${form.company}\nPaís: ${form.country}`,
-          program: "EXCLUSIVE (B2B)",
+          empresa: form.company,
+          pais: form.country,
+          mensagem: form.message,
+          idioma: locale,
+          formulario: "dossier",
         }),
       });
       setStatus(res.ok ? "sent" : "error");
@@ -79,7 +84,7 @@ export function ExEnquiry() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.75rem" }}>
                 <input className="ex-field" required placeholder={t("name")} value={form.name} onChange={set("name")} />
                 <input className="ex-field" required type="email" placeholder={t("email")} value={form.email} onChange={set("email")} />
-                <input className="ex-field" placeholder={t("company")} value={form.company} onChange={set("company")} />
+                <input className="ex-field" required placeholder={t("company")} value={form.company} onChange={set("company")} />
                 <input className="ex-field" placeholder={t("country")} value={form.country} onChange={set("country")} />
               </div>
 

@@ -604,3 +604,25 @@ html[data-ex-theme="light"] .ex .ex-figure:hover img { filter: saturate(0.95) co
   color: var(--ex-accent);
   transform: translateY(0.04em);
 }
+
+/* Portão B2B: escolha de interesse e select */
+.ex-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--ex-line-2);
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ex-dim);
+  cursor: pointer;
+  transition: border-color 300ms var(--ease-expo), color 300ms var(--ease-expo);
+}
+.ex-chip input { position: absolute; opacity: 0; pointer-events: none; }
+.ex-chip:hover { color: var(--ex-bone); }
+.ex-chip.is-on { border-color: var(--ex-accent); color: var(--ex-accent); }
+.ex-chip:has(input:focus-visible) { outline: 1px solid var(--ex-accent); outline-offset: 3px; }
+select.ex-field { appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--ex-dim) 50%), linear-gradient(135deg, var(--ex-dim) 50%, transparent 50%); background-position: calc(100% - 10px) 52%, calc(100% - 5px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.5rem; }
+select.ex-field option { background-color: var(--ex-ink-2); color: var(--ex-bone); }
