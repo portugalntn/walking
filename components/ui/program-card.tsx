@@ -14,15 +14,13 @@ import { m } from "framer-motion";
 import { Footprints, TrendingUp, ArrowRight, Check } from "lucide-react";
 import type { RouteProduct } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
+import { UI } from "@/lib/ui-texts";
 
 type Loc = "en" | "pt" | "es";
 const EASE = [0.19, 1, 0.22, 1] as const;
 
-const TX = {
-  day: { en: "day", pt: "dia", es: "día" },
-  days: { en: "days", pt: "dias", es: "días" },
-  see: { en: "See the programme", pt: "Ver programa", es: "Ver programa" },
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.card.*". */
+const TX = UI.card;
 
 export function durationLabel(days: number, locale: Loc): string {
   return `${days} ${days === 1 ? TX.day[locale] : TX.days[locale]}`;

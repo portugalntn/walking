@@ -5,6 +5,7 @@ import Image from "next/image";
 import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { pageImages } from "@/lib/pages";
+import { UI } from "@/lib/ui-texts";
 
 // One is drawn per visit. Replaced by the list set in FLOW (Site > Páginas > Home), if any.
 const heroImages = pageImages("home", "topo", [
@@ -199,7 +200,7 @@ export function HeroSection() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-label" style={{ color: "rgba(255,255,255,0.3)" }}>
-          scroll
+          {UI.layout.scroll[locale as "en" | "pt" | "es"]}
         </span>
         <div
           className="w-px h-14 relative overflow-hidden"

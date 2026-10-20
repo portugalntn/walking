@@ -5,6 +5,7 @@
  */
 
 import type { L } from "./destinations";
+import { editable } from "./pages";
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
@@ -18,7 +19,8 @@ export type Grade = {
   description: L;
 };
 
-export const grades: Grade[] = [
+/** The code's scale. Each text is editable in FLOW as "ui.grades.<n>.<field>" (Site > Páginas > Graus de dificuldade). */
+export const gradesRaw: Grade[] = [
   {
     level: 1,
     name: tri("Very easy", "Muito fácil", "Muy fácil"),
@@ -75,6 +77,8 @@ export const grades: Grade[] = [
     ),
   },
 ];
+
+export const grades: Grade[] = editable("ui.grades", gradesRaw);
 
 export function getGrade(level: GradeLevel): Grade {
   return grades[level - 1];

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { uiText } from "@/lib/ui-texts";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -17,9 +18,6 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const isPortuguese = locale === "pt";
-  const isSpanish = locale === "es";
-
   return {
     alternates: {
       canonical: `https://portugalntnwalking.com/${locale}`,
@@ -29,22 +27,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         es: "https://portugalntnwalking.com/es",
       },
     },
-    ...(isPortuguese && {
-      title: {
-        default: "Portugal NTN Walking: Operadora de Caminhadas Premium",
-        template: "%s | Portugal NTN Walking",
-      },
-      description:
-        "Roteiros de caminhada guiados e self-guided pelas paisagens mais extraordinárias de Portugal. Cada percurso desenhado, sinalizado e certificado por quem o opera.",
-    }),
-    ...(isSpanish && {
-      title: {
-        default: "Portugal NTN Walking: Operadora de Senderismo Premium",
-        template: "%s | Portugal NTN Walking",
-      },
-      description:
-        "Rutas de senderismo guiadas y autoguiadas por los paisajes más extraordinarios de Portugal. Cada ruta diseñada, señalizada y certificada por quien la opera.",
-    }),
+    // Editable in FLOW: Site > Páginas > Menu, rodapé e SEO.
+    title: { default: uiText("meta", "siteTitle", locale), template: "%s | Portugal NTN Walking" },
+    description: uiText("meta", "siteDescription", locale),
   };
 }
 

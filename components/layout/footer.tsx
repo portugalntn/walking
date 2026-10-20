@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
+import { UI } from "@/lib/ui-texts";
 import { FadeUp } from "@/components/ui/animated";
 import { SealsStrip } from "@/components/layout/seals-strip";
 import { routes } from "@/lib/destinations";
@@ -95,7 +96,7 @@ export function Footer() {
                   lineHeight: 1.7,
                 }}
               >
-                {t("tagline")} Premium walking tours crafted by the people who built the trails.
+                {t("tagline")} {UI.layout.footerLine[locale as "en" | "pt" | "es"]}
               </p>
               {/* Social */}
               <div className="flex gap-3">

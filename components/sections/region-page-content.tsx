@@ -10,32 +10,13 @@ import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
 import { KeepWords } from "@/components/ui/keep-words";
 import { regionContent } from "@/lib/region-content";
+import { UI } from "@/lib/ui-texts";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 
-const L = {
-  overline: { en: "Destination", pt: "Destino", es: "Destino" },
-  essenceLabel: { en: "The territory", pt: "O território", es: "El territorio" },
-  heritageLabel: { en: "Culture and table", pt: "Cultura e mesa", es: "Cultura y mesa" },
-  programsHere: { en: "Programmes in this destination", pt: "Programas neste destino", es: "Programas en este destino" },
-  programsLabel: { en: "Walk here", pt: "Caminhe aqui", es: "Camina aquí" },
-  multiDays: { en: "Multi-day", pt: "Multidias", es: "Multidías" },
-  oneDay: { en: "Day trips", pt: "1 dia", es: "1 día" },
-  empty: {
-    en: "Programmes for this destination are being prepared.",
-    pt: "Os programas deste destino estão a ser preparados.",
-    es: "Los programas de este destino se están preparando.",
-  },
-  ctaTitle: { en: "Ready to walk this destination?", pt: "Pronto para caminhar neste destino?", es: "¿Listo para caminar este destino?" },
-  ctaBody: {
-    en: "Pick a programme above, or tell us what you are looking for and we will tailor it to you.",
-    pt: "Escolha um programa acima, ou diga-nos o que procura e desenhamos à medida.",
-    es: "Elija un programa arriba, o díganos qué busca y lo diseñamos a medida.",
-  },
-  ctaPrograms: { en: "All programmes", pt: "Todos os programas", es: "Todos los programas" },
-  back: { en: "All destinations", pt: "Todos os destinos", es: "Todos los destinos" },
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.region.*". */
+const L = UI.region;
 
 export function RegionPageContent({
   region,

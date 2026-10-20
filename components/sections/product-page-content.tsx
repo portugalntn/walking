@@ -26,36 +26,13 @@ import {
 } from "lucide-react";
 import { PEDIDO_EVENT, ProposalForm } from "@/components/sections/proposal-form";
 import { DifficultyGauge } from "@/components/sections/difficulty-gauge";
+import { UI } from "@/lib/ui-texts";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
-const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
-/** Strings used only by this proposal. They move to messages/*.json once approved. */
-const TX = {
-  seeGallery: tri("See the gallery", "Ver galeria", "Ver galería"),
-  photos: tri("photos", "fotos", "fotos"),
-  photoSoon: tri("Photo coming soon", "Foto em breve", "Foto próximamente"),
-  whyLabel: tri("Why this day", "Porquê este dia", "Por qué este día"),
-  dayLabel: tri("The day, step by step", "O dia, passo a passo", "El día, paso a paso"),
-  routeLabel: tri("The route", "O percurso", "El recorrido"),
-  routeTitle: tri("The shape of the day", "O relevo do dia", "El relieve del día"),
-  routeHint: tri(
-    "The walk drawn kilometre by kilometre. When it ends, move along the profile to see each point.",
-    "A caminhada desenhada quilómetro a quilómetro. No fim, percorra o perfil para ver cada ponto.",
-    "La caminata dibujada kilómetro a kilómetro. Al terminar, recorra el perfil para ver cada punto."
-  ),
-  replay: tri("Walk it again", "Rever o percurso", "Ver de nuevo"),
-  of: tri("of", "de", "de"),
-  altitude: tri("altitude", "altitude", "altitud"),
-  start: tri("Start", "Partida", "Salida"),
-  finish: tri("Finish", "Chegada", "Llegada"),
-  ask: tri("Ask a question", "Fazer uma pergunta", "Hacer una pregunta"),
-  perGroupFrom: tri("From, per group", "Desde, por grupo", "Desde, por grupo"),
-  perPersonFrom: tri("From, per person", "Desde, por pessoa", "Desde, por persona"),
-  dayByDay: tri("Day by day", "Dia a dia", "Día a día"),
-  whatsIncluded: tri("What is included", "O que está incluído", "Qué está incluido"),
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.product.*". */
+const TX = UI.product;
 
 export function ProductPageContent({ program, trail }: { program: Program; trail?: Trail }) {
   const t = useTranslations("productPage");

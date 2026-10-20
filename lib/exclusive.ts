@@ -11,6 +11,7 @@
 
 import { programs } from "./programs";
 import type { L } from "./destinations";
+import { editable } from "./pages";
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
@@ -29,10 +30,12 @@ export type ExJourney = {
 
 const j = (base: string, name: L, angle: L, image?: string): ExJourney => {
   const p = programs[base];
+  // Editable in FLOW: "ui.exclusive.<base>.name" and ".angle" (Site > Páginas > EXCLUSIVE).
+  const tx = editable(`ui.exclusive.${base}`, { name, angle });
   return {
     base,
-    name,
-    angle,
+    name: tx.name,
+    angle: tx.angle,
     region: p.region,
     days: p.duration.days,
     distance: p.totalDistance,
@@ -83,7 +86,8 @@ export type ExDayTour = {
 
 const d = (base: string, name: L, walkTime = "2h"): ExDayTour => {
   const p = programs[base];
-  return { base, name, region: p.region, distance: p.totalDistance, walkTime, image: p.heroImage };
+  const tx = editable(`ui.exclusive.${base}`, { name });
+  return { base, name: tx.name, region: p.region, distance: p.totalDistance, walkTime, image: p.heroImage };
 };
 
 /** Day tours. Mais curtos, mesma exigência de mesa e de acesso. */

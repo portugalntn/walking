@@ -11,24 +11,13 @@ import { regionContent } from "@/lib/region-content";
 import { pageImage } from "@/lib/pages";
 import { durationLabel } from "@/components/ui/program-card";
 import { ArrowRight, Clock, CalendarDays, Footprints } from "lucide-react";
+import { UI } from "@/lib/ui-texts";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 
-/** Short labels. The page's title, intro and closing call live in messages/*.json (destinosHub.*), editable in FLOW. */
-const L = {
-  programsWord: { en: "programmes", pt: "programas", es: "programas" },
-  programWord: { en: "programme", pt: "programa", es: "programa" },
-  daysWord: { en: "days", pt: "dias", es: "días" },
-  explore: { en: "Explore the destination", pt: "Explorar destino", es: "Explorar destino" },
-  programsHere: { en: "Programmes in this destination", pt: "Programas neste destino", es: "Programas en este destino" },
-  durationLabel: { en: "Duration", pt: "Duração", es: "Duración" },
-  formatsLabel: { en: "Formats", pt: "Formatos", es: "Formatos" },
-  styleLabel: { en: "Style", pt: "Estilo", es: "Estilo" },
-  oneDay: { en: "1 day", pt: "1 dia", es: "1 día" },
-  multiDay: { en: "Multi-day", pt: "Vários dias", es: "Varios días" },
-  to: { en: "to", pt: "a", es: "a" },
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.destinations.*". */
+const L = UI.destinations;
 
 export function DestinosHubContent() {
   const locale = useLocale() as Loc;

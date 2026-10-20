@@ -42,6 +42,43 @@ export function withPageTexts(messages: Messages, locale: string): Messages {
   return out;
 }
 
+/** Every edited "ui.*" text across all pages, by key (the page it sits in does not matter). */
+const flat = new Map<string, Partial<Record<Loc, string>>>();
+for (const page of Object.values(pages)) {
+  for (const [path, value] of Object.entries(page ?? {})) if (path.startsWith("ui.") && isL(value)) flat.set(path, value);
+}
+
+function isTri(v: unknown): v is Record<Loc, string> {
+  return !!v && typeof v === "object" && !Array.isArray(v) && typeof (v as Record<string, unknown>).pt === "string" && typeof (v as Record<string, unknown>).en === "string";
+}
+
+/**
+ * Texts that live in the code as { en, pt, es } (labels, alt texts, grades…)
+ * made editable in FLOW: each one under "<prefix>.<path>" ("ui.product.seeGallery").
+ * A language left empty in FLOW keeps the code's text.
+ */
+export function editable<T>(prefix: string, data: T): T {
+  const walk = (v: unknown, path: string): unknown => {
+    if (isTri(v)) {
+      const e = flat.get(path);
+      if (!e) return v;
+      const out = { ...v };
+      for (const l of ["en", "pt", "es"] as Loc[]) if ((e[l] ?? "").trim()) out[l] = e[l]!;
+      return out;
+    }
+    if (Array.isArray(v)) return v.map((x, i) => walk(x, `${path}.${i}`));
+    if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x, `${path}.${k}`)]));
+    return v;
+  };
+  return walk(data, prefix) as T;
+}
+
+/** A list edited in FLOW ("lista.<name>" on a page: FAQs, blog posts…), or the code's list while it is empty. */
+export function pageList<T>(pageId: string, name: string, fallback: T[]): T[] {
+  const v = pages[pageId]?.[`lista.${name}`] as unknown;
+  return Array.isArray(v) && v.length ? (v as T[]) : fallback;
+}
+
 /** An image set in FLOW for this page, or the one in the code. */
 export function pageImage(pageId: string, name: string, fallback: string): string;
 export function pageImage(pageId: string, name: string, fallback?: string): string | undefined;

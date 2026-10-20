@@ -11,33 +11,15 @@ import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
 import { KeepWords } from "@/components/ui/keep-words";
 import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
+import { UI } from "@/lib/ui-texts";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 type Filter = "all" | "roteiro" | "programa";
 
-const tri = (en: string, pt: string, es: string) => ({ en, pt, es });
 
-/** Strings of the redesigned formats and list. Move to messages/*.json when approved. */
-const TX = {
-  oneDay: tri("1 day", "1 dia", "1 día"),
-  multiDay: tri("Multi-day", "Vários dias", "Varios días"),
-  formatAria: tri("Programme format", "Formato do programa", "Formato del programa"),
-  programs: tri("programmes", "programas", "programas"),
-  programOne: tri("programme", "programa", "programa"),
-  daysRange: tri("days", "dias", "días"),
-  to: tri("to", "a", "a"),
-  see1: tri("See the one-day programmes", "Ver os programas de 1 dia", "Ver los programas de 1 día"),
-  seeMulti: tri("See the multi-day journeys", "Ver os programas de vários dias", "Ver los programas de varios días"),
-  p1a: tri("Expert local guide", "Guia especializado", "Guía especializado"),
-  p1b: tri("Local flavours on the way", "Sabores locais pelo caminho", "Sabores locales por el camino"),
-  p1c: tri("Start and finish the same day", "Começa e acaba no mesmo dia", "Empieza y acaba el mismo día"),
-  pMa: tri("Self-guided or guided", "Self-guided ou guiado", "Autoguiado o guiado"),
-  pMb: tri("Accommodation and logistics included", "Alojamento e logística incluídos", "Alojamiento y logística incluidos"),
-  pMc: tri("Day-by-day itinerary", "Itinerário dia a dia", "Itinerario día a día"),
-  empty: tri("No programme matches this combination yet.", "Ainda não há programas para esta combinação.", "Aún no hay programas para esta combinación."),
-  reset: tri("Show all programmes", "Ver todos os programas", "Ver todos los programas"),
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.programs.*". */
+const TX = UI.programs;
 
 /** Count of programmes for a format and region, used by the switch and the chips. */
 function countFor(format: Filter, region: string) {

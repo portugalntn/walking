@@ -4,6 +4,8 @@
  * `category` maps to a translation key for localisation.
  */
 
+import { pageList } from "./pages";
+
 export type Post = {
   slug: string;
   category: string;
@@ -13,7 +15,8 @@ export type Post = {
   excerpt: { en: string; pt: string; es: string };
 };
 
-export const posts: Post[] = [
+/** The code's sample posts. FLOW (Marketing > Blog) replaces them once its list is filled. */
+export const postsRaw: Post[] = [
   {
     slug: "caminho-santiago-interior",
     category: "Routes",
@@ -111,3 +114,8 @@ export const posts: Post[] = [
     },
   },
 ];
+
+/** Posts edited in FLOW ("lista.posts" on the "blog" page), newest first; without a title they are skipped. */
+export const posts: Post[] = pageList<Post>("blog", "posts", postsRaw)
+  .filter((x) => x?.title?.pt?.trim())
+  .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));

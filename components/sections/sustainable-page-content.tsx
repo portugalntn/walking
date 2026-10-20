@@ -14,9 +14,9 @@ import { Overline } from "@/components/ui/overline";
 import { fadeUp } from "@/lib/motion";
 import { pageImage } from "@/lib/pages";
 import { TreePine, TrendingUp, Users, Landmark, Check, BedDouble, UtensilsCrossed, Wheat, Compass, Camera } from "lucide-react";
+import { UI } from "@/lib/ui-texts";
 
 type Loc = "en" | "pt" | "es";
-const tri = (en: string, pt: string, es: string) => ({ en, pt, es });
 
 /** Photo for the local economy band (a local producer), set in FLOW: Site > Páginas > Sustentabilidade. */
 const ECONOMY_IMAGE = pageImage("sustentabilidade", "economia");
@@ -28,20 +28,8 @@ const areas = [
   { n: 4, Icon: Landmark },
 ];
 
-/**
- * Short labels of the redesign. The section titles and texts live in
- * messages/*.json (sustainablePage.*) so FLOW can edit them.
- */
-const TX = {
-  nature1: tri("Small groups", "Pequenos grupos", "Grupos pequeños"),
-  nature2: tri("Marked, certified trails", "Trilhos sinalizados e certificados", "Senderos señalizados y certificados"),
-  nature3: tri("Routes designed for low impact", "Percursos desenhados para baixo impacto", "Recorridos diseñados para bajo impacto"),
-  where1: tri("Local guesthouses and hotels", "Alojamentos locais", "Alojamientos locales"),
-  where2: tri("Village restaurants", "Restaurantes das aldeias", "Restaurantes de los pueblos"),
-  where3: tri("Producers, estates and wineries", "Produtores, quintas e adegas", "Productores, quintas y bodegas"),
-  where4: tri("Guides from the region", "Guias da região", "Guías de la región"),
-  photoSoon: tri("Photo: local producer (coming soon)", "Imagem: produtor local (em breve)", "Imagen: productor local (próximamente)"),
-};
+/** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.sustainable.*". */
+const TX = UI.sustainable;
 
 export function SustainablePageContent() {
   const t = useTranslations("sustainablePage");

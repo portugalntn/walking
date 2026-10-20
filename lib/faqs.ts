@@ -5,13 +5,15 @@
  */
 
 import type { L } from "./destinations";
+import { pageList } from "./pages";
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
 export type Faq = { q: L; a: L };
 export type FaqGroup = { category: L; items: Faq[] };
 
-export const faqGroups: FaqGroup[] = [
+/** The code's questions. FLOW (Site > Páginas > FAQ) replaces them as a whole once its list is filled. */
+export const faqGroupsRaw: FaqGroup[] = [
   {
     category: tri("Planning your walk", "Planear a sua caminhada", "Planificar su caminata"),
     items: [
@@ -256,3 +258,22 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
 ];
+
+/** One row per question, as FLOW edits them ("lista.faqs" on the "faq" page). */
+export type FaqRow = { category: L; q: L; a: L };
+export const faqRowsRaw: FaqRow[] = faqGroupsRaw.flatMap((g) => g.items.map((i) => ({ category: g.category, ...i })));
+
+/** Questions back into their themes, in the order they first appear. */
+function group(rows: FaqRow[]): FaqGroup[] {
+  const out: FaqGroup[] = [];
+  for (const r of rows) {
+    if (!r?.q?.pt?.trim()) continue;
+    const key = (r.category?.pt ?? "").trim().toLowerCase();
+    let g = out.find((x) => (x.category.pt ?? "").trim().toLowerCase() === key);
+    if (!g) out.push((g = { category: r.category, items: [] }));
+    g.items.push({ q: r.q, a: r.a });
+  }
+  return out;
+}
+
+export const faqGroups: FaqGroup[] = group(pageList<FaqRow>("faq", "faqs", faqRowsRaw));

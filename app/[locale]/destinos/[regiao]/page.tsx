@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { uiText } from "@/lib/ui-texts";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -16,9 +17,9 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { regiao } = await params;
+  const { locale, regiao } = await params;
   const region = getRegion(regiao);
-  return { title: region ? `${region.name} · Portugal NTN Walking` : "Destino" };
+  return { title: region ? region.name : uiText("meta", "destination", locale) };
 }
 
 export default async function RegionPage({ params }: Props) {
