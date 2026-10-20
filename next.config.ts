@@ -16,20 +16,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [new URL("https://zglwfzqbrcuwrzzqqnec.supabase.co/storage/v1/object/public/walking/**")],
   },
   async redirects() {
-    // The :locale segment is constrained to the real locales. Without it a
-    // source like "/:locale/portal/:path*" also matches "/images/portal/...",
-    // which sent every file under public/images/portal to a redirect.
+    // The :locale segment is constrained to the real locales (a bare ":locale"
+    // would also match "/images/..."). The portal (/portal: Walking or Consulting)
+    // is live again since 20/10/2026, at Juliano's request.
     return [
-      {
-        source: "/:locale(en|pt|es)/portal",
-        destination: "/:locale",
-        permanent: false,
-      },
-      {
-        source: "/:locale(en|pt|es)/portal/:path*",
-        destination: "/:locale",
-        permanent: false,
-      },
       {
         source: "/:locale(en|pt|es)/destinations",
         destination: "/:locale/programas",
