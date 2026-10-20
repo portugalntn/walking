@@ -9,13 +9,17 @@ import { ProductPageContent } from "@/components/sections/product-page-content";
 import { getProgram } from "@/lib/programs";
 import { getTrail } from "@/lib/trails";
 import { routes, isHiddenRoute } from "@/lib/destinations";
+import { customPageAt, tx } from "@/lib/custom-pages";
+import { CreatedPageView } from "@/components/sections/created-page-view";
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { id, locale } = await params;
   const program = getProgram(id);
   const route = routes.find((r) => r.id === id);
+  const criada = program || route ? undefined : customPageAt(["programas", id]);
+  if (criada) return { title: tx(criada.titulo, locale) };
   const title = program?.title ?? route?.title ?? "Programa";
   return { title };
 }
@@ -26,6 +30,9 @@ export default async function ProductPage({ params }: Props) {
   if (isHiddenRoute(id)) notFound();
   const program = getProgram(id);
   const route = routes.find((r) => r.id === id);
+  // a page created in FLOW under Programas
+  const criada = program || route ? undefined : customPageAt(["programas", id]);
+  if (criada) return <CreatedPageView page={criada} locale={locale} />;
 
   return (
     <>

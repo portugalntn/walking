@@ -17,6 +17,7 @@ export const UI_RAW = {
       "Rutas de senderismo premium diseñadas por quienes construyeron los senderos."
     ),
     scroll: tri("scroll", "scroll", "scroll"),
+    subpages: tri("More in this section", "Também nesta secção", "También en esta sección"),
   },
   /** Browser tab and Google: title and description of each page (SEO). */
   meta: {

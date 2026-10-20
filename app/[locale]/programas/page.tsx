@@ -5,14 +5,17 @@ import { PageFadeIn } from "@/components/ui/page-fade-in";
 import { DestinationsPageContent } from "@/components/sections/destinations-page-content";
 import { routes } from "@/lib/destinations";
 import { cardFacts } from "@/lib/program-facts";
+import { ChildPages } from "@/components/sections/child-pages";
 
-export default function DestinationsPage() {
+export default async function DestinationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
     <>
       <PageFadeIn />
       <BrandElements />
       <Navbar />
       <DestinationsPageContent facts={cardFacts(routes.map((r) => r.id))} />
+      <ChildPages mae="programas" locale={locale} />
       <Footer />
     </>
   );
