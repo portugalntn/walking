@@ -8,7 +8,15 @@
 
 import { regionLabel, type L } from "./destinations";
 import type { GradeLevel } from "./grades";
-import { productEntries, tl, optL, tlList, images, type ProductEntry } from "./content";
+import { productEntries, tl, optL, tlList, images, type PerfilEntry, type ProductEntry } from "./content";
+import type { Trail } from "./trails";
+
+/** Um perfil vindo do FLOW, se tiver pontos que cheguem para um gráfico. */
+function perfil(p: PerfilEntry | null | undefined): Trail | undefined {
+  const pts = (p?.profile ?? []).filter((x) => Array.isArray(x) && Number.isFinite(x[0]) && Number.isFinite(x[1]));
+  if (pts.length < 2) return undefined;
+  return { length: Number(p?.length) || pts[pts.length - 1][0], source: p?.source || "FLOW", profile: pts };
+}
 
 export type Day = {
   day: number;
@@ -22,6 +30,8 @@ export type Day = {
   walkTime?: string;
   /** Elevation profile of the trail, in metres. Shown as a small stats row. */
   elevation?: { min: number; avg: number; max: number; gain: number; loss: number };
+  /** The day's elevation chart (km, metres), from FLOW. No coordinates: the route is not published. */
+  profile?: Trail;
   meals: ("breakfast" | "packedLunch" | "dinner")[];
   accommodation?: string;
   gallery?: string[];
@@ -37,6 +47,8 @@ export type Moment = {
 };
 
 export type Program = {
+  /** One-day: the elevation chart from FLOW (a GPS file in lib/trail-profiles.json wins). */
+  profile?: Trail;
   id: string;
   format: "roteiro" | "programa";
   title: string;
@@ -100,6 +112,7 @@ function toProgram(p: ProductEntry): Program {
     season: tl(p.season),
     startPoint: tl(p.startPoint),
     totalDistance: p.totalDistance ?? "",
+    profile: perfil(p.elevationProfile),
     overview: tl(p.overview),
     difficultyNote: optL(p.difficultyNote),
     moments: p.moments?.length
@@ -120,6 +133,7 @@ function toProgram(p: ProductEntry): Program {
           e && e.min != null && e.avg != null && e.max != null && e.gain != null && e.loss != null
             ? { min: e.min, avg: e.avg, max: e.max, gain: e.gain, loss: e.loss }
             : undefined,
+        profile: perfil(d.elevationProfile),
         meals: d.meals ?? [],
         accommodation: d.accommodation || undefined,
         gallery: images(d.gallery).length ? images(d.gallery) : undefined,

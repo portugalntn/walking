@@ -40,7 +40,7 @@ export default async function ProductPage({ params }: Props) {
       <BrandElements />
       <Navbar />
       {program ? (
-        <ProductPageContent program={program} trail={getTrail(id)} />
+        <ProductPageContent program={program} trail={getTrail(id) ?? program.profile} />
       ) : (
         <main
           className="flex flex-col items-center justify-center text-center"

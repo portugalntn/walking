@@ -389,8 +389,22 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
                 </FadeUp>
               )}
 
+              {/* Multi-day: the relief of each day, one tab per day (no map: the route is not published) */}
+              {!isDay && program.days.some((d) => d.profile) && (
+                <FadeUp>
+                  <DayProfiles program={program} locale={locale} km={km} dayLabel={t("day")}
+                    labels={{
+                      over: tx("routeLabel"), title: tx("routeTitle"), hint: tx("routeHint"),
+                      replay: tx("replay"), of: tx("of"), altitude: tx("altitude"),
+                      start: tx("start"), finish: tx("finish"), total: t("total"),
+                      min: t("elevMin"), avg: t("elevAvg"), max: t("elevMax"), gain: t("elevGain"), loss: t("elevLoss"),
+                    }}
+                  />
+                </FadeUp>
+              )}
+
               {/* Elevation profile of the walk (no map: the route is not published) */}
-              {trail && (
+              {isDay && trail && (
                 <FadeUp>
                   <ProfilePanel
                     trail={trail}
@@ -812,11 +826,55 @@ function BentoGallery({ images, onOpen, soon, morePhotos }: { images: string[]; 
  * the day lights up when it is reached. Afterwards it can be explored with
  * the pointer. No map on purpose: the route itself is not published.
  */
+/** Multi-day: tabs "Day 1, Day 2…" above the relief chart of the chosen day. */
+function DayProfiles({
+  program, locale, km, labels, dayLabel,
+}: {
+  program: Program;
+  locale: Loc;
+  km: (n: number) => string;
+  labels: Parameters<typeof ProfilePanel>[0]["labels"];
+  dayLabel: string;
+}) {
+  const dias = program.days.filter((d) => d.profile);
+  const [sel, setSel] = useState(0);
+  const dia = dias[Math.min(sel, dias.length - 1)];
+  if (!dia?.profile) return null;
+  return (
+    <div>
+      <div role="tablist" className="flex flex-wrap" style={{ gap: "8px", marginTop: "72px", marginBottom: "-64px", position: "relative", zIndex: 1 }}>
+        {dias.map((d, i) => (
+          <button
+            key={d.day}
+            type="button"
+            role="tab"
+            aria-selected={i === sel}
+            onClick={() => setSel(i)}
+            className="font-ui"
+            style={{
+              padding: "8px 14px", borderRadius: "9999px", fontSize: "13px", fontWeight: 700, cursor: "pointer",
+              border: "1px solid var(--color-ntn-forest-400)",
+              backgroundColor: i === sel ? "var(--color-ntn-lime)" : "transparent",
+              color: "var(--color-ntn-black-900)",
+            }}
+            title={d.title[locale]}
+          >
+            {dayLabel} {d.day}
+          </button>
+        ))}
+      </div>
+      <ProfilePanel key={dia.day} trail={dia.profile} program={program} dia={dia} locale={locale} km={km} labels={labels} />
+    </div>
+  );
+}
+
 function ProfilePanel({
-  trail, program, locale, km, labels,
+  trail, program, dia, locale, km, labels,
 }: {
   trail: Trail;
   program: Program;
+  /** Multi-day: the day shown (its stats); without it, the programme's first day and moments. */
+  dia?: Program["days"][number];
   locale: Loc;
   km: (n: number) => string;
   labels: {
@@ -824,8 +882,10 @@ function ProfilePanel({
     total: string; min: string; avg: string; max: string; gain: string; loss: string;
   };
 }) {
-  const day = program.days[0];
-  const moments = program.moments ?? [];
+  const day = dia ?? program.days[0];
+  // Num dia de um multiday, o total é o desse dia (não o do programa).
+  const distancia = dia ? dia.distance || `${km(trail.length)} km` : program.totalDistance;
+  const moments = dia ? [] : program.moments ?? [];
   const total = trail.profile[trail.profile.length - 1][0];
   const elevs = trail.profile.map((p) => p[1]);
   const eMin = Math.min(...elevs), eMax = Math.max(...elevs);
@@ -934,7 +994,7 @@ function ProfilePanel({
               {km(activeKm)}<span style={{ fontSize: "0.45em", marginLeft: "4px" }}>km</span>
             </p>
             <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", marginTop: "6px" }}>
-              {labels.of} {program.totalDistance}
+              {labels.of} {distancia}
             </p>
           </div>
           <div>
@@ -1000,7 +1060,7 @@ function ProfilePanel({
           onPointerDown={onMove}
           onPointerLeave={() => setHoverKm(null)}
           role="img"
-          aria-label={`${labels.over}: ${program.totalDistance}`}
+          aria-label={`${labels.over}: ${distancia}`}
           style={{ width: "100%", height: "clamp(170px, 22vw, 240px)", display: "block", cursor: done ? "crosshair" : "default", touchAction: "pan-y" }}
         >
           <defs>
@@ -1054,7 +1114,7 @@ function ProfilePanel({
               {k} km
             </span>
           ))}
-          <span style={{ position: "absolute", right: 0, color: "#fff", fontWeight: 700 }}>{program.totalDistance}</span>
+          <span style={{ position: "absolute", right: 0, color: "#fff", fontWeight: 700 }}>{distancia}</span>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "var(--font-ui)", fontSize: "11px", color: "rgba(255,255,255,0.55)", marginTop: "10px" }}>
           <span>{labels.start} · {typeof program.startPoint === "string" ? program.startPoint : program.startPoint[locale]}</span>
@@ -1077,7 +1137,7 @@ function ProfilePanel({
       {day.elevation && (
         <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" style={{ gap: "18px", marginTop: "28px", paddingTop: "22px", borderTop: "1px solid rgba(255,255,255,0.16)" }}>
           {[
-            [labels.total, program.totalDistance],
+            [labels.total, distancia],
             [labels.gain, `+${day.elevation.gain} m`],
             [labels.loss, `-${day.elevation.loss} m`],
             [labels.max, `${day.elevation.max} m`],

@@ -11,6 +11,8 @@ import type { L } from "./destinations";
 /** Empty optional fields come as null, "" or a missing key. */
 type Opt<T> = T | null | undefined;
 type LEntry = Opt<Partial<L>>;
+/** Perfil de altimetria: [km, metros] ao longo do caminho. */
+export type PerfilEntry = { length?: Opt<number>; source?: Opt<string>; profile?: Opt<[number, number][]> };
 
 export type ProductEntry = {
   id: string;
@@ -36,6 +38,8 @@ export type ProductEntry = {
   season?: LEntry;
   startPoint?: LEntry;
   totalDistance?: Opt<string>;
+  /** Num roteiro (1 dia): o perfil de altimetria vindo do FLOW. */
+  elevationProfile?: Opt<PerfilEntry>;
   moments?: { km: number; title?: LEntry; text?: LEntry; image?: Opt<string> }[];
   itinerary?: {
     title?: LEntry;
@@ -46,6 +50,8 @@ export type ProductEntry = {
     ascent?: Opt<string>;
     walkTime?: Opt<string>;
     elevation?: Opt<{ min?: Opt<number>; avg?: Opt<number>; max?: Opt<number>; gain?: Opt<number>; loss?: Opt<number> }>;
+    /** Perfil de altimetria do dia, vindo do FLOW (só km e metros: o percurso não é publicado). */
+    elevationProfile?: Opt<PerfilEntry>;
     meals?: ("breakfast" | "packedLunch" | "dinner")[];
     accommodation?: Opt<string>;
     gallery?: Opt<string>[];
