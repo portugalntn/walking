@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { lerCampanha } from "@/lib/campanha";
 
 import { flowConfigurado, registarPedidoNoFlow } from "@/lib/flow-leads";
 
@@ -135,7 +136,7 @@ export async function POST(request: Request) {
       produtoTitulo: lead.program,
       idioma: lead.locale,
       consentimento: lead.consent,
-      dados: { pagina: clean(request.headers.get("referer"), 300) },
+      dados: { pagina: clean(request.headers.get("referer"), 300), ...lerCampanha(request.headers.get("cookie")) },
     });
     saved = r.ok;
     if (!r.ok) console.error("[proposal] NOT saved in FLOW:", r.motivo);

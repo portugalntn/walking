@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { lerCampanha } from "@/lib/campanha";
 
 import { EX_ACCESS_COOKIE as ACCESS_COOKIE, flowConfigurado, registarLeadNoFlow, type LeadSite } from "@/lib/flow-leads";
 
@@ -44,6 +45,7 @@ export async function POST(request: Request) {
     dados: {
       formulario: clean(raw.formulario, 40) || "acesso",
       pagina: clean(request.headers.get("referer"), 300),
+      ...lerCampanha(request.headers.get("cookie")),
     },
   };
 
