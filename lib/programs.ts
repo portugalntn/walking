@@ -96,7 +96,8 @@ export type Program = {
 };
 
 
-function toProgram(p: ProductEntry): Program {
+/** A entrada do FLOW na forma da página. Também a pré-visualização (app/[locale]/previa) usa esta. */
+export function toProgram(p: ProductEntry): Program {
   const pr = p.prices;
   return {
     id: p.id,

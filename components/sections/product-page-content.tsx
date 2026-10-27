@@ -34,7 +34,8 @@ type Loc = "en" | "pt" | "es";
 /** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.product.*". */
 const TX = UI.product;
 
-export function ProductPageContent({ program, trail }: { program: Program; trail?: Trail }) {
+/** `previa`: a pré-visualização da equipa (app/[locale]/previa): o formulário não envia pedidos. */
+export function ProductPageContent({ program, trail, previa = false }: { program: Program; trail?: Trail; previa?: boolean }) {
   const t = useTranslations("productPage");
   const locale = useLocale() as Loc;
   const numLocale = { en: "en-GB", pt: "pt-PT", es: "es-ES" }[locale];
@@ -639,7 +640,18 @@ export function ProductPageContent({ program, trail }: { program: Program; trail
               </a>
             </FadeUp>
             <FadeUp delay={0.12}>
-              <ProposalForm program={program.title} programId={program.id} />
+              {previa ? (
+                <div
+                  style={{
+                    padding: "28px", borderRadius: "16px", border: "1.5px dashed rgba(26,37,16,0.35)", color: "#2d3b1e",
+                    fontFamily: "var(--font-ui)", fontSize: "14px", lineHeight: 1.5,
+                  }}
+                >
+                  Aqui fica o formulário de pedido. Na pré-visualização está desligado, para não criar pedidos no CRM.
+                </div>
+              ) : (
+                <ProposalForm program={program.title} programId={program.id} />
+              )}
             </FadeUp>
           </div>
         </div>
