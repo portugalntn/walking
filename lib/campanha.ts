@@ -22,8 +22,8 @@ export function campanhaDoUrl(url: URL): Record<string, string> | null {
   return c;
 }
 
-/** O valor do cookie (o que o proxy grava). */
-export const valorCookie = (c: Record<string, string>) => encodeURIComponent(JSON.stringify(c));
+/** O valor do cookie (o que o proxy grava); o Next codifica-o ao gravar, por isso vai em JSON simples. */
+export const valorCookie = (c: Record<string, string>) => JSON.stringify(c);
 export const opcoesCookie = { path: "/", maxAge: DIAS * 24 * 3600, sameSite: "lax" as const, httpOnly: true, secure: process.env.NODE_ENV === "production" };
 
 /** A campanha guardada no cookie de um pedido (só as chaves conhecidas, cortadas); vazio se não houver. */
@@ -35,7 +35,10 @@ export function lerCampanha(cabecalhoCookie: string | null): Record<string, stri
     ?.slice(COOKIE_CAMPANHA.length + 1);
   if (!bruto) return {};
   try {
-    const j = JSON.parse(decodeURIComponent(bruto)) as Record<string, unknown>;
+    // Uma vez pelo Next; os cookies gravados a 27/10 vinham codificados duas vezes.
+    let texto = decodeURIComponent(bruto);
+    if (texto.startsWith("%")) texto = decodeURIComponent(texto);
+    const j = JSON.parse(texto) as Record<string, unknown>;
     const out: Record<string, string> = {};
     for (const k of [...CHAVES, "entrada", "chegou_em"]) if (typeof j[k] === "string" && j[k]) out[k] = (j[k] as string).slice(0, 200);
     return out;
