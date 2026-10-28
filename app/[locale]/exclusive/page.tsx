@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 
 import { ExNavbar, ExFooter } from "@/components/exclusive/ex-chrome";
@@ -16,25 +15,9 @@ import { ExOperators } from "@/components/exclusive/ex-operators";
 import { ExEnquiry } from "@/components/exclusive/ex-enquiry";
 import { ExGate } from "@/components/exclusive/ex-gate";
 import { exThemeScript } from "@/components/exclusive/ex-theme-script";
+import { exSans, exSerif } from "@/components/exclusive/ex-fonts";
 import { EX_ACCESS_COOKIE } from "@/lib/flow-leads";
 import { pageImage } from "@/lib/pages";
-
-/** Serifa de exibição só do EXCLUSIVE. O site público continua em DIN. */
-const exSerif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400"],
-  style: ["normal", "italic"],
-  variable: "--font-ex-serif",
-  display: "swap",
-});
-
-/** Sans refinada do texto corrido e dos rótulos (mais firme nos subtítulos). */
-const exSans = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-ex-sans",
-  display: "swap",
-});
 
 type Props = { params: Promise<{ locale: string }> };
 

@@ -13,14 +13,21 @@ const EASE = [0.19, 1, 0.22, 1] as const;
 /** Logótipo Portugal NTN Exclusive. Há duas versões (letra escura e letra clara)
  *  e o CSS mostra a que serve ao fundo: o tema da página, ou escuro por cima
  *  de fotografia (.ex-dark). Ficheiros em public/images/exclusive/. */
-function Wordmark({ size = "nav" }: { size?: "nav" | "footer" }) {
-  const locale = useLocale();
-  const h = size === "footer" ? 56 : 40;
+export function ExLogo({ h = 40, priority = false }: { h?: number; priority?: boolean }) {
   const w = Math.round(h * 4.3);
   return (
+    <>
+      <Image className="ex-logo-escuro" src="/images/exclusive/logo-exclusive-fundo-escuro.png" alt="Portugal NTN Exclusive" width={w} height={h} priority={priority} unoptimized />
+      <Image className="ex-logo-claro" src="/images/exclusive/logo-exclusive-fundo-claro.png" alt="" aria-hidden width={w} height={h} priority={priority} unoptimized />
+    </>
+  );
+}
+
+function Wordmark({ size = "nav" }: { size?: "nav" | "footer" }) {
+  const locale = useLocale();
+  return (
     <Link href={`/${locale}/exclusive`} className="ex-logo" aria-label="Portugal NTN Exclusive" style={{ display: "block", lineHeight: 0 }}>
-      <Image className="ex-logo-escuro" src="/images/exclusive/logo-exclusive-fundo-escuro.png" alt="Portugal NTN Exclusive" width={w} height={h} priority={size === "nav"} unoptimized />
-      <Image className="ex-logo-claro" src="/images/exclusive/logo-exclusive-fundo-claro.png" alt="" aria-hidden width={w} height={h} priority={size === "nav"} unoptimized />
+      <ExLogo h={size === "footer" ? 56 : 40} priority={size === "nav"} />
     </Link>
   );
 }

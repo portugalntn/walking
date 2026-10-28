@@ -636,6 +636,21 @@
     "footer": {
       "line": "Portugal NTN is a Destination Management Company for walking in the north and northeast of Portugal. Design, waymarking, certification and operation of our own routes.",
       "public": "B2C site"
+    },
+    "deck": {
+      "cover": "Cover",
+      "commitment": "Our commitment",
+      "index": "Contents",
+      "close": "Close",
+      "prev": "Previous",
+      "next": "Next",
+      "fullscreen": "Full screen",
+      "exitFullscreen": "Exit full screen",
+      "swipe": "Swipe to begin",
+      "toStart": "Back to the cover",
+      "language": "Language",
+      "progress": "Presentation screens",
+      "restart": "Start the presentation again"
     }
   },
   "tradeDoor": {

@@ -636,6 +636,21 @@
     "footer": {
       "line": "A Portugal NTN é uma Destination Management Company de caminhada no Norte e Nordeste de Portugal. Desenho, sinalização, certificação e operação de percursos próprios.",
       "public": "Site B2C"
+    },
+    "deck": {
+      "cover": "Capa",
+      "commitment": "O nosso compromisso",
+      "index": "Índice",
+      "close": "Fechar",
+      "prev": "Anterior",
+      "next": "Seguinte",
+      "fullscreen": "Ecrã inteiro",
+      "exitFullscreen": "Sair do ecrã inteiro",
+      "swipe": "Deslize para começar",
+      "toStart": "Voltar à capa",
+      "language": "Idioma",
+      "progress": "Ecrãs da apresentação",
+      "restart": "Recomeçar a apresentação"
     }
   },
   "tradeDoor": {

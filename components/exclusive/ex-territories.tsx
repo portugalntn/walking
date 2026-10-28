@@ -51,14 +51,15 @@ const AREA: Record<ExRegionId, { cx: number; cy: number; rx: number; ry: number;
   santiago: { cx: 0, cy: 0, rx: 0, ry: 0, label: [321, 146] },
 };
 
-export function ExTerritories() {
+/** O mapa do Norte com os quatro territórios. Tocar (ou passar por cima de)
+ *  um nome escolhe o território. Serve a coleção e a apresentação para tablet. */
+export function ExMapa({ ativo, onPick }: { ativo: ExRegionId; onPick: (id: ExRegionId) => void }) {
   const t = useTranslations("exclusive.territories");
-  const [ativo, setAtivo] = useState<ExRegionId>("douro");
 
   const escolher = (id: ExRegionId) => ({
-    onClick: () => setAtivo(id),
-    onMouseEnter: () => setAtivo(id),
-    onFocus: () => setAtivo(id),
+    onClick: () => onPick(id),
+    onMouseEnter: () => onPick(id),
+    onFocus: () => onPick(id),
   });
 
   const cidade = (p: [number, number], nome: string, lado: "start" | "end", dy = 2.4) => (
@@ -69,6 +70,123 @@ export function ExTerritories() {
       </text>
     </g>
   );
+
+  return (
+    <svg viewBox="104 -28 446 352" role="img" aria-label={t("mapLabel")}>
+      <defs>
+        <pattern id="ex-dots" width="5" height="5" patternUnits="userSpaceOnUse">
+          <circle cx="2.5" cy="2.5" r="0.85" />
+        </pattern>
+        <clipPath id="ex-land">
+          <path d={OUTLINE} />
+        </clipPath>
+        <linearGradient id="ex-fade-y" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0.72" stopColor="#fff" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="ex-fade-x" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#fff" stopOpacity="0" />
+          <stop offset="1" stopColor="#fff" />
+        </linearGradient>
+        <radialGradient id="ex-area">
+          <stop offset="0" className="ex-map-stop" />
+          <stop offset="0.55" className="ex-map-stop" stopOpacity="0.7" />
+          <stop offset="1" className="ex-map-stop" stopOpacity="0" />
+        </radialGradient>
+        <mask id="ex-fade">
+          <rect x="104" y="-28" width="446" height="352" fill="url(#ex-fade-y)" />
+        </mask>
+        <mask id="ex-ocean">
+          <rect x="104" y="-28" width="80" height="352" fill="url(#ex-fade-x)" />
+        </mask>
+      </defs>
+
+      <g mask="url(#ex-fade)">
+        {/* Mar em pontos, encostado à costa */}
+        <path
+          className="ex-map-ocean"
+          d={`${COAST} L104,365 L104,66 Z`}
+          fill="url(#ex-dots)"
+          mask="url(#ex-ocean)"
+        />
+        <path className="ex-map-land" d={OUTLINE} />
+
+        {/* Manchas dos territórios */}
+        <g clipPath="url(#ex-land)">
+          {regionIds
+            .filter((id) => AREA[id].rx)
+            .map((id) => (
+              <ellipse
+                key={id}
+                className={`ex-map-area${ativo === id ? " is-on" : ""}`}
+                cx={AREA[id].cx}
+                cy={AREA[id].cy}
+                rx={AREA[id].rx}
+                ry={AREA[id].ry}
+                fill="url(#ex-area)"
+              />
+            ))}
+        </g>
+
+        <path className="ex-map-river" d={DOURO} />
+        <path className={`ex-map-caminho${ativo === "santiago" ? " is-on" : ""}`} d={CAMINHO} />
+      </g>
+
+      {/* Para lá da fronteira: Santiago de Compostela, a norte */}
+      <path className={`ex-map-caminho ex-map-out${ativo === "santiago" ? " is-on" : ""}`} d={`M${P.verin[0]},${P.verin[1]} L${P.verin[0] - 4},${-2}`} />
+      <path className="ex-map-arrow" d={`M${P.verin[0] - 7.5},${3} L${P.verin[0] - 4},${-3} L${P.verin[0] - 0.5},${3.6}`} />
+      <g className="ex-map-pill">
+        <rect x={P.verin[0] - 50} y={-22} width={92} height={13} rx={6.5} />
+        <text x={P.verin[0] - 4} y={-13.2} textAnchor="middle">
+          {t("santiagoPill")}
+        </text>
+      </g>
+
+      <text className="ex-map-country" x={470} y={28} textAnchor="middle">
+        {t("spain")}
+      </text>
+      <text className="ex-map-country" transform="translate(126 230) rotate(-90)" textAnchor="middle">
+        {t("ocean")}
+      </text>
+
+      {cidade(P.porto, "Porto", "end")}
+      {cidade(P.regua, "Régua", "end", 6)}
+      {cidade(P.pinhao, "Pinhão", "start", -2.5)}
+      {cidade(P.vilaReal, "Vila Real", "end")}
+      {cidade(P.chaves, "Chaves", "start")}
+      {cidade(P.braganca, "Bragança", "start")}
+      {cidade(P.miranda, "Miranda", "end", -3)}
+      {cidade(P.viseu, "Viseu", "start")}
+      {cidade(P.geres, "Gerês", "start")}
+
+      {regionIds.map((id) => (
+        <text
+          key={id}
+          className={`ex-map-region${ativo === id ? " is-on" : ""}`}
+          x={AREA[id].label[0]}
+          y={AREA[id].label[1]}
+          textAnchor={id === "santiago" ? "start" : "middle"}
+          tabIndex={0}
+          role="button"
+          aria-pressed={ativo === id}
+          {...escolher(id)}
+        >
+          {t(`${id}.short`)}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
+export function ExTerritories() {
+  const t = useTranslations("exclusive.territories");
+  const [ativo, setAtivo] = useState<ExRegionId>("douro");
+
+  const escolher = (id: ExRegionId) => ({
+    onClick: () => setAtivo(id),
+    onMouseEnter: () => setAtivo(id),
+    onFocus: () => setAtivo(id),
+  });
 
   return (
     <section id="territorios" className="ex-section" style={{ paddingTop: 0 }}>
@@ -87,109 +205,7 @@ export function ExTerritories() {
 
         <div className="ex-terr">
           <figure className="ex-map" aria-label={t("mapLabel")}>
-            <svg viewBox="104 -28 446 352" role="img" aria-label={t("mapLabel")}>
-              <defs>
-                <pattern id="ex-dots" width="5" height="5" patternUnits="userSpaceOnUse">
-                  <circle cx="2.5" cy="2.5" r="0.85" />
-                </pattern>
-                <clipPath id="ex-land">
-                  <path d={OUTLINE} />
-                </clipPath>
-                <linearGradient id="ex-fade-y" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0.72" stopColor="#fff" />
-                  <stop offset="1" stopColor="#fff" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="ex-fade-x" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stopColor="#fff" stopOpacity="0" />
-                  <stop offset="1" stopColor="#fff" />
-                </linearGradient>
-                <radialGradient id="ex-area">
-                  <stop offset="0" className="ex-map-stop" />
-                  <stop offset="0.55" className="ex-map-stop" stopOpacity="0.7" />
-                  <stop offset="1" className="ex-map-stop" stopOpacity="0" />
-                </radialGradient>
-                <mask id="ex-fade">
-                  <rect x="104" y="-28" width="446" height="352" fill="url(#ex-fade-y)" />
-                </mask>
-                <mask id="ex-ocean">
-                  <rect x="104" y="-28" width="80" height="352" fill="url(#ex-fade-x)" />
-                </mask>
-              </defs>
-
-              <g mask="url(#ex-fade)">
-                {/* Mar em pontos, encostado à costa */}
-                <path
-                  className="ex-map-ocean"
-                  d={`${COAST} L104,365 L104,66 Z`}
-                  fill="url(#ex-dots)"
-                  mask="url(#ex-ocean)"
-                />
-                <path className="ex-map-land" d={OUTLINE} />
-
-                {/* Manchas dos territórios */}
-                <g clipPath="url(#ex-land)">
-                  {regionIds
-                    .filter((id) => AREA[id].rx)
-                    .map((id) => (
-                      <ellipse
-                        key={id}
-                        className={`ex-map-area${ativo === id ? " is-on" : ""}`}
-                        cx={AREA[id].cx}
-                        cy={AREA[id].cy}
-                        rx={AREA[id].rx}
-                        ry={AREA[id].ry}
-                        fill="url(#ex-area)"
-                      />
-                    ))}
-                </g>
-
-                <path className="ex-map-river" d={DOURO} />
-                <path className={`ex-map-caminho${ativo === "santiago" ? " is-on" : ""}`} d={CAMINHO} />
-              </g>
-
-              {/* Para lá da fronteira: Santiago de Compostela, a norte */}
-              <path className={`ex-map-caminho ex-map-out${ativo === "santiago" ? " is-on" : ""}`} d={`M${P.verin[0]},${P.verin[1]} L${P.verin[0] - 4},${-2}`} />
-              <path className="ex-map-arrow" d={`M${P.verin[0] - 7.5},${3} L${P.verin[0] - 4},${-3} L${P.verin[0] - 0.5},${3.6}`} />
-              <g className="ex-map-pill">
-                <rect x={P.verin[0] - 50} y={-22} width={92} height={13} rx={6.5} />
-                <text x={P.verin[0] - 4} y={-13.2} textAnchor="middle">
-                  {t("santiagoPill")}
-                </text>
-              </g>
-
-              <text className="ex-map-country" x={470} y={28} textAnchor="middle">
-                {t("spain")}
-              </text>
-              <text className="ex-map-country" transform="translate(126 230) rotate(-90)" textAnchor="middle">
-                {t("ocean")}
-              </text>
-
-              {cidade(P.porto, "Porto", "end")}
-              {cidade(P.regua, "Régua", "end", 6)}
-              {cidade(P.pinhao, "Pinhão", "start", -2.5)}
-              {cidade(P.vilaReal, "Vila Real", "end")}
-              {cidade(P.chaves, "Chaves", "start")}
-              {cidade(P.braganca, "Bragança", "start")}
-              {cidade(P.miranda, "Miranda", "end", -3)}
-              {cidade(P.viseu, "Viseu", "start")}
-              {cidade(P.geres, "Gerês", "start")}
-
-              {regionIds.map((id) => (
-                <text
-                  key={id}
-                  className={`ex-map-region${ativo === id ? " is-on" : ""}`}
-                  x={AREA[id].label[0]}
-                  y={AREA[id].label[1]}
-                  textAnchor={id === "santiago" ? "start" : "middle"}
-                  tabIndex={0}
-                  role="button"
-                  aria-pressed={ativo === id}
-                  {...escolher(id)}
-                >
-                  {t(`${id}.short`)}
-                </text>
-              ))}
-            </svg>
+            <ExMapa ativo={ativo} onPick={setAtivo} />
             <figcaption className="ex-over">
               <span className="ex-paren">(</span> {t("mapCaption")} <span className="ex-paren">)</span>
             </figcaption>

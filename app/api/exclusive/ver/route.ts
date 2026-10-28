@@ -8,10 +8,13 @@ import { EX_ACCESS_COOKIE } from "@/lib/flow-leads";
  * With the right key it opens the collection for a day without creating a
  * lead; without it, it lands on the form like anyone else.
  * The key lives in EXCLUSIVE_PREVIEW_KEY, on this site and on FLOW.
+ * With `ir=apresentacao` it opens the tablet presentation instead, and the
+ * seller's tablet stays open for 30 days (not one), so it works at a fair.
  */
 export function GET(req: NextRequest) {
   const lang = ["en", "pt", "es"].includes(req.nextUrl.searchParams.get("lang") ?? "") ? req.nextUrl.searchParams.get("lang")! : "pt";
-  const res = NextResponse.redirect(new URL(`/${lang}/exclusive`, req.url));
+  const apresentacao = req.nextUrl.searchParams.get("ir") === "apresentacao";
+  const res = NextResponse.redirect(new URL(`/${lang}/exclusive${apresentacao ? "/apresentacao" : ""}`, req.url));
   const key = process.env.EXCLUSIVE_PREVIEW_KEY ?? "";
   const given = req.nextUrl.searchParams.get("k") ?? "";
   // Em desenvolvimento (localhost) abre sem chave, para a equipa ver a coleção enquanto a constrói.
@@ -20,7 +23,7 @@ export function GET(req: NextRequest) {
   if (ok) {
     res.cookies.set(EX_ACCESS_COOKIE, "1", {
       path: "/",
-      maxAge: 60 * 60 * 24,
+      maxAge: 60 * 60 * 24 * (apresentacao ? 30 : 1),
       sameSite: "lax",
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
