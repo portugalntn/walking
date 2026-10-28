@@ -876,8 +876,11 @@ html[data-ex-theme="light"] .ex .ex-dark .ex-logo-claro { display: none !importa
    o menor entre a largura e a altura, para caber deitado e em pé. */
 html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behavior: none; }
 .ex-deck {
-  --dk-top: clamp(56px, 9svh, 76px);
-  --dk-bottom: clamp(52px, 8.5svh, 70px);
+  /* Instalada no iPad, a página vai até às margens: somam-se a barra de estado e o indicador de início. */
+  --dk-safe-top: env(safe-area-inset-top, 0px);
+  --dk-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --dk-top: calc(clamp(56px, 9svh, 76px) + var(--dk-safe-top));
+  --dk-bottom: calc(clamp(52px, 8.5svh, 70px) + var(--dk-safe-bottom));
   --ex-gutter: clamp(1.25rem, 4vw, 4rem);
   --dk-h1: clamp(2.5rem, min(6.4vw, 9.5svh), 6.75rem);
   --dk-h2: clamp(1.9rem, min(4.2vw, 6.2svh), 4.2rem);
@@ -1098,8 +1101,8 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
   pointer-events: none; /* o deslize entre ecrãs continua a funcionar por cima das barras */
 }
 .ex-dk-top > *, .ex-dk-bottom > * { pointer-events: auto; }
-.ex-dk-top { top: 0; height: var(--dk-top); justify-content: space-between; }
-.ex-dk-bottom { bottom: 0; height: var(--dk-bottom); }
+.ex-dk-top { top: 0; height: var(--dk-top); padding-top: var(--dk-safe-top); justify-content: space-between; }
+.ex-dk-bottom { bottom: 0; height: var(--dk-bottom); padding-bottom: var(--dk-safe-bottom); }
 .ex-dk-logo { background: none; border: 0; padding: 0; cursor: pointer; }
 .ex-dk-logo img { width: clamp(128px, 14vw, 168px); }
 .ex-dk-tools { display: flex; align-items: center; gap: clamp(0.9rem, 2.2vw, 1.9rem); }
@@ -1109,6 +1112,14 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-langs a { padding: 0.6rem 0.4rem; text-decoration: none; transition: color 300ms var(--ease-expo); }
 .ex-dk-langs a.is-on { color: var(--ex-accent); }
 .ex-dk-full-ico { display: none; font-size: 0.95rem; letter-spacing: 0; }
+/* Sem internet: a guardar (ponto a pulsar), pronto (verde salva), sem rede (siena) */
+.ex-dk-off { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+.ex-dk-off-dot { width: 7px; height: 7px; border-radius: 50%; background-color: var(--ex-accent); flex: none; }
+.ex-dk-off.is-preparar .ex-dk-off-dot { animation: ex-dk-pulse 1.4s ease-in-out infinite; }
+.ex-dk-off.is-pronto .ex-dk-off-dot { background-color: var(--ex-sage); }
+.ex-dk-off.is-semRede { color: var(--ex-sienna); }
+.ex-dk-off.is-semRede .ex-dk-off-dot { background-color: var(--ex-sienna); }
+@keyframes ex-dk-pulse { 50% { opacity: 0.25; } }
 .ex-dk-where { display: flex; align-items: baseline; gap: 1rem; min-width: 0; white-space: nowrap; }
 .ex-dk-count { color: var(--ex-bone); font-variant-numeric: tabular-nums; }
 .ex-dk-chapter { overflow: hidden; text-overflow: ellipsis; }
@@ -1140,7 +1151,7 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
   transition: opacity 450ms var(--ease-expo), visibility 0s 450ms;
 }
 .ex-dk-index.is-open { opacity: 1; visibility: visible; transition: opacity 450ms var(--ease-expo), visibility 0s; }
-.ex-dk-index-top { height: var(--dk-top); flex: none; display: flex; align-items: center; justify-content: space-between; }
+.ex-dk-index-top { height: var(--dk-top); padding-top: var(--dk-safe-top); flex: none; display: flex; align-items: center; justify-content: space-between; }
 .ex-dk-index-list { flex: 1 1 auto; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); grid-auto-flow: column; align-content: center; column-gap: clamp(1.5rem, 4vw, 4rem); }
 .ex-dk-index-list button { display: flex; align-items: baseline; gap: 1rem; width: 100%; padding: clamp(0.8rem, 2.4svh, 1.5rem) 0; background: none; border: 0; border-top: 1px solid var(--ex-line); text-align: left; color: var(--ex-dim); font: inherit; cursor: pointer; transition: color 300ms, border-color 300ms; }
 .ex-dk-index-list .ex-num { margin: 0; }
@@ -1148,11 +1159,15 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-index-list button:hover, .ex-dk-index-list button.is-on { color: var(--ex-bone); }
 .ex-dk-index-list button.is-on { border-top-color: var(--ex-accent); }
 
+/* Portão da apresentação: a chave da equipa, discreta, depois do formulário dos operadores */
+.ex-dk-key { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; padding-block: 0 clamp(3rem, 6vw, 5rem); }
+.ex-dk-key .ex-field { width: min(100%, 280px); font-size: 1rem; }
+
 @media (max-width: 900px) {
   .ex-dk-full-txt { display: none; }
   .ex-dk-full-ico { display: inline; }
 }
-@media (max-width: 700px) { .ex-dk-chapter { display: none; } }
+@media (max-width: 700px) { .ex-dk-chapter, .ex-dk-off-txt { display: none; } }
 
 /* Tablet em pé: as duas colunas passam a duas linhas. */
 @media (orientation: portrait) {
@@ -1174,5 +1189,5 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 
 @media (prefers-reduced-motion: reduce) {
   .ex-dk-in, .ex-dk-acc-item { opacity: 1; transform: none; transition: none; }
-  .ex-dk-hint span, .ex-dk-acc-item.is-on .ex-dk-acc-text { animation: none; }
+  .ex-dk-hint span, .ex-dk-acc-item.is-on .ex-dk-acc-text, .ex-dk-off-dot { animation: none !important; }
 }

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "
 import { useLocale, useTranslations } from "next-intl";
 
 import { ExLogo } from "./ex-chrome";
+import { useApresentacaoOffline, useComRede, useEnviarContactos } from "./ex-offline";
 import { ExThemeToggle } from "./ex-theme";
 import { SLIDES, type SlideId } from "./ex-deck-slides";
 
@@ -64,6 +65,10 @@ export function ExDeck() {
   // Ecrã inteiro só onde o tablet o permite (o iPad sim; o iPhone não).
   const podeCheio = useSyncExternalStore(nada, () => Boolean(doc().fullscreenEnabled || doc().webkitFullscreenEnabled), () => false);
   const cheio = useSyncExternalStore(ouvirCheio, () => Boolean(doc().fullscreenElement || doc().webkitFullscreenElement), () => false);
+  // Sem internet (feiras): a apresentação fica guardada no tablet e os contactos esperam pela rede.
+  const offline = useApresentacaoOffline();
+  const comRede = useComRede();
+  useEnviarContactos();
 
   const go = useCallback((i: number) => {
     const el = pista.current;
@@ -197,6 +202,14 @@ export function ExDeck() {
               </a>
             ))}
           </nav>
+          {(!comRede || offline.fase !== "nada") && (
+            <span className={`ex-over ex-dk-off is-${comRede ? offline.fase : "semRede"}`} title={t("deck.offlineHint")} role="status">
+              <span className="ex-dk-off-dot" aria-hidden />
+              <span className="ex-dk-off-txt">
+                {!comRede ? t("deck.offlineNow") : offline.fase === "preparar" ? t("deck.offlineSaving", { pct: offline.pct }) : t("deck.offlineReady")}
+              </span>
+            </span>
+          )}
           <ExThemeToggle />
           {podeCheio && (
             <button type="button" className="ex-over ex-dk-tool ex-dk-full" onClick={alternarCheio} aria-label={cheio ? t("deck.exitFullscreen") : t("deck.fullscreen")}>

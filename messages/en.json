@@ -650,7 +650,15 @@
       "toStart": "Back to the cover",
       "language": "Language",
       "progress": "Presentation screens",
-      "restart": "Start the presentation again"
+      "restart": "Start the presentation again",
+      "offlineSaving": "Saving {pct}%",
+      "offlineReady": "Ready offline",
+      "offlineNow": "Offline",
+      "offlineHint": "The presentation is stored on this tablet and opens even without internet.",
+      "queuedText": "Saved on this tablet; it will reach our team as soon as there is internet.",
+      "teamKey": "Portugal NTN team",
+      "teamKeyLabel": "Presentation key",
+      "teamKeyEnter": "Enter"
     }
   },
   "tradeDoor": {

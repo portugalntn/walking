@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { dayTours, exImages, journeys, regionIds, type ExRegionId } from "@/lib/exclusive";
 import { ExMapa } from "./ex-territories";
+import { guardarContacto } from "./ex-offline";
 
 /** Os ecrãs da apresentação para tablet. Os mesmos textos (messages ›
  *  exclusive.*, editáveis no FLOW) e as mesmas fotos (exImages, journeys,
@@ -396,37 +397,44 @@ function Trade() {
 }
 
 /* 11 · Contacto: o vendedor preenche com o cliente ali mesmo. O pedido entra no FLOW
- *  (Comercial) como os outros, marcado "apresentacao"; depois, recomeça para o cliente seguinte. */
+ *  (Comercial) como os outros, marcado "apresentacao"; sem internet fica guardado no tablet
+ *  e segue sozinho quando a rede voltar. Depois, recomeça para o cliente seguinte. */
 function Contacto({ go }: { go: Go }) {
   const t = useTranslations("exclusive.enquiry");
   const td = useTranslations("exclusive.deck");
   const locale = useLocale();
   const vazio = { name: "", email: "", company: "", country: "", message: "" };
   const [form, setForm] = useState(vazio);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "queued" | "error">("idle");
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+    const contacto = {
+      nome: form.name,
+      email: form.email,
+      empresa: form.company,
+      pais: form.country,
+      mensagem: form.message,
+      idioma: locale,
+      formulario: "apresentacao",
+    };
+    // Sem rede (ou com o FLOW em baixo) o contacto espera no tablet; dados inválidos dão erro como antes.
+    const esperar = () => setStatus(guardarContacto(contacto) ? "queued" : "error");
+    if (!navigator.onLine) return esperar();
     try {
       const res = await fetch("/api/exclusive/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nome: form.name,
-          email: form.email,
-          empresa: form.company,
-          pais: form.country,
-          mensagem: form.message,
-          idioma: locale,
-          formulario: "apresentacao",
-        }),
+        body: JSON.stringify(contacto),
       });
-      setStatus(res.ok ? "sent" : "error");
+      if (res.ok) setStatus("sent");
+      else if (res.status >= 500) esperar();
+      else setStatus("error");
     } catch {
-      setStatus("error");
+      esperar();
     }
   }
 
@@ -450,11 +458,11 @@ function Contacto({ go }: { go: Go }) {
         </p>
       </div>
 
-      {status === "sent" ? (
+      {status === "sent" || status === "queued" ? (
         <div className="ex-dk-sent">
           <h3 className="ex-serif ex-dk-h3">{t("sentTitle")}</h3>
           <p className="ex-body ex-dk-text" style={{ maxWidth: "34ch" }}>
-            {t("sentText")}
+            {status === "queued" ? td("queuedText") : t("sentText")}
           </p>
           <button type="button" className="ex-btn" onClick={recomecar}>
             {td("restart")}
