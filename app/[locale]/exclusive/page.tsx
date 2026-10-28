@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 
 import { ExNavbar, ExFooter } from "@/components/exclusive/ex-chrome";
 import { ExHero } from "@/components/exclusive/ex-hero";
 import { ExManifesto } from "@/components/exclusive/ex-manifesto";
 import { ExJourneys } from "@/components/exclusive/ex-journeys";
-import { ExItinerary } from "@/components/exclusive/ex-itinerary";
+import { ExTerritories } from "@/components/exclusive/ex-territories";
+import { ExExperiences } from "@/components/exclusive/ex-experiences";
+import { ExFormats } from "@/components/exclusive/ex-formats";
+import { ExStandard } from "@/components/exclusive/ex-standard";
 import { ExDayTours } from "@/components/exclusive/ex-daytours";
 import { ExOperators } from "@/components/exclusive/ex-operators";
 import { ExEnquiry } from "@/components/exclusive/ex-enquiry";
@@ -22,6 +25,14 @@ const exSerif = Cormorant_Garamond({
   weight: ["300", "400"],
   style: ["normal", "italic"],
   variable: "--font-ex-serif",
+  display: "swap",
+});
+
+/** Sans refinada do texto corrido e dos rótulos (mais firme nos subtítulos). */
+const exSans = Manrope({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-ex-sans",
   display: "swap",
 });
 
@@ -54,7 +65,7 @@ export default async function ExclusivePage() {
 
   if (!aberto) {
     return (
-      <div className={`ex ${exSerif.variable}`}>
+      <div className={`ex ${exSerif.variable} ${exSans.variable}`}>
         <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
         <ExNavbar variant="gate" />
         <main>
@@ -66,15 +77,18 @@ export default async function ExclusivePage() {
   }
 
   return (
-    <div className={`ex ${exSerif.variable}`}>
+    <div className={`ex ${exSerif.variable} ${exSans.variable}`}>
       <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
       <ExNavbar />
       <main>
         <ExHero />
         <ExManifesto />
+        <ExTerritories />
+        <ExExperiences />
+        <ExFormats />
         <ExJourneys />
-        <ExItinerary />
         <ExDayTours />
+        <ExStandard />
         <ExOperators />
         <ExEnquiry />
       </main>

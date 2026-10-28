@@ -40,8 +40,9 @@ export function ExNavbar({ variant = "page" }: { variant?: "page" | "gate" }) {
   }, []);
 
   const links = [
-    { href: "#journeys", label: t("journeys") },
-    { href: "#daytours", label: t("dayTours") },
+    { href: "#territorios", label: t("territories") },
+    { href: "#experiencias", label: t("experiences") },
+    { href: "#formatos", label: t("formats") },
     { href: "#howwework", label: t("howWeWork") },
   ];
 

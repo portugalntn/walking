@@ -361,8 +361,6 @@
   },
   "exclusive": {
     "nav": {
-      "journeys": "Viajes",
-      "dayTours": "Day tours",
       "howWeWork": "Cómo trabajamos",
       "enquire": "Contactar",
       "themeLight": "Claro",
@@ -371,87 +369,10 @@
       "themeToDark": "Cambiar al tema oscuro",
       "publicSite": "Sitio B2C",
       "themeAuto": "Automático",
-      "themeToAuto": "Seguir el tema del sistema"
-    },
-    "hero": {
-      "overline": "B2B Exclusive · Para operadores",
-      "title": "Exclusive",
-      "bracket": "Diseñado para un grupo cada vez",
-      "lead": "Viajes de senderismo privados por el Norte y el Nordeste de Portugal, construidos ruta a ruta para agencias y operadores a quienes les piden aquello que un catálogo no tiene.",
-      "metaA": "Destination Management Company",
-      "metaB": "Norte y Nordeste, Portugal",
-      "metaC": "Rutas propias",
-      "cta": "Solicitar el dosier"
-    },
-    "manifesto": {
-      "overline": "La propuesta",
-      "statement": "No vendemos un catálogo. Diseñamos el viaje, <accent>y después lo caminamos nosotros</accent>.",
-      "p1": "Cada ruta de esta colección fue levantada a pie, señalizada y certificada por el equipo que la opera. Nada se subcontrata a un nombre que usted nunca ha conocido, y nada se vende antes de haber sido caminado en la estación en la que su cliente lo va a caminar.",
-      "p2": "Por eso los itinerarios aquí no son fijos. Un programa puede alargarse, suavizarse, moverse a otro mes o rehacerse alrededor de un solo interés, y la operación sobre el terreno sigue con las mismas personas."
-    },
-    "journeys": {
-      "overline": "Multi-day",
-      "title": "Viajes de autor",
-      "lead": "Ocho días es la forma en la que creemos: bastante para que la región cambie alrededor del grupo, breve para seguir siendo exigente. Cada uno tiene una versión pública. Estos no son esa versión.",
-      "cta": "Ver el itinerario",
-      "daysLabel": "días"
-    },
-    "itinerary": {
-      "overline": "Itinerario destacado",
-      "lead": "Ocho días por los bancales del Duero, de Peso da Régua a Pinhão, con las quintas abiertas en privado para el grupo.",
-      "statDistance": "Distancia",
-      "statDays": "Días",
-      "statGrade": "Grado",
-      "note": "La altura de cada punto es la distancia caminada ese día. Día a día completo, alojamiento y condiciones NET en el dossier.",
-      "photoCaption": "Vista desde el mirador de Casal de Loivos, en el día 7",
-      "routeOverline": "El camino en {days} días",
-      "day": "Día {n}",
-      "photoDay": "La vista de la fotografía"
-    },
-    "dayTours": {
-      "overline": "Day tours",
-      "title": "Un solo día, enteramente sostenido",
-      "lead": "Para programas que necesitan un día extraordinario dentro de una estancia mayor. Los mismos guías, el mismo acceso, la misma mesa.",
-      "walkLabel": "caminando"
-    },
-    "operators": {
-      "overline": "Para agencias y operadores",
-      "title": "Cómo trabajamos con el trade",
-      "one": {
-        "title": "Hecho a medida",
-        "text": "Envíe el briefing y las fechas. Respondemos con una ruta, un ritmo y una mesa, no con una página de catálogo."
-      },
-      "two": {
-        "title": "Operado por nosotros",
-        "text": "El diseño, la señalización, la guía y el apoyo sobre el terreno son nuestros. Un único interlocutor del primer correo al último traslado."
-      },
-      "three": {
-        "title": "White label",
-        "text": "El programa puede viajar con su marca, sus documentos y su voz. Nuestro nombre solo aparece si usted quiere."
-      },
-      "four": {
-        "title": "Condiciones NET",
-        "text": "Tarifas de trade, cupos y condiciones de cancelación quedan definidos en el dosier, por programa y por temporada."
-      }
-    },
-    "enquiry": {
-      "overline": "Contacto",
-      "title": "Solicitar el dosier",
-      "lead": "Díganos el mercado al que vende y el tipo de cliente que tiene en mente. Respondemos con el dosier completo, tarifas NET incluidas, en dos días laborables.",
-      "name": "Nombre",
-      "email": "Email",
-      "company": "Empresa",
-      "country": "País / mercado",
-      "message": "¿Qué está buscando?",
-      "submit": "Enviar solicitud",
-      "sending": "Enviando",
-      "sentTitle": "Gracias.",
-      "sentText": "El dosier va en camino. Si no llega en dos días laborables, escríbanos directamente.",
-      "error": "No hemos podido enviarlo ahora. Inténtelo de nuevo en un momento."
-    },
-    "footer": {
-      "line": "Portugal NTN es una Destination Management Company de senderismo en el Norte y el Nordeste de Portugal. Diseño, señalización, certificación y operación de rutas propias.",
-      "public": "Sitio B2C"
+      "themeToAuto": "Seguir el tema del sistema",
+      "territories": "Territorios",
+      "experiences": "Experiencias",
+      "formats": "Formatos"
     },
     "gate": {
       "overline": "B2B Exclusive · Solo para operadores",
@@ -511,6 +432,212 @@
       "sending": "Abriendo",
       "error": "No ha sido posible registrarle ahora. Inténtelo de nuevo en unos instantes o escriba a info@portugalntn.com.",
       "privacy": "Sus datos se quedan solo con Portugal NTN. Los usamos para hablar con usted sobre la colaboración, nada más."
+    },
+    "hero": {
+      "overline": "Portugal NTN Exclusive · Para operadores",
+      "title": "El Norte de Portugal, <em>de la mano de quien lo trazó</em>",
+      "lead": "Viajes privados a pie, de un día o de varios, para operadores cuyos clientes buscan lo excepcional: el acceso, la mesa y las personas que solo un local conoce.",
+      "cta": "Pedir el dossier",
+      "discover": "Conocer los territorios",
+      "r1": "Peneda-Gerês",
+      "r2": "Valle del Duero",
+      "r3": "Trás-os-Montes",
+      "r4": "Camino de Santiago"
+    },
+    "manifesto": {
+      "overline": "Quiénes somos",
+      "statement": "No llegamos a este territorio para venderlo. <accent>Somos de él.</accent>",
+      "p1": "Nacimos aquí, entre bancales, aldeas de granito y mesetas de pizarra. Antes de recibir al primer viajero, pasamos doce años planificando, señalizando y certificando los senderos del Norte y Nordeste de Portugal, junto a los municipios y las comunidades que los viven.",
+      "p2": "Fue ese trabajo lo que nos trajo al turismo. Conocemos cada sendero porque lo trazamos, cada productor porque es nuestro vecino, cada historia porque la oímos de quien la vivió. Es un conocimiento que pocos guías tienen, y es el que ponemos al servicio de su cliente.",
+      "s1": {
+        "value": "12",
+        "label": "años estructurando el territorio"
+      },
+      "s2": {
+        "value": "4",
+        "label": "territorios en el Norte"
+      },
+      "s3": {
+        "value": "1 a 15",
+        "label": "días por programa"
+      },
+      "caption": "Nuestro equipo señalizando un sendero",
+      "altA": "Mano pintando la señal de un sendero en una roca",
+      "altB": "Camino de tierra entre viñas en el Duero",
+      "sentir": {
+        "title": "Sentir el lugar",
+        "text": "Caminar despacio, al ritmo del paisaje, con tiempo para el silencio, la luz y el olor de la tierra."
+      },
+      "viver": {
+        "title": "Vivir el lugar",
+        "text": "Sentarse a la mesa de las familias, entrar en bodegas y almazaras, aprender el oficio de quien lo mantiene vivo."
+      },
+      "colaborar": {
+        "title": "Colaborar con el lugar",
+        "text": "Cada viaje deja valor en el territorio: compramos local, contratamos local y cuidamos los caminos que recorremos. Eso es, para nosotros, la sostenibilidad."
+      }
+    },
+    "territories": {
+      "overline": "Los territorios",
+      "title": "Cuatro paisajes, <em>un solo Norte</em>",
+      "lead": "Del granito del Gerês a los arribes del Duero Internacional, el Norte de Portugal cambia en cada valle. Elija un territorio en el mapa para conocerlo.",
+      "mapLabel": "Mapa del Norte de Portugal con los cuatro territorios",
+      "mapCaption": "Norte y Nordeste de Portugal",
+      "spain": "España",
+      "ocean": "Océano Atlántico",
+      "santiagoPill": "Santiago de Compostela",
+      "geres": {
+        "short": "Peneda-Gerês",
+        "name": "Peneda-Gerês",
+        "tagline": "Granito, agua y el único parque nacional",
+        "text": "El único parque nacional de Portugal y Reserva de la Biosfera. Senderos de pastores, cascadas, robledales antiguos y vacas barrosãs en los prados, con casas de piedra que reciben a pocos huéspedes a la vez.",
+        "tags": "Parque nacional · Cascadas · Pastores · Granito"
+      },
+      "douro": {
+        "short": "Valle del Duero",
+        "name": "Valle del Duero",
+        "tagline": "Los bancales que dibujó el vino",
+        "text": "La región vinícola demarcada más antigua del mundo, Patrimonio Mundial. Caminamos entre viñedos en ladera y quintas familiares, con catas en bodega, almuerzos entre las viñas y el río siempre abajo.",
+        "tags": "Vino de Oporto · Quintas · Bancales · Río"
+      },
+      "tras": {
+        "short": "Trás-os-Montes",
+        "name": "Trás-os-Montes",
+        "tagline": "El Portugal que aún guarda el tiempo",
+        "text": "Mesetas, aldeas comunitarias y los arribes del Duero Internacional. Tierra de aceite, castaña y embutidos, de lengua mirandesa y de tradiciones que aquí no son escenificación: son la vida de cada día.",
+        "tags": "Aceite · Arribes · Aldeas · Mirandés"
+      },
+      "santiago": {
+        "short": "Camino de Santiago",
+        "name": "Camino Portugués Interior",
+        "tagline": "La ruta que gestionamos, hasta Santiago",
+        "text": "De Viseu a Chaves, por Lamego, el Duero y Vila Real, hasta la frontera y Santiago de Compostela. Un camino de peregrinación menos recorrido, entre viñas, balnearios y aldeas, con la comodidad de que todo está resuelto.",
+        "tags": "Peregrinación · Balnearios · Viñas · Frontera"
+      }
+    },
+    "experiences": {
+      "overline": "Lo que se vive",
+      "title": "Experiencias que <em>no están en catálogo</em>",
+      "lead": "Cada programa une el camino a lo más propio del territorio: la mesa, el vino, el aceite, la cultura y el paisaje.",
+      "mesa": {
+        "title": "A la mesa de la región",
+        "text": "Embutidos, cabrito, ternera mirandesa y pan de horno de leña, servidos por quien los hace: en la aldea, en la quinta o en un pícnic a mitad de camino."
+      },
+      "vinho": {
+        "title": "Quintas y bodegas",
+        "text": "Catas privadas en quintas familiares del Duero, de las viñas viejas al Oporto vintage, con el enólogo o con el dueño de la casa."
+      },
+      "azeite": {
+        "title": "Olivares y almazaras",
+        "text": "Los olivares centenarios de Trás-os-Montes y la cata de aceite en la almazara, de la aceituna a la mesa."
+      },
+      "cultura": {
+        "title": "Patrimonio vivo",
+        "text": "Casas solariegas, monasterios, aldeas de granito y pizarra, los caretos de Podence y la lengua mirandesa, contados por quien los mantiene."
+      },
+      "natureza": {
+        "title": "Paisajes protegidos",
+        "text": "Un parque nacional, parques naturales y un paisaje Patrimonio Mundial, caminados sin prisa y lejos de las multitudes."
+      }
+    },
+    "formats": {
+      "overline": "Los formatos",
+      "title": "Un día en el territorio, <em>o un viaje entero</em>",
+      "multi": {
+        "sub": "Varios días",
+        "name": "Multi-day",
+        "text": "Viajes de varios días, guiados o autoguiados, con alojamiento elegido casa a casa y el equipaje siempre por delante del grupo.",
+        "cta": "Ver los viajes"
+      },
+      "one": {
+        "sub": "Un día",
+        "name": "One day",
+        "text": "Un día entero en el territorio, para sumar a una estancia en Oporto o en el Duero: camino, mesa y regreso el mismo día.",
+        "cta": "Ver los días"
+      },
+      "tailorLabel": "Tailor made",
+      "tailor": "Cualquier programa puede rehacerse en torno a su cliente: otra duración, otro ritmo, otra estación, un único interés."
+    },
+    "journeys": {
+      "overline": "Multi-day",
+      "title": "Viajes de autor",
+      "lead": "Cada uno parte de un programa que operamos todo el año y lo eleva: acceso privado, mesas elegidas y el tiempo justo en cada lugar.",
+      "cta": "Pedir el programa",
+      "daysLabel": "días"
+    },
+    "dayTours": {
+      "overline": "One day",
+      "title": "Un solo día, enteramente cuidado",
+      "lead": "Para programas que necesitan un día extraordinario dentro de una estancia más larga. Los mismos guías, el mismo acceso, la misma mesa."
+    },
+    "standard": {
+      "overline": "El estándar Exclusive",
+      "title": "Todo lo que su cliente <em>no tendrá que pedir</em>",
+      "lead": "Tomamos cada ruta que operamos y la elevamos. El camino es el mismo; todo lo que lo rodea es otro.",
+      "photoAlt": "Dos caminantes en un mirador sobre el valle del Duero",
+      "vehicles": {
+        "title": "Vehículos de alta gama",
+        "text": "Traslados privados en vehículos premium, con chófer, del aeropuerto al último día."
+      },
+      "picnic": {
+        "title": "Pícnics en el camino",
+        "text": "Mesas puestas en miradores, viñas y orillas de río, con lo mejor que hacen los productores de la región."
+      },
+      "quintas": {
+        "title": "Las mejores quintas",
+        "text": "Acceso privado a quintas familiares y a bodegas cerradas al público."
+      },
+      "stays": {
+        "title": "Alojamientos con encanto",
+        "text": "Casas solariegas, quintas vinícolas y hoteles pequeños, elegidos casa a casa."
+      },
+      "guides": {
+        "title": "Guías nativos",
+        "text": "Guías certificados, nacidos en la región, que cuentan el territorio porque lo han vivido."
+      },
+      "private": {
+        "title": "Un grupo cada vez",
+        "text": "Programas privados, ritmo a medida y apoyo sobre el terreno durante todo el viaje."
+      }
+    },
+    "operators": {
+      "overline": "Para agencias y operadores",
+      "title": "Cómo trabajamos con el trade",
+      "one": {
+        "title": "Hecho a medida",
+        "text": "Envíe el briefing y las fechas. Respondemos con una ruta, un ritmo y una mesa, no con una página de catálogo."
+      },
+      "two": {
+        "title": "Operado por nosotros",
+        "text": "El diseño, la señalización, la guía y el apoyo sobre el terreno son nuestros. Un único interlocutor del primer correo al último traslado."
+      },
+      "three": {
+        "title": "White label",
+        "text": "El programa puede viajar con su marca, sus documentos y su voz. Nuestro nombre solo aparece si usted quiere."
+      },
+      "four": {
+        "title": "Condiciones NET",
+        "text": "Tarifas de trade, cupos y condiciones de cancelación quedan definidos en el dosier, por programa y por temporada."
+      }
+    },
+    "enquiry": {
+      "overline": "Contacto",
+      "title": "Solicitar el dosier",
+      "lead": "Díganos el mercado al que vende y el tipo de cliente que tiene en mente. Respondemos con el dosier completo, tarifas NET incluidas, en dos días laborables.",
+      "name": "Nombre",
+      "email": "Email",
+      "company": "Empresa",
+      "country": "País / mercado",
+      "message": "¿Qué está buscando?",
+      "submit": "Enviar solicitud",
+      "sending": "Enviando",
+      "sentTitle": "Gracias.",
+      "sentText": "El dosier va en camino. Si no llega en dos días laborables, escríbanos directamente.",
+      "error": "No hemos podido enviarlo ahora. Inténtelo de nuevo en un momento."
+    },
+    "footer": {
+      "line": "Portugal NTN es una Destination Management Company de senderismo en el Norte y el Nordeste de Portugal. Diseño, señalización, certificación y operación de rutas propias.",
+      "public": "Sitio B2C"
     }
   },
   "tradeDoor": {

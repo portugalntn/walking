@@ -13,7 +13,7 @@ export function ExOperators() {
     <section id="howwework" className="ex-section">
       <div className="ex-wrap">
         <p className="ex-over ex-over-accent">{t("overline")}</p>
-        <h2 className="ex-serif" style={{ fontSize: "var(--ex-h2)", marginTop: "clamp(1rem, 2vw, 1.5rem)", maxWidth: "20ch" }}>
+        <h2 className="ex-serif ex-h2" style={{ marginTop: "clamp(1rem, 2vw, 1.5rem)", maxWidth: "20ch" }}>
           {t("title")}
         </h2>
 
@@ -33,14 +33,14 @@ export function ExOperators() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 0.95, ease: EASE, delay: i * 0.09 }}
             >
-              <span className="ex-serif" style={{ fontSize: "1.25rem", color: "var(--ex-accent)" }}>
+              <span className="ex-num">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <hr className="ex-rule" style={{ marginBlock: "1.25rem" }} />
-              <h3 className="ex-serif" style={{ fontSize: "clamp(1.25rem, 1.7vw, 1.6rem)", lineHeight: 1.15 }}>
+              <h3 className="ex-serif ex-h4">
                 {t(`${k}.title`)}
               </h3>
-              <p className="ex-body" style={{ fontSize: "0.9375rem", marginTop: "0.875rem" }}>
+              <p className="ex-body ex-small" style={{ marginTop: "0.875rem" }}>
                 {t(`${k}.text`)}
               </p>
             </m.div>

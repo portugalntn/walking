@@ -399,60 +399,90 @@ img, video {
 
 /* ─── EXCLUSIVE · B2B (escopo isolado, não afeta o site público) ─────
    Tudo aqui vive debaixo de .ex. O site público não herda nada.
-   Chão escuro, tipografia serifada refinada, um único acento (latão).
-   O latão desce do lime da marca, dessaturado, para manter parentesco
-   com o Walking sem herdar o tom desportivo.
+   Paleta de terra a puxar ao verde: oliva, sálvia, caramelo e creme,
+   com o siena queimado como única nota de quebra. Serifa nos títulos,
+   sans refinada no texto, curvas de nível muito leves por baixo de tudo.
    ──────────────────────────────────────────────────────────────── */
 
-body:has(.ex) { background-color: #0b0c0a; }
-html[data-ex-theme="light"] body:has(.ex) { background-color: #fdfcf9; }
+body:has(.ex) { background-color: #1a1d15; }
+html[data-ex-theme="light"] body:has(.ex) { background-color: #f3eee2; }
 
 /* Tokens de cor. O escuro é o padrão; o claro entra com
    html[data-ex-theme="light"]. As zonas com texto sobre fotografia
-   (hero, legendas do tríptico, ficha do itinerário e o navbar por cima
-   do hero) levam .ex-dark e ficam escuras nos dois temas. */
+   (hero, legendas e o navbar por cima do hero) e as faixas fortes
+   levam .ex-dark e ficam escuras nos dois temas. */
 .ex,
 html[data-ex-theme="light"] .ex .ex-dark {
-  --ex-ink:      #0b0c0a;
-  --ex-ink-2:    #101109;
-  --ex-ink-3:    #16170f;
-  --ex-bone:     #ece8dd;
-  --ex-dim:      #918f83;
-  --ex-line:     rgba(236, 232, 221, 0.12);
-  --ex-line-2:   rgba(236, 232, 221, 0.22);
-  --ex-accent:   #b9ad72;
-  --ex-glass:    rgba(11, 12, 10, 0.86);
-  --ex-error:    #c98b7a;
+  --ex-ink:      #1a1d15;   /* oliva quase preto */
+  --ex-ink-2:    #21251b;
+  --ex-ink-3:    #2a2e22;
+  --ex-bone:     #f2edde;   /* warm white */
+  --ex-dim:      #b5b19c;
+  --ex-line:     rgba(242, 237, 222, 0.13);
+  --ex-line-2:   rgba(242, 237, 222, 0.26);
+  --ex-accent:   #cfb586;   /* golden beige */
+  --ex-sienna:   #c98059;
+  --ex-sage:     #9c9f88;
+  --ex-deep:     #2f3a2a;   /* verde floresta das faixas fortes */
+  --ex-contour:  #f2edde;
+  --ex-contour-a: 0.05;
+  --ex-glass:    rgba(26, 29, 21, 0.88);
+  --ex-error:    #d4937a;
 }
 html[data-ex-theme="light"] .ex .ex-dark { color: var(--ex-bone); }
 
-/* Claro: papel, tinta quase preta, latão mais fundo para manter leitura. */
+/* Claro: creme, tinta oliva profunda, oliva como acento. */
 html[data-ex-theme="light"] .ex {
-  --ex-ink:      #fdfcf9;
-  --ex-ink-2:    #f5f3ed;
-  --ex-ink-3:    #ece9e0;
-  --ex-bone:     #11120f;
-  --ex-dim:      #66645a;
-  --ex-line:     rgba(17, 18, 15, 0.12);
-  --ex-line-2:   rgba(17, 18, 15, 0.24);
-  --ex-accent:   #7a6f3a;
-  --ex-glass:    rgba(253, 252, 249, 0.88);
+  --ex-ink:      #f3eee2;   /* crema + warm white */
+  --ex-ink-2:    #ebe4d3;
+  --ex-ink-3:    #e1d7c0;
+  --ex-bone:     #262a1d;
+  --ex-dim:      #5c5b48;
+  --ex-line:     rgba(38, 42, 29, 0.13);
+  --ex-line-2:   rgba(38, 42, 29, 0.26);
+  --ex-accent:   #706134;   /* olive */
+  --ex-sienna:   #a4623e;   /* burnt sienna */
+  --ex-sage:     #9c9f88;
+  --ex-deep:     #2f3a2a;
+  --ex-contour:  #706134;
+  --ex-contour-a: 0.11;
+  --ex-glass:    rgba(243, 238, 226, 0.9);
   --ex-error:    #a24b36;
 }
 
 .ex {
   --ex-serif: var(--font-ex-serif), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --ex-sans: var(--font-ex-sans), "Manrope", "Helvetica Neue", Arial, sans-serif;
 
-  --ex-h1: clamp(3.75rem, 12vw, 10.5rem);
-  --ex-h2: clamp(2.5rem, 5.6vw, 5rem);
-  --ex-h3: clamp(1.6rem, 2.6vw, 2.6rem);
-  --ex-lead: clamp(1rem, 1.35vw, 1.1875rem);
+  --ex-h1: clamp(3rem, 8.4vw, 8rem);
+  --ex-h2: clamp(2.4rem, 5vw, 4.6rem);
+  --ex-h3: clamp(1.6rem, 2.5vw, 2.5rem);
+  --ex-lead: clamp(1rem, 1.25vw, 1.125rem);
 
   --ex-gutter: clamp(1.25rem, 5vw, 5.5rem);
 
+  position: relative;
+  isolation: isolate;
   background-color: var(--ex-ink);
   color: var(--ex-bone);
-  font-family: var(--font-ui);
+  font-family: var(--ex-sans);
+}
+
+/* Curvas de nível: um pano muito leve por baixo de toda a página. A máscara
+   recorta a cor do tema, por isso o desenho acompanha o claro e o escuro. */
+.ex::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--ex-contour);
+  opacity: var(--ex-contour-a);
+  -webkit-mask: url("/images/exclusive/curvas.svg") 0 0 / 1400px 1400px repeat;
+          mask: url("/images/exclusive/curvas.svg") 0 0 / 1400px 1400px repeat;
+}
+@media (max-width: 640px) {
+  .ex::before { -webkit-mask-size: 900px 900px; mask-size: 900px 900px; }
 }
 
 .ex ::selection { background-color: var(--ex-accent); color: var(--ex-ink); }
@@ -477,10 +507,10 @@ html[data-ex-theme="light"] .ex {
 .ex-serif-i { font-family: var(--ex-serif); font-weight: 300; font-style: italic; }
 
 .ex-over {
-  font-family: var(--font-ui);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
+  font-family: var(--ex-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--ex-dim);
 }
@@ -488,9 +518,10 @@ html[data-ex-theme="light"] .ex {
 
 .ex-body {
   font-size: var(--ex-lead);
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--ex-dim);
   font-weight: 400;
+  text-wrap: pretty;
 }
 
 .ex-rule { height: 1px; background-color: var(--ex-line); border: 0; }
@@ -519,7 +550,7 @@ html[data-ex-theme="light"] .ex {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  font-family: var(--font-ui);
+  font-family: var(--ex-sans);
   font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.26em;
@@ -562,11 +593,6 @@ html[data-ex-theme="light"] .ex .ex-figure:hover img { filter: saturate(0.95) co
 @media (max-width: 1000px) { .ex-grid-3 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px)  { .ex-grid-3 { grid-template-columns: 1fr; } }
 
-/* Ficha de itinerário sobre fotografia */
-.ex-itin { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; }
-@media (max-width: 760px) { .ex-itin { aspect-ratio: 4 / 5; } }
-.ex-itin-stat-value { font-family: var(--ex-serif); font-weight: 300; font-size: clamp(1.6rem, 3vw, 2.75rem); line-height: 1; }
-
 /* Campos do formulário */
 .ex-field {
   width: 100%;
@@ -574,7 +600,7 @@ html[data-ex-theme="light"] .ex .ex-figure:hover img { filter: saturate(0.95) co
   border: 0;
   border-bottom: 1px solid var(--ex-line-2);
   color: var(--ex-bone);
-  font-family: var(--font-ui);
+  font-family: var(--ex-sans);
   font-size: 0.9375rem;
   padding: 0.875rem 0;
   outline: none;
@@ -611,7 +637,7 @@ html[data-ex-theme="light"] .ex .ex-figure:hover img { filter: saturate(0.95) co
   align-items: center;
   padding: 0.7rem 1.1rem;
   border: 1px solid var(--ex-line-2);
-  font-family: var(--font-ui);
+  font-family: var(--ex-sans);
   font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -695,37 +721,151 @@ html[data-ex-theme="light"] .ex .ex-dark .ex-logo-claro { display: none !importa
   .ex-theme-short { display: inline; }
 }
 
-/* Itinerário: o caminho dia a dia, por baixo da fotografia.
-   A linha e as colunas dos dias partilham a mesma grelha de --n colunas:
-   cada ponto fica exatamente sobre o centro do seu dia. */
-.ex-route { margin-top: clamp(2.5rem, 5vw, 4rem); }
-.ex-route-draw { position: relative; height: clamp(90px, 10vw, 140px); margin-top: 2rem; }
-.ex-route-draw svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.ex-route-area { fill: var(--ex-accent); opacity: 0.08; }
-.ex-route-line { fill: none; stroke: var(--ex-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.ex-route-dot {
-  position: absolute;
-  width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
-  border-radius: 99px;
-  background: var(--ex-ink);
-  border: 1.5px solid var(--ex-accent);
+/* ─── EXCLUSIVE · coleção (redesenho editorial, 28/10) ─────────────
+   Respiro largo entre blocos, texto sempre alinhado à esquerda (só a capa
+   é centrada), fotografia com peso e os números das listas em serifa. */
+:where(.ex) figure { margin: 0; }
+.ex-h2 { font-size: var(--ex-h2); line-height: 1.05; }
+.ex-h3 { font-size: var(--ex-h3); line-height: 1.08; }
+.ex-h4 { font-size: clamp(1.4rem, 1.9vw, 1.8rem); line-height: 1.12; }
+.ex-small { font-size: 0.9375rem; line-height: 1.75; }
+.ex-accent { color: var(--ex-accent); }
+.ex-num { display: block; font-family: var(--ex-serif); font-size: 1.05rem; color: var(--ex-accent); margin-bottom: 0.85rem; }
+.ex-paren { font-family: var(--ex-serif); font-size: 1.35em; line-height: 0; color: var(--ex-accent); letter-spacing: 0; }
+.ex-link { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; padding-bottom: 0.45rem; border-bottom: 1px solid var(--ex-line-2); transition: border-color 400ms var(--ease-expo), gap 400ms var(--ease-expo); }
+.ex-link:hover, a:hover > .ex-link { border-color: var(--ex-accent); gap: 0.9rem; }
+.ex-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: clamp(1.5rem, 4vw, 4rem); }
+.ex-figure img { filter: saturate(0.82) contrast(1.04) brightness(0.9); }
+.ex-figure:hover img { filter: saturate(0.92) contrast(1.03) brightness(0.96); }
+
+/* Capa */
+.ex-hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; }
+.ex-hero-media { position: absolute; inset: 0; overflow: hidden; }
+.ex-hero-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(22, 26, 18, 0.62) 0%, rgba(22, 26, 18, 0.28) 34%, rgba(22, 26, 18, 0.5) 72%, rgba(22, 26, 18, 0.88) 100%); }
+.ex-hero-inner { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-top: 104px; padding-bottom: 2rem; }
+.ex-hero-title { font-size: var(--ex-h1); line-height: 0.98; letter-spacing: -0.02em; max-width: 16ch; margin-top: clamp(1.25rem, 2.5vw, 2rem); }
+.ex-hero-title em { display: block; color: var(--ex-accent); font-size: 0.62em; line-height: 1.12; margin-top: 0.3em; letter-spacing: -0.01em; }
+.ex-hero-lead { max-width: 50ch; margin-top: clamp(1.5rem, 3vw, 2.25rem); color: color-mix(in srgb, var(--ex-bone) 82%, transparent); }
+.ex-hero-regions { list-style: none; margin: 0; padding: 1.25rem 0 0; border-top: 1px solid var(--ex-line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 2rem; }
+.ex-hero-regions li { color: var(--ex-bone); }
+
+/* Quem somos */
+.ex-origin { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; }
+.ex-origin-media { position: relative; padding-bottom: 14%; }
+.ex-origin-a { aspect-ratio: 4 / 5; width: 74%; }
+.ex-origin-b { position: absolute; right: 0; bottom: 0; width: 50%; aspect-ratio: 4 / 3; outline: clamp(6px, 0.8vw, 12px) solid var(--ex-ink); }
+.ex-origin-caption { position: absolute; left: 0; bottom: -2.25rem; }
+.ex-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding-top: 1.5rem; border-top: 1px solid var(--ex-line); max-width: 560px; }
+.ex-stats dt { font-size: clamp(2.2rem, 3.4vw, 3.2rem); line-height: 1; color: var(--ex-accent); }
+.ex-stats dd { margin: 0.75rem 0 0; line-height: 1.6; }
+.ex-verbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4.5rem); margin-top: clamp(6rem, 11vw, 10rem); }
+.ex-verbs > div { border-top: 1px solid var(--ex-line); padding-top: 1.4rem; }
+.ex-verbs .ex-body { margin-top: 0.9rem; max-width: 38ch; }
+@media (max-width: 960px) {
+  .ex-origin { grid-template-columns: minmax(0, 1fr); }
+  .ex-origin-media { max-width: 560px; margin-bottom: 2rem; }
+  .ex-verbs { grid-template-columns: minmax(0, 1fr); }
 }
-.ex-route-dot.is-photo { width: 15px; height: 15px; margin: -7.5px 0 0 -7.5px; background: var(--ex-accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--ex-accent) 22%, transparent); }
-.ex-route-days {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr));
-  gap: 0;
+
+/* Territórios: mapa e painel */
+.ex-terr { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6.5rem); align-items: start; margin-top: clamp(3rem, 6vw, 5rem); }
+.ex-map svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ex-map figcaption { margin-top: 0.5rem; }
+#ex-dots circle { fill: var(--ex-sage); }
+.ex-map-ocean { opacity: 1; }
+.ex-map-land { fill: color-mix(in srgb, var(--ex-ink) 92%, var(--ex-bone)); stroke: var(--ex-accent); stroke-width: 0.8; stroke-linejoin: round; }
+.ex-map-stop { stop-color: var(--ex-accent); }
+.ex-map-area { opacity: 0.16; transition: opacity 600ms var(--ease-expo); }
+.ex-map-area.is-on { opacity: 0.5; }
+.ex-map-river { fill: none; stroke: var(--ex-sage); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ex-map-caminho { fill: none; stroke: var(--ex-sienna); stroke-width: 1.15; stroke-dasharray: 3 2.4; stroke-linecap: round; transition: stroke-width 500ms var(--ease-expo); }
+.ex-map-caminho.is-on { stroke-width: 2; }
+.ex-map-arrow { fill: none; stroke: var(--ex-sienna); stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+.ex-map-pill rect { fill: var(--ex-ink); stroke: var(--ex-sienna); stroke-width: 0.7; }
+.ex-map-pill text { font-family: var(--ex-sans); font-size: 5.6px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ex-sienna); }
+.ex-map-country { font-family: var(--ex-sans); font-size: 6px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; fill: var(--ex-dim); opacity: 0.75; }
+.ex-map-town circle { fill: var(--ex-bone); }
+.ex-map-town text { font-family: var(--ex-sans); font-size: 6.4px; font-weight: 500; fill: var(--ex-dim); paint-order: stroke; stroke: var(--ex-ink); stroke-width: 2.4px; stroke-linejoin: round; }
+.ex-map-region { font-family: var(--ex-serif); font-style: italic; font-size: 13.5px; fill: var(--ex-bone); opacity: 0.72; cursor: pointer; paint-order: stroke; stroke: var(--ex-ink); stroke-width: 3.5px; stroke-linejoin: round; transition: opacity 400ms, fill 400ms; outline: none; }
+.ex-map-region:hover, .ex-map-region:focus-visible { opacity: 1; }
+.ex-map-region.is-on { fill: var(--ex-accent); opacity: 1; }
+.ex-terr-panel { position: sticky; top: 120px; }
+.ex-tags { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ex-tags li { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ex-dim); border: 1px solid var(--ex-line-2); padding: 0.5rem 0.8rem; }
+.ex-terr-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2.5rem); margin-top: clamp(3rem, 6vw, 5rem); }
+.ex-terr-tabs button { text-align: left; background: none; border: 0; border-top: 1px solid var(--ex-line-2); padding: 1.1rem 0 0; color: var(--ex-dim); cursor: pointer; transition: color 400ms, border-color 400ms; }
+.ex-terr-tabs button .ex-serif { display: block; font-size: clamp(1.15rem, 1.6vw, 1.5rem); line-height: 1.15; }
+.ex-terr-tabs button.is-on { color: var(--ex-bone); border-top-color: var(--ex-accent); }
+.ex-terr-tabs button:hover { color: var(--ex-bone); }
+@media (max-width: 960px) {
+  .ex-terr { grid-template-columns: minmax(0, 1fr); }
+  .ex-terr-panel { position: static; }
+  .ex-terr-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-/* Sem espaço entre colunas: o centro de cada coluna é (i + 0,5) / n, o mesmo do ponto. */
-.ex-route-days li { text-align: center; padding: 0.9rem clamp(0.35rem, 0.8vw, 0.75rem) 0; border-top: 1px solid var(--ex-line); }
-.ex-route-days li.is-photo { border-top-color: var(--ex-accent); }
-.ex-route-title { font-size: clamp(0.95rem, 1.15vw, 1.15rem); line-height: 1.2; margin-top: 0.5rem; }
-.ex-route-km { font-size: 0.8125rem; margin-top: 0.4rem; }
-/* Telemóvel: os dias em lista, com a linha a descer pela esquerda. */
+
+/* Experiências: mosaico */
+.ex-mosaic { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1.25rem, 3vw, 3rem); row-gap: clamp(3.5rem, 7vw, 7rem); margin-top: clamp(3.5rem, 6vw, 5.5rem); }
+.ex-mosaic .ex-figure { aspect-ratio: 3 / 4; }
+.ex-mosaic-mesa { grid-column: 1 / 8; }
+.ex-mosaic-mesa .ex-figure { aspect-ratio: 4 / 3; }
+.ex-mosaic-vinho { grid-column: 9 / 13; margin-top: clamp(4rem, 9vw, 9rem); }
+.ex-mosaic-azeite { grid-column: 1 / 5; }
+.ex-mosaic-cultura { grid-column: 5 / 9; margin-top: clamp(3rem, 7vw, 7rem); }
+.ex-mosaic-natureza { grid-column: 9 / 13; }
+.ex-mosaic-text { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0.5rem; margin-top: 1.4rem; }
+.ex-mosaic-text .ex-num { margin: 0.35rem 0 0; }
+.ex-mosaic-text .ex-body { margin-top: 0.7rem; max-width: 42ch; }
 @media (max-width: 760px) {
-  .ex-route-draw { display: none; }
-  .ex-route-days { grid-template-columns: minmax(0, 1fr); gap: 0; border-left: 1px solid var(--ex-accent); margin: 1.75rem 0 0 6px; }
-  .ex-route-days li { text-align: left; border-top: 0; padding: 0 0 1.4rem 1.4rem; position: relative; }
-  .ex-route-days li::before { content: ""; position: absolute; left: -5px; top: 2px; width: 9px; height: 9px; border-radius: 99px; background: var(--ex-ink); border: 1.5px solid var(--ex-accent); }
-  .ex-route-days li.is-photo::before { background: var(--ex-accent); }
+  .ex-mosaic > * { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .ex-mosaic .ex-figure, .ex-mosaic-mesa .ex-figure { aspect-ratio: 4 / 3; }
+}
+
+/* Formatos */
+.ex-formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 6vw, 6rem); margin-top: clamp(3rem, 6vw, 5rem); }
+.ex-format { display: block; color: inherit; text-decoration: none; border-top: 1px solid var(--ex-line-2); padding-top: 1.75rem; }
+.ex-format-name { font-size: clamp(3.2rem, 7.5vw, 7rem); line-height: 0.95; margin: 0.9rem 0 1.5rem; transition: color 500ms var(--ease-expo); }
+.ex-format:hover .ex-format-name { color: var(--ex-accent); }
+.ex-format .ex-link { margin-top: 1.75rem; }
+.ex-formats-note { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.75rem 2rem; margin-top: clamp(3.5rem, 6vw, 5rem); padding-left: 1.5rem; border-left: 1px solid var(--ex-sienna); }
+.ex-formats-note .ex-over { color: var(--ex-sienna); }
+.ex-formats-note .ex-serif-i { font-size: clamp(1.3rem, 2.1vw, 1.85rem); line-height: 1.3; max-width: 46ch; }
+@media (max-width: 760px) { .ex-formats { grid-template-columns: minmax(0, 1fr); } }
+
+/* Viagens de assinatura */
+.ex-journeys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); margin-top: clamp(3rem, 6vw, 5rem); }
+.ex-journeys > article:nth-child(2) { margin-top: clamp(2rem, 5vw, 5rem); }
+.ex-journeys .ex-body { max-width: 40ch; }
+.ex-journey-days { position: absolute; top: 1rem; left: 1rem; padding: 0.5rem 0.8rem; background: rgba(22, 26, 18, 0.55); color: var(--ex-bone); backdrop-filter: blur(6px); }
+@media (max-width: 900px) {
+  .ex-journeys { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
+  .ex-journeys > article:nth-child(2) { margin-top: 0; }
+}
+
+/* Day tours em fila deslizante, alinhada à margem do texto */
+.ex-rail {
+  --ex-rail-pad: max(var(--ex-gutter), calc((100vw - 1520px) / 2 + var(--ex-gutter)));
+  display: grid; grid-auto-flow: column; grid-auto-columns: clamp(250px, 27vw, 400px);
+  gap: clamp(1rem, 2vw, 2rem); overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-padding-inline: var(--ex-rail-pad);
+  padding: 0 var(--ex-rail-pad) 1.25rem; margin-top: clamp(3rem, 5vw, 4.5rem);
+  scrollbar-width: thin; scrollbar-color: var(--ex-line-2) transparent;
+}
+.ex-rail > article { scroll-snap-align: start; }
+@media (max-width: 640px) { .ex-rail { grid-auto-columns: 78vw; } }
+
+/* O padrão Exclusive: faixa verde floresta */
+.ex-standard { position: relative; isolation: isolate; background-color: var(--ex-deep); padding-block: clamp(5.5rem, 11vw, 10rem); }
+.ex-standard::before { content: ""; position: absolute; inset: 0; z-index: -1; background-color: #f2edde; opacity: 0.05; -webkit-mask: url("/images/exclusive/curvas.svg") 300px 0 / 1400px 1400px repeat; mask: url("/images/exclusive/curvas.svg") 300px 0 / 1400px 1400px repeat; }
+.ex-standard-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; }
+.ex-standard-photo { aspect-ratio: 4 / 3; margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+.ex-standard-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 4vw, 4rem); row-gap: clamp(2.5rem, 4.5vw, 4rem); }
+.ex-standard-list li { border-top: 1px solid var(--ex-line-2); padding-top: 1.4rem; }
+.ex-standard-list .ex-body { margin-top: 0.8rem; color: color-mix(in srgb, var(--ex-bone) 72%, transparent); }
+@media (max-width: 960px) { .ex-standard-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 560px) { .ex-standard-list { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 640px) {
+  .ex-map-town text { font-size: 9px; stroke-width: 3px; }
+  .ex-map-region { font-size: 17px; stroke-width: 4px; }
+  .ex-map-country { font-size: 8px; }
+  .ex-map-pill { display: none; } /* no mapa pequeno não cabe; a seta fica */
 }

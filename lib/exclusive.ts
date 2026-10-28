@@ -10,8 +10,9 @@
  */
 
 import { programs } from "./programs";
+import { productEntries } from "./content";
 import type { L } from "./destinations";
-import { editable } from "./pages";
+import { editable, pageImage } from "./pages";
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
@@ -22,11 +23,14 @@ export type ExJourney = {
   name: L;
   /** o que muda em relação ao produto público */
   angle: L;
-  region: string;
+  region: ExRegionId;
   days: number;
-  distance: string;
   image: string;
 };
+
+/** O território do produto (no FLOW: a região), com o nome que a página usa. */
+const TERRITORIO: Record<string, ExRegionId> = { douro: "douro", "tras-os-montes": "tras", "peneda-geres": "geres", santiago: "santiago" };
+const territorio = (base: string): ExRegionId => TERRITORIO[productEntries.find((e) => e.id === base)?.regionId ?? ""] ?? "douro";
 
 const j = (base: string, name: L, angle: L, image?: string): ExJourney => {
   const p = programs[base];
@@ -36,9 +40,8 @@ const j = (base: string, name: L, angle: L, image?: string): ExJourney => {
     base,
     name: tx.name,
     angle: tx.angle,
-    region: p.region,
+    region: territorio(base),
     days: p.duration.days,
-    distance: p.totalDistance,
     image: image ?? p.heroImage,
   };
 };
@@ -78,37 +81,43 @@ export const journeys: ExJourney[] = [
 export type ExDayTour = {
   base: string;
   name: L;
-  region: string;
-  distance: string;
-  walkTime: string;
+  region: ExRegionId;
   image: string;
 };
 
-const d = (base: string, name: L, walkTime = "2h"): ExDayTour => {
+const d = (base: string, name: L, image?: string): ExDayTour => {
   const p = programs[base];
   const tx = editable(`ui.exclusive.${base}`, { name });
-  return { base, name: tx.name, region: p.region, distance: p.totalDistance, walkTime, image: p.heroImage };
+  return { base, name: tx.name, region: territorio(base), image: image ?? p.heroImage };
 };
 
-/** Day tours. Mais curtos, mesma exigência de mesa e de acesso. */
+/** One day. Só o Norte: os quatro territórios do EXCLUSIVE. */
 export const dayTours: ExDayTour[] = [
-  d("douro-1day", tri("A Table in the Vineyard", "Uma Mesa na Vinha", "Una Mesa en la Viña")),
-  d("sintra-1day", tri("The Sacred Mountain", "A Serra Sagrada", "La Sierra Sagrada")),
-  d("arrabida-1day", tri("Arrábida, Sea and Cellar", "Arrábida, Mar e Adega", "Arrábida, Mar y Bodega")),
-  d("cacela-1day", tri("The Lagoon at Cacela", "A Ria de Cacela", "La Ría de Cacela")),
-  d("algarve-1day", tri("The Vincentian Cliffs", "As Falésias Vicentinas", "Los Acantilados Vicentinos")),
-  d("tras-1day", tri("Olive Oil and a Village Table", "Azeite e Mesa de Aldeia", "Aceite y Mesa de Aldea")),
-];
+  d("douro-1day", tri("A Table in the Vineyard", "Uma Mesa na Vinha", "Una Mesa en la Viña"), "/images/programs/douro-1day/walk-2.jpg"),
+  d("monks-1day", tri("The Monks' Path", "O Caminho dos Monges", "El Camino de los Monjes"), "/images/programs/douro-8days/monge-2.jpg"),
+  d("saomamede-1day", tri("São Mamede, Above the River", "São Mamede, Sobre o Rio", "São Mamede, Sobre el Río"), "/images/programs/douro-8days/monge-4.jpg"),
+  d("vidago-1day", tri("Vidago, Spa Town and Vines", "Vidago, Termas e Vinha", "Vidago, Termas y Viña"), "/images/programs/vidago-1day/tras-os-montes-1.jpg"),
+  d("chaves-1day", tri("Chaves and the Roman Bridge", "Chaves e a Ponte Romana", "Chaves y el Puente Romano")),
+  d("podence-1day", tri("Podence, Land of the Caretos", "Podence, Terra dos Caretos", "Podence, Tierra de los Caretos")),
+].filter((t) => programs[t.base]);
 
-/**
- * Itinerário em destaque. O caminho desenha-se a partir dos dias do produto
- * (título e distância de cada dia), por isso nada aqui é posição à mão.
- * photoDay: o dia em que a fotografia foi tirada (o miradouro de Casal de
- * Loivos, no dia "Casal de Loivos a Pinhão"); fica assinalado no caminho.
- */
-export const featured = {
-  base: "douro-8days",
-  name: journeys[0].name,
-  image: journeys[0].image,
-  photoDay: 7,
+/** Imagens da coleção. Cada uma pode ser trocada no FLOW (Site › Páginas › EXCLUSIVE · Coleção). */
+export const exImages = {
+  hero: pageImage("exclusive", "hero", "/images/programs/douro-1day/walk-4.jpg"),
+  origemA: pageImage("exclusive", "origemA", "/images/consulting/c-sinal-8.jpg"),
+  origemB: pageImage("exclusive", "origemB", "/images/programs/douro-8days/samodaes-2.jpg"),
+  douro: pageImage("exclusive", "douro", "/images/programs/douro-8days/douro-c.jpg"),
+  tras: pageImage("exclusive", "tras", "/images/programs/tras-8days/picote-2.jpg"),
+  geres: pageImage("exclusive", "geres", "/images/programs/geres-8days/geres-a.jpg"),
+  santiago: pageImage("exclusive", "santiago", "/images/programs/douro-1day/walk-1.jpg"),
+  mesa: pageImage("exclusive", "mesa", "/images/programs/tras-8days/tom-a.jpg"),
+  vinho: pageImage("exclusive", "vinho", "/images/programs/douro-1day/walk-3.jpg"),
+  azeite: pageImage("exclusive", "azeite", "/images/programs/tras-8days/azeite-1.jpg"),
+  cultura: pageImage("exclusive", "cultura", "/images/programs/tras-8days/palacios-1.jpg"),
+  natureza: pageImage("exclusive", "natureza", "/images/programs/geres-8days/geres-f.jpg"),
+  padrao: pageImage("exclusive", "padrao", "/images/programs/douro-1day/hero-douro-1day.jpg"),
 };
+
+export type ExRegionId = "douro" | "tras" | "geres" | "santiago";
+/** A ordem dos territórios na página (de oeste para leste, e o Caminho por fim). */
+export const regionIds: ExRegionId[] = ["geres", "douro", "tras", "santiago"];
