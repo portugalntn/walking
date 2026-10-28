@@ -369,7 +369,7 @@
       "themeDark": "Escuro",
       "themeToLight": "Mudar para o tema claro",
       "themeToDark": "Mudar para o tema escuro",
-      "publicSite": "Site público",
+      "publicSite": "Site B2C",
       "themeAuto": "Automático",
       "themeToAuto": "Seguir o tema do sistema"
     },
@@ -447,7 +447,7 @@
     },
     "footer": {
       "line": "A Portugal NTN é uma Destination Management Company de caminhada no Norte e Nordeste de Portugal. Desenho, sinalização, certificação e operação de percursos próprios.",
-      "public": "Site público"
+      "public": "Site B2C"
     },
     "gate": {
       "overline": "B2B Exclusive · Só para operadores",

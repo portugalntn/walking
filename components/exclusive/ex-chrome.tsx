@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { m } from "framer-motion";
@@ -9,21 +10,17 @@ import { ExThemeToggle } from "./ex-theme";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 
-/** Assinatura tipográfica. Enquanto não houver logótipo em versão clara,
- *  o wordmark é desenhado em tipo, o que também é mais sóbrio. */
-function Wordmark() {
+/** Logótipo Portugal NTN Exclusive. Há duas versões (letra escura e letra clara)
+ *  e o CSS mostra a que serve ao fundo: o tema da página, ou escuro por cima
+ *  de fotografia (.ex-dark). Ficheiros em public/images/exclusive/. */
+function Wordmark({ size = "nav" }: { size?: "nav" | "footer" }) {
   const locale = useLocale();
+  const h = size === "footer" ? 56 : 40;
+  const w = Math.round(h * 4.3);
   return (
-    <Link href={`/${locale}/exclusive`} style={{ textDecoration: "none", display: "block", lineHeight: 1 }}>
-      <span className="ex-over" style={{ display: "block", marginBottom: "5px", letterSpacing: "0.34em" }}>
-        Portugal NTN · B2B
-      </span>
-      <span
-        className="ex-serif"
-        style={{ display: "block", fontSize: "1.55rem", color: "var(--ex-bone)", letterSpacing: "0.06em" }}
-      >
-        Exclusive
-      </span>
+    <Link href={`/${locale}/exclusive`} className="ex-logo" aria-label="Portugal NTN Exclusive" style={{ display: "block", lineHeight: 0 }}>
+      <Image className="ex-logo-escuro" src="/images/exclusive/logo-exclusive-fundo-escuro.png" alt="Portugal NTN Exclusive" width={w} height={h} priority={size === "nav"} unoptimized />
+      <Image className="ex-logo-claro" src="/images/exclusive/logo-exclusive-fundo-claro.png" alt="" aria-hidden width={w} height={h} priority={size === "nav"} unoptimized />
     </Link>
   );
 }
@@ -109,7 +106,7 @@ export function ExFooter() {
         style={{ display: "flex", flexWrap: "wrap", gap: "2rem", justifyContent: "space-between", alignItems: "flex-end" }}
       >
         <div style={{ maxWidth: "34ch" }}>
-          <Wordmark />
+          <Wordmark size="footer" />
           <p className="ex-body" style={{ marginTop: "1.25rem", fontSize: "0.875rem" }}>
             {t("line")}
           </p>

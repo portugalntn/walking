@@ -679,3 +679,13 @@ select.ex-field option { background-color: var(--ex-ink-2); color: var(--ex-bone
 .ex-settle { animation: ex-settle 2.2s cubic-bezier(0.19, 1, 0.22, 1) both; }
 @media (prefers-reduced-motion: reduce) { .ex-rise, .ex-settle { animation: none; } }
 .ex-gate-form .ex-chip { padding: 0.7rem 0.85rem; letter-spacing: 0.18em; flex: 1 1 auto; justify-content: center; }
+
+/* Logótipo: letra clara sobre fundo escuro, letra escura sobre fundo claro.
+   Por cima de fotografia (.ex-dark) fica sempre a versão clara. */
+.ex-logo img { display: block; height: auto; max-width: 100%; }
+.ex .ex-logo-claro { display: none !important; }
+html[data-ex-theme="light"] .ex .ex-logo-escuro { display: none !important; }
+html[data-ex-theme="light"] .ex .ex-logo-claro { display: block !important; }
+html[data-ex-theme="light"] .ex .ex-dark .ex-logo-escuro { display: block !important; }
+html[data-ex-theme="light"] .ex .ex-dark .ex-logo-claro { display: none !important; }
+@media (max-width: 640px) { header .ex-logo img { width: 140px; } }
