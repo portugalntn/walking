@@ -28,7 +28,7 @@ function Wordmark() {
   );
 }
 
-/** `gate`: no portão não há hero com foto nem secções para onde saltar. */
+/** `gate`: no portão não há secções para onde saltar nem botão de contacto. */
 export function ExNavbar({ variant = "page" }: { variant?: "page" | "gate" }) {
   const t = useTranslations("exclusive.nav");
   const locale = useLocale();
@@ -51,7 +51,7 @@ export function ExNavbar({ variant = "page" }: { variant?: "page" | "gate" }) {
   return (
     <m.header
       // Por cima do hero o navbar fica sempre escuro; ao descer segue o tema.
-      className={solid || gate ? undefined : "ex-dark"}
+      className={solid ? undefined : "ex-dark"}
       initial={{ opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, ease: EASE }}

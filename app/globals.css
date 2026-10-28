@@ -626,3 +626,56 @@ html[data-ex-theme="light"] .ex .ex-figure:hover img { filter: saturate(0.95) co
 .ex-chip:has(input:focus-visible) { outline: 1px solid var(--ex-accent); outline-offset: 3px; }
 select.ex-field { appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--ex-dim) 50%), linear-gradient(135deg, var(--ex-dim) 50%, transparent 50%); background-position: calc(100% - 10px) 52%, calc(100% - 5px) 52%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 1.5rem; }
 select.ex-field option { background-color: var(--ex-ink-2); color: var(--ex-bone); }
+
+/* Entrada B2B (portão): foto em cima, proposta à esquerda, formulário à direita */
+.ex-gate-hero { position: relative; min-height: clamp(460px, 68svh, 760px); display: flex; align-items: flex-end; }
+.ex-gate-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2.75rem, 6vw, 6.5rem);
+  align-items: start;
+}
+@media (max-width: 960px) { .ex-gate-grid { grid-template-columns: minmax(0, 1fr); } }
+.ex-gate-way {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-top: clamp(1.5rem, 2.5vw, 2rem);
+}
+.ex-gate-way > div { border-top: 1px solid var(--ex-line); padding-top: 1.1rem; }
+.ex-gate-num { font-family: var(--ex-serif); font-size: 1.25rem; color: var(--ex-accent); line-height: 1.6; }
+.ex-gate-way-title { font-size: clamp(1.5rem, 2.1vw, 1.95rem); line-height: 1.12; }
+.ex-gate-formats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem clamp(1.25rem, 2.5vw, 2.25rem);
+  margin-top: 1.6rem;
+}
+.ex-gate-formats > div { border-left: 1px solid var(--ex-line-2); padding-left: 1rem; }
+@media (max-width: 520px) { .ex-gate-formats { grid-template-columns: minmax(0, 1fr); } }
+.ex-gate-form {
+  position: sticky;
+  top: 112px;
+  background-color: var(--ex-ink-2);
+  border: 1px solid var(--ex-line);
+  padding: clamp(2rem, 3.8vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+@media (max-width: 960px) { .ex-gate-form { position: static; } }
+.ex-gate-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.1rem 1.75rem;
+}
+@media (max-width: 560px) { .ex-gate-fields { grid-template-columns: minmax(0, 1fr); } }
+.ex-gate-fields .ex-field { padding-block: 1rem; }
+
+/* Entrada sem depender do JavaScript: o formulário aparece mesmo antes de a página hidratar. */
+@keyframes ex-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ex-settle { from { transform: scale(1.08); } to { transform: none; } }
+.ex-rise { animation: ex-rise 1.1s cubic-bezier(0.19, 1, 0.22, 1) both; }
+.ex-settle { animation: ex-settle 2.2s cubic-bezier(0.19, 1, 0.22, 1) both; }
+@media (prefers-reduced-motion: reduce) { .ex-rise, .ex-settle { animation: none; } }
+.ex-gate-form .ex-chip { padding: 0.7rem 0.85rem; letter-spacing: 0.18em; flex: 1 1 auto; justify-content: center; }

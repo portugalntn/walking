@@ -14,7 +14,9 @@ export function GET(req: NextRequest) {
   const res = NextResponse.redirect(new URL(`/${lang}/exclusive`, req.url));
   const key = process.env.EXCLUSIVE_PREVIEW_KEY ?? "";
   const given = req.nextUrl.searchParams.get("k") ?? "";
-  const ok = key.length >= 12 && given.length === key.length && timingSafeEqual(Buffer.from(given), Buffer.from(key));
+  // Em desenvolvimento (localhost) abre sem chave, para a equipa ver a coleção enquanto a constrói.
+  const dev = process.env.NODE_ENV === "development";
+  const ok = dev || (key.length >= 12 && given.length === key.length && timingSafeEqual(Buffer.from(given), Buffer.from(key)));
   if (ok) {
     res.cookies.set(EX_ACCESS_COOKIE, "1", {
       path: "/",

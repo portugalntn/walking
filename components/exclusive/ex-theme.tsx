@@ -3,65 +3,82 @@
 import { useEffect, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 
-/** Tema claro / escuro do EXCLUSIVE. O escuro é a identidade e o padrão;
- *  a escolha do visitante fica no browser. O atributo vive no <html>
+import { EX_THEME_ATTR as ATTR, EX_THEME_STORAGE_KEY as STORAGE_KEY } from "./ex-theme-script";
+
+/** Tema do EXCLUSIVE em três modos: Automático (segue o sistema, o padrão),
+ *  Claro e Escuro. A escolha fica no browser. O atributo vive no <html>
  *  (que já tem suppressHydrationWarning) e só os seletores .ex o leem,
  *  por isso o site público não é afetado. */
 
-import { EX_THEME_ATTR as ATTR, EX_THEME_STORAGE_KEY as STORAGE_KEY } from "./ex-theme-script";
+type Modo = "auto" | "light" | "dark";
+const SEGUINTE: Record<Modo, Modo> = { auto: "light", light: "dark", dark: "auto" };
+const EVENTO = "ex-theme-change";
+const sistema = () => window.matchMedia("(prefers-color-scheme: light)");
 
-type ExTheme = "dark" | "light";
-
-function readTheme(): ExTheme {
-  return document.documentElement.getAttribute(ATTR) === "light" ? "light" : "dark";
+function lerModo(): Modo {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    return s === "light" || s === "dark" ? s : "auto";
+  } catch {
+    return "auto";
+  }
 }
 
 function subscribe(onChange: () => void) {
-  const observer = new MutationObserver(onChange);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: [ATTR] });
-  return () => observer.disconnect();
+  window.addEventListener(EVENTO, onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    window.removeEventListener(EVENTO, onChange);
+    window.removeEventListener("storage", onChange);
+  };
 }
 
-function applyTheme(theme: ExTheme) {
+function aplicar(modo: Modo) {
+  const claro = modo === "light" || (modo === "auto" && sistema().matches);
   const root = document.documentElement;
-  if (theme === "light") root.setAttribute(ATTR, "light");
+  if (claro) root.setAttribute(ATTR, "light");
   else root.removeAttribute(ATTR);
 }
 
 export function ExThemeToggle() {
   const t = useTranslations("exclusive.nav");
-  const theme = useSyncExternalStore(subscribe, readTheme, () => "dark" as const);
+  const modo = useSyncExternalStore(subscribe, lerModo, () => "auto" as const);
 
-  // Navegação do lado do cliente (vinda do site público) não corre o
-  // script inline, por isso a escolha guardada é reaplicada aqui.
+  // Aplica o modo ao entrar (a navegação do lado do cliente não corre o
+  // script inline) e, no Automático, acompanha o sistema quando ele muda.
   useEffect(() => {
-    try {
-      if (localStorage.getItem(STORAGE_KEY) === "light") applyTheme("light");
-    } catch {}
-  }, []);
+    aplicar(modo);
+    if (modo !== "auto") return;
+    const mq = sistema();
+    const mudou = () => aplicar("auto");
+    mq.addEventListener("change", mudou);
+    return () => mq.removeEventListener("change", mudou);
+  }, [modo]);
 
-  const next: ExTheme = theme === "dark" ? "light" : "dark";
+  const proximo = SEGUINTE[modo];
 
-  const toggle = () => {
+  const mudar = () => {
     try {
-      localStorage.setItem(STORAGE_KEY, next);
+      if (proximo === "auto") localStorage.removeItem(STORAGE_KEY);
+      else localStorage.setItem(STORAGE_KEY, proximo);
     } catch {}
     const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (doc.startViewTransition && !reduced) doc.startViewTransition(() => applyTheme(next));
-    else applyTheme(next);
+    const feito = () => {
+      aplicar(proximo);
+      window.dispatchEvent(new Event(EVENTO));
+    };
+    if (doc.startViewTransition && !reduced) doc.startViewTransition(feito);
+    else feito();
   };
 
+  const rotulo = { auto: "themeAuto", light: "themeLight", dark: "themeDark" } as const;
+  const acao = { auto: "themeToAuto", light: "themeToLight", dark: "themeToDark" } as const;
+
   return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="ex-over ex-theme-toggle"
-      aria-label={t(next === "light" ? "themeToLight" : "themeToDark")}
-      title={t(next === "light" ? "themeToLight" : "themeToDark")}
-    >
+    <button type="button" onClick={mudar} className="ex-over ex-theme-toggle" aria-label={t(acao[proximo])} title={t(acao[proximo])}>
       <span className="ex-theme-toggle-mark" aria-hidden>(</span>
-      {t(next === "light" ? "themeLight" : "themeDark")}
+      {t(rotulo[modo])}
       <span className="ex-theme-toggle-mark" aria-hidden>)</span>
     </button>
   );

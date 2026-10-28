@@ -14,7 +14,8 @@ import { EX_ACCESS_COOKIE as ACCESS_COOKIE, flowConfigurado, registarLeadNoFlow,
 const UM_ANO = 60 * 60 * 24 * 365;
 
 const TIPOS = new Set(["operador", "agencia", "dmc", "outro"]);
-const INTERESSES = new Set(["catalogo", "tailor_made", "ambos"]);
+// Escolha múltipla do portão (guiado,autoguiado,oneday,multiday,tailor); o dossier e leads antigos usam um valor só.
+const INTERESSES = new Set(["guiado", "autoguiado", "oneday", "multiday", "tailor", "catalogo", "tailor_made", "ambos"]);
 
 const clean = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 const looksLikeEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -31,7 +32,8 @@ export async function POST(request: Request) {
   if (clean(raw.website)) return NextResponse.json({ ok: true });
 
   const tipo = clean(raw.tipoEmpresa, 40);
-  const interesse = clean(raw.interesse, 40);
+  const pedidos = Array.isArray(raw.interesses) ? raw.interesses : clean(raw.interesse, 80).split(",");
+  const interesses = [...new Set(pedidos.map((v) => clean(v, 20)).filter((v) => INTERESSES.has(v)))];
   const lead: LeadSite = {
     nome: clean(raw.nome, 160),
     empresa: clean(raw.empresa, 160),
@@ -39,11 +41,12 @@ export async function POST(request: Request) {
     telefone: clean(raw.telefone, 60),
     pais: clean(raw.pais, 80),
     tipoEmpresa: TIPOS.has(tipo) ? tipo : "",
-    interesse: INTERESSES.has(interesse) ? interesse : "",
+    interesse: interesses.join(",").slice(0, 40),
     mensagem: clean(raw.mensagem, 4000),
     idioma: clean(raw.idioma, 8),
     dados: {
       formulario: clean(raw.formulario, 40) || "acesso",
+      ...(interesses.length ? { interesses: interesses.join(", ") } : {}),
       pagina: clean(request.headers.get("referer"), 300),
       ...lerCampanha(request.headers.get("cookie")),
     },

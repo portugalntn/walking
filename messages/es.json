@@ -369,7 +369,9 @@
       "themeDark": "Oscuro",
       "themeToLight": "Cambiar al tema claro",
       "themeToDark": "Cambiar al tema oscuro",
-      "publicSite": "Sitio público"
+      "publicSite": "Sitio público",
+      "themeAuto": "Automático",
+      "themeToAuto": "Seguir el tema del sistema"
     },
     "hero": {
       "overline": "B2B Exclusive · Para operadores",
@@ -449,14 +451,37 @@
     },
     "gate": {
       "overline": "B2B Exclusive · Solo para operadores",
-      "title": "Portugal a pie, <em>para sus clientes</em>.",
-      "lead": "Un área reservada a operadores turísticos y agencias de todo el mundo. Identifíquese para ver la colección completa: jornadas, itinerarios y experiencias.",
+      "title": "Los senderos que creamos, <em>abiertos al mundo</em>.",
+      "bracket": "El Norte de Portugal a pie, al ritmo de quien vive allí",
+      "imageAlt": "Valle del Duero, terrazas de viñedo sobre el río",
+      "lead": "Somos de aquí. Diseñamos, señalizamos y operamos nuestras propias rutas en el Norte y Nordeste de Portugal.",
+      "purpose": "Caminamos con guías de la región, dormimos en casas de quien vive allí y nos sentamos a la mesa de productores locales. El turismo que hacemos tiene que dejar el territorio mejor de lo que lo encontró. Hoy ponemos ese trabajo al servicio de operadores de todo el mundo, para que sus clientes descubran el Norte caminando y viviéndolo desde dentro.",
+      "waysOverline": "Dos formas de trabajar con nosotros",
       "catalogTitle": "Itinerarios listos para vender",
-      "catalogText": "Los programas que ya hemos creado y operamos, de varios días y de un día, en el Norte y Nordeste de Portugal. Disponibles para su catálogo, con tarifas de operador.",
+      "catalogText": "Los programas que ya hemos creado y operamos, listos para entrar en su catálogo, con tarifas de operador.",
+      "formats": {
+        "multiday": {
+          "title": "Multi-day",
+          "text": "Jornadas de varios días, de alojamiento en alojamiento, por los territorios del Norte y Nordeste."
+        },
+        "oneday": {
+          "title": "One day",
+          "text": "Un día entero en un territorio, con guía local, paisaje y mesa de la región."
+        },
+        "guiado": {
+          "title": "Guiados",
+          "text": "Con un guía de la región del primer al último kilómetro."
+        },
+        "autoguiado": {
+          "title": "Autoguiados",
+          "text": "Al ritmo del cliente, con hoja de ruta, mapas y asistencia sobre el terreno."
+        }
+      },
       "tailorTitle": "Tailor made",
-      "tailorText": "Programas diseñados a la medida de su mercado y de su cliente: duración, ritmo, alojamiento y experiencias. Para operadores de cualquier parte del mundo.",
+      "tailorText": "Programas diseñados desde cero para su mercado y su cliente: duración, ritmo, alojamiento y experiencias. Para operadores de cualquier parte del mundo.",
       "formOverline": "Acceso para operadores",
       "formTitle": "Abrir la colección",
+      "formLead": "Rellénelo una vez. La colección se abre enseguida y nuestro equipo comercial se pondrá en contacto con usted.",
       "name": "Nombre y apellido",
       "company": "Empresa / operador",
       "type": "Tipo de empresa",
@@ -470,10 +495,13 @@
       "email": "Email profesional",
       "phone": "WhatsApp / teléfono",
       "interest": "Qué busca",
+      "interestHint": "Puede elegir varias opciones.",
       "interests": {
-        "catalogo": "Itinerarios listos",
-        "tailor_made": "Tailor made",
-        "ambos": "Los dos"
+        "guiado": "Guiados",
+        "autoguiado": "Autoguiados",
+        "oneday": "One day",
+        "multiday": "Multi-day",
+        "tailor": "Tailor made"
       },
       "submit": "Acceder a B2B Exclusive",
       "sending": "Abriendo",

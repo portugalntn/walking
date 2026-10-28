@@ -6,5 +6,6 @@ export const EX_THEME_STORAGE_KEY = "ex-theme";
 export const EX_THEME_ATTR = "data-ex-theme";
 
 /** Corre antes da pintura, no HTML do servidor, para não haver salto de
- *  escuro para claro ao abrir a página. */
-export const exThemeScript = `try{if(localStorage.getItem("${EX_THEME_STORAGE_KEY}")==="light")document.documentElement.setAttribute("${EX_THEME_ATTR}","light")}catch(e){}`;
+ *  tema ao abrir a página. Sem escolha guardada ("light" ou "dark"),
+ *  segue o tema do sistema (telemóvel, computador). */
+export const exThemeScript = `try{var s=localStorage.getItem("${EX_THEME_STORAGE_KEY}");if(s==="light"||(s!=="dark"&&matchMedia("(prefers-color-scheme: light)").matches))document.documentElement.setAttribute("${EX_THEME_ATTR}","light")}catch(e){}`;

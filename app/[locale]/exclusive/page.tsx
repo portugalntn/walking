@@ -14,6 +14,7 @@ import { ExEnquiry } from "@/components/exclusive/ex-enquiry";
 import { ExGate } from "@/components/exclusive/ex-gate";
 import { exThemeScript } from "@/components/exclusive/ex-theme-script";
 import { EX_ACCESS_COOKIE } from "@/lib/flow-leads";
+import { pageImage } from "@/lib/pages";
 
 /** Serifa de exibição só do EXCLUSIVE. O site público continua em DIN. */
 const exSerif = Cormorant_Garamond({
@@ -57,7 +58,7 @@ export default async function ExclusivePage() {
         <script dangerouslySetInnerHTML={{ __html: exThemeScript }} />
         <ExNavbar variant="gate" />
         <main>
-          <ExGate />
+          <ExGate image={pageImage("exclusive-entrada", "topo", "/images/programs/douro/douro-a.jpg")} />
         </main>
         <ExFooter />
       </div>

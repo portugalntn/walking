@@ -369,7 +369,9 @@
       "themeDark": "Dark",
       "themeToLight": "Switch to light theme",
       "themeToDark": "Switch to dark theme",
-      "publicSite": "Public site"
+      "publicSite": "Public site",
+      "themeAuto": "Auto",
+      "themeToAuto": "Follow the system theme"
     },
     "hero": {
       "overline": "B2B Exclusive · For operators",
@@ -449,14 +451,37 @@
     },
     "gate": {
       "overline": "B2B Exclusive · Operators only",
-      "title": "Portugal on foot, <em>for your clients</em>.",
-      "lead": "An area reserved for tour operators and travel agencies worldwide. Tell us who you are to see the full collection: journeys, itineraries and experiences.",
+      "title": "The trails we create, <em>open to the world</em>.",
+      "bracket": "Northern Portugal on foot, at the pace of those who live there",
+      "imageAlt": "The Douro Valley, vineyard terraces above the river",
+      "lead": "We are local. We design, waymark and operate our own routes across the North and Northeast of Portugal.",
+      "purpose": "We walk with guides from the region, stay in the homes of those who live there and sit at the tables of local producers. The tourism we do has to leave the land better than we found it. Today we put that work at the service of operators worldwide, so their clients discover the North by walking it and living it from the inside.",
+      "waysOverline": "Two ways to work with us",
       "catalogTitle": "Ready-to-sell itineraries",
-      "catalogText": "The programmes we have built and operate, multi-day and single-day, across the North and Northeast of Portugal. Available for your catalogue, at operator rates.",
+      "catalogText": "The programmes we have built and operate, ready to go into your catalogue, at operator rates.",
+      "formats": {
+        "multiday": {
+          "title": "Multi-day",
+          "text": "Journeys of several days, from one stay to the next, across the North and Northeast."
+        },
+        "oneday": {
+          "title": "One day",
+          "text": "A full day in one territory, with a local guide, landscape and regional food."
+        },
+        "guiado": {
+          "title": "Guided",
+          "text": "With a guide from the region from the first kilometre to the last."
+        },
+        "autoguiado": {
+          "title": "Self-guided",
+          "text": "At the client's own pace, with route notes, maps and on-the-ground support."
+        }
+      },
       "tailorTitle": "Tailor made",
-      "tailorText": "Programmes designed around your market and your client: length, pace, accommodation and experiences. For operators anywhere in the world.",
+      "tailorText": "Programmes designed from scratch for your market and your client: length, pace, accommodation and experiences. For operators anywhere in the world.",
       "formOverline": "Operator access",
       "formTitle": "Open the collection",
+      "formLead": "Fill this in once. The collection opens straight away and our sales team will be in touch.",
       "name": "Full name",
       "company": "Company / operator",
       "type": "Type of company",
@@ -470,10 +495,13 @@
       "email": "Work email",
       "phone": "WhatsApp / phone",
       "interest": "What are you looking for",
+      "interestHint": "You can choose more than one.",
       "interests": {
-        "catalogo": "Ready itineraries",
-        "tailor_made": "Tailor made",
-        "ambos": "Both"
+        "guiado": "Guided",
+        "autoguiado": "Self-guided",
+        "oneday": "One day",
+        "multiday": "Multi-day",
+        "tailor": "Tailor made"
       },
       "submit": "Enter B2B Exclusive",
       "sending": "Opening",
