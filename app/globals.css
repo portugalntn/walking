@@ -688,4 +688,44 @@ html[data-ex-theme="light"] .ex .ex-logo-escuro { display: none !important; }
 html[data-ex-theme="light"] .ex .ex-logo-claro { display: block !important; }
 html[data-ex-theme="light"] .ex .ex-dark .ex-logo-escuro { display: block !important; }
 html[data-ex-theme="light"] .ex .ex-dark .ex-logo-claro { display: none !important; }
-@media (max-width: 640px) { header .ex-logo img { width: 140px; } }
+.ex-theme-short { display: none; font-size: 0.95rem; letter-spacing: 0; }
+@media (max-width: 640px) {
+  header .ex-logo img { width: 124px; }
+  .ex-theme-long { display: none; }
+  .ex-theme-short { display: inline; }
+}
+
+/* Itinerário: o caminho dia a dia, por baixo da fotografia.
+   A linha e as colunas dos dias partilham a mesma grelha de --n colunas:
+   cada ponto fica exatamente sobre o centro do seu dia. */
+.ex-route { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.ex-route-draw { position: relative; height: clamp(90px, 10vw, 140px); margin-top: 2rem; }
+.ex-route-draw svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ex-route-area { fill: var(--ex-accent); opacity: 0.08; }
+.ex-route-line { fill: none; stroke: var(--ex-accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ex-route-dot {
+  position: absolute;
+  width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  border-radius: 99px;
+  background: var(--ex-ink);
+  border: 1.5px solid var(--ex-accent);
+}
+.ex-route-dot.is-photo { width: 15px; height: 15px; margin: -7.5px 0 0 -7.5px; background: var(--ex-accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--ex-accent) 22%, transparent); }
+.ex-route-days {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  gap: 0;
+}
+/* Sem espaço entre colunas: o centro de cada coluna é (i + 0,5) / n, o mesmo do ponto. */
+.ex-route-days li { text-align: center; padding: 0.9rem clamp(0.35rem, 0.8vw, 0.75rem) 0; border-top: 1px solid var(--ex-line); }
+.ex-route-days li.is-photo { border-top-color: var(--ex-accent); }
+.ex-route-title { font-size: clamp(0.95rem, 1.15vw, 1.15rem); line-height: 1.2; margin-top: 0.5rem; }
+.ex-route-km { font-size: 0.8125rem; margin-top: 0.4rem; }
+/* Telemóvel: os dias em lista, com a linha a descer pela esquerda. */
+@media (max-width: 760px) {
+  .ex-route-draw { display: none; }
+  .ex-route-days { grid-template-columns: minmax(0, 1fr); gap: 0; border-left: 1px solid var(--ex-accent); margin: 1.75rem 0 0 6px; }
+  .ex-route-days li { text-align: left; border-top: 0; padding: 0 0 1.4rem 1.4rem; position: relative; }
+  .ex-route-days li::before { content: ""; position: absolute; left: -5px; top: 2px; width: 9px; height: 9px; border-radius: 99px; background: var(--ex-ink); border: 1.5px solid var(--ex-accent); }
+  .ex-route-days li.is-photo::before { background: var(--ex-accent); }
+}

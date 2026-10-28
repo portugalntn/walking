@@ -12,6 +12,7 @@ import { EX_THEME_ATTR as ATTR, EX_THEME_STORAGE_KEY as STORAGE_KEY } from "./ex
 
 type Modo = "auto" | "light" | "dark";
 const SEGUINTE: Record<Modo, Modo> = { auto: "light", light: "dark", dark: "auto" };
+const SIMBOLO: Record<Modo, string> = { auto: "◐", light: "○", dark: "●" };
 const EVENTO = "ex-theme-change";
 const sistema = () => window.matchMedia("(prefers-color-scheme: light)");
 
@@ -78,7 +79,9 @@ export function ExThemeToggle() {
   return (
     <button type="button" onClick={mudar} className="ex-over ex-theme-toggle" aria-label={t(acao[proximo])} title={t(acao[proximo])}>
       <span className="ex-theme-toggle-mark" aria-hidden>(</span>
-      {t(rotulo[modo])}
+      <span className="ex-theme-long">{t(rotulo[modo])}</span>
+      {/* No telemóvel o nome não cabe ao lado da logo: fica o símbolo (o nome vai no aria-label). */}
+      <span className="ex-theme-short" aria-hidden>{SIMBOLO[modo]}</span>
       <span className="ex-theme-toggle-mark" aria-hidden>)</span>
     </button>
   );

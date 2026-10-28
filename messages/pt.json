@@ -402,7 +402,11 @@
       "statDistance": "Distância",
       "statDays": "Dias",
       "statGrade": "Grau",
-      "note": "Traçado ilustrativo. Dia a dia completo, alojamento e condições NET no dossier."
+      "note": "A altura de cada ponto é a distância caminhada nesse dia. Dia a dia completo, alojamento e condições NET no dossier.",
+      "photoCaption": "Vista do miradouro de Casal de Loivos, no dia 7",
+      "routeOverline": "O caminho em {days} dias",
+      "day": "Dia {n}",
+      "photoDay": "A vista da fotografia"
     },
     "dayTours": {
       "overline": "Day tours",

@@ -402,7 +402,11 @@
       "statDistance": "Distance",
       "statDays": "Days",
       "statGrade": "Grade",
-      "note": "Route drawn for illustration. Full day by day, accommodation and NET conditions in the dossier."
+      "note": "The height of each point is the distance walked that day. Full day-by-day, accommodation and NET terms in the dossier.",
+      "photoCaption": "The view from the Casal de Loivos lookout, on day 7",
+      "routeOverline": "The route in {days} days",
+      "day": "Day {n}",
+      "photoDay": "The view in the photo"
     },
     "dayTours": {
       "overline": "Day tours",

@@ -101,30 +101,14 @@ export const dayTours: ExDayTour[] = [
 ];
 
 /**
- * Itinerário em destaque, desenhado sobre fotografia.
- * Os pontos são posições relativas (0 a 100) dentro da imagem, para o traçado
- * decorativo. Não são coordenadas reais: quando houver GPX, isto passa a ser
- * gerado a partir dele.
+ * Itinerário em destaque. O caminho desenha-se a partir dos dias do produto
+ * (título e distância de cada dia), por isso nada aqui é posição à mão.
+ * photoDay: o dia em que a fotografia foi tirada (o miradouro de Casal de
+ * Loivos, no dia "Casal de Loivos a Pinhão"); fica assinalado no caminho.
  */
-export type ExWaypoint = { label: string; x: number; y: number; kind?: "start" | "finish" };
-
 export const featured = {
   base: "douro-8days",
   name: journeys[0].name,
   image: journeys[0].image,
-  waypoints: [
-    { label: "Peso da Régua", x: 16, y: 78, kind: "start" as const },
-    { label: "Samodães", x: 24, y: 60 },
-    { label: "Provesende", x: 41, y: 44 },
-    { label: "Alijó", x: 60, y: 62 },
-    { label: "Casal de Loivos", x: 74, y: 40 },
-    { label: "Pinhão", x: 86, y: 58, kind: "finish" as const },
-  ] as ExWaypoint[],
-  /** traçado decorativo, em coordenadas do viewBox 0 0 100 100 */
-  path:
-    "M16,78 L18,74 L17,71 L20,68 L22,65 L21,62 L24,60 " +
-    "L27,57 L26,54 L30,52 L33,50 L32,47 L36,46 L39,45 L41,44 " +
-    "L44,47 L43,50 L46,53 L49,55 L48,58 L52,59 L56,61 L60,62 " +
-    "L63,58 L62,55 L65,52 L68,48 L67,45 L71,43 L74,40 " +
-    "L77,43 L76,46 L79,49 L82,52 L81,55 L84,57 L86,58",
+  photoDay: 7,
 };
