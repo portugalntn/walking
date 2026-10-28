@@ -42,7 +42,8 @@ const j = (base: string, name: L, angle: L, image?: string): ExJourney => {
     angle: tx.angle,
     region: territorio(base),
     days: p.duration.days,
-    image: image ?? p.heroImage,
+    // A foto pode ser trocada no FLOW (Site › Páginas › EXCLUSIVE · Coleção › Viagens).
+    image: pageImage("exclusive", `viagem.${base}`, image ?? p.heroImage),
   };
 };
 
@@ -88,7 +89,7 @@ export type ExDayTour = {
 const d = (base: string, name: L, image?: string): ExDayTour => {
   const p = programs[base];
   const tx = editable(`ui.exclusive.${base}`, { name });
-  return { base, name: tx.name, region: territorio(base), image: image ?? p.heroImage };
+  return { base, name: tx.name, region: territorio(base), image: pageImage("exclusive", `viagem.${base}`, image ?? p.heroImage) };
 };
 
 /** One day. Só o Norte: os quatro territórios do EXCLUSIVE. */
