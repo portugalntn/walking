@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
@@ -11,6 +12,25 @@ const locales = [
   { code: "pt", label: "PT", flag: "🇵🇹" },
   { code: "es", label: "ES", flag: "🇪🇸" },
 ];
+
+/**
+ * Brand artwork (do not set the wordmark in a web font). One PNG per background:
+ * white "PORTUGAL" for dark backgrounds, dark green for light ones.
+ */
+const LOGO = {
+  dark: "/images/brand/logo-walking-fundo-escuro.png",
+  light: "/images/brand/logo-walking-fundo-claro.png",
+};
+
+/** Relative luminance of an rgb()/rgba() colour, or null when it is (almost) transparent. */
+function luminance(css: string): number | null {
+  const m = css.match(/rgba?\(([^)]+)\)/);
+  if (!m) return null;
+  const [r, g, b, a = 1] = m[1].split(",").map((x) => parseFloat(x));
+  if (a < 0.5) return null;
+  const lin = (c: number) => { const v = c / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
 
 const flagFor: Record<string, string> = {
   en: "🇬🇧",
@@ -25,12 +45,44 @@ export function Navbar() {
   const locale = useLocale();
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+  // Tone of what sits behind the bar. Scrolled, the bar has its own dark background;
+  // at the top it is transparent, so we read the page under it (photo = dark).
+  const [onLight, setOnLight] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const read = () => {
+      const isScrolled = window.scrollY > 60;
+      setScrolled(isScrolled);
+      if (isScrolled) return setOnLight(false);
+      const h = headerRef.current;
+      if (!h) return;
+      const y = h.getBoundingClientRect().height / 2;
+      const under = document.elementsFromPoint(window.innerWidth / 2, y).filter((el) => !h.contains(el));
+      for (const el of under) {
+        if (el.tagName === "IMG" || el.tagName === "VIDEO") return setOnLight(false);
+        const cs = getComputedStyle(el);
+        if (cs.backgroundImage && cs.backgroundImage !== "none") return setOnLight(false);
+        const lum = luminance(cs.backgroundColor);
+        if (lum !== null) return setOnLight(lum > 0.5);
+      }
+      setOnLight(false);
+    };
+    read();
+    // Images and fonts settle after the first paint; read again once they do.
+    const late = window.setTimeout(read, 400);
+    window.addEventListener("scroll", read, { passive: true });
+    window.addEventListener("resize", read);
+    return () => {
+      window.clearTimeout(late);
+      window.removeEventListener("scroll", read);
+      window.removeEventListener("resize", read);
+    };
+  }, [pathname]);
+
+  // Nav link colours follow the tone, so the bar stays readable on either background.
+  const linkColor = onLight ? "rgba(29,29,26,0.72)" : "rgba(255,255,255,0.72)";
+  const linkHover = onLight ? "var(--color-ntn-black-900)" : "var(--color-ntn-white)";
 
   // Build locale-switched path
   const switchLocalePath = (newLocale: string) => {
@@ -52,6 +104,8 @@ export function Navbar() {
   return (
     <>
       <m.header
+        ref={headerRef}
+        data-tone={onLight ? "light" : "dark"}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
@@ -65,20 +119,21 @@ export function Navbar() {
         <div className="container-ntn">
           <div className="flex items-center justify-between h-24">
 
-            {/* Logo — text wordmark */}
-            <Link href={`/${locale}`} className="flex-shrink-0 leading-none">
-              <span
-                className="font-ui font-bold block leading-none"
-                style={{ color: "var(--color-ntn-white)", fontSize: "clamp(1.25rem, 1.6vw, 1.6rem)", letterSpacing: "0.02em" }}
-              >
-                PORTUGAL<span style={{ color: "rgba(255,255,255,0.55)" }}>NTN</span>
-              </span>
-              <span
-                className="font-ui font-bold italic block leading-none mt-0.5"
-                style={{ color: "var(--color-ntn-lime)", fontSize: "clamp(0.95rem, 1.25vw, 1.25rem)", letterSpacing: "0.18em", textAlign: "right" }}
-              >
-                WALKING
-              </span>
+            {/* Logo: brand artwork, the version that contrasts with what is behind the bar */}
+            <Link href={`/${locale}`} className="relative block flex-shrink-0" aria-label="Portugal NTN Walking" style={{ height: "clamp(38px, 3.1vw, 46px)", aspectRatio: "442 / 98" }}>
+              {(["dark", "light"] as const).map((tone) => (
+                <Image
+                  key={tone}
+                  src={LOGO[tone]}
+                  alt={tone === "dark" ? "Portugal NTN Walking" : ""}
+                  aria-hidden={tone === "light"}
+                  fill
+                  priority
+                  sizes="210px"
+                  // Both are loaded; a cross-fade avoids a flash when the tone changes.
+                  style={{ objectFit: "contain", objectPosition: "left center", opacity: (tone === "light") === onLight ? 1 : 0, transition: "opacity 0.3s ease" }}
+                />
+              ))}
             </Link>
 
             {/* Desktop Nav */}
@@ -88,9 +143,9 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className="font-ui text-label transition-colors duration-200"
-                  style={{ color: "rgba(255,255,255,0.72)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ntn-white)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.72)")}
+                  style={{ color: linkColor }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = linkHover)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = linkColor)}
                 >
                   {link.label}
                 </Link>

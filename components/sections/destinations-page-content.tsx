@@ -10,20 +10,29 @@ import { regions, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
 import { KeepWords } from "@/components/ui/keep-words";
-import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays } from "lucide-react";
+import { ArrowRight, Compass, UtensilsCrossed, Sun, Footprints, BedDouble, CalendarDays, ChevronDown, X } from "lucide-react";
 import { UI } from "@/lib/ui-texts";
 
 const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 type Filter = "all" | "roteiro" | "programa";
+type Style = "all" | "guided" | "self";
 
 
 /** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.programs.*". */
 const TX = UI.programs;
 
-/** Count of programmes for a format and region, used by the switch and the chips. */
-function countFor(format: Filter, region: string) {
-  return routes.filter((r) => (format === "all" || r.format === format) && (region === "all" || r.regionId === region)).length;
+/** Self-guided or guided, read from the programme type ("Self-Guided" / "Guided"). */
+const styleOf = (r: (typeof routes)[number]): Style => (/self/i.test(r.type.en) ? "self" : "guided");
+
+/** Programmes matching a format, a style and a region ("all" = any). Used by the list and every count. */
+function matching(format: Filter, style: Style, region: string) {
+  return routes.filter(
+    (r) =>
+      (format === "all" || r.format === format) &&
+      (style === "all" || styleOf(r) === style) &&
+      (region === "all" || r.regionId === region)
+  );
 }
 
 export function DestinationsPageContent({ facts }: { facts: Record<string, CardFacts> }) {
@@ -32,6 +41,21 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
   const [index, setIndex] = useState(0);
   const [filter, setFilter] = useState<Filter>("all");
   const [regionFilter, setRegionFilter] = useState<string>("all");
+  const [styleFilter, setStyleFilter] = useState<Style>("all");
+  const [regionOpen, setRegionOpen] = useState(false);
+  const regionRef = useRef<HTMLDivElement>(null);
+  const anyFilter = filter !== "all" || styleFilter !== "all" || regionFilter !== "all";
+  const clearFilters = () => { setFilter("all"); setStyleFilter("all"); setRegionFilter("all"); };
+
+  // Region menu: closes on a click outside or Escape.
+  useEffect(() => {
+    if (!regionOpen) return;
+    const onDown = (e: MouseEvent) => { if (!regionRef.current?.contains(e.target as Node)) setRegionOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setRegionOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDown); document.removeEventListener("keydown", onKey); };
+  }, [regionOpen]);
   const pausedRef = useRef(false);
 
   const active = regions[index];
@@ -44,11 +68,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
     else if (tipo === "multidias") setFilter("programa");
   }, []);
 
-  const filtered = routes.filter(
-    (r) =>
-      (filter === "all" || r.format === filter) &&
-      (regionFilter === "all" || r.regionId === regionFilter)
-  );
+  const filtered = matching(filter, styleFilter, regionFilter);
 
   const oneDay = routes.filter((r) => r.format === "roteiro");
   const multi = routes.filter((r) => r.format === "programa");
@@ -322,77 +342,114 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
             </p>
           </FadeUp>
 
-          {/* Filters */}
+          {/* Filters: one line from 1024 px. Two toggle groups (click again to clear) and a compact region menu,
+              so a third group fits without wrapping (region chips alone needed ~800 px). */}
           <div
-            // One line on desktop: format switch, a thin divider, then the regions (which wrap inside if space runs out)
             className="flex flex-col lg:flex-row lg:items-center"
-            style={{ gap: "16px", padding: "16px", marginBottom: "36px", backgroundColor: "var(--color-ntn-cream-50)", borderRadius: "14px", border: "1px solid rgba(89,105,77,0.12)" }}
+            style={{ gap: "12px", padding: "12px", marginBottom: "36px", backgroundColor: "var(--color-ntn-cream-50)", borderRadius: "14px", border: "1px solid rgba(89,105,77,0.12)" }}
           >
-            {/* Format switch */}
-            <div role="tablist" aria-label={TX.formatAria[locale]} className="inline-flex max-w-full shrink-0 self-start overflow-x-auto lg:self-center" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)" }}>
-              {([
-                { key: "all" as Filter, label: t("filterAll") },
-                { key: "roteiro" as Filter, label: TX.oneDay[locale] },
-                { key: "programa" as Filter, label: TX.multiDay[locale] },
-              ]).map((f) => {
-                const active = filter === f.key;
-                return (
-                  <button
-                    key={f.key}
-                    role="tab"
-                    aria-selected={active}
-                    onClick={() => setFilter(f.key)}
-                    className="relative"
-                    style={{ padding: "10px 18px", borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 700, letterSpacing: "0.04em", color: active ? "var(--color-ntn-black-900)" : "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}
-                  >
-                    {active && (
-                      <m.span layoutId="format-pill" className="absolute inset-0" style={{ backgroundColor: "var(--color-ntn-lime)", borderRadius: "9999px" }} transition={{ type: "spring", stiffness: 380, damping: 32 }} />
-                    )}
-                    <span className="relative">
-                      {f.label} <span style={{ opacity: 0.6, fontWeight: 600 }}>({countFor(f.key, regionFilter)})</span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+            <ToggleGroup
+              aria={TX.formatAria[locale]}
+              value={filter}
+              onChange={(v) => setFilter(v as Filter)}
+              options={[
+                { key: "roteiro", label: TX.oneDay[locale], n: matching("roteiro", styleFilter, regionFilter).length },
+                { key: "programa", label: TX.multiDay[locale], n: matching("programa", styleFilter, regionFilter).length },
+              ]}
+            />
+            <ToggleGroup
+              aria={TX.styleAria[locale]}
+              value={styleFilter}
+              onChange={(v) => setStyleFilter(v as Style)}
+              options={[
+                { key: "guided", label: TX.guided[locale], n: matching(filter, "guided", regionFilter).length },
+                { key: "self", label: TX.selfGuided[locale], n: matching(filter, "self", regionFilter).length },
+              ]}
+            />
 
             <span aria-hidden className="hidden lg:block" style={{ width: "1px", alignSelf: "stretch", backgroundColor: "rgba(89,105,77,0.2)" }} />
 
-            {/* Region chips */}
-            <div className="flex flex-1 flex-wrap items-center" style={{ gap: "8px" }}>
-              <span className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginRight: "4px" }}>{t("filterRegion")}</span>
-              {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
-                const active = regionFilter === r.id;
-                const n = countFor(filter, r.id);
-                return (
-                  <button
-                    key={r.id}
-                    onClick={() => setRegionFilter(r.id)}
-                    disabled={n === 0 && !active}
-                    style={{
-                      padding: "8px 14px", borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600,
-                      border: `1px solid ${active ? "var(--color-ntn-forest-600)" : "rgba(89,105,77,0.25)"}`,
-                      backgroundColor: active ? "var(--color-ntn-forest-600)" : "var(--color-ntn-white)",
-                      color: active ? "#fff" : "var(--color-ntn-black-800)",
-                      opacity: n === 0 && !active ? 0.4 : 1,
-                      cursor: n === 0 && !active ? "default" : "pointer",
-                      transition: "background-color 0.2s, color 0.2s, border-color 0.2s",
-                    }}
+            {/* Region menu */}
+            <div ref={regionRef} className="relative self-start lg:self-center" style={{ zIndex: 30 }}>
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={regionOpen}
+                onClick={() => setRegionOpen((o) => !o)}
+                className="inline-flex items-center"
+                style={{
+                  gap: "8px", padding: "9px 14px", borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, whiteSpace: "nowrap",
+                  border: `1px solid ${regionFilter !== "all" ? "var(--color-ntn-forest-600)" : "rgba(89,105,77,0.25)"}`,
+                  backgroundColor: regionFilter !== "all" ? "var(--color-ntn-forest-600)" : "var(--color-ntn-white)",
+                  color: regionFilter !== "all" ? "#fff" : "var(--color-ntn-black-800)",
+                }}
+              >
+                <span style={{ opacity: 0.7, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontSize: "11px" }}>{t("filterRegion")}</span>
+                {regionFilter === "all" ? t("allRegions") : regions.find((r) => r.id === regionFilter)?.name}
+                <ChevronDown size={15} style={{ transition: "transform 0.2s", transform: regionOpen ? "rotate(180deg)" : "none" }} />
+              </button>
+              <AnimatePresence>
+                {regionOpen && (
+                  <m.ul
+                    role="listbox"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.16 }}
+                    className="absolute left-0 top-full"
+                    style={{ marginTop: "8px", minWidth: "260px", padding: "6px", backgroundColor: "var(--color-ntn-white)", border: "1px solid rgba(89,105,77,0.18)", borderRadius: "12px", boxShadow: "0 18px 40px -18px rgba(29,29,26,0.35)" }}
                   >
-                    {r.name} <span style={{ opacity: 0.6 }}>{n}</span>
-                  </button>
-                );
-              })}
+                    {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
+                      const n = matching(filter, styleFilter, r.id).length;
+                      const on = regionFilter === r.id;
+                      return (
+                        <li key={r.id}>
+                          <button
+                            type="button"
+                            role="option"
+                            aria-selected={on}
+                            disabled={n === 0 && !on}
+                            onClick={() => { setRegionFilter(r.id); setRegionOpen(false); }}
+                            className="flex w-full items-center justify-between"
+                            style={{
+                              gap: "16px", padding: "10px 12px", borderRadius: "8px", fontFamily: "var(--font-ui)", fontSize: "14px", fontWeight: on ? 700 : 500, textAlign: "left",
+                              backgroundColor: on ? "rgba(188,207,2,0.22)" : "transparent",
+                              color: "var(--color-ntn-black-900)", opacity: n === 0 && !on ? 0.4 : 1, cursor: n === 0 && !on ? "default" : "pointer",
+                            }}
+                          >
+                            <span>{r.name}</span>
+                            <span style={{ color: "var(--color-ntn-forest-600)", fontWeight: 600 }}>{n}</span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </m.ul>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Right end of the bar: result count (and Clear when a filter is on), so the line has no empty tail */}
+            <div className="flex items-center self-start lg:!ml-auto lg:self-center" style={{ gap: "14px", paddingRight: "6px" }}>
+            {anyFilter && (
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="inline-flex items-center"
+                style={{ gap: "6px", padding: "8px 4px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, color: "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}
+              >
+                <X size={14} />
+                {TX.clear[locale]}
+              </button>
+            )}
+              <p aria-live="polite" className="text-label" style={{ color: "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}>
+                {filtered.length} {filtered.length === 1 ? TX.programOne[locale] : TX.programs[locale]}
+              </p>
             </div>
           </div>
 
-          <p aria-live="polite" className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginBottom: "20px" }}>
-            {filtered.length} {filtered.length === 1 ? TX.programOne[locale] : TX.programs[locale]}
-          </p>
-
           <AnimatePresence mode="wait">
             <m.div
-              key={`${filter}-${regionFilter}`}
+              key={`${filter}-${styleFilter}-${regionFilter}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -405,7 +462,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
           {filtered.length === 0 && (
             <div style={{ textAlign: "center", padding: "48px 16px" }}>
               <p className="text-body-lg" style={{ color: "var(--color-ntn-black-800)", marginBottom: "16px" }}>{TX.empty[locale]}</p>
-              <button type="button" className="btn btn-ghost-dark" onClick={() => { setFilter("all"); setRegionFilter("all"); }}>
+              <button type="button" className="btn btn-ghost-dark" onClick={clearFilters}>
                 {TX.reset[locale]}
               </button>
             </div>
@@ -449,5 +506,41 @@ function CarouselArrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => 
         <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </button>
+  );
+}
+
+/** Pill group where one option can be on; clicking the active one turns the group off (= all). */
+function ToggleGroup({
+  aria, value, onChange, options,
+}: {
+  aria: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: { key: string; label: string; n: number }[];
+}) {
+  return (
+    <div role="group" aria-label={aria} className="inline-flex max-w-full shrink-0 self-start lg:self-center" style={{ gap: "4px", padding: "4px", backgroundColor: "var(--color-ntn-white)", borderRadius: "9999px", border: "1px solid rgba(89,105,77,0.16)" }}>
+      {options.map((o) => {
+        const on = value === o.key;
+        const empty = o.n === 0 && !on;
+        return (
+          <button
+            key={o.key}
+            type="button"
+            aria-pressed={on}
+            disabled={empty}
+            onClick={() => onChange(on ? "all" : o.key)}
+            style={{
+              padding: "9px 16px", borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap",
+              backgroundColor: on ? "var(--color-ntn-lime)" : "transparent",
+              color: on ? "var(--color-ntn-black-900)" : "var(--color-ntn-forest-600)",
+              opacity: empty ? 0.4 : 1, cursor: empty ? "default" : "pointer", transition: "background-color 0.2s, color 0.2s",
+            }}
+          >
+            {o.label} <span style={{ opacity: 0.6, fontWeight: 600 }}>({o.n})</span>
+          </button>
+        );
+      })}
+    </div>
   );
 }

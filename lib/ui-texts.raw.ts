@@ -101,9 +101,14 @@ export const UI_RAW = {
   },
   /** destinations-page-content.tsx */
   programs: {
-    oneDay: tri("1 day", "1 dia", "1 día"),  
-    multiDay: tri("Multi-day", "Vários dias", "Varios días"),  
-    formatAria: tri("Programme format", "Formato do programa", "Formato del programa"),  
+    // Filter labels kept universal (same in the three languages), as decided on 29/10/2026.
+    oneDay: tri("One day", "One day", "One day"),  
+    multiDay: tri("Multi-days", "Multi-days", "Multi-days"),
+    guided: tri("Guided", "Guided", "Guided"),
+    selfGuided: tri("Self-guided", "Self-guided", "Self-guided"),  
+    formatAria: tri("Programme format", "Formato do programa", "Formato del programa"),
+    styleAria: tri("Guided or self-guided", "Guiado ou self-guided", "Guiado o autoguiado"),
+    clear: tri("Clear filters", "Limpar filtros", "Borrar filtros"),  
     programs: tri("programmes", "programas", "programas"),  
     programOne: tri("programme", "programa", "programa"),  
     daysRange: tri("days", "dias", "días"),  
