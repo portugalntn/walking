@@ -67,8 +67,11 @@
   --color-text-muted:      var(--color-ntn-sage-200);
 
   /* ── Typography ── */
+  /* Three roles, as in FLOW: brand (Baron), large titles (DIN Bold), text and UI
+     (Plus Jakarta Sans, cleaner than DIN in small bold labels, chips and buttons). */
   --font-display:  "Baron Neue", "Arial Black", system-ui, sans-serif;
-  --font-ui:       "DIN Next LT Pro", "Arial", system-ui, sans-serif;
+  --font-title:    "DIN Next LT Pro", "Arial", system-ui, sans-serif;
+  --font-ui:       var(--font-jakarta), "Plus Jakarta Sans", "DIN Next LT Pro", "Arial", system-ui, sans-serif;
 
   /* ── Fluid Type Scale ── */
   --text-hero:       clamp(3.4rem, 8.5vw, 8rem);
@@ -145,7 +148,7 @@ img, video {
    Clean, premium, strong presence — no decorative letterforms.
    ─────────────────────────────────────────────────────────── */
 .font-title {
-  font-family: var(--font-ui);
+  font-family: var(--font-title);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 0.92;
@@ -451,6 +454,9 @@ html[data-ex-theme="light"] .ex {
 }
 
 .ex {
+  /* The EXCLUSIVE keeps the original site fonts: the public site moved its UI to Plus Jakarta Sans. */
+  --font-ui: "DIN Next LT Pro", "Arial", system-ui, sans-serif;
+  --font-title: "DIN Next LT Pro", "Arial", system-ui, sans-serif;
   --ex-serif: var(--font-ex-serif), "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --ex-sans: var(--font-ex-sans), "Manrope", "Helvetica Neue", Arial, sans-serif;
 
