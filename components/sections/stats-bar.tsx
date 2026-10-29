@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { StaggerChildren, CountUp } from "@/components/ui/animated";
 import { m } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
-import { regions, routes } from "@/lib/destinations";
+import { regionsIn, routes } from "@/lib/destinations";
 
 /**
  * The wording comes from home.statsBar in each locale. Active routes and
@@ -13,7 +13,7 @@ import { regions, routes } from "@/lib/destinations";
 const stats = [
   { key: "stat1", value: 12,  suffix: "" },
   { key: "stat2", value: routes.length, suffix: "" },
-  { key: "stat3", value: regions.length, suffix: "" },
+  { key: "stat3", value: regionsIn("home").length, suffix: "" },
   { key: "stat4", value: 100, suffix: "%" },
 ];
 

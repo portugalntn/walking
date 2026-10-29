@@ -6,7 +6,7 @@ import { FadeUp, StaggerChildren } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { ProposalForm } from "@/components/sections/proposal-form";
 import { fadeUpSoft } from "@/lib/motion";
-import { regions, routes } from "@/lib/destinations";
+import { regionsIn, routes } from "@/lib/destinations";
 
 const CONTACT_EMAIL = "info@portugalntn.com";
 
@@ -15,7 +15,7 @@ const stats = ["stat1", "stat2", "stat3", "stat4"] as const;
 /** Programs and regions are counted from the data (FLOW), not typed in. */
 const counted: Partial<Record<(typeof stats)[number], string>> = {
   stat2: String(routes.length),
-  stat3: String(regions.length),
+  stat3: String(regionsIn("home").length),
 };
 
 export function ContactSection() {

@@ -5,10 +5,10 @@ import { m } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
-import { regions } from "@/lib/destinations";
+import { regionsIn } from "@/lib/destinations";
 
 // Visible regions in CMS order (hidden ones stay out, see lib/destinations.ts).
-const destinations = regions.map((r, i) => ({
+const destinations = regionsIn("home").map((r, i) => ({
   id: r.id,
   num: String(i + 1).padStart(2, "0"),
   name: r.shortName ?? r.name,

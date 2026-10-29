@@ -6,7 +6,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
-import { regions, routes } from "@/lib/destinations";
+import { regionsIn, routes } from "@/lib/destinations";
 import type { CardFacts } from "@/lib/program-facts";
 import { ProgramGrid } from "@/components/ui/program-card";
 import { KeepWords } from "@/components/ui/keep-words";
@@ -17,23 +17,31 @@ const EASE = [0.19, 1, 0.22, 1] as const;
 type Loc = "en" | "pt" | "es";
 type Filter = "all" | "roteiro" | "programa";
 type Style = "all" | "guided" | "self";
+type Activity = "all" | "walk" | "bike";
+type Filters = { format: Filter; style: Style; activity: Activity; region: string };
 
 
 /** Texts editable in FLOW (Site > Páginas): lib/ui-texts.ts, "ui.programs.*". */
 const TX = UI.programs;
 
-/** Self-guided or guided, read from the programme type ("Self-Guided" / "Guided"). */
-const styleOf = (r: (typeof routes)[number]): Style => (/self/i.test(r.type.en) ? "self" : "guided");
-
-/** Programmes matching a format, a style and a region ("all" = any). Used by the list and every count. */
-function matching(format: Filter, style: Style, region: string) {
+/** Programmes matching the filters ("all" = any). Used by the list and every count.
+    Style and activity come from FLOW (Modalidade, Atividade), see lib/destinations.ts. */
+function matching(f: Filters) {
   return routes.filter(
     (r) =>
-      (format === "all" || r.format === format) &&
-      (style === "all" || styleOf(r) === style) &&
-      (region === "all" || r.regionId === region)
+      (f.format === "all" || r.format === f.format) &&
+      (f.style === "all" || r.style === f.style) &&
+      (f.activity === "all" || r.activity === f.activity) &&
+      (f.region === "all" || r.regionId === f.region)
   );
 }
+
+/** Walking first: the Walk / Bike group only shows once a bike programme is published. */
+const HAS_BIKE = routes.some((r) => r.activity === "bike");
+/** Destinations in the filter: those set to show there (FLOW) and with at least one programme. */
+const FILTER_REGIONS = regionsIn("filtros").filter((r) => routes.some((p) => p.regionId === r.id));
+/** The carousel at the top shows the destinations of the Destinations page. */
+const regions = regionsIn("destinos");
 
 export function DestinationsPageContent({ facts }: { facts: Record<string, CardFacts> }) {
   const t = useTranslations("destinationsPage");
@@ -42,10 +50,12 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
   const [filter, setFilter] = useState<Filter>("all");
   const [regionFilter, setRegionFilter] = useState<string>("all");
   const [styleFilter, setStyleFilter] = useState<Style>("all");
+  const [activityFilter, setActivityFilter] = useState<Activity>("all");
+  const current: Filters = { format: filter, style: styleFilter, activity: activityFilter, region: regionFilter };
   const [regionOpen, setRegionOpen] = useState(false);
   const regionRef = useRef<HTMLDivElement>(null);
-  const anyFilter = filter !== "all" || styleFilter !== "all" || regionFilter !== "all";
-  const clearFilters = () => { setFilter("all"); setStyleFilter("all"); setRegionFilter("all"); };
+  const anyFilter = filter !== "all" || styleFilter !== "all" || activityFilter !== "all" || regionFilter !== "all";
+  const clearFilters = () => { setFilter("all"); setStyleFilter("all"); setActivityFilter("all"); setRegionFilter("all"); };
 
   // Region menu: closes on a click outside or Escape.
   useEffect(() => {
@@ -68,7 +78,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
     else if (tipo === "multidias") setFilter("programa");
   }, []);
 
-  const filtered = matching(filter, styleFilter, regionFilter);
+  const filtered = matching(current);
 
   const oneDay = routes.filter((r) => r.format === "roteiro");
   const multi = routes.filter((r) => r.format === "programa");
@@ -353,8 +363,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               value={filter}
               onChange={(v) => setFilter(v as Filter)}
               options={[
-                { key: "roteiro", label: TX.oneDay[locale], n: matching("roteiro", styleFilter, regionFilter).length },
-                { key: "programa", label: TX.multiDay[locale], n: matching("programa", styleFilter, regionFilter).length },
+                { key: "roteiro", label: TX.oneDay[locale], n: matching({ ...current, format: "roteiro" }).length },
+                { key: "programa", label: TX.multiDay[locale], n: matching({ ...current, format: "programa" }).length },
               ]}
             />
             <ToggleGroup
@@ -362,10 +372,21 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               value={styleFilter}
               onChange={(v) => setStyleFilter(v as Style)}
               options={[
-                { key: "guided", label: TX.guided[locale], n: matching(filter, "guided", regionFilter).length },
-                { key: "self", label: TX.selfGuided[locale], n: matching(filter, "self", regionFilter).length },
+                { key: "guided", label: TX.guided[locale], n: matching({ ...current, style: "guided" }).length },
+                { key: "self", label: TX.selfGuided[locale], n: matching({ ...current, style: "self" }).length },
               ]}
             />
+            {HAS_BIKE && (
+              <ToggleGroup
+                aria={TX.activityAria[locale]}
+                value={activityFilter}
+                onChange={(v) => setActivityFilter(v as Activity)}
+                options={[
+                  { key: "walk", label: TX.walk[locale], n: matching({ ...current, activity: "walk" }).length },
+                  { key: "bike", label: TX.bike[locale], n: matching({ ...current, activity: "bike" }).length },
+                ]}
+              />
+            )}
 
             <span aria-hidden className="hidden lg:block" style={{ width: "1px", alignSelf: "stretch", backgroundColor: "rgba(89,105,77,0.2)" }} />
 
@@ -384,8 +405,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                   color: regionFilter !== "all" ? "#fff" : "var(--color-ntn-black-800)",
                 }}
               >
-                <span style={{ opacity: 0.7, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontSize: "11px" }}>{t("filterRegion")}</span>
-                {regionFilter === "all" ? t("allRegions") : regions.find((r) => r.id === regionFilter)?.name}
+                <span className="lg:hidden xl:inline" style={{ opacity: 0.7, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", fontSize: "11px" }}>{t("filterRegion")}</span>
+                {regionFilter === "all" ? t("allRegions") : FILTER_REGIONS.find((r) => r.id === regionFilter)?.name}
                 <ChevronDown size={15} style={{ transition: "transform 0.2s", transform: regionOpen ? "rotate(180deg)" : "none" }} />
               </button>
               <AnimatePresence>
@@ -399,8 +420,8 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
                     className="absolute left-0 top-full"
                     style={{ marginTop: "8px", minWidth: "260px", padding: "6px", backgroundColor: "var(--color-ntn-white)", border: "1px solid rgba(89,105,77,0.18)", borderRadius: "12px", boxShadow: "0 18px 40px -18px rgba(29,29,26,0.35)" }}
                   >
-                    {[{ id: "all", name: t("allRegions") }, ...regions.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
-                      const n = matching(filter, styleFilter, r.id).length;
+                    {[{ id: "all", name: t("allRegions") }, ...FILTER_REGIONS.map((r) => ({ id: r.id, name: r.name }))].map((r) => {
+                      const n = matching({ ...current, region: r.id }).length;
                       const on = regionFilter === r.id;
                       return (
                         <li key={r.id}>
@@ -434,14 +455,17 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
               <button
                 type="button"
                 onClick={clearFilters}
+                aria-label={TX.clear[locale]}
+                title={TX.clear[locale]}
                 className="inline-flex items-center"
                 style={{ gap: "6px", padding: "8px 4px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 600, color: "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}
               >
                 <X size={14} />
-                {TX.clear[locale]}
+                {/* Icon only from 1024 to 1439 px, so the bar keeps one line with four groups. */}
+                <span className="lg:max-[1439px]:hidden">{TX.clear[locale]}</span>
               </button>
             )}
-              <p aria-live="polite" className="text-label" style={{ color: "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}>
+              <p aria-live="polite" className="text-label lg:sr-only xl:not-sr-only" style={{ color: "var(--color-ntn-forest-600)", whiteSpace: "nowrap" }}>
                 {filtered.length} {filtered.length === 1 ? TX.programOne[locale] : TX.programs[locale]}
               </p>
             </div>
@@ -449,7 +473,7 @@ export function DestinationsPageContent({ facts }: { facts: Record<string, CardF
 
           <AnimatePresence mode="wait">
             <m.div
-              key={`${filter}-${styleFilter}-${regionFilter}`}
+              key={`${filter}-${styleFilter}-${activityFilter}-${regionFilter}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -530,8 +554,10 @@ function ToggleGroup({
             aria-pressed={on}
             disabled={empty}
             onClick={() => onChange(on ? "all" : o.key)}
+            // Tighter from 1024 to 1279 px, so four groups still fit on one line.
+            className="!py-[9px] !px-[11px] xl:!px-4"
             style={{
-              padding: "9px 16px", borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap",
+              borderRadius: "9999px", fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 700, whiteSpace: "nowrap",
               backgroundColor: on ? "var(--color-ntn-lime)" : "transparent",
               color: on ? "var(--color-ntn-black-900)" : "var(--color-ntn-forest-600)",
               opacity: empty ? 0.4 : 1, cursor: empty ? "default" : "pointer", transition: "background-color 0.2s, color 0.2s",

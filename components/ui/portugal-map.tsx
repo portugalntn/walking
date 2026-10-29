@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { m } from "framer-motion";
-import { regions as visibleRegions } from "@/lib/destinations";
+import { regionsIn } from "@/lib/destinations";
 
 /**
  * PortugalMap — terrain relief PNG (1080×1920 RGBA).
@@ -24,12 +24,12 @@ type Region = {
   lines: string[];
 };
 
-// Pins come from the CMS (Região > Marcador no mapa), visible regions only.
+// Pins come from FLOW (Destino > Marcador no mapa), destinations shown on the home only.
 // Coordinates were derived from user-placed green dots on the 1080×1920 source PNG:
 // each value = dot_pixel_in_display × (560/839) for x, × (994/1491) for y.
 // Porto is a city reference, not a region, so it stays here.
 const regions: Region[] = [
-  ...visibleRegions.flatMap((r) => (r.mapPin ? [{ id: r.id, ...r.mapPin }] : [])),
+  ...regionsIn("home").flatMap((r) => (r.mapPin ? [{ id: r.id, ...r.mapPin }] : [])),
   { id: "porto", x: 172, y: 195, side: "left" as const, lines: ["Porto"] },
 ].sort((a, b) => a.y - b.y);
 

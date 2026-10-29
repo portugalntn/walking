@@ -97,7 +97,7 @@ export function ProgramCard({
           {durationLabel(route.days, locale)}
         </span>
         <p className="absolute bottom-4 left-4 right-4 text-label" style={{ color: "#fff", textShadow: "0 1px 4px rgba(0,0,0,0.45)" }}>
-          {route.region} · {route.type[locale]}
+          {route.region} · {route.type[locale]}{route.activity === "bike" && " · Bike"}
         </p>
       </div>
 

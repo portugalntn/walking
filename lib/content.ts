@@ -23,6 +23,10 @@ export type ProductEntry = {
   hasPage?: Opt<boolean>;
   format: "roteiro" | "programa";
   regionId: string;
+  /** FLOW > Modalidade. Wins over the `type` text for the Guided / Self-guided filter. */
+  modality?: Opt<"self-guided" | "guided" | "grupo-regular" | "">;
+  /** FLOW > Atividade. Missing = walk (the site is Walking; bike only shows through the filter). */
+  activity?: Opt<"walk" | "bike" | "">;
   days: number;
   nights?: Opt<number>;
   type?: LEntry;
@@ -75,6 +79,8 @@ export type RegionEntry = {
   /** Title for the top of the region page, with manual line breaks (FLOW). */
   heroTitle?: Opt<string>;
   hidden?: Opt<boolean>;
+  /** FLOW > Onde aparece no site. Missing = everywhere (destinations made before 29/10/2026). */
+  showOn?: Opt<string[]>;
   order?: Opt<number>;
   image?: Opt<string>;
   tagline?: LEntry;

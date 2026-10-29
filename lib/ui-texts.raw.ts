@@ -108,6 +108,9 @@ export const UI_RAW = {
     selfGuided: tri("Self-guided", "Self-guided", "Self-guided"),  
     formatAria: tri("Programme format", "Formato do programa", "Formato del programa"),
     styleAria: tri("Guided or self-guided", "Guiado ou self-guided", "Guiado o autoguiado"),
+    walk: tri("Walk", "Walk", "Walk"),
+    bike: tri("Bike", "Bike", "Bike"),
+    activityAria: tri("Walk or bike", "Caminhada ou bicicleta", "Caminata o bicicleta"),
     clear: tri("Clear filters", "Limpar filtros", "Borrar filtros"),  
     programs: tri("programmes", "programas", "programas"),  
     programOne: tri("programme", "programa", "programa"),  

@@ -6,7 +6,7 @@ import { m } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
-import { regions, routesForRegion } from "@/lib/destinations";
+import { regionsIn, routesForRegion } from "@/lib/destinations";
 import { regionContent } from "@/lib/region-content";
 import { pageImage } from "@/lib/pages";
 import { durationLabel } from "@/components/ui/program-card";
@@ -54,7 +54,7 @@ export function DestinosHubContent() {
 
       {/* Destinations as editorial rows: photo on one side (only number and badges on it),
           presentation, highlights, characteristics and programmes on the other. Sides alternate. */}
-      {regions.map((region, i) => {
+      {regionsIn("destinos").map((region, i) => {
         const items = routesForRegion(region.id);
         const content = regionContent[region.id];
         const imageLeft = i % 2 === 0;

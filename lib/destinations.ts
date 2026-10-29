@@ -27,7 +27,22 @@ export type Region = {
   hidden?: boolean;
   /** Pin on the home map (viewBox 560 × 994). */
   mapPin?: { x: number; y: number; side: "left" | "right"; lines: string[] };
+  /** Where the destination shows (FLOW > Onde aparece no site). */
+  showOn: Place[];
 };
+
+/**
+ * The places a destination can show on the site (FLOW > Destino > Onde aparece no site):
+ * - home: "Choose your destination", the map pin and the counts;
+ * - destinos: its block on the Destinations page, its own page and the top of Programmes;
+ * - filtros: the destination filter on Programmes.
+ */
+export type Place = "home" | "destinos" | "filtros";
+const ALL_PLACES: Place[] = ["home", "destinos", "filtros"];
+
+/** Guided or self-guided. A "grupo regular" departure is guided. */
+export type Style = "guided" | "self";
+export type Activity = "walk" | "bike";
 
 export type RouteProduct = {
   id: string;
@@ -37,6 +52,8 @@ export type RouteProduct = {
   days: number;
   format: "roteiro" | "programa"; // roteiro = 1-day walk, programa = multiday
   type: L;
+  style: Style;
+  activity: Activity;
   image: string;
   title: string;
   tagline: L;
@@ -60,6 +77,9 @@ const allRoutes: RouteProduct[] = productEntries.map((p) => ({
   days: p.days,
   format: p.format,
   type: tl(p.type),
+  // The FLOW field decides; older products only have the type text ("Self-Guided", "Self Guided", "Guiado").
+  style: p.modality ? (p.modality === "self-guided" ? "self" : "guided") : /self|auto/i.test(`${p.type?.en ?? ""} ${p.type?.pt ?? ""}`) ? "self" : "guided",
+  activity: p.activity === "bike" ? "bike" : "walk",
   image: p.cardImage || p.heroImage || "",
   title: p.title,
   tagline: tl(p.cardTagline),
@@ -81,6 +101,7 @@ const allRegions: Region[] = regionEntries.map((r) => {
     tagline: tl(r.tagline),
     description: tl(r.description),
     hidden: r.hidden || undefined,
+    showOn: Array.isArray(r.showOn) ? ALL_PLACES.filter((p) => r.showOn!.includes(p)) : ALL_PLACES,
     mapPin:
       pin?.show && pin.x != null && pin.y != null
         ? { x: pin.x, y: pin.y, side: pin.side ?? "right", lines: pin.lines?.length ? pin.lines : [r.name] }
@@ -91,6 +112,9 @@ const allRegions: Region[] = regionEntries.map((r) => {
 /** Public lists: hidden regions and routes stay in the data but are not shown. */
 export const regions: Region[] = allRegions.filter((r) => !r.hidden);
 export const routes: RouteProduct[] = allRoutes.filter((r) => !r.hidden);
+
+/** Visible destinations that show in a given place. */
+export const regionsIn = (place: Place): Region[] => regions.filter((r) => r.showOn.includes(place));
 
 /** True when a route exists but is hidden from the public site. */
 export function isHiddenRoute(id: string): boolean {
