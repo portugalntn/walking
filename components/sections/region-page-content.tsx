@@ -83,8 +83,8 @@ export function RegionPageContent({
         </div>
       </section>
 
-      {/* Essence — text + highlights left, image with badge right */}
-      {content && (
+      {/* Essence — text + highlights left, image with badge right. Left out while the destination has no text yet. */}
+      {content && (content.essence.title[locale] || content.essence.body[locale]) && (
         <section style={{ backgroundColor: "var(--color-ntn-cream-100)", paddingTop: "100px", paddingBottom: "100px" }}>
           <div className="container-ntn">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center">
@@ -103,6 +103,7 @@ export function RegionPageContent({
                     {content.essence.body[locale]}
                   </p>
                 </FadeUp>
+                {content.highlights.length > 0 && (
                 <div style={{ marginTop: "36px", paddingTop: "32px", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
                   <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
                     {content.highlights.map((h, i) => (
@@ -120,6 +121,7 @@ export function RegionPageContent({
                     ))}
                   </ul>
                 </div>
+                )}
               </div>
 
               <FadeRight delay={0.15}>
@@ -128,6 +130,7 @@ export function RegionPageContent({
                     <Image src={content.essence.image} alt={region.name} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                     <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 60%, rgba(29,29,26,0.35) 100%)" }} />
                   </div>
+                  {content.essence.badgeValue && (
                   <div
                     className="shadow-xl"
                     style={{ position: "absolute", bottom: "-24px", right: "-24px", zIndex: 10, backgroundColor: "var(--color-ntn-forest-600)", padding: "20px 24px", borderRadius: "8px", maxWidth: "230px" }}
@@ -139,6 +142,7 @@ export function RegionPageContent({
                       {content.essence.badgeLabel[locale]}
                     </p>
                   </div>
+                  )}
                 </div>
               </FadeRight>
             </div>

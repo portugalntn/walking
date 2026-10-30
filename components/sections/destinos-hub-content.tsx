@@ -87,7 +87,7 @@ export function DestinosHubContent() {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.7, ease: EASE }}
                   className={imageLeft ? "lg:order-1" : "lg:order-2"}
-                  style={{ position: "relative", marginBottom: content ? "28px" : 0 }}
+                  style={{ position: "relative", marginBottom: content?.essence.badgeValue ? "28px" : 0 }}
                 >
                   <Link href={`/${locale}/destinos/${region.id}`} className="group relative block overflow-hidden aspect-[4/3] lg:aspect-[5/6]" style={{ borderRadius: "16px" }}>
                     <Image
@@ -110,8 +110,8 @@ export function DestinosHubContent() {
                       </span>
                     )}
                   </Link>
-                  {/* Signature figure of the region, as on the About page */}
-                  {content && (
+                  {/* Signature figure of the region, as on the About page (only when FLOW has the number) */}
+                  {content?.essence.badgeValue && (
                     <div
                       className="shadow-xl"
                       style={{
@@ -132,9 +132,11 @@ export function DestinosHubContent() {
                 {/* Presentation */}
                 <div className={imageLeft ? "lg:order-2" : "lg:order-1"}>
                   <FadeUp>
-                    <div style={{ marginBottom: "16px" }}>
-                      <Overline color="var(--color-ntn-forest-400)">{region.tagline[locale]}</Overline>
-                    </div>
+                    {region.tagline[locale] && (
+                      <div style={{ marginBottom: "16px" }}>
+                        <Overline color="var(--color-ntn-forest-400)">{region.tagline[locale]}</Overline>
+                      </div>
+                    )}
                     <h2 className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "clamp(2.2rem, 4vw, 3.3rem)", lineHeight: 1.04, textTransform: "none", marginBottom: "18px" }}>
                       {region.name}
                     </h2>
