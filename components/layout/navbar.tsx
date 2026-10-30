@@ -32,6 +32,10 @@ function luminance(css: string): number | null {
   return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 }
 
+/** Menu do topo: uma letra abaixo do text-label, e o espaço entre itens a crescer com a largura do ecrã. */
+const NAV_FONT = "10px";
+const NAV_GAP = "clamp(16px, 2.2vw, 38px)";
+
 const flagFor: Record<string, string> = {
   en: "🇬🇧",
   pt: "🇵🇹",
@@ -136,14 +140,14 @@ export function Navbar() {
               ))}
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Desktop Nav a partir de 1280 px (abaixo não cabe: usa o menu ☰). 10 px, o espaço cresce com o ecrã, sem partir linhas */}
+            <nav className="hidden xl:flex items-center" style={{ gap: NAV_GAP }}>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-ui text-label transition-colors duration-200"
-                  style={{ color: linkColor }}
+                  className="font-ui text-label whitespace-nowrap transition-colors duration-200"
+                  style={{ color: linkColor, fontSize: NAV_FONT }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = linkHover)}
                   onMouseLeave={(e) => (e.currentTarget.style.color = linkColor)}
                 >
@@ -153,14 +157,15 @@ export function Navbar() {
             </nav>
 
             {/* Right: Exclusive + Lang + CTA */}
-            <div className="hidden lg:flex items-center gap-5">
+            <div className="hidden xl:flex items-center" style={{ gap: "clamp(12px, 1.4vw, 22px)" }}>
               {/* Porta para o site B2B. Tom de latão, para se ler como outro sítio. */}
               {/* A etiqueta B2B é sólida para se ler sobre qualquer fotografia do hero. */}
               <Link
                 href={`/${locale}/exclusive`}
                 title={t("exclusiveFor")}
-                className="font-ui text-label transition-opacity duration-200 hover:opacity-80"
+                className="font-ui text-label whitespace-nowrap transition-opacity duration-200 hover:opacity-80"
                 style={{
+                  fontSize: NAV_FONT,
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.55rem",
@@ -189,7 +194,7 @@ export function Navbar() {
                 <button
                   onClick={() => setLangOpen(!langOpen)}
                   className="flex items-center gap-1.5 font-ui text-label transition-colors"
-                  style={{ color: "rgba(255,255,255,0.6)" }}
+                  style={{ color: "rgba(255,255,255,0.6)", fontSize: NAV_FONT }}
                 >
                   <span style={{ fontSize: "14px", verticalAlign: "middle" }}>{flagFor[locale]}</span>
                   {locale.toUpperCase()}
@@ -235,7 +240,7 @@ export function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="lg:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
+              className="xl:hidden flex flex-col justify-center gap-[5px] w-8 h-8"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"
             >
@@ -269,7 +274,7 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
-            className="fixed inset-0 z-40 flex flex-col pt-24 pb-12 px-8"
+            className="fixed inset-0 z-40 flex flex-col !pt-24 !pb-12 !px-8"
             style={{ backgroundColor: "var(--color-ntn-black-900)" }}
           >
             <nav className="flex flex-col gap-6 flex-1">
@@ -324,7 +329,7 @@ export function Navbar() {
                   {l.label}
                 </Link>
               ))}
-              <Link href={`/${locale}#contact`} onClick={() => setMenuOpen(false)} className="btn btn-primary ml-auto">
+              <Link href={`/${locale}#contact`} onClick={() => setMenuOpen(false)} className="btn btn-primary !ml-auto">
                 {t("bookNow")}
               </Link>
             </div>
