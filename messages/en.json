@@ -658,7 +658,9 @@
       "queuedText": "Saved on this tablet; it will reach our team as soon as there is internet.",
       "teamKey": "Portugal NTN team",
       "teamKeyLabel": "Presentation key",
-      "teamKeyEnter": "Enter"
+      "teamKeyEnter": "Enter",
+      "refresh": "Refresh",
+      "refreshHint": "Load the latest version"
     }
   },
   "tradeDoor": {

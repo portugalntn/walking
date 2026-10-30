@@ -34,6 +34,14 @@ export function useApresentacaoOffline(): EstadoOffline {
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
+    // Em desenvolvimento os ficheiros do código não mudam de nome entre versões e o service worker
+    // serviria código antigo: aqui não se guarda nada (e limpa-se o que tiver ficado). Testar o
+    // modo offline com `next build` + `next start`.
+    if (process.env.NODE_ENV === "development") {
+      navigator.serviceWorker.getRegistrations().then((rs) => rs.filter((r) => r.scope.includes("/exclusive/apresentacao")).forEach((r) => r.unregister()));
+      caches.keys().then((ks) => ks.filter((k) => k.startsWith("ex-apresentacao-")).forEach((k) => caches.delete(k)));
+      return;
+    }
     // O registo de recursos chega por defeito a 250 entradas; a apresentação pede mais.
     performance.setResourceTimingBufferSize?.(1000);
 

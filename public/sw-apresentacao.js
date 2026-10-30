@@ -7,7 +7,8 @@
  *  - o código e as fontes (/_next/static, imutáveis);
  *  - as fotografias (/_next/image e /images).
  * Com rede, a página vem sempre fresca (e a cópia atualiza-se); sem rede, ou com
- * rede tão lenta que não responde em 4 s, abre a cópia do tablet.
+ * rede tão lenta que não responde em 4 s, abre a cópia do tablet. O botão
+ * "Atualizar" da apresentação espera pela rede sem esse limite.
  * A página manda preparar tudo à entrada (mensagem "preparar") e mostra o progresso.
  */
 
@@ -52,6 +53,8 @@ async function pagina(req) {
     return res;
   });
   if (!guardada) return rede;
+  // O botão "Atualizar" (?atualizar=…) espera pela rede o que for preciso; a cópia só sem rede nenhuma.
+  if (new URL(req.url).searchParams.has("atualizar")) return rede.catch(() => guardada);
   const lenta = new Promise((ok) => setTimeout(() => ok(guardada), ESPERA_REDE));
   return Promise.race([rede.catch(() => guardada), lenta]);
 }

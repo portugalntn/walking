@@ -85,6 +85,8 @@ export function ExDeck() {
   useEffect(() => {
     const el = pista.current;
     if (!el) return;
+    // Depois de "Atualizar", o endereço volta a ficar limpo.
+    if (window.location.search) window.history.replaceState(null, "", window.location.pathname + window.location.hash);
     if (inicio.current === null) {
       const n = Number.parseInt(window.location.hash.slice(1), 10);
       inicio.current = n >= 1 && n <= TOTAL ? n - 1 : 0;
@@ -176,6 +178,16 @@ export function ExDeck() {
     else raiz.webkitRequestFullscreen?.();
   };
 
+  // Instalada no tablet (ecrã inteiro) não há o recarregar do browser: este vai buscar a versão
+  // mais recente e fica no mesmo ecrã (#n). O "?atualizar" diz ao service worker para esperar pela
+  // rede, mesmo lenta (sem ele, ao fim de 4 s abriria a cópia guardada).
+  const atualizar = async () => {
+    try {
+      await (await navigator.serviceWorker?.getRegistration())?.update();
+    } catch {}
+    window.location.replace(`${window.location.pathname}?atualizar=${Date.now()}${window.location.hash}`);
+  };
+
   const rotulo = (i: number) => t(ROTULO[SLIDES[i].id]);
   const escuro = SLIDES[atual]?.fundo === "foto" || SLIDES[atual]?.fundo === "deep";
   const saltar = (i: number) => {
@@ -209,6 +221,14 @@ export function ExDeck() {
                 {!comRede ? t("deck.offlineNow") : offline.fase === "preparar" ? t("deck.offlineSaving", { pct: offline.pct }) : t("deck.offlineReady")}
               </span>
             </span>
+          )}
+          {comRede && (
+            <button type="button" className="ex-over ex-dk-tool" onClick={atualizar} aria-label={t("deck.refreshHint")} title={t("deck.refreshHint")}>
+              <span className="ex-theme-toggle-mark" aria-hidden>(</span>
+              <span className="ex-dk-refresh-ico" aria-hidden>↻</span>
+              <span className="ex-dk-refresh-txt">{t("deck.refresh")}</span>
+              <span className="ex-theme-toggle-mark" aria-hidden>)</span>
+            </button>
           )}
           <ExThemeToggle />
           {podeCheio && (

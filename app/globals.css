@@ -1118,6 +1118,7 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-langs a { padding: 0.6rem 0.4rem; text-decoration: none; transition: color 300ms var(--ease-expo); }
 .ex-dk-langs a.is-on { color: var(--ex-accent); }
 .ex-dk-full-ico { display: none; font-size: 0.95rem; letter-spacing: 0; }
+.ex-dk-refresh-ico { font-size: 0.95rem; letter-spacing: 0; margin-right: 0.15rem; }
 /* Sem internet: a guardar (ponto a pulsar), pronto (verde salva), sem rede (siena) */
 .ex-dk-off { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
 .ex-dk-off-dot { width: 7px; height: 7px; border-radius: 50%; background-color: var(--ex-accent); flex: none; }
@@ -1170,7 +1171,7 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-key .ex-field { width: min(100%, 280px); font-size: 1rem; }
 
 @media (max-width: 900px) {
-  .ex-dk-full-txt { display: none; }
+  .ex-dk-full-txt, .ex-dk-refresh-txt { display: none; }
   .ex-dk-full-ico { display: inline; }
 }
 @media (max-width: 700px) { .ex-dk-chapter, .ex-dk-off-txt { display: none; } }
