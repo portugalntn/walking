@@ -11,12 +11,25 @@ import { EX_ACCESS_COOKIE } from "@/lib/flow-leads";
  * With `ir=apresentacao` it opens the tablet presentation instead, and the
  * seller's tablet stays open for 30 days (not one), so it works at a fair.
  */
+
+/** A chave dada, sem espaços à volta. Quem cola no campo da chave (no portão da
+ *  apresentação) o link inteiro da equipa também entra: tira-se dele o k. */
+function chaveDada(req: NextRequest) {
+  const bruto = (req.nextUrl.searchParams.get("k") ?? "").trim();
+  if (!bruto.includes("k=")) return bruto;
+  try {
+    return (new URL(bruto, req.url).searchParams.get("k") ?? "").trim();
+  } catch {
+    return bruto;
+  }
+}
+
 export function GET(req: NextRequest) {
   const lang = ["en", "pt", "es"].includes(req.nextUrl.searchParams.get("lang") ?? "") ? req.nextUrl.searchParams.get("lang")! : "pt";
   const apresentacao = req.nextUrl.searchParams.get("ir") === "apresentacao";
   const res = NextResponse.redirect(new URL(`/${lang}/exclusive${apresentacao ? "/apresentacao" : ""}`, req.url));
-  const key = process.env.EXCLUSIVE_PREVIEW_KEY ?? "";
-  const given = req.nextUrl.searchParams.get("k") ?? "";
+  const key = (process.env.EXCLUSIVE_PREVIEW_KEY ?? "").trim();
+  const given = chaveDada(req);
   // Em desenvolvimento (localhost) abre sem chave, para a equipa ver a coleção enquanto a constrói.
   const dev = process.env.NODE_ENV === "development";
   const ok = dev || (key.length >= 12 && given.length === key.length && timingSafeEqual(Buffer.from(given), Buffer.from(key)));
