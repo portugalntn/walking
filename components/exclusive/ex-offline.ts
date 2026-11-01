@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 /** A apresentação sem internet (ver public/sw-apresentacao.js): o tablet guarda as
- *  três línguas, o código e as fotografias, e os contactos recolhidos sem rede
- *  ficam numa fila até haver internet. */
+ *  três línguas, o código e as fotografias. Os contactos que tenham ficado em fila
+ *  (a apresentação já teve formulário) seguem quando houver internet. */
 
 const LINGUAS = ["pt", "en", "es"] as const;
 const PRONTO = "ex-offline-pronto";
@@ -100,16 +100,6 @@ const lerFila = (): Contacto[] => {
     return [];
   }
 };
-
-/** Guarda o contacto no tablet para seguir mais tarde. Devolve false se não houver onde guardar. */
-export function guardarContacto(c: Contacto): boolean {
-  try {
-    localStorage.setItem(FILA, JSON.stringify([...lerFila(), c]));
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 let aEnviar = false;
 

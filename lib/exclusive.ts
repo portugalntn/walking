@@ -16,6 +16,9 @@ import { editable, pageImage } from "./pages";
 
 const tri = (en: string, pt: string, es: string): L => ({ en, pt, es });
 
+/** Como se caminha: com guia ou sem guia (com o roteiro e o apoio da NTN). */
+export type ExModo = "guiado" | "autoguiado";
+
 export type ExJourney = {
   /** id do programa em lib/programs.ts, a base partilhada com o site público */
   base: string;
@@ -26,6 +29,9 @@ export type ExJourney = {
   region: ExRegionId;
   days: number;
   image: string;
+  /** Os destaques do produto (FLOW › Produtos › Destaques): os tópicos da apresentação. */
+  highlights: L[];
+  modos: ExModo[];
 };
 
 /** O território do produto (no FLOW: a região), com o nome que a página usa. */
@@ -44,6 +50,9 @@ const j = (base: string, name: L, angle: L, image?: string): ExJourney => {
     days: p.duration.days,
     // A foto pode ser trocada no FLOW (Site › Páginas › EXCLUSIVE · Coleção › Viagens).
     image: pageImage("exclusive", `viagem.${base}`, image ?? p.heroImage),
+    highlights: p.highlights,
+    // No B2C os de vários dias são autoguiados; no EXCLUSIVE fazem-se também com guia nativo.
+    modos: ["guiado", "autoguiado"],
   };
 };
 
@@ -84,12 +93,22 @@ export type ExDayTour = {
   name: L;
   region: ExRegionId;
   image: string;
+  highlights: L[];
+  modos: ExModo[];
 };
 
 const d = (base: string, name: L, image?: string): ExDayTour => {
   const p = programs[base];
   const tx = editable(`ui.exclusive.${base}`, { name });
-  return { base, name: tx.name, region: territorio(base), image: pageImage("exclusive", `viagem.${base}`, image ?? p.heroImage) };
+  return {
+    base,
+    name: tx.name,
+    region: territorio(base),
+    image: pageImage("exclusive", `viagem.${base}`, image ?? p.heroImage),
+    highlights: p.highlights,
+    // Os de um dia são sempre guiados.
+    modos: ["guiado"],
+  };
 };
 
 /** One day. Só o Norte: os quatro territórios do EXCLUSIVE. */

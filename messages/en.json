@@ -545,16 +545,40 @@
         "sub": "Several days",
         "name": "Multi-day",
         "text": "Journeys of several days, guided or self-guided, with lodging chosen house by house and the luggage always ahead of the group.",
-        "cta": "See the journeys"
+        "cta": "See the journeys",
+        "p1": "Charming stays, chosen house by house",
+        "p2": "Luggage always ahead of the group",
+        "p3": "Estates, tables and private access"
       },
       "one": {
         "sub": "One day",
         "name": "One day",
         "text": "A full day in the territory, to add to a stay in Porto or the Douro: the path, the table and back the same day.",
-        "cta": "See the days"
+        "cta": "See the days",
+        "p1": "A full day, back the same evening",
+        "p2": "Pairs with stays in Porto or the Douro",
+        "p3": "Wine tasting, picnic or a regional table"
       },
       "tailorLabel": "Tailor made",
       "tailor": "Any programme can be rebuilt around your client: another length, another pace, another season, a single interest."
+    },
+    "modes": {
+      "overline": "How to walk",
+      "title": "Guided or self-guided, <em>the client chooses</em>",
+      "guided": {
+        "sub": "With a guide",
+        "name": "Guided",
+        "p1": "Native, certified guides",
+        "p2": "Private group, tailored pace",
+        "p3": "Transfers and logistics on us"
+      },
+      "self": {
+        "sub": "Without a guide",
+        "name": "Self-guided",
+        "p1": "Freedom of time and pace",
+        "p2": "Trails waymarked and certified by us",
+        "p3": "Detailed route notes and on-the-ground support"
+      }
     },
     "journeys": {
       "overline": "Multi-day",
@@ -655,12 +679,15 @@
       "offlineReady": "Ready offline",
       "offlineNow": "Offline",
       "offlineHint": "The presentation is stored on this tablet and opens even without internet.",
-      "queuedText": "Saved on this tablet; it will reach our team as soon as there is internet.",
       "teamKey": "Portugal NTN team",
       "teamKeyLabel": "Presentation key",
       "teamKeyEnter": "Enter",
       "refresh": "Refresh",
-      "refreshHint": "Load the latest version"
+      "refreshHint": "Load the latest version",
+      "contacts": "Contact",
+      "email": "info@portugalntn.com",
+      "site": "portugalntnwalking.com",
+      "backToStart": "Back to the start"
     }
   },
   "tradeDoor": {

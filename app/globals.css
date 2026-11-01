@@ -1055,25 +1055,34 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-acc-item.is-on .ex-dk-acc-desc { display: block; }
 .ex-dk-acc-item.is-on .ex-dk-acc-text { animation: ex-rise 0.9s var(--ease-expo) 0.35s both; }
 
-/* 6 · Formatos */
-.ex-dk-formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dk-gap) clamp(1.5rem, 5vw, 5rem); }
-.ex-dk-format { display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--dk-gap) * 0.45); text-align: left; background: none; border: 0; border-top: 1px solid var(--ex-line-2); padding: calc(var(--dk-gap) * 0.7) 0 0; color: inherit; font: inherit; cursor: pointer; }
-.ex-dk-format-name { font-size: clamp(2.6rem, min(6.6vw, 10svh), 6.5rem); line-height: 0.95; transition: color 500ms var(--ease-expo); }
-.ex-dk-format:hover .ex-dk-format-name, .ex-dk-format:active .ex-dk-format-name { color: var(--ex-accent); }
-.ex-dk-format .ex-body { max-width: 44ch; }
-.ex-dk-format .ex-link { margin-top: 0.3rem; }
+/* Tópicos (destaques curtos, um traço de acento por linha) e as etiquetas Guiado / Autoguiado */
+.ex-dk-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.ex-dk-points li { position: relative; padding-left: 1.35rem; font-size: var(--dk-small); line-height: 1.45; color: color-mix(in srgb, var(--ex-bone) 84%, transparent); }
+.ex-dk-points li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 0.8rem; height: 1px; background-color: var(--ex-accent); }
+.ex-dk-modos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ex-dk-modos li { font-family: var(--ex-sans); font-size: 0.625rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ex-accent); border: 1px solid color-mix(in srgb, var(--ex-accent) 55%, transparent); padding: 0.4rem 0.7rem; }
 
-/* 7 e 8 · Viagens e One day: cartões em que a fotografia ocupa a altura que sobra */
+/* 6 · Formatos e 7 · Guiado ou autoguiado */
+.ex-dk-formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--dk-gap) clamp(1.5rem, 5vw, 5rem); }
+.ex-dk-format { display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--dk-gap) * 0.45); border-top: 1px solid var(--ex-line-2); padding-top: calc(var(--dk-gap) * 0.7); }
+.ex-dk-format-name { font-size: clamp(2.4rem, min(5.6vw, 8.5svh), 5.6rem); line-height: 0.95; }
+.ex-dk-format .ex-dk-points { margin-top: 0.2rem; }
+.ex-dk-format .ex-link { margin-top: 0.3rem; background: none; border: 0; border-bottom: 1px solid var(--ex-line-2); cursor: pointer; }
+.ex-dk-modes-list { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--dk-gap) * 1.3); min-height: 0; }
+
+/* 8 a 10 · Roteiros (Multi-day e One day): a fotografia ocupa a altura que sobra aos tópicos */
 .ex-dk-cards { flex: 1 1 auto; min-height: 0; display: grid; gap: clamp(1rem, 2.4vw, 2.5rem); }
-.ex-dk-cards-journeys { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); }
-.ex-dk-cards-days { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); row-gap: clamp(0.9rem, 2.4svh, 1.75rem); }
+.ex-dk-cards-trips { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); }
 .ex-dk-card { display: flex; flex-direction: column; min-height: 0; }
 .ex-dk-card .ex-figure { flex: 1 1 auto; min-height: 80px; }
-.ex-dk-card > .ex-over { margin-top: calc(var(--dk-gap) * 0.5); }
-.ex-dk-card > h3 { margin-top: 0.4rem; }
-.ex-dk-card > .ex-body { margin-top: 0.55rem; max-width: 42ch; }
+.ex-dk-card-text { margin-top: calc(var(--dk-gap) * 0.5); }
+.ex-dk-card-text > .ex-over + h3 { margin-top: 0.4rem; }
+.ex-dk-card-text > .ex-dk-modos { margin-top: 0.65rem; }
+.ex-dk-card-text > .ex-dk-points { margin-top: 0.75rem; }
+/* Ecrãs baixos (tablet de 7"): três tópicos por roteiro em vez de quatro */
+@media (max-height: 700px) { .ex-dk-card .ex-dk-points li:nth-child(n + 4) { display: none; } }
 
-/* 9 · O padrão Exclusive (faixa verde floresta) */
+/* 11 · O padrão Exclusive (faixa verde floresta) */
 .ex-dk-standard { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
 .ex-dk-standard .ex-dk-col { justify-content: flex-start; }
 .ex-dk-standard-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: center; column-gap: clamp(1.5rem, 3.5vw, 3.5rem); row-gap: var(--dk-gap); }
@@ -1081,16 +1090,17 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
 .ex-dk-standard-list .ex-num { margin-bottom: 0.5rem; }
 .ex-dk-standard-list .ex-body { margin-top: 0.5rem; color: color-mix(in srgb, var(--ex-bone) 72%, transparent); }
 
-/* 10 · Como trabalhamos */
+/* 12 · Como trabalhamos */
 .ex-dk-four { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: center; gap: calc(var(--dk-gap) * 1.2) clamp(1.5rem, 3.5vw, 3.5rem); }
 .ex-dk-four > div { border-top: 1px solid var(--ex-line-2); padding-top: calc(var(--dk-gap) * 0.6); }
 .ex-dk-four .ex-body { margin-top: 0.6rem; }
 
-/* 11 · Contacto */
-.ex-dk-form, .ex-dk-sent { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--dk-gap) * 0.9); min-height: 0; }
-.ex-dk-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--dk-gap) * 0.9) 1.5rem; }
-.ex-dk-form .ex-field { font-size: 1rem; } /* 16 px: abaixo disto o iPad faz zoom ao escrever */
-.ex-dk-sent { align-items: flex-start; border-left: 1px solid var(--ex-accent); padding-left: clamp(1.25rem, 2.5vw, 2rem); }
+/* 13 · Assinatura: a marca ao centro, como uma contracapa */
+.ex-dk-sign { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: calc(var(--dk-gap) * 0.9); }
+.ex-dk-sign-logo img { width: clamp(260px, 34vw, 440px); height: auto; }
+.ex-dk-sign-line { font-size: var(--dk-h3); line-height: 1.15; max-width: 22ch; }
+.ex-dk-sign-contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; color: var(--ex-bone); }
+.ex-dk-sign-contacts a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--ex-line-2); padding-bottom: 0.2rem; }
 
 /* Moldura: logótipo e ferramentas em cima; onde estamos, progresso e setas em baixo.
    Por cima da capa e da faixa verde fica escura (.ex-dark), como o navbar sobre o hero. */
@@ -1186,11 +1196,12 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
   .ex-dk-acc { flex-direction: column; }
   .ex-dk-acc-desc { width: min(52ch, 78vw); }
   .ex-dk-formats { grid-template-columns: minmax(0, 1fr); }
-  .ex-dk-cards-journeys { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(3, minmax(0, 1fr)); }
-  .ex-dk-cards-journeys .ex-dk-card { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); grid-template-rows: auto auto minmax(0, 1fr); column-gap: clamp(1rem, 3vw, 1.75rem); }
-  .ex-dk-cards-journeys .ex-figure { grid-row: 1 / -1; height: 100%; min-height: 0; }
-  .ex-dk-cards-journeys .ex-dk-card > .ex-over { margin-top: 0; }
-  .ex-dk-cards-days { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+  /* Em pé, cada roteiro numa linha: a foto à esquerda, o nome e os tópicos à direita. */
+  .ex-dk-cards-trips { grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(var(--cols, 3), minmax(0, 1fr)); }
+  .ex-dk-cards-trips .ex-dk-card { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); grid-template-rows: minmax(0, 1fr); column-gap: clamp(1rem, 3vw, 1.75rem); }
+  .ex-dk-cards-trips .ex-figure { min-height: 0; }
+  .ex-dk-cards-trips .ex-dk-card-text { margin-top: 0; align-self: center; }
+  .ex-dk-modes-list { justify-content: flex-start; }
   .ex-dk-index-list { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(6, auto); }
 }
 

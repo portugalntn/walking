@@ -4,14 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import { dayTours, exImages, journeys, regionIds, type ExRegionId } from "@/lib/exclusive";
+import { dayTours, exImages, journeys, regionIds, type ExDayTour, type ExJourney, type ExRegionId } from "@/lib/exclusive";
+import { ExLogo } from "./ex-chrome";
 import { ExMapa } from "./ex-territories";
-import { guardarContacto } from "./ex-offline";
 
 /** Os ecrãs da apresentação para tablet. Os mesmos textos (messages ›
  *  exclusive.*, editáveis no FLOW) e as mesmas fotos (exImages, journeys,
  *  dayTours) da coleção, recompostos para caberem cada um num ecrã inteiro,
- *  sem scroll. Sem preços, itinerários nem distâncias, como na coleção. */
+ *  sem scroll. É para reunião: tópicos e destaques, não descritivos. Sem preços,
+ *  itinerários nem distâncias, como na coleção. */
 
 export type SlideId =
   | "capa"
@@ -20,11 +21,12 @@ export type SlideId =
   | "territorios"
   | "experiencias"
   | "formatos"
+  | "modos"
   | "viagens"
-  | "oneday"
+  | `oneday-${ExRegionId}`
   | "padrao"
   | "trade"
-  | "contacto";
+  | "assinatura";
 
 type Loc = "en" | "pt" | "es";
 type Go = (id: SlideId) => void;
@@ -249,12 +251,23 @@ function Experiencias() {
   );
 }
 
-/* 6 · Formatos: Multi-day e One day (cada um leva ao seu ecrã) e o Tailor made. */
+/** Tópicos curtos (é uma apresentação, não um descritivo): um traço de acento por linha. */
+function Pontos({ itens }: { itens: string[] }) {
+  return (
+    <ul className="ex-dk-points">
+      {itens.map((p) => (
+        <li key={p}>{p}</li>
+      ))}
+    </ul>
+  );
+}
+
+/* 6 · Formatos: Multi-day e One day em tópicos (cada um leva aos seus roteiros) e o Tailor made. */
 function Formatos({ go }: { go: Go }) {
   const t = useTranslations("exclusive.formats");
   const formatos: { k: string; to: SlideId }[] = [
     { k: "multi", to: "viagens" },
-    { k: "one", to: "oneday" },
+    { k: "one", to: ONE_DAY[0]?.id ?? "viagens" },
   ];
   return (
     <div className="ex-dk-body ex-dk-stack ex-dk-spread">
@@ -268,14 +281,14 @@ function Formatos({ go }: { go: Go }) {
       </div>
       <div className="ex-dk-formats">
         {formatos.map(({ k, to }, i) => (
-          <button key={k} type="button" className="ex-dk-format ex-dk-in" style={d(i + 2)} onClick={() => go(to)}>
+          <div key={k} className="ex-dk-format ex-dk-in" style={d(i + 2)}>
             <span className="ex-over">{t(`${k}.sub`)}</span>
             <span className="ex-serif ex-dk-format-name">{t(`${k}.name`)}</span>
-            <span className="ex-body ex-dk-small">{t(`${k}.text`)}</span>
-            <span className="ex-over ex-over-accent ex-link">
+            <Pontos itens={[t(`${k}.p1`), t(`${k}.p2`), t(`${k}.p3`)]} />
+            <button type="button" className="ex-over ex-over-accent ex-link" onClick={() => go(to)}>
               {t(`${k}.cta`)} <span aria-hidden>&rarr;</span>
-            </span>
-          </button>
+            </button>
+          </div>
         ))}
       </div>
       <p className="ex-formats-note ex-dk-in" style={{ ...d(4), marginTop: 0 }}>
@@ -286,57 +299,93 @@ function Formatos({ go }: { go: Go }) {
   );
 }
 
-/* 7 · Viagens de assinatura (Multi-day): as três, lado a lado. */
+/* 7 · Como se caminha: guiado ou autoguiado, em tópicos. */
+function Modos() {
+  const t = useTranslations("exclusive.modes");
+  return (
+    <div className="ex-dk-body ex-dk-split">
+      <div className="ex-dk-col">
+        <p className="ex-over ex-over-accent ex-dk-in" style={d(0)}>
+          {t("overline")}
+        </p>
+        <h2 className="ex-serif ex-dk-display ex-dk-in" style={{ ...d(1), maxWidth: "12ch" }}>
+          {t.rich("title", { em })}
+        </h2>
+      </div>
+      <div className="ex-dk-modes-list">
+        {(["guided", "self"] as const).map((k, i) => (
+          <div key={k} className="ex-dk-format ex-dk-in" style={d(i + 2)}>
+            <span className="ex-over">{t(`${k}.sub`)}</span>
+            <span className="ex-serif ex-dk-format-name">{t(`${k}.name`)}</span>
+            <Pontos itens={[t(`${k}.p1`), t(`${k}.p2`), t(`${k}.p3`)]} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Um roteiro: a foto, o nome, como se caminha (Guiado / Autoguiado) e os destaques do
+ *  produto (FLOW › Produtos › Destaques) em tópicos. Sem preços, itinerários nem distâncias. */
+function Roteiro({ r, i, dias, territorio = true }: { r: ExJourney | ExDayTour; i: number; dias?: number; territorio?: boolean }) {
+  const t = useTranslations("exclusive");
+  const loc = useLocale() as Loc;
+  return (
+    <article className="ex-dk-card ex-dk-in" style={d(i + 2)}>
+      <div className="ex-figure">
+        <Foto src={r.image} alt={r.name[loc]} sizes="(orientation: portrait) 40vw, 32vw" />
+        {dias ? (
+          <span className="ex-over ex-journey-days ex-dark">
+            {dias} {t("journeys.daysLabel")}
+          </span>
+        ) : null}
+      </div>
+      <div className="ex-dk-card-text">
+        {territorio && <p className="ex-over">{t(`territories.${r.region}.name`)}</p>}
+        <h3 className="ex-serif ex-dk-h4">{r.name[loc]}</h3>
+        <ul className="ex-dk-modos">
+          {r.modos.map((m) => (
+            <li key={m}>{t(`modes.${m === "guiado" ? "guided" : "self"}.name`)}</li>
+          ))}
+        </ul>
+        <Pontos itens={r.highlights.slice(0, 4).map((h) => h[loc])} />
+      </div>
+    </article>
+  );
+}
+
+/* 8 · Multi-day: as três viagens de assinatura, com os destaques de cada uma. */
 function Viagens() {
   const t = useTranslations("exclusive.journeys");
-  const tt = useTranslations("exclusive.territories");
-  const loc = useLocale() as Loc;
   return (
     <div className="ex-dk-body ex-dk-stack">
-      <Cabeca over={t("overline")} title={t("title")} lead={t("lead")} />
-      <div className="ex-dk-cards ex-dk-cards-journeys">
+      <Cabeca over={t("overline")} title={t("title")} wide />
+      <div className="ex-dk-cards ex-dk-cards-trips" style={{ "--cols": journeys.length } as React.CSSProperties}>
         {journeys.map((j, i) => (
-          <article key={j.base} className="ex-dk-card ex-dk-in" style={d(i + 2)}>
-            <div className="ex-figure">
-              <Foto src={j.image} alt={j.name[loc]} sizes="(orientation: portrait) 92vw, 32vw" />
-              <span className="ex-over ex-journey-days ex-dark">
-                {j.days} {t("daysLabel")}
-              </span>
-            </div>
-            <p className="ex-over">{tt(`${j.region}.name`)}</p>
-            <h3 className="ex-serif ex-dk-h4">{j.name[loc]}</h3>
-            <p className="ex-body ex-dk-small">{j.angle[loc]}</p>
-          </article>
+          <Roteiro key={j.base} r={j} i={i} dias={j.days} />
         ))}
       </div>
     </div>
   );
 }
 
-/* 8 · One day: os dias no território, em grelha (no tablet a fila deslizante lutaria com o deslize entre ecrãs). */
-function OneDay() {
-  const t = useTranslations("exclusive.dayTours");
-  const tt = useTranslations("exclusive.territories");
-  const loc = useLocale() as Loc;
+/* 9 e 10 · One day: um ecrã por território, com os dias de cada um e os seus destaques. */
+function OneDay({ regiao }: { regiao?: ExRegionId }) {
+  const t = useTranslations("exclusive");
+  const dias = dayTours.filter((x) => x.region === regiao);
   return (
     <div className="ex-dk-body ex-dk-stack">
-      <Cabeca over={t("overline")} title={t("title")} lead={t("lead")} />
-      <div className="ex-dk-cards ex-dk-cards-days">
-        {dayTours.map((dt, i) => (
-          <article key={dt.base} className="ex-dk-card ex-dk-in" style={d(Math.min(i, 4) + 2)}>
-            <div className="ex-figure">
-              <Foto src={dt.image} alt={dt.name[loc]} sizes="(orientation: portrait) 46vw, 31vw" />
-            </div>
-            <p className="ex-over">{tt(`${dt.region}.name`)}</p>
-            <h3 className="ex-serif ex-dk-h5">{dt.name[loc]}</h3>
-          </article>
+      <Cabeca over={t("dayTours.overline")} title={t(`territories.${regiao}.name`)} wide />
+      <div className="ex-dk-cards ex-dk-cards-trips" style={{ "--cols": dias.length } as React.CSSProperties}>
+        {dias.map((x, i) => (
+          <Roteiro key={x.base} r={x} i={i} territorio={false} />
         ))}
       </div>
     </div>
   );
 }
 
-/* 9 · O padrão Exclusive: faixa verde floresta, escura nos dois temas. */
+/* 11 · O padrão Exclusive: faixa verde floresta, escura nos dois temas. */
 const PADRAO = ["vehicles", "picnic", "quintas", "stays", "guides", "private"] as const;
 
 function Padrao() {
@@ -370,7 +419,7 @@ function Padrao() {
   );
 }
 
-/* 10 · Como trabalhamos com o trade: o título grande à esquerda, as quatro condições à direita. */
+/* 12 · Como trabalhamos com o trade: o título grande à esquerda, as quatro condições à direita. */
 function Trade() {
   const t = useTranslations("exclusive.operators");
   return (
@@ -396,113 +445,60 @@ function Trade() {
   );
 }
 
-/* 11 · Contacto: o vendedor preenche com o cliente ali mesmo. O pedido entra no FLOW
- *  (Comercial) como os outros, marcado "apresentacao"; sem internet fica guardado no tablet
- *  e segue sozinho quando a rede voltar. Depois, recomeça para o cliente seguinte. */
-function Contacto({ go }: { go: Go }) {
-  const t = useTranslations("exclusive.enquiry");
-  const td = useTranslations("exclusive.deck");
-  const locale = useLocale();
-  const vazio = { name: "", email: "", company: "", country: "", message: "" };
-  const [form, setForm] = useState(vazio);
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "queued" | "error">("idle");
-
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm((f) => ({ ...f, [k]: e.target.value }));
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-    const contacto = {
-      nome: form.name,
-      email: form.email,
-      empresa: form.company,
-      pais: form.country,
-      mensagem: form.message,
-      idioma: locale,
-      formulario: "apresentacao",
-    };
-    // Sem rede (ou com o FLOW em baixo) o contacto espera no tablet; dados inválidos dão erro como antes.
-    const esperar = () => setStatus(guardarContacto(contacto) ? "queued" : "error");
-    if (!navigator.onLine) return esperar();
-    try {
-      const res = await fetch("/api/exclusive/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contacto),
-      });
-      if (res.ok) setStatus("sent");
-      else if (res.status >= 500) esperar();
-      else setStatus("error");
-    } catch {
-      esperar();
-    }
-  }
-
-  function recomecar() {
-    setForm(vazio);
-    setStatus("idle");
-    go("capa");
-  }
-
+/* 13 · Assinatura: a marca e os contactos, como uma contracapa (centrada, como a capa). */
+function Assinatura({ go }: { go: Go }) {
+  const t = useTranslations("exclusive");
   return (
-    <div className="ex-dk-body ex-dk-split ex-dk-contact">
-      <div className="ex-dk-col">
-        <p className="ex-over ex-over-accent ex-dk-in" style={d(0)}>
-          {t("overline")}
-        </p>
-        <h2 className="ex-serif ex-dk-display ex-dk-in" style={{ ...d(1), maxWidth: "9ch" }}>
-          {t("title")}
-        </h2>
-        <p className="ex-body ex-dk-text ex-dk-in" style={{ ...d(2), maxWidth: "40ch" }}>
-          {t("lead")}
-        </p>
+    <div className="ex-dk-body ex-dk-sign">
+      <div className="ex-dk-sign-logo ex-dk-in" style={d(0)}>
+        <ExLogo h={96} />
       </div>
-
-      {status === "sent" || status === "queued" ? (
-        <div className="ex-dk-sent">
-          <h3 className="ex-serif ex-dk-h3">{t("sentTitle")}</h3>
-          <p className="ex-body ex-dk-text" style={{ maxWidth: "34ch" }}>
-            {status === "queued" ? td("queuedText") : t("sentText")}
-          </p>
-          <button type="button" className="ex-btn" onClick={recomecar}>
-            {td("restart")}
-          </button>
-        </div>
-      ) : (
-        <form className="ex-dk-form ex-dk-in" style={d(3)} onSubmit={onSubmit}>
-          <div className="ex-dk-fields">
-            <input className="ex-field" required placeholder={t("name")} value={form.name} onChange={set("name")} autoComplete="off" />
-            <input className="ex-field" required type="email" placeholder={t("email")} value={form.email} onChange={set("email")} autoComplete="off" />
-            <input className="ex-field" required placeholder={t("company")} value={form.company} onChange={set("company")} autoComplete="off" />
-            <input className="ex-field" placeholder={t("country")} value={form.country} onChange={set("country")} autoComplete="off" />
-          </div>
-          <textarea className="ex-field" rows={3} placeholder={t("message")} value={form.message} onChange={set("message")} style={{ resize: "none" }} />
-          {status === "error" && (
-            <p className="ex-over" style={{ color: "var(--ex-error)" }}>
-              {t("error")}
-            </p>
-          )}
-          <button type="submit" className="ex-btn ex-btn-solid" disabled={status === "sending"} style={{ alignSelf: "flex-start" }}>
-            {status === "sending" ? t("sending") : t("submit")}
-          </button>
-        </form>
-      )}
+      <p className="ex-serif ex-dk-sign-line ex-dk-in" style={d(1)}>
+        {t.rich("gate.title", { em })}
+      </p>
+      <p className="ex-over ex-dk-sign-contacts ex-dk-in" style={d(2)}>
+        <a href={`mailto:${t("deck.email")}`}>{t("deck.email")}</a>
+        <span aria-hidden>·</span>
+        <span>{t("deck.site")}</span>
+      </p>
+      <button type="button" className="ex-btn ex-dk-in" style={d(3)} onClick={() => go("capa")}>
+        {t("deck.backToStart")}
+      </button>
     </div>
   );
 }
 
-/** A ordem da apresentação = a ordem da coleção. `fundo`: "foto" (capa), "deep"
- *  (faixa verde, escura nos dois temas), "ink2" (o tom alternado) ou o chão da página. */
-export const SLIDES: { id: SlideId; fundo?: "foto" | "deep" | "ink2"; Ecra: (p: { go: Go }) => React.ReactElement }[] = [
-  { id: "capa", fundo: "foto", Ecra: Capa },
-  { id: "quem", Ecra: Quem },
-  { id: "compromisso", fundo: "ink2", Ecra: Compromisso },
-  { id: "territorios", Ecra: Territorios },
-  { id: "experiencias", fundo: "ink2", Ecra: Experiencias },
-  { id: "formatos", Ecra: Formatos },
-  { id: "viagens", fundo: "ink2", Ecra: Viagens },
-  { id: "oneday", Ecra: OneDay },
-  { id: "padrao", fundo: "deep", Ecra: Padrao },
-  { id: "trade", Ecra: Trade },
-  { id: "contacto", fundo: "ink2", Ecra: Contacto },
+type Slide = {
+  id: SlideId;
+  /** "foto" (capa), "deep" (faixa verde, escura nos dois temas), "ink2" (o tom alternado) ou o chão da página. */
+  fundo?: "foto" | "deep" | "ink2";
+  /** O nome do ecrã no índice e na barra de baixo (recebe o t de exclusive.*). */
+  rotulo: (t: (chave: string) => string) => string;
+  regiao?: ExRegionId;
+  Ecra: (p: { go: Go; regiao?: ExRegionId }) => React.ReactElement;
+};
+
+/** Um ecrã de One day por território, pela ordem da coleção (o Douro primeiro). */
+const ONE_DAY: Slide[] = [...new Set(dayTours.map((x) => x.region))].map((regiao, i) => ({
+  id: `oneday-${regiao}`,
+  fundo: i % 2 === 0 ? "ink2" : undefined,
+  rotulo: (t) => `${t("dayTours.overline")} · ${t(`territories.${regiao}.short`)}`,
+  regiao,
+  Ecra: OneDay,
+}));
+
+/** A ordem da apresentação = a ordem da coleção. */
+export const SLIDES: Slide[] = [
+  { id: "capa", fundo: "foto", rotulo: (t) => t("deck.cover"), Ecra: Capa },
+  { id: "quem", rotulo: (t) => t("manifesto.overline"), Ecra: Quem },
+  { id: "compromisso", fundo: "ink2", rotulo: (t) => t("deck.commitment"), Ecra: Compromisso },
+  { id: "territorios", rotulo: (t) => t("nav.territories"), Ecra: Territorios },
+  { id: "experiencias", fundo: "ink2", rotulo: (t) => t("nav.experiences"), Ecra: Experiencias },
+  { id: "formatos", rotulo: (t) => t("nav.formats"), Ecra: Formatos },
+  { id: "modos", fundo: "ink2", rotulo: (t) => t("modes.overline"), Ecra: Modos },
+  { id: "viagens", rotulo: (t) => t("journeys.title"), Ecra: Viagens },
+  ...ONE_DAY,
+  { id: "padrao", fundo: "deep", rotulo: (t) => t("standard.overline"), Ecra: Padrao },
+  { id: "trade", rotulo: (t) => t("nav.howWeWork"), Ecra: Trade },
+  { id: "assinatura", fundo: "deep", rotulo: (t) => t("deck.contacts"), Ecra: Assinatura },
 ];

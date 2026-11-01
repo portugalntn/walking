@@ -15,20 +15,6 @@ import { SLIDES, type SlideId } from "./ex-deck-slides";
  *  mesmo sítio. O número do ecrã fica no endereço (#4), para mudar de língua
  *  sem perder o lugar. */
 
-/** O nome de cada ecrã no índice e na barra de baixo (chaves de exclusive.*). */
-const ROTULO: Record<SlideId, string> = {
-  capa: "deck.cover",
-  quem: "manifesto.overline",
-  compromisso: "deck.commitment",
-  territorios: "nav.territories",
-  experiencias: "nav.experiences",
-  formatos: "nav.formats",
-  viagens: "journeys.title",
-  oneday: "dayTours.overline",
-  padrao: "standard.overline",
-  trade: "nav.howWeWork",
-  contacto: "enquiry.overline",
-};
 
 const LINGUAS = ["pt", "en", "es"] as const;
 const TOTAL = SLIDES.length;
@@ -188,7 +174,7 @@ export function ExDeck() {
     window.location.replace(`${window.location.pathname}?atualizar=${Date.now()}${window.location.hash}`);
   };
 
-  const rotulo = (i: number) => t(ROTULO[SLIDES[i].id]);
+  const rotulo = (i: number) => SLIDES[i].rotulo((chave) => t(chave));
   const escuro = SLIDES[atual]?.fundo === "foto" || SLIDES[atual]?.fundo === "deep";
   const saltar = (i: number) => {
     setIndice(false);
@@ -243,7 +229,7 @@ export function ExDeck() {
       </header>
 
       <div className="ex-dk-track" ref={pista}>
-        {SLIDES.map(({ id, fundo, Ecra }, i) => (
+        {SLIDES.map(({ id, fundo, regiao, Ecra }, i) => (
           <section
             key={id}
             id={`ecra-${id}`}
@@ -253,7 +239,7 @@ export function ExDeck() {
             style={{ "--n": i } as React.CSSProperties}
             inert={i !== atual && !dentro.has(i) ? true : undefined}
           >
-            <Ecra go={goId} />
+            <Ecra go={goId} regiao={regiao} />
           </section>
         ))}
       </div>

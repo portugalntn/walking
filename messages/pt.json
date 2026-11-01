@@ -545,16 +545,40 @@
         "sub": "Vários dias",
         "name": "Multi-day",
         "text": "Viagens de vários dias, guiadas ou autoguiadas, com alojamento escolhido casa a casa e a bagagem sempre à frente do grupo.",
-        "cta": "Ver as viagens"
+        "cta": "Ver as viagens",
+        "p1": "Alojamento de charme, escolhido casa a casa",
+        "p2": "Bagagem sempre à frente do grupo",
+        "p3": "Quintas, mesas e acessos privados"
       },
       "one": {
         "sub": "Um dia",
         "name": "One day",
         "text": "Um dia inteiro no território, para juntar a uma estadia no Porto ou no Douro: caminho, mesa e regresso no mesmo dia.",
-        "cta": "Ver os dias"
+        "cta": "Ver os dias",
+        "p1": "Um dia inteiro, regresso no mesmo dia",
+        "p2": "Para juntar a estadias no Porto ou no Douro",
+        "p3": "Prova de vinhos, piquenique ou mesa regional"
       },
       "tailorLabel": "Tailor made",
       "tailor": "Qualquer programa pode ser refeito à volta do seu cliente: outra duração, outro ritmo, outra estação, um único interesse."
+    },
+    "modes": {
+      "overline": "Como se caminha",
+      "title": "Guiado ou autoguiado, <em>à escolha do cliente</em>",
+      "guided": {
+        "sub": "Com guia",
+        "name": "Guiado",
+        "p1": "Guias nativos e certificados",
+        "p2": "Grupo privado, ritmo à medida",
+        "p3": "Transfers e logística por nossa conta"
+      },
+      "self": {
+        "sub": "Sem guia",
+        "name": "Autoguiado",
+        "p1": "Liberdade de horário e de ritmo",
+        "p2": "Trilhos sinalizados e certificados por nós",
+        "p3": "Roteiro detalhado e apoio no terreno"
+      }
     },
     "journeys": {
       "overline": "Multi-day",
@@ -655,12 +679,15 @@
       "offlineReady": "Pronto sem internet",
       "offlineNow": "Sem internet",
       "offlineHint": "A apresentação fica guardada neste tablet e abre mesmo sem internet.",
-      "queuedText": "Ficou guardado neste tablet e segue para a nossa equipa assim que houver internet.",
       "teamKey": "Equipa Portugal NTN",
       "teamKeyLabel": "Chave da apresentação",
       "teamKeyEnter": "Entrar",
       "refresh": "Atualizar",
-      "refreshHint": "Carregar a versão mais recente"
+      "refreshHint": "Carregar a versão mais recente",
+      "contacts": "Contactos",
+      "email": "info@portugalntn.com",
+      "site": "portugalntnwalking.com",
+      "backToStart": "Voltar ao início"
     }
   },
   "tradeDoor": {
