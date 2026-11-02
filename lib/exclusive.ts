@@ -136,10 +136,15 @@ export const exImages = {
   cultura: pageImage("exclusive", "cultura", "/images/programs/tras-8days/palacios-1.jpg"),
   natureza: pageImage("exclusive", "natureza", "/images/programs/geres-8days/geres-f.jpg"),
   padrao: pageImage("exclusive", "padrao", "/images/programs/douro-1day/hero-douro-1day.jpg"),
-  // O Caminho Português de Santiago Interior (bloco "caminho", 02/11/2026).
-  caminhoLuz: pageImage("exclusive", "caminhoLuz", "/images/caminho/caminho-luz.jpg"),
+  // O Caminho Português de Santiago Interior (bloco "caminho" e o ecrã da apresentação, 02/11/2026).
+  // Natureza e troços históricos, de preferência do lado português; a sinalização é a do Caminho (não de PR).
+  caminhoTopo: pageImage("exclusive", "caminhoTopo", "/images/caminho/caminho-natureza.jpg"),
+  caminhoHistorico: pageImage("exclusive", "caminhoHistorico", "/images/caminho/caminho-historico.jpg"),
+  caminhoCompleto: pageImage("exclusive", "caminhoCompleto", "/images/caminho/caminho-rota-completo.jpg"),
+  caminhoRaia: pageImage("exclusive", "caminhoRaia", "/images/caminho/caminho-rota-raia.jpg"),
+  caminhoPrata: pageImage("exclusive", "caminhoPrata", "/images/caminho/caminho-rota-prata.jpg"),
   caminhoSinal: pageImage("exclusive", "caminhoSinal", "/images/caminho/caminho-sinal.jpg"),
-  caminhoMarca: pageImage("exclusive", "caminhoMarca", "/images/caminho/caminho-marca.jpg"),
+  caminhoMarca: pageImage("exclusive", "caminhoMarca", "/images/caminho/caminho-marco.jpg"),
 };
 
 export type ExRegionId = "douro" | "tras" | "geres" | "santiago";

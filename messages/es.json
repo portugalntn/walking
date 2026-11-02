@@ -526,31 +526,36 @@
       }
     },
     "caminho": {
-      "overline": "El Camino Portugués de Santiago Interior",
-      "title": "Un camino de silencio, <em>hasta Compostela</em>",
+      "overline": "Camino de Santiago",
+      "title": "Camino Portugués del Interior, <em>un camino de interior hasta Santiago de Compostela</em>",
       "p1": "El Camino Portugués Interior atraviesa el Norte de Portugal por dentro: sierras, villas termales, la raya y la llanura de A Limia. En Ourense se une a la Vía de la Plata y sigue por Galicia hasta la Praza do Obradoiro. Es el camino menos recorrido hacia Santiago y, por eso, el más personal.",
       "p2": "Salimos de Vila Pouca de Aguiar, donde el camino nos es más propio, y entregamos cada etapa con el mismo cuidado: alojamientos con carácter, equipaje que viaja solo y un equipo que conoce el terreno paso a paso. En Galicia trabajamos con socios locales de confianza.",
-      "altLuz": "Luz entrando en la nave de la Catedral de Santiago de Compostela",
+      "altTopo": "Camino de tierra entre muros de piedra y árboles en flor, entre Vidago y Chaves",
+      "altHistorico": "Calle empedrada de una aldea de granito, en el lado portugués del Camino",
+      "captionTopo": "Entre Vidago y Chaves, en el lado portugués del Camino",
       "rotasLabel": "Tres formas de recorrerlo",
       "completo": {
         "name": "El Camino completo",
         "sub": "Desde Vila Pouca de Aguiar · 13 días",
-        "text": "De las sierras de Aguiar a la catedral: las termas de Pedras Salgadas, Vidago y Chaves, el Castillo de Monterrei, la villa de piedra de Allariz y la Vía de la Plata."
+        "text": "De las sierras de Aguiar a la catedral: las termas de Pedras Salgadas, Vidago y Chaves, el Castillo de Monterrei, la villa de piedra de Allariz y la Vía de la Plata.",
+        "alt": "Sendero entre pinos en el primer día del Camino, en Vila Pouca de Aguiar"
       },
       "raia": {
         "name": "La travesía de la raya",
         "sub": "Desde Chaves · 11 días",
-        "text": "Empieza en el puente romano de Chaves, cruza la frontera por los viñedos de Monterrei y entra en Galicia por la llanura de A Limia, hasta Santiago."
+        "text": "Empieza en el puente romano de Chaves, cruza la frontera por los viñedos de Monterrei y entra en Galicia por la llanura de A Limia, hasta Santiago.",
+        "alt": "El puente romano de Chaves sobre el río Tâmega"
       },
       "prata": {
         "name": "La Vía de la Plata gallega",
         "sub": "Desde Allariz · 7 días",
-        "text": "Allariz, Augas Santas y las termas de Ourense, después la Vía de la Plata entre robledales y puentes medievales. Suficiente para recibir la Compostela."
+        "text": "Allariz, Augas Santas y las termas de Ourense, después la Vía de la Plata entre robledales y puentes medievales. Suficiente para recibir la Compostela.",
+        "alt": "Puente medieval sobre el río Arnoia, en Allariz"
       },
       "noteLabel": "Guiado o autoguiado",
       "note": "Cada ruta puede ser guiada o autoguiada, y diseñada a medida desde cualquier etapa.",
       "altSinal": "Señalización del Camino Portugués de Santiago Interior, con direcciones a Vidago",
-      "altMarca": "Un miembro del equipo de Portugal NTN pintando una marca del camino en una piedra",
+      "altMarca": "Hito azul del Camino Portugués de Santiago Interior, en Sabroso de Aguiar",
       "caption": "Señalización del lado portugués, estructurada por Portugal NTN",
       "sinalTitle": "Señalizamos el camino <em>antes de recorrerlo</em>",
       "sinalText": "En el lado portugués, el Camino Interior fue estructurado y señalizado por nuestro equipo, junto a los municipios: cada flecha, cada mojón y cada panel. Ese conocimiento del terreno es el que ponemos al servicio de su cliente.",
@@ -560,7 +565,10 @@
       "e3": "Credencial del peregrino y dossier de viaje",
       "e4": "Asistencia 24 horas durante el camino",
       "e5": "Traslados donde el camino lo pide",
-      "e6": "Guía local, en la versión guiada"
+      "e6": "Guía local, en la versión guiada",
+      "deckP1": "Del interior de Portugal a la Praza do Obradoiro, lejos de las multitudes",
+      "deckP2": "En Ourense, se une a la Vía de la Plata",
+      "deckP3": "Señalizado por Portugal NTN en el lado portugués"
     },
     "experiences": {
       "overline": "Lo que se vive",

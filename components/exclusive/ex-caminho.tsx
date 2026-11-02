@@ -13,15 +13,21 @@ const rise = (delay = 0) => ({
   transition: { duration: 1.1, ease: EASE, delay },
 });
 
+/** As três formas de o caminhar, cada uma com a sua fotografia. A apresentação para tablet usa as mesmas. */
+export const CAMINHO_ROTAS = [
+  { k: "completo", img: exImages.caminhoCompleto },
+  { k: "raia", img: exImages.caminhoRaia },
+  { k: "prata", img: exImages.caminhoPrata },
+] as const;
+export const CAMINHO_ENTREGAS = ["e1", "e2", "e3", "e4", "e5", "e6"] as const;
+
 /** O Caminho Português de Santiago Interior, em conceito (Juliano, 02/11/2026).
- *  Três tempos: a ideia do caminho ao lado da chegada a Santiago; três formas
- *  de o caminhar a partir do lado português (Vila Pouca de Aguiar, Chaves,
- *  Allariz), que se ligam à Vía da Prata; e a sinalização que a NTN estruturou
- *  do lado português, com o que entregamos. Sem itinerário, preço nem distâncias. */
+ *  Três tempos: a ideia do caminho ao lado da natureza e de um troço histórico do
+ *  lado português; três formas de o caminhar (Vila Pouca de Aguiar, Chaves,
+ *  Allariz), que se ligam à Vía da Prata; e a sinalização do Caminho que a NTN
+ *  estruturou do lado português, com o que entregamos. Sem itinerário, preço nem distâncias. */
 export function ExCaminho() {
   const t = useTranslations("exclusive.caminho");
-  const rotas = ["completo", "raia", "prata"] as const;
-  const entregas = ["e1", "e2", "e3", "e4", "e5", "e6"] as const;
 
   return (
     <section id="caminho" className="ex-section">
@@ -30,7 +36,7 @@ export function ExCaminho() {
           <m.p className="ex-over ex-over-accent" {...rise()}>
             {t("overline")}
           </m.p>
-          <m.h2 className="ex-serif ex-h2" {...rise(0.08)} style={{ maxWidth: "14ch", marginTop: "clamp(1.25rem, 2.5vw, 2rem)" }}>
+          <m.h2 className="ex-serif ex-h2" {...rise(0.08)} style={{ maxWidth: "17ch", marginTop: "clamp(1.25rem, 2.5vw, 2rem)" }}>
             {t.rich("title", { em: (c) => <em className="ex-serif-i ex-accent">{c}</em> })}
           </m.h2>
           <m.p className="ex-body" {...rise(0.16)} style={{ maxWidth: "48ch", marginTop: "clamp(2rem, 3.5vw, 3rem)" }}>
@@ -40,18 +46,29 @@ export function ExCaminho() {
             {t("p2")}
           </m.p>
         </div>
-        <m.figure className="ex-figure ex-caminho-luz" {...rise(0.12)}>
-          <Image src={exImages.caminhoLuz} alt={t("altLuz")} fill sizes="(max-width: 960px) 80vw, 34vw" quality={90} />
-        </m.figure>
+        <div className="ex-origin-media">
+          <m.figure className="ex-figure ex-caminho-topo" {...rise(0.1)}>
+            <Image src={exImages.caminhoTopo} alt={t("altTopo")} fill sizes="(max-width: 960px) 70vw, 30vw" quality={90} />
+          </m.figure>
+          <m.figure className="ex-figure ex-origin-b" {...rise(0.25)}>
+            <Image src={exImages.caminhoHistorico} alt={t("altHistorico")} fill sizes="(max-width: 960px) 50vw, 22vw" quality={90} />
+          </m.figure>
+          <p className="ex-over ex-origin-caption">
+            <span className="ex-paren">(</span> {t("captionTopo")} <span className="ex-paren">)</span>
+          </p>
+        </div>
       </div>
 
       <div className="ex-wrap">
-        <m.p className="ex-over" {...rise()} style={{ marginTop: "clamp(5rem, 10vw, 9rem)" }}>
+        <m.p className="ex-over" {...rise()} style={{ marginTop: "clamp(6rem, 11vw, 10rem)" }}>
           {t("rotasLabel")}
         </m.p>
         <div className="ex-caminho-rotas">
-          {rotas.map((k, i) => (
+          {CAMINHO_ROTAS.map(({ k, img }, i) => (
             <m.div key={k} {...rise(i * 0.1)}>
+              <figure className="ex-figure ex-caminho-rota-foto">
+                <Image src={img} alt={t(`${k}.alt`)} fill sizes="(max-width: 960px) 90vw, 30vw" quality={88} />
+              </figure>
               <span className="ex-num">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="ex-serif ex-h4">{t(`${k}.name`)}</h3>
               <p className="ex-over ex-over-accent" style={{ marginTop: "0.9rem" }}>{t(`${k}.sub`)}</p>
@@ -88,7 +105,7 @@ export function ExCaminho() {
             {t("entregasLabel")}
           </m.p>
           <m.ul className="ex-caminho-entregas" {...rise(0.18)}>
-            {entregas.map((k) => (
+            {CAMINHO_ENTREGAS.map((k) => (
               <li key={k} className="ex-body ex-small">{t(k)}</li>
             ))}
           </m.ul>

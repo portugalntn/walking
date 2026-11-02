@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { dayTours, exImages, journeys, regionIds, type ExDayTour, type ExJourney, type ExRegionId } from "@/lib/exclusive";
 import { ExLogo } from "./ex-chrome";
 import { ExMapa } from "./ex-territories";
+import { CAMINHO_ENTREGAS, CAMINHO_ROTAS } from "./ex-caminho";
 
 /** Os ecrãs da apresentação para tablet. Os mesmos textos (messages ›
  *  exclusive.*, editáveis no FLOW) e as mesmas fotos (exImages, journeys,
@@ -19,6 +20,8 @@ export type SlideId =
   | "quem"
   | "compromisso"
   | "territorios"
+  | "caminho"
+  | "caminho-rotas"
   | "experiencias"
   | "formatos"
   | "modos"
@@ -216,7 +219,67 @@ function Territorios() {
   );
 }
 
-/* 5 · Experiências: cinco fotografias em acordeão. Toca-se numa e ela abre com o texto. */
+/* 5 · O Caminho Português de Santiago Interior: o conceito em tópicos, com a natureza e a
+ *  sinalização do Caminho do lado português (a mesma do bloco da coleção). */
+function Caminho() {
+  const t = useTranslations("exclusive.caminho");
+  return (
+    <div className="ex-dk-body ex-dk-split ex-dk-origin">
+      <div className="ex-dk-col">
+        <p className="ex-over ex-over-accent ex-dk-in" style={d(0)}>
+          {t("overline")}
+        </p>
+        <h2 className="ex-serif ex-dk-h3 ex-dk-in" style={{ ...d(1), maxWidth: "18ch" }}>
+          {t.rich("title", { em })}
+        </h2>
+        <div className="ex-dk-in" style={d(2)}>
+          <Pontos itens={[t("deckP1"), t("deckP2"), t("deckP3")]} />
+        </div>
+      </div>
+      <div className="ex-dk-origin-media">
+        <figure className="ex-figure ex-dk-origin-a ex-dk-in" style={d(1)}>
+          <Foto src={exImages.caminhoTopo} alt={t("altTopo")} sizes="(orientation: portrait) 70vw, 34vw" />
+        </figure>
+        <figure className="ex-figure ex-dk-origin-b ex-dk-in" style={d(3)}>
+          <Foto src={exImages.caminhoSinal} alt={t("altSinal")} sizes="(orientation: portrait) 50vw, 24vw" />
+        </figure>
+        <p className="ex-over ex-dk-caption ex-dk-in" style={d(4)}>
+          <span className="ex-paren">(</span> {t("caption")} <span className="ex-paren">)</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* 6 · O Caminho: as três formas de o caminhar, cada uma com a sua fotografia, e o que entregamos. */
+function CaminhoRotas() {
+  const t = useTranslations("exclusive.caminho");
+  return (
+    <div className="ex-dk-body ex-dk-stack">
+      <Cabeca over={t("overline")} title={t("rotasLabel")} wide />
+      <div className="ex-dk-cards ex-dk-cards-trips" style={{ "--cols": CAMINHO_ROTAS.length } as React.CSSProperties}>
+        {CAMINHO_ROTAS.map(({ k, img }, i) => (
+          <article key={k} className="ex-dk-card ex-dk-in" style={d(i + 2)}>
+            <div className="ex-figure">
+              <Foto src={img} alt={t(`${k}.alt`)} sizes="(orientation: portrait) 40vw, 32vw" />
+            </div>
+            <div className="ex-dk-card-text">
+              <p className="ex-over">{t(`${k}.sub`)}</p>
+              <h3 className="ex-serif ex-dk-h4">{t(`${k}.name`)}</h3>
+              <p className="ex-body ex-dk-small ex-dk-caminho-texto">{t(`${k}.text`)}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="ex-dk-caminho-entregas ex-dk-in" style={d(5)}>
+        <span className="ex-over ex-over-accent">{t("entregasLabel")}</span>
+        <Pontos itens={CAMINHO_ENTREGAS.map((k) => t(k))} />
+      </div>
+    </div>
+  );
+}
+
+/* 7 · Experiências: cinco fotografias em acordeão. Toca-se numa e ela abre com o texto. */
 const EXPERIENCIAS = ["mesa", "vinho", "azeite", "cultura", "natureza"] as const;
 
 function Experiencias() {
@@ -262,7 +325,7 @@ function Pontos({ itens }: { itens: string[] }) {
   );
 }
 
-/* 6 · Formatos: Multi-day e One day em tópicos (cada um leva aos seus roteiros) e o Tailor made. */
+/* 8 · Formatos: Multi-day e One day em tópicos (cada um leva aos seus roteiros) e o Tailor made. */
 function Formatos({ go }: { go: Go }) {
   const t = useTranslations("exclusive.formats");
   const formatos: { k: string; to: SlideId }[] = [
@@ -299,7 +362,7 @@ function Formatos({ go }: { go: Go }) {
   );
 }
 
-/* 7 · Como se caminha: guiado ou autoguiado, em tópicos. */
+/* 9 · Como se caminha: guiado ou autoguiado, em tópicos. */
 function Modos() {
   const t = useTranslations("exclusive.modes");
   return (
@@ -354,7 +417,7 @@ function Roteiro({ r, i, dias, territorio = true }: { r: ExJourney | ExDayTour; 
   );
 }
 
-/* 8 · Multi-day: as três viagens de assinatura, com os destaques de cada uma. */
+/* 10 · Multi-day: as três viagens de assinatura, com os destaques de cada uma. */
 function Viagens() {
   const t = useTranslations("exclusive.journeys");
   return (
@@ -369,7 +432,7 @@ function Viagens() {
   );
 }
 
-/* 9 e 10 · One day: um ecrã por território, com os dias de cada um e os seus destaques. */
+/* 11 e 12 · One day: um ecrã por território, com os dias de cada um e os seus destaques. */
 function OneDay({ regiao }: { regiao?: ExRegionId }) {
   const t = useTranslations("exclusive");
   const dias = dayTours.filter((x) => x.region === regiao);
@@ -385,7 +448,7 @@ function OneDay({ regiao }: { regiao?: ExRegionId }) {
   );
 }
 
-/* 11 · O padrão Exclusive: faixa verde floresta, escura nos dois temas. */
+/* 13 · O padrão Exclusive: faixa verde floresta, escura nos dois temas. */
 const PADRAO = ["vehicles", "picnic", "quintas", "stays", "guides", "private"] as const;
 
 function Padrao() {
@@ -419,7 +482,7 @@ function Padrao() {
   );
 }
 
-/* 12 · Como trabalhamos com o trade: o título grande à esquerda, as quatro condições à direita. */
+/* 14 · Como trabalhamos com o trade: o título grande à esquerda, as quatro condições à direita. */
 function Trade() {
   const t = useTranslations("exclusive.operators");
   return (
@@ -445,7 +508,7 @@ function Trade() {
   );
 }
 
-/* 13 · Assinatura: a marca e os contactos, como uma contracapa (centrada, como a capa). */
+/* 15 · Assinatura: a marca e os contactos, como uma contracapa (centrada, como a capa). */
 function Assinatura({ go }: { go: Go }) {
   const t = useTranslations("exclusive");
   return (
@@ -493,6 +556,8 @@ export const SLIDES: Slide[] = [
   { id: "quem", rotulo: (t) => t("manifesto.overline"), Ecra: Quem },
   { id: "compromisso", fundo: "ink2", rotulo: (t) => t("deck.commitment"), Ecra: Compromisso },
   { id: "territorios", rotulo: (t) => t("nav.territories"), Ecra: Territorios },
+  { id: "caminho", fundo: "ink2", rotulo: (t) => t("territories.santiago.short"), Ecra: Caminho },
+  { id: "caminho-rotas", rotulo: (t) => t("caminho.rotasLabel"), Ecra: CaminhoRotas },
   { id: "experiencias", fundo: "ink2", rotulo: (t) => t("nav.experiences"), Ecra: Experiencias },
   { id: "formatos", rotulo: (t) => t("nav.formats"), Ecra: Formatos },
   { id: "modos", fundo: "ink2", rotulo: (t) => t("modes.overline"), Ecra: Modos },
