@@ -7,6 +7,7 @@ import { ExHero } from "@/components/exclusive/ex-hero";
 import { ExManifesto } from "@/components/exclusive/ex-manifesto";
 import { ExJourneys } from "@/components/exclusive/ex-journeys";
 import { ExTerritories } from "@/components/exclusive/ex-territories";
+import { ExCaminho } from "@/components/exclusive/ex-caminho";
 import { ExExperiences } from "@/components/exclusive/ex-experiences";
 import { ExFormats } from "@/components/exclusive/ex-formats";
 import { ExStandard } from "@/components/exclusive/ex-standard";
@@ -67,6 +68,7 @@ export default async function ExclusivePage() {
         <ExHero />
         <ExManifesto />
         <ExTerritories />
+        <ExCaminho />
         <ExExperiences />
         <ExFormats />
         <ExJourneys />

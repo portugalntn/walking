@@ -86,6 +86,17 @@
       "discover": "Descobrir",
       "routesWord": "programas"
     },
+    "caminho": {
+      "label": "Caminho de Santiago",
+      "title": "Caminho Português de Santiago Interior",
+      "lead": "Doze etapas a pé, de Vila Pouca de Aguiar à Praza do Obradoiro, por vilas termais, castelos de fronteira e carvalhais. O caminho mais tranquilo para Compostela, com a bagagem a seguir de alojamento em alojamento.",
+      "days": "dias",
+      "stages": "etapas a pé",
+      "km": "km",
+      "cta": "Descobrir o Caminho",
+      "altMain": "Caminho rural entre muros de pedra e árvores em flor, no Caminho Português de Santiago Interior",
+      "altDetail": "Catedral de Santiago de Compostela, na Praza do Obradoiro"
+    },
     "destinations": {
       "label": "Onde Operamos",
       "title": "Onde caminhamos,\nsomos locais.",
@@ -508,11 +519,48 @@
       },
       "santiago": {
         "short": "Caminho de Santiago",
-        "name": "Caminho Português Interior",
+        "name": "Caminho Português de Santiago Interior",
         "tagline": "A rota que gerimos, até Santiago",
-        "text": "De Viseu a Chaves, por Lamego, pelo Douro e por Vila Real, até à fronteira e a Santiago de Compostela. Um caminho de peregrinação menos percorrido, entre vinhas, termas e aldeias, com o conforto de quem trata de tudo.",
+        "text": "De Vila Pouca de Aguiar a Santiago de Compostela: termas, a raia, a planície da Limia e, desde Ourense, a Vía da Prata. Um caminho de peregrinação menos percorrido, que sinalizámos do lado português, com o conforto de quem trata de tudo.",
         "tags": "Peregrinação · Termas · Vinhas · Fronteira"
       }
+    },
+    "caminho": {
+      "overline": "O Caminho Português de Santiago Interior",
+      "title": "Um caminho de silêncio, <em>até Compostela</em>",
+      "p1": "O Caminho Português de Santiago Interior atravessa o Norte de Portugal por dentro: serras, vilas termais, a raia e a planície da Limia. Em Ourense junta-se à Vía da Prata e segue pela Galiza até à Praza do Obradoiro. É o caminho menos percorrido para Santiago e, por isso, o mais pessoal.",
+      "p2": "Partimos de Vila Pouca de Aguiar, onde o caminho nos é mais próprio, e entregamos cada etapa com o mesmo cuidado: alojamentos com carácter, bagagem que segue sozinha e uma equipa que conhece o terreno passo a passo. Na Galiza, operamos com parceiros locais de confiança.",
+      "altLuz": "Luz a entrar na nave da Catedral de Santiago de Compostela",
+      "rotasLabel": "Três formas de o caminhar",
+      "completo": {
+        "name": "O Caminho completo",
+        "sub": "Desde Vila Pouca de Aguiar · 13 dias",
+        "text": "Das serras de Aguiar à catedral: as termas de Pedras Salgadas, Vidago e Chaves, o Castelo de Monterrei, a vila de pedra de Allariz e a Vía da Prata."
+      },
+      "raia": {
+        "name": "A travessia da raia",
+        "sub": "Desde Chaves · 11 dias",
+        "text": "Começa na ponte romana de Chaves, cruza a fronteira pelas vinhas de Monterrei e entra na Galiza pela planície da Limia, até Santiago."
+      },
+      "prata": {
+        "name": "A Vía da Prata galega",
+        "sub": "Desde Allariz · 7 dias",
+        "text": "Allariz, Augas Santas e as termas de Ourense, depois a Vía da Prata por carvalhais e pontes medievais. O suficiente para receber a Compostela."
+      },
+      "noteLabel": "Guiado ou autoguiado",
+      "note": "Cada roteiro pode ser guiado ou autoguiado, e desenhado à medida a partir de qualquer etapa.",
+      "altSinal": "Sinalização do Caminho Português de Santiago Interior, com direções para Vidago",
+      "altMarca": "Elemento da equipa Portugal NTN a pintar uma marca do caminho numa pedra",
+      "caption": "Sinalização do lado português, estruturada pela Portugal NTN",
+      "sinalTitle": "Sinalizámos o caminho <em>antes de o caminhar</em>",
+      "sinalText": "Do lado português, o Caminho Interior foi estruturado e sinalizado pela nossa equipa, ao lado dos municípios: cada seta, cada marco e cada painel. É esse conhecimento do terreno que pomos ao serviço do seu cliente.",
+      "entregasLabel": "O que entregamos",
+      "e1": "Alojamentos com carácter, escolhidos etapa a etapa",
+      "e2": "Bagagem transportada entre alojamentos",
+      "e3": "Credencial do peregrino e dossier de viagem",
+      "e4": "Assistência 24 horas durante o caminho",
+      "e5": "Transfers onde o caminho o pede",
+      "e6": "Guia local, na versão guiada"
     },
     "experiences": {
       "overline": "O que se vive",

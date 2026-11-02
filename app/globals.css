@@ -1209,3 +1209,24 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
   .ex-dk-in, .ex-dk-acc-item { opacity: 1; transform: none; transition: none; }
   .ex-dk-hint span, .ex-dk-acc-item.is-on .ex-dk-acc-text, .ex-dk-off-dot { animation: none !important; }
 }
+
+
+/* ─── EXCLUSIVE · O Caminho Português de Santiago Interior (02/11/2026) ───
+   Conceito ao lado da chegada a Santiago, três formas de o caminhar e a
+   sinalização que a NTN estruturou do lado português. */
+.ex-caminho-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(3rem, 7vw, 8rem); align-items: center; }
+.ex-caminho-luz { aspect-ratio: 3 / 4; width: 100%; max-width: 520px; justify-self: end; }
+.ex-caminho-rotas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4.5rem); margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+.ex-caminho-rotas > div { border-top: 1px solid var(--ex-line); padding-top: 1.4rem; }
+.ex-caminho-rotas .ex-body { margin-top: 0.9rem; max-width: 40ch; }
+.ex-caminho-sinal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(3rem, 7vw, 8rem); align-items: center; margin-top: clamp(6rem, 11vw, 10rem); }
+.ex-caminho-sinal-a { aspect-ratio: 16 / 10; width: 86%; }
+.ex-caminho-entregas { list-style: none; margin: 1.25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 3vw, 2.5rem); max-width: 640px; }
+.ex-caminho-entregas li { padding: 0.95rem 0; border-top: 1px solid var(--ex-line); }
+@media (max-width: 960px) {
+  .ex-caminho-top, .ex-caminho-sinal { grid-template-columns: minmax(0, 1fr); }
+  .ex-caminho-luz { justify-self: start; max-width: 420px; }
+  .ex-caminho-rotas { grid-template-columns: minmax(0, 1fr); }
+  .ex-caminho-sinal .ex-origin-media { margin-bottom: 3rem; }
+}
+@media (max-width: 560px) { .ex-caminho-entregas { grid-template-columns: minmax(0, 1fr); } }

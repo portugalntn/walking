@@ -5,6 +5,7 @@ import { StatsBar } from "@/components/sections/stats-bar";
 import { IntroSection } from "@/components/sections/intro-section";
 import { WhyUsSection } from "@/components/sections/whyus-section";
 import { RoutesSection } from "@/components/sections/routes-section";
+import { CaminhoSection } from "@/components/sections/caminho-section";
 import { DestinationsSection } from "@/components/sections/destinations-section";
 import { SustainabilitySection } from "@/components/sections/sustainability-section";
 import { BlogTeaserSection } from "@/components/sections/blog-teaser-section";
@@ -25,6 +26,7 @@ export default function HomePage() {
         <IntroSection />
         <WhyUsSection />
         <RoutesSection />
+        <CaminhoSection />
         <DestinationsSection />
         <SustainabilitySection />
         <BlogTeaserSection />

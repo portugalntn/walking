@@ -129,13 +129,17 @@ export const exImages = {
   douro: pageImage("exclusive", "douro", "/images/programs/douro-8days/douro-c.jpg"),
   tras: pageImage("exclusive", "tras", "/images/programs/tras-8days/picote-2.jpg"),
   geres: pageImage("exclusive", "geres", "/images/programs/geres-8days/geres-a.jpg"),
-  santiago: pageImage("exclusive", "santiago", "/images/programs/douro-1day/walk-1.jpg"),
+  santiago: pageImage("exclusive", "santiago", "/images/caminho/caminho-bosque.jpg"),
   mesa: pageImage("exclusive", "mesa", "/images/programs/tras-8days/tom-a.jpg"),
   vinho: pageImage("exclusive", "vinho", "/images/programs/douro-1day/walk-3.jpg"),
   azeite: pageImage("exclusive", "azeite", "/images/programs/tras-8days/azeite-1.jpg"),
   cultura: pageImage("exclusive", "cultura", "/images/programs/tras-8days/palacios-1.jpg"),
   natureza: pageImage("exclusive", "natureza", "/images/programs/geres-8days/geres-f.jpg"),
   padrao: pageImage("exclusive", "padrao", "/images/programs/douro-1day/hero-douro-1day.jpg"),
+  // O Caminho Português de Santiago Interior (bloco "caminho", 02/11/2026).
+  caminhoLuz: pageImage("exclusive", "caminhoLuz", "/images/caminho/caminho-luz.jpg"),
+  caminhoSinal: pageImage("exclusive", "caminhoSinal", "/images/caminho/caminho-sinal.jpg"),
+  caminhoMarca: pageImage("exclusive", "caminhoMarca", "/images/caminho/caminho-marca.jpg"),
 };
 
 export type ExRegionId = "douro" | "tras" | "geres" | "santiago";

@@ -86,6 +86,17 @@
       "discover": "Discover",
       "routesWord": "programmes"
     },
+    "caminho": {
+      "label": "Way of Saint James",
+      "title": "Portuguese Inland Way to Santiago",
+      "lead": "Twelve walking stages from Vila Pouca de Aguiar to the Praza do Obradoiro, through spa towns, border castles and oak woods. The quietest way to Compostela, with your luggage moved from one stay to the next.",
+      "days": "days",
+      "stages": "walking stages",
+      "km": "km",
+      "cta": "Discover the Way",
+      "altMain": "Country lane between stone walls and blossoming trees on the Portuguese Inland Way to Santiago",
+      "altDetail": "Santiago de Compostela Cathedral, on the Praza do Obradoiro"
+    },
     "destinations": {
       "label": "Where We Operate",
       "title": "Where we walk,\nwe are local.",
@@ -508,11 +519,48 @@
       },
       "santiago": {
         "short": "Way of Saint James",
-        "name": "Portuguese Interior Way",
+        "name": "Portuguese Inland Way to Santiago",
         "tagline": "The route we manage, all the way to Santiago",
-        "text": "From Viseu to Chaves, through Lamego, the Douro and Vila Real, to the border and on to Santiago de Compostela. A less travelled pilgrim way, among vineyards, spa towns and villages, with the comfort of having everything taken care of.",
+        "text": "From Vila Pouca de Aguiar to Santiago de Compostela: spa towns, the border country, the Limia plain and, from Ourense, the Vía de la Plata. A less travelled pilgrim way, which we signposted on the Portuguese side, with the comfort of having everything taken care of.",
         "tags": "Pilgrimage · Spa towns · Vineyards · Border"
       }
+    },
+    "caminho": {
+      "overline": "The Portuguese Inland Way to Santiago",
+      "title": "A way of silence, <em>to Compostela</em>",
+      "p1": "The Portuguese Inland Way crosses northern Portugal from within: mountains, spa towns, the border country and the Limia plain. In Ourense it joins the Vía de la Plata and carries on through Galicia to the Praza do Obradoiro. It is the least travelled way to Santiago and, for that reason, the most personal.",
+      "p2": "We start in Vila Pouca de Aguiar, where the way is most our own, and deliver every stage with the same care: characterful stays, luggage that travels on its own and a team that knows the ground step by step. In Galicia we work with trusted local partners.",
+      "altLuz": "Light falling into the nave of Santiago de Compostela Cathedral",
+      "rotasLabel": "Three ways to walk it",
+      "completo": {
+        "name": "The complete Way",
+        "sub": "From Vila Pouca de Aguiar · 13 days",
+        "text": "From the hills of Aguiar to the cathedral: the spa towns of Pedras Salgadas, Vidago and Chaves, Monterrei Castle, the stone town of Allariz and the Vía de la Plata."
+      },
+      "raia": {
+        "name": "Across the border",
+        "sub": "From Chaves · 11 days",
+        "text": "It begins at the Roman bridge of Chaves, crosses the border through the vineyards of Monterrei and enters Galicia across the Limia plain, on to Santiago."
+      },
+      "prata": {
+        "name": "The Galician Vía de la Plata",
+        "sub": "From Allariz · 7 days",
+        "text": "Allariz, Augas Santas and the hot springs of Ourense, then the Vía de la Plata through oak woods and medieval bridges. Enough to earn the Compostela."
+      },
+      "noteLabel": "Guided or self-guided",
+      "note": "Every route can be guided or self-guided, and tailor-made from any stage.",
+      "altSinal": "Signposting on the Portuguese Inland Way to Santiago, pointing to Vidago",
+      "altMarca": "A member of the Portugal NTN team painting a waymark on a stone",
+      "caption": "Signposting on the Portuguese side, set up by Portugal NTN",
+      "sinalTitle": "We signposted the way <em>before we walked it</em>",
+      "sinalText": "On the Portuguese side, the Inland Way was planned and signposted by our team, alongside the municipalities: every arrow, every marker and every panel. That knowledge of the ground is what we put at your client's service.",
+      "entregasLabel": "What we deliver",
+      "e1": "Characterful stays, chosen stage by stage",
+      "e2": "Luggage moved between stays",
+      "e3": "Pilgrim credential and travel dossier",
+      "e4": "24-hour assistance along the way",
+      "e5": "Transfers wherever the way calls for them",
+      "e6": "Local guide, on the guided version"
     },
     "experiences": {
       "overline": "What you live",

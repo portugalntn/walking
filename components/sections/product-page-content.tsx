@@ -361,8 +361,11 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                                   alt={d.title[locale]}
                                   onOpen={open}
                                   soon={tx("photoSoon")}
-                                  style={{ flex: "0 0 auto", width: "100%", maxWidth: "240px", aspectRatio: "3 / 2", borderRadius: "10px" }}
-                                  sizes="240px"
+                                  // Fixed 4:3 at the top of the text: in a flex row the tile used to stretch to the
+                                  // text's height (tall and narrow) while only a 240 px image was loaded, so it pixelated.
+                                  style={{ flex: "0 0 auto", alignSelf: "flex-start", width: "100%", maxWidth: "300px", aspectRatio: "4 / 3", borderRadius: "10px" }}
+                                  sizes="(max-width: 640px) 90vw, 300px"
+                                  quality={90}
                                 />
                               )}
                             </div>
@@ -765,10 +768,12 @@ function navBtn(side: "left" | "right"): React.CSSProperties {
 
 /** A photo that opens the lightbox, or a placeholder tile while the photo is missing. */
 function PhotoTile({
-  src, alt, onOpen, soon, style, sizes, className, overlay,
+  src, alt, onOpen, soon, style, sizes, className, overlay, quality,
 }: {
   src?: string; alt: string; onOpen: (src: string) => void; soon: string;
   style?: React.CSSProperties; sizes: string; className?: string; overlay?: React.ReactNode;
+  /** 75 (default) or 90, the two qualities allowed in next.config.ts. */
+  quality?: 75 | 90;
 }) {
   if (!src) {
     return (
@@ -791,7 +796,7 @@ function PhotoTile({
       className={`group/img ${className ?? ""}`}
       style={{ ...style, position: "relative", overflow: "hidden", padding: 0, border: "none", background: "none", cursor: "zoom-in" }}
     >
-      <Image src={src} alt={alt} fill className="object-cover transition-transform duration-700 group-hover/img:scale-[1.05]" sizes={sizes} />
+      <Image src={src} alt={alt} fill className="object-cover transition-transform duration-700 group-hover/img:scale-[1.05]" sizes={sizes} quality={quality} />
       <span className="absolute inset-0 transition-opacity duration-300 opacity-0 group-hover/img:opacity-100" style={{ background: "rgba(29,29,26,0.16)" }} />
       {overlay}
     </button>
