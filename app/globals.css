@@ -42,6 +42,36 @@
   font-display: swap;
 }
 
+/* Arial / Times New Roman resized to Plus Jakarta Sans, Manrope and Cormorant Garamond, shown for the
+   instant before those load (local files: app/layout.tsx, components/exclusive/ex-fonts.ts).
+   The same values next/font/google used, so nothing moves on the swap. */
+@font-face {
+  font-family: "Plus Jakarta Sans Fallback";
+  src: local("Arial");
+  ascent-override: 98.88%;
+  descent-override: 21.15%;
+  line-gap-override: 0%;
+  size-adjust: 104.98%;
+}
+
+@font-face {
+  font-family: "Manrope Fallback";
+  src: local("Arial");
+  ascent-override: 103.31%;
+  descent-override: 29.07%;
+  line-gap-override: 0%;
+  size-adjust: 103.19%;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond Fallback";
+  src: local("Times New Roman");
+  ascent-override: 95.27%;
+  descent-override: 29.59%;
+  line-gap-override: 0%;
+  size-adjust: 96.98%;
+}
+
 /* ─── BRAND DESIGN TOKENS (Tailwind v4 @theme) ────────────── */
 
 @theme {

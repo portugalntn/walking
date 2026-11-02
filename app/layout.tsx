@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-/** Text and UI font of the public site (the same as FLOW). Titles stay in DIN, the brand in Baron. */
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
+/** Text and UI font of the public site (the same as FLOW). Titles stay in DIN, the brand in Baron.
+ *  Local file (./fonts, OFL licence next to it) so the build never depends on Google Fonts: the
+ *  google/fonts variable font with the same characters (latin, latin-ext) Google serves. */
+const jakarta = localFont({
+  src: "./fonts/PlusJakartaSans.woff2",
+  weight: "400 800",
   variable: "--font-jakarta",
   display: "swap",
+  adjustFontFallback: false, // the resized Arial is in globals.css
+  fallback: ["Plus Jakarta Sans Fallback"],
 });
 
 export const metadata: Metadata = {
