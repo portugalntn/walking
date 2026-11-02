@@ -80,8 +80,10 @@ export function ExDeck() {
     if (inicio.current > 0) el.scrollLeft = inicio.current * el.clientWidth;
 
     const onScroll = () => {
+      // Sem largura (painel escondido, página ainda a montar) não há ecrã a calcular.
+      if (!el.clientWidth) return;
       const pos = el.scrollLeft / el.clientWidth;
-      const i = Math.round(pos);
+      const i = Math.max(0, Math.min(TOTAL - 1, Math.round(pos)));
       if (i === destino.current && Math.abs(pos - i) < 0.01) destino.current = null;
       if (i !== atualRef.current) {
         atualRef.current = i;
@@ -174,7 +176,7 @@ export function ExDeck() {
     window.location.replace(`${window.location.pathname}?atualizar=${Date.now()}${window.location.hash}`);
   };
 
-  const rotulo = (i: number) => SLIDES[i].rotulo((chave) => t(chave));
+  const rotulo = (i: number) => SLIDES[i]?.rotulo((chave) => t(chave)) ?? "";
   const escuro = SLIDES[atual]?.fundo === "foto" || SLIDES[atual]?.fundo === "deep";
   const saltar = (i: number) => {
     setIndice(false);
