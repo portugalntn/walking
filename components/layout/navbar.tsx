@@ -6,12 +6,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
+import { Globe } from "lucide-react";
 
+/**
+ * Idiomas pelo nome na própria língua, sem bandeiras: o Windows não desenha
+ * bandeiras em emoji (mostrava "PT PT"), e uma bandeira é um país, não uma língua.
+ */
 const locales = [
-  { code: "en", label: "EN", flag: "🇬🇧" },
-  { code: "pt", label: "PT", flag: "🇵🇹" },
-  { code: "es", label: "ES", flag: "🇪🇸" },
+  { code: "pt", label: "PT", name: "Português" },
+  { code: "en", label: "EN", name: "English" },
+  { code: "es", label: "ES", name: "Español" },
 ];
+
+/** Nome do seletor para leitores de ecrã, na língua da página. */
+const LANG_LABEL: Record<string, string> = { pt: "Idioma", en: "Language", es: "Idioma" };
 
 /**
  * Brand artwork (do not set the wordmark in a web font). One PNG per background:
@@ -36,12 +44,6 @@ function luminance(css: string): number | null {
 const NAV_FONT = "10px";
 const NAV_GAP = "clamp(16px, 2.2vw, 38px)";
 
-const flagFor: Record<string, string> = {
-  en: "🇬🇧",
-  pt: "🇵🇹",
-  es: "🇪🇸",
-};
-
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,6 +52,8 @@ export function Navbar() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
+  const currentLang = locales.find((l) => l.code === locale) ?? locales[0];
   // Tone of what sits behind the bar. Scrolled, the bar has its own dark background;
   // at the top it is transparent, so we read the page under it (photo = dark).
   const [onLight, setOnLight] = useState(false);
@@ -83,6 +87,20 @@ export function Navbar() {
       window.removeEventListener("resize", read);
     };
   }, [pathname]);
+
+  // A lista de idiomas fecha com um clique fora dela ou com Esc.
+  useEffect(() => {
+    if (!langOpen) return;
+    const close = (e: MouseEvent | KeyboardEvent) => {
+      if (e instanceof KeyboardEvent ? e.key === "Escape" : !langRef.current?.contains(e.target as Node)) setLangOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", close);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", close);
+    };
+  }, [langOpen]);
 
   // Nav link colours follow the tone, so the bar stays readable on either background.
   const linkColor = onLight ? "rgba(29,29,26,0.72)" : "rgba(255,255,255,0.72)";
@@ -190,15 +208,21 @@ export function Navbar() {
                 {t("exclusive")}
               </Link>
 
-              <div className="relative">
+              {/* Idioma: globo + código; a lista mostra cada língua pelo seu nome. A cor segue o tom da barra. */}
+              <div className="relative" ref={langRef}>
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  className="flex items-center gap-1.5 font-ui text-label transition-colors"
-                  style={{ color: "rgba(255,255,255,0.6)", fontSize: NAV_FONT }}
+                  aria-haspopup="true"
+                  aria-expanded={langOpen}
+                  aria-label={`${LANG_LABEL[locale] ?? LANG_LABEL.en}: ${currentLang.name}`}
+                  className="flex items-center gap-1.5 font-ui text-label transition-colors duration-200"
+                  style={{ color: langOpen ? linkHover : linkColor, fontSize: NAV_FONT }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = linkHover)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = langOpen ? linkHover : linkColor)}
                 >
-                  <span style={{ fontSize: "14px", verticalAlign: "middle" }}>{flagFor[locale]}</span>
-                  {locale.toUpperCase()}
-                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={`transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}>
+                  <Globe size={14} strokeWidth={1.6} aria-hidden />
+                  {currentLang.label}
+                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden className={`transition-transform duration-200 ${langOpen ? "rotate-180" : ""}`}>
                     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                 </button>
@@ -209,25 +233,33 @@ export function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -4, scale: 0.97 }}
                       transition={{ duration: 0.18 }}
-                      className="absolute top-full right-0 mt-2 py-1 rounded overflow-hidden"
-                      style={{ backgroundColor: "var(--color-ntn-black-900)", border: "1px solid rgba(255,255,255,0.1)", minWidth: "70px" }}
+                      className="absolute top-full right-0 rounded overflow-hidden"
+                      // Espaços em style: o reset do globals.css anula as classes de margem e padding.
+                      style={{ marginTop: "0.75rem", padding: "0.375rem 0", backgroundColor: "var(--color-ntn-black-900)", border: "1px solid rgba(255,255,255,0.1)", minWidth: "176px" }}
                     >
-                      {locales
-                        .filter((l) => l.code !== locale)
-                        .map((l) => (
+                      {locales.map((l) => {
+                        const active = l.code === locale;
+                        const color = active ? "var(--color-ntn-white)" : "rgba(255,255,255,0.6)";
+                        return (
                           <Link
                             key={l.code}
                             href={switchLocalePath(l.code)}
+                            hrefLang={l.code}
+                            lang={l.code}
+                            aria-current={active ? "true" : undefined}
                             onClick={() => setLangOpen(false)}
-                            className="flex items-center gap-2 px-4 py-2 font-ui text-label transition-colors"
-                            style={{ color: "rgba(255,255,255,0.6)" }}
+                            className="flex items-center gap-3 font-ui transition-colors"
+                            style={{ color, padding: "0.55rem 1rem", fontSize: "13px", fontWeight: 500, letterSpacing: "0.02em" }}
                             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-ntn-white)")}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = color)}
                           >
-                            <span style={{ fontSize: "14px" }}>{l.flag}</span>
-                            {l.label}
+                            {l.name}
+                            <span className="text-label" style={{ marginLeft: "auto", fontSize: NAV_FONT, color: active ? "var(--color-ntn-lime)" : "rgba(255,255,255,0.35)" }}>
+                              {l.label}
+                            </span>
                           </Link>
-                        ))}
+                        );
+                      })}
                     </m.div>
                   )}
                 </AnimatePresence>
@@ -317,15 +349,19 @@ export function Navbar() {
 
             {/* Mobile lang + CTA */}
             <div className="flex items-center gap-4 flex-wrap">
+              <Globe size={16} strokeWidth={1.6} aria-hidden style={{ color: "rgba(255,255,255,0.4)" }} />
               {locales.map((l) => (
                 <Link
                   key={l.code}
                   href={switchLocalePath(l.code)}
+                  hrefLang={l.code}
+                  lang={l.code}
+                  aria-label={l.name}
+                  aria-current={l.code === locale ? "true" : undefined}
                   onClick={() => setMenuOpen(false)}
-                  className="text-label flex items-center gap-1.5"
+                  className="text-label"
                   style={{ color: l.code === locale ? "var(--color-ntn-lime)" : "rgba(255,255,255,0.4)" }}
                 >
-                  <span style={{ fontSize: "14px" }}>{l.flag}</span>
                   {l.label}
                 </Link>
               ))}
