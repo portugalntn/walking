@@ -396,7 +396,7 @@ export function ProductPageContent({ program, trail, previa = false }: { program
               {/* Multi-day: the relief of each day, one tab per day (no map: the route is not published) */}
               {!isDay && program.days.some((d) => d.profile) && (
                 <FadeUp>
-                  <DayProfiles program={program} locale={locale} km={km} dayLabel={t("day")}
+                  <DayProfiles program={program} locale={locale} km={km} dayLabel={t("day")} allLabel={tx("routeAll")} allTitle={tx("routeAllTitle")}
                     labels={{
                       over: tx("routeLabel"), title: tx("routeTitle"), hint: tx("routeHint"),
                       replay: tx("replay"), of: tx("of"), altitude: tx("altitude"),
@@ -848,20 +848,61 @@ function BentoGallery({ images, onOpen, soon, morePhotos }: { images: string[]; 
  * the day lights up when it is reached. Afterwards it can be explored with
  * the pointer. No map on purpose: the route itself is not published.
  */
-/** Multi-day: tabs "Day 1, Day 2…" above the relief chart of the chosen day. */
+/**
+ * The whole route of a multi-day as one profile (Juliano, 02/11/2026): the days' profiles one
+ * after the other, a marker where each day starts, and the figures of the whole way (gain and
+ * loss summed, average weighted by each day's length).
+ */
+function wholeRoute(program: Program, title: L) {
+  const dias = program.days.filter((d) => d.profile);
+  const profile: [number, number][] = [];
+  const marks: NonNullable<Program["moments"]> = [];
+  let off = 0;
+  for (const d of dias) {
+    const p = d.profile!.profile;
+    marks.push({ km: Math.round(off * 10) / 10, title: d.title, text: d.title });
+    for (const [k, e] of p) profile.push([Math.round((off + k) * 100) / 100, e]);
+    off += p[p.length - 1][0];
+  }
+  const els = dias.map((d) => ({ e: d.elevation, len: d.profile!.profile[d.profile!.profile.length - 1][0] }));
+  const elevation = els.every((x) => x.e)
+    ? {
+        gain: els.reduce((s, x) => s + x.e!.gain, 0),
+        loss: els.reduce((s, x) => s + x.e!.loss, 0),
+        max: Math.max(...els.map((x) => x.e!.max)),
+        min: Math.min(...els.map((x) => x.e!.min)),
+        avg: Math.round(els.reduce((s, x) => s + x.e!.avg * x.len, 0) / Math.max(off, 1e-6)),
+      }
+    : undefined;
+  const day: Program["days"][number] = { day: 0, title, distance: program.totalDistance, elevation, meals: [] };
+  return { trail: { length: off, source: "FLOW", profile } as Trail, marks, day };
+}
+
+/** Multi-day: tabs "Day 1, Day 2…" above the relief chart of the chosen day, and a last tab with the whole route. */
 function DayProfiles({
-  program, locale, km, labels, dayLabel,
+  program, locale, km, labels, dayLabel, allLabel, allTitle,
 }: {
   program: Program;
   locale: Loc;
   km: (n: number) => string;
   labels: Parameters<typeof ProfilePanel>[0]["labels"];
   dayLabel: string;
+  /** Tab and title of the whole route (shown with two or more days). */
+  allLabel: string;
+  allTitle: string;
 }) {
   const dias = program.days.filter((d) => d.profile);
   const [sel, setSel] = useState(0);
+  const whole = useMemo(() => wholeRoute(program, { en: allLabel, pt: allLabel, es: allLabel }), [program, allLabel]);
+  const showWhole = dias.length > 1 && sel === dias.length;
   const dia = dias[Math.min(sel, dias.length - 1)];
   if (!dia?.profile) return null;
+  const tab = (active: boolean): React.CSSProperties => ({
+    padding: "8px 14px", borderRadius: "9999px", fontSize: "13px", fontWeight: 700, cursor: "pointer",
+    border: "1px solid var(--color-ntn-forest-400)",
+    backgroundColor: active ? "var(--color-ntn-lime)" : "transparent",
+    color: "var(--color-ntn-black-900)",
+  });
   return (
     <div>
       <div role="tablist" className="flex flex-wrap" style={{ gap: "8px", marginTop: "72px", marginBottom: "-64px", position: "relative", zIndex: 1 }}>
@@ -873,30 +914,45 @@ function DayProfiles({
             aria-selected={i === sel}
             onClick={() => setSel(i)}
             className="font-ui"
-            style={{
-              padding: "8px 14px", borderRadius: "9999px", fontSize: "13px", fontWeight: 700, cursor: "pointer",
-              border: "1px solid var(--color-ntn-forest-400)",
-              backgroundColor: i === sel ? "var(--color-ntn-lime)" : "transparent",
-              color: "var(--color-ntn-black-900)",
-            }}
+            style={tab(i === sel)}
             title={d.title[locale]}
           >
             {dayLabel} {d.day}
           </button>
         ))}
+        {dias.length > 1 && (
+          <button type="button" role="tab" aria-selected={showWhole} onClick={() => setSel(dias.length)} className="font-ui" style={tab(showWhole)}>
+            {allLabel}
+          </button>
+        )}
       </div>
-      <ProfilePanel key={dia.day} trail={dia.profile} program={program} dia={dia} locale={locale} km={km} labels={labels} />
+      {showWhole ? (
+        <ProfilePanel
+          key="whole"
+          trail={whole.trail}
+          program={program}
+          dia={whole.day}
+          marks={whole.marks}
+          locale={locale}
+          km={km}
+          labels={{ ...labels, title: allTitle }}
+        />
+      ) : (
+        <ProfilePanel key={dia.day} trail={dia.profile} program={program} dia={dia} locale={locale} km={km} labels={labels} />
+      )}
     </div>
   );
 }
 
 function ProfilePanel({
-  trail, program, dia, locale, km, labels,
+  trail, program, dia, marks, locale, km, labels,
 }: {
   trail: Trail;
   program: Program;
   /** Multi-day: the day shown (its stats); without it, the programme's first day and moments. */
   dia?: Program["days"][number];
+  /** Markers along the profile instead of the programme's moments (the whole route: where each day starts). */
+  marks?: NonNullable<Program["moments"]>;
   locale: Loc;
   km: (n: number) => string;
   labels: {
@@ -907,7 +963,7 @@ function ProfilePanel({
   const day = dia ?? program.days[0];
   // Num dia de um multiday, o total é o desse dia (não o do programa).
   const distancia = dia ? dia.distance || `${km(trail.length)} km` : program.totalDistance;
-  const moments = dia ? [] : program.moments ?? [];
+  const moments = marks ?? (dia ? [] : program.moments ?? []);
   const total = trail.profile[trail.profile.length - 1][0];
   const elevs = trail.profile.map((p) => p[1]);
   const eMin = Math.min(...elevs), eMax = Math.max(...elevs);
@@ -969,7 +1025,9 @@ function ProfilePanel({
   const line = trail.profile.map(([k, e], i) => `${i ? "L" : "M"}${px(k).toFixed(1)},${py(e).toFixed(1)}`).join(" ");
   const area = `${line} L${PW},${PH - PB} L0,${PH - PB} Z`;
   const yTicks = Array.from({ length: (yHi - yLo) / 100 + 1 }, (_, i) => yLo + i * 100);
-  const kmTicks = Array.from({ length: Math.floor(total) + 1 }, (_, i) => i).filter((k) => total - k > 0.8 || k === 0);
+  // One label per km on a day; on the whole route (hundreds of km) one every 10 or 25 km.
+  const step = total <= 30 ? 1 : total <= 60 ? 5 : total <= 150 ? 10 : 25;
+  const kmTicks = Array.from({ length: Math.floor(total / step) + 1 }, (_, i) => i * step).filter((k) => total - k > 0.8 * step || k === 0);
 
   const elevAt = (k: number) => {
     const p = trail.profile;

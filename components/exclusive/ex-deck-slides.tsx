@@ -224,12 +224,12 @@ function Territorios() {
 function Caminho() {
   const t = useTranslations("exclusive.caminho");
   return (
-    <div className="ex-dk-body ex-dk-split ex-dk-origin">
+    <div className="ex-dk-body ex-dk-split ex-dk-origin ex-dk-caminho">
       <div className="ex-dk-col">
         <p className="ex-over ex-over-accent ex-dk-in" style={d(0)}>
           {t("overline")}
         </p>
-        <h2 className="ex-serif ex-dk-h3 ex-dk-in" style={{ ...d(1), maxWidth: "18ch" }}>
+        <h2 className="ex-serif ex-dk-h3 ex-dk-in" style={{ ...d(1), maxWidth: "20ch", textWrap: "balance" }}>
           {t.rich("title", { em })}
         </h2>
         <div className="ex-dk-in" style={d(2)}>

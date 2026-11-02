@@ -36,7 +36,7 @@ export function ExCaminho() {
           <m.p className="ex-over ex-over-accent" {...rise()}>
             {t("overline")}
           </m.p>
-          <m.h2 className="ex-serif ex-h2" {...rise(0.08)} style={{ maxWidth: "17ch", marginTop: "clamp(1.25rem, 2.5vw, 2rem)" }}>
+          <m.h2 className="ex-serif ex-h2" {...rise(0.08)} style={{ maxWidth: "21ch", textWrap: "balance", marginTop: "clamp(1.25rem, 2.5vw, 2rem)" }}>
             {t.rich("title", { em: (c) => <em className="ex-serif-i ex-accent">{c}</em> })}
           </m.h2>
           <m.p className="ex-body" {...rise(0.16)} style={{ maxWidth: "48ch", marginTop: "clamp(2rem, 3.5vw, 3rem)" }}>

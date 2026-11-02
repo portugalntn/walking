@@ -1240,3 +1240,10 @@ html:has(.ex-deck), html:has(.ex-deck) body { overflow: hidden; overscroll-behav
   .ex-dk-caminho-entregas { grid-template-columns: minmax(0, 1fr); }
   .ex-dk-caminho-entregas .ex-dk-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* Apresentação · ecrã 5 (o Caminho): a fotografia ganha peso e o vazio ao centro desaparece. */
+.ex-dk-caminho { grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr); }
+.ex-dk-caminho .ex-dk-origin-a { width: 78%; height: 90%; }
+.ex-dk-caminho .ex-dk-origin-b { width: 42%; height: 40%; bottom: 3%; }
+.ex-dk-caminho .ex-dk-caption { max-width: 34%; }
+@media (orientation: portrait) { .ex-dk-caminho { grid-template-columns: minmax(0, 1fr); } }

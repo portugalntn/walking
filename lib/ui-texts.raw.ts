@@ -46,6 +46,8 @@ export const UI_RAW = {
     dayLabel: tri("The day, step by step", "O dia, passo a passo", "El día, paso a paso"),
     routeLabel: tri("The route", "O percurso", "El recorrido"),
     routeTitle: tri("The shape of the day", "O relevo do dia", "El relieve del día"),
+    routeAll: tri("Whole route", "Todo o percurso", "Todo el recorrido"),
+    routeAllTitle: tri("The whole way, end to end", "O caminho inteiro", "El camino entero"),
     routeHint: tri(
       "The walk drawn kilometre by kilometre. When it ends, move along the profile to see each point.",
       "A caminhada desenhada quilómetro a quilómetro. No fim, percorra o perfil para ver cada ponto.",
