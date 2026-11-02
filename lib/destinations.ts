@@ -29,6 +29,8 @@ export type Region = {
   mapPin?: { x: number; y: number; side: "left" | "right"; lines: string[] };
   /** Where the destination shows (FLOW > Onde aparece no site). */
   showOn: Place[];
+  /** Listed in the footer (FLOW > Destino > Mostrar no rodapé). */
+  footer: boolean;
 };
 
 /**
@@ -59,8 +61,6 @@ export type RouteProduct = {
   tagline: L;
   /** Kept for the EXCLUSIVE and for later, but not shown on the public site. */
   hidden?: boolean;
-  /** Listed in the footer. */
-  footer?: boolean;
 };
 
 /** Region name as shown on product cards and pages. */
@@ -84,7 +84,6 @@ const allRoutes: RouteProduct[] = productEntries.map((p) => ({
   title: p.title,
   tagline: tl(p.cardTagline),
   hidden: p.hidden || undefined,
-  footer: p.footer || undefined,
 }));
 
 const allRegions: Region[] = regionEntries.map((r) => {
@@ -101,6 +100,7 @@ const allRegions: Region[] = regionEntries.map((r) => {
     tagline: tl(r.tagline),
     description: tl(r.description),
     hidden: r.hidden || undefined,
+    footer: typeof r.footer === "boolean" ? r.footer : !r.hidden,
     showOn: Array.isArray(r.showOn) ? ALL_PLACES.filter((p) => r.showOn!.includes(p)) : ALL_PLACES,
     mapPin:
       pin?.show && pin.x != null && pin.y != null

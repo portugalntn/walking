@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { UI } from "@/lib/ui-texts";
 import { FadeUp } from "@/components/ui/animated";
 import { SealsStrip } from "@/components/layout/seals-strip";
-import { routes } from "@/lib/destinations";
+import { regions } from "@/lib/destinations";
 
 const socialLinks = [
   {
@@ -128,7 +128,7 @@ export function Footer() {
             </FadeUp>
           </div>
 
-          {/* Routes column */}
+          {/* Destinations column: the ones with "Mostrar no rodapé" on (FLOW > Destino) */}
           <div>
             <FadeUp delay={0.1}>
               <p
@@ -138,10 +138,10 @@ export function Footer() {
                 {t("routes")}
               </p>
               <ul className="space-y-2" style={{ lineHeight: 2 }}>
-                {routes.filter((r) => r.footer).map(({ id, title: name }) => (
+                {regions.filter((r) => r.footer).map(({ id, name }) => (
                   <li key={id}>
                     <Link
-                      href={`/${locale}/programas/${id}`}
+                      href={`/${locale}/destinos/${id}`}
                       className="text-body-md transition-colors duration-150"
                       style={{ color: "rgba(190,194,181,0.65)" }}
                       onMouseEnter={(e) =>

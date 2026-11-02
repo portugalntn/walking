@@ -81,6 +81,8 @@ export type RegionEntry = {
   hidden?: Opt<boolean>;
   /** FLOW > Onde aparece no site. Missing = everywhere (destinations made before 29/10/2026). */
   showOn?: Opt<string[]>;
+  /** FLOW > Destino > Mostrar no rodapé. Missing = shown while the destination is visible. */
+  footer?: Opt<boolean>;
   order?: Opt<number>;
   image?: Opt<string>;
   tagline?: LEntry;
