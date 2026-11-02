@@ -80,6 +80,9 @@ export type Program = {
     low: { from: number; single: number };
     /** Omit when the program has a single year-round price. */
     high?: { from: number; single: number };
+    /** Multi Day self-guided (FLOW, 02/11/2026): one price from minPax people, groups up to maxPax. */
+    minPax?: number;
+    maxPax?: number;
   };
   /**
    * Pricing by group size (1-day guided routes). Either the group total for
@@ -150,6 +153,7 @@ export function toProgram(p: ProductEntry): Program {
         ? {
             low: { from: pr.lowFrom, single: pr.lowSingle ?? 0 },
             high: pr.highFrom != null ? { from: pr.highFrom, single: pr.highSingle ?? 0 } : undefined,
+            ...(pr.minPax != null && pr.maxPax != null ? { minPax: pr.minPax, maxPax: pr.maxPax } : {}),
           }
         : undefined,
     priceTiers: p.priceTiers?.length ? p.priceTiers.map((t) => ({

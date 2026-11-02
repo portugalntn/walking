@@ -506,9 +506,11 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                             {formatPrice(sea.p.from, numLocale)}
                             <span style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 400, color: "var(--color-ntn-black-800)", marginLeft: "8px" }}>{t("perPerson")}</span>
                           </p>
-                          <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "6px", fontSize: "14px" }}>
-                            {t("singleSupp")}: {formatPrice(sea.p.single, numLocale)}
-                          </p>
+                          {sea.p.single > 0 && (
+                            <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", marginTop: "6px", fontSize: "14px" }}>
+                              {t("singleSupp")}: {formatPrice(sea.p.single, numLocale)}
+                            </p>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -525,6 +527,9 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                   {priceKind && (
                     <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "6px" }}>
                       {perPaxTiers && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("perPaxPriceNote", { min: minPax ?? 2 })}</p>}
+                      {program.prices?.maxPax != null && !program.priceTiers?.length && (
+                        <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("selfGuidedPriceNote", { min: program.prices.minPax ?? 2, max: program.prices.maxPax })}</p>
+                      )}
                       {priceKind === "group" && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("groupPriceNote")}</p>}
                       {program.priceTiersNote && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{program.priceTiersNote[locale]}</p>}
                       {program.priceCondition && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{program.priceCondition[locale]}</p>}

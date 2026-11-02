@@ -66,7 +66,7 @@ export type ProductEntry = {
   extras?: LEntry[];
   priceTiers?: { pax: number; price: number; maxPax?: Opt<number>; perPax?: Opt<boolean> }[];
   priceTiersNote?: LEntry;
-  prices?: Opt<{ lowFrom?: Opt<number>; lowSingle?: Opt<number>; highFrom?: Opt<number>; highSingle?: Opt<number> }>;
+  prices?: Opt<{ lowFrom?: Opt<number>; lowSingle?: Opt<number>; highFrom?: Opt<number>; highSingle?: Opt<number>; minPax?: Opt<number>; maxPax?: Opt<number> }>;
   priceCondition?: LEntry;
   payment?: LEntry[];
   cancellation?: LEntry[];

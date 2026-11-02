@@ -226,6 +226,7 @@
     "paxMany": "personas",
     "groupPriceNote": "Precio total por grupo, con guía especializado y transporte privado incluidos.",
     "perPaxPriceNote": "Precio por persona, según el tamaño del grupo (mínimo {min} personas), con guía especializado y transporte privado incluidos.",
+    "selfGuidedPriceNote": "Precio por persona en habitación doble, a partir de {min} personas (máximo {max}). En grupos impares, una persona se aloja en habitación individual, con suplemento.",
     "day": "Día",
     "distance": "Distancia",
     "ascent": "Desnivel",
