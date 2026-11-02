@@ -25,7 +25,7 @@ export type Region = {
   description: L;
   /** Kept in the data but left out of the public site (no visible programs). */
   hidden?: boolean;
-  /** Pin on the home map (viewBox 560 × 994). */
+  /** Pin on the home map (viewBox 560 × 994). Only its own switch decides (see mapPins). */
   mapPin?: { x: number; y: number; side: "left" | "right"; lines: string[] };
   /** Where the destination shows (FLOW > Onde aparece no site). */
   showOn: Place[];
@@ -35,7 +35,7 @@ export type Region = {
 
 /**
  * The places a destination can show on the site (FLOW > Destino > Onde aparece no site):
- * - home: "Choose your destination", the map pin and the counts;
+ * - home: "Choose your destination" and the counts (the map pin has its own switch);
  * - destinos: its block on the Destinations page, its own page and the top of Programmes;
  * - filtros: the destination filter on Programmes.
  */
@@ -115,6 +115,14 @@ export const routes: RouteProduct[] = allRoutes.filter((r) => !r.hidden);
 
 /** Visible destinations that show in a given place. */
 export const regionsIn = (place: Place): Region[] => regions.filter((r) => r.showOn.includes(place));
+
+/**
+ * Pins on the home map: every destination with "Mostrar no mapa da home" on and a position,
+ * hidden or not (FLOW, 30/10/2026: the switch is the decision; "Ocultar do site" and
+ * "Onde aparece" no longer turn the pin off). The pins are not links, so a hidden
+ * destination never leads to a missing page.
+ */
+export const mapPins = allRegions.flatMap((r) => (r.mapPin ? [{ id: r.id, ...r.mapPin }] : []));
 
 /** True when a route exists but is hidden from the public site. */
 export function isHiddenRoute(id: string): boolean {
