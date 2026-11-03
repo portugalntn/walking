@@ -89,11 +89,9 @@
     "caminho": {
       "label": "Way of Saint James",
       "title": "Portuguese Inland Way to Santiago",
-      "lead": "Twelve walking stages from Vila Pouca de Aguiar to the Praza do Obradoiro, through spa towns, border castles and oak woods. The quietest way to Compostela, with your luggage moved from one stay to the next.",
+      "lead": "Twelve walking stages from Vila Pouca de Aguiar to the Praza do Obradoiro, through spa towns, border castles and oak woods. The quietest way to Compostela, with two starting points and your luggage moved from one stay to the next.",
       "days": "days",
-      "stages": "walking stages",
-      "km": "km",
-      "cta": "Discover the Way",
+      "from": "From",
       "altMain": "Country lane between stone walls and blossoming trees on the Portuguese Inland Way to Santiago",
       "altDetail": "Santiago de Compostela Cathedral, on the Praza do Obradoiro"
     },

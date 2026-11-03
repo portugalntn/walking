@@ -92,7 +92,8 @@ export const UI_RAW = {
     programsWord: { en: "programmes", pt: "programas", es: "programas" },  
     programWord: { en: "programme", pt: "programa", es: "programa" },  
     daysWord: { en: "days", pt: "dias", es: "días" },  
-    explore: { en: "Explore the destination", pt: "Explorar destino", es: "Explorar destino" },  
+    explore: { en: "Explore the destination", pt: "Explorar destino", es: "Explorar destino" },
+    from: { en: "From", pt: "Desde", es: "Desde" },  
     programsHere: { en: "Programmes in this destination", pt: "Programas neste destino", es: "Programas en este destino" },  
     durationLabel: { en: "Duration", pt: "Duração", es: "Duración" },  
     formatsLabel: { en: "Formats", pt: "Formatos", es: "Formatos" },  

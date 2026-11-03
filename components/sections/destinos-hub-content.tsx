@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { regionsIn, routesForRegion } from "@/lib/destinations";
+import { getProgram } from "@/lib/programs";
 import { regionContent } from "@/lib/region-content";
 import { pageImage } from "@/lib/pages";
 import { durationLabel } from "@/components/ui/program-card";
@@ -173,15 +174,29 @@ export function DestinosHubContent() {
                       <div style={{ marginBottom: "32px" }}>
                         <p className="text-label" style={{ color: "var(--color-ntn-forest-600)", marginBottom: "6px" }}>{L.programsHere[locale]}</p>
                         <ul>
-                          {items.map((r) => (
+                          {items.map((r) => {
+                            // Versions of the same multi-day route (one title contains the other, e.g. the
+                            // Caminho from Vila Pouca and from Chaves): where each starts and how far it goes,
+                            // so they read apart (Juliano, 03/11/2026).
+                            const versao = r.days > 1 && items.some((o) => o.id !== r.id && o.days > 1 && (o.title.startsWith(r.title) || r.title.startsWith(o.title)));
+                            const p = versao ? getProgram(r.id) : undefined;
+                            const desde = p ? (typeof p.startPoint === "string" ? p.startPoint : p.startPoint[locale]) : "";
+                            return (
                             <li key={r.id}>
                               <Link
                                 href={`/${locale}/programas/${r.id}`}
                                 className="group flex items-center justify-between"
                                 style={{ gap: "16px", padding: "12px 0", borderBottom: "1px solid rgba(89,105,77,0.16)" }}
                               >
-                                <span className="font-ui transition-colors group-hover:text-[var(--color-ntn-forest-400)]" style={{ color: "var(--color-ntn-black-900)", fontWeight: 600, fontSize: "15px" }}>
-                                  {r.title}
+                                <span style={{ minWidth: 0 }}>
+                                  <span className="font-ui transition-colors group-hover:text-[var(--color-ntn-forest-400)]" style={{ display: "block", color: "var(--color-ntn-black-900)", fontWeight: 600, fontSize: "15px" }}>
+                                    {r.title}
+                                  </span>
+                                  {p && desde && (
+                                    <span className="text-label" style={{ display: "block", color: "var(--color-ntn-forest-400)", marginTop: "4px" }}>
+                                      {L.from[locale]} {desde}{p.totalDistance ? ` · ${p.totalDistance}` : ""}
+                                    </span>
+                                  )}
                                 </span>
                                 <span className="flex items-center shrink-0" style={{ gap: "12px" }}>
                                   <span style={{ fontFamily: "var(--font-ui)", fontSize: "12px", fontWeight: 700, color: "var(--color-ntn-forest-600)", backgroundColor: "rgba(188,207,2,0.22)", borderRadius: "9999px", padding: "4px 10px" }}>
@@ -191,7 +206,8 @@ export function DestinosHubContent() {
                                 </span>
                               </Link>
                             </li>
-                          ))}
+                            );
+                          })}
                         </ul>
                       </div>
                     )}

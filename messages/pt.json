@@ -89,11 +89,9 @@
     "caminho": {
       "label": "Caminho de Santiago",
       "title": "Caminho Português de Santiago Interior",
-      "lead": "Doze etapas a pé, de Vila Pouca de Aguiar à Praza do Obradoiro, por vilas termais, castelos de fronteira e carvalhais. O caminho mais tranquilo para Compostela, com a bagagem a seguir de alojamento em alojamento.",
+      "lead": "Doze etapas a pé, de Vila Pouca de Aguiar à Praza do Obradoiro, por vilas termais, castelos de fronteira e carvalhais. O caminho mais tranquilo para Compostela, com dois pontos de partida e a bagagem a seguir de alojamento em alojamento.",
       "days": "dias",
-      "stages": "etapas a pé",
-      "km": "km",
-      "cta": "Descobrir o Caminho",
+      "from": "Desde",
       "altMain": "Caminho rural entre muros de pedra e árvores em flor, no Caminho Português de Santiago Interior",
       "altDetail": "Catedral de Santiago de Compostela, na Praza do Obradoiro"
     },
