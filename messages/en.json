@@ -440,7 +440,7 @@
       },
       "submit": "Enter B2B Exclusive",
       "sending": "Opening",
-      "error": "We could not register you right now. Please try again shortly or write to info@portugalntn.com.",
+      "error": "We could not register you right now. Please try again shortly or write to walking@portugalntn.com.",
       "privacy": "Your details stay with Portugal NTN. We use them to talk to you about the partnership, nothing else."
     },
     "hero": {
@@ -742,7 +742,7 @@
       "refresh": "Refresh",
       "refreshHint": "Load the latest version",
       "contacts": "Contact",
-      "email": "info@portugalntn.com",
+      "email": "walking@portugalntn.com",
       "site": "portugalntnwalking.com",
       "backToStart": "Back to the start"
     }

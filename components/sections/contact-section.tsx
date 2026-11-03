@@ -8,7 +8,7 @@ import { ProposalForm } from "@/components/sections/proposal-form";
 import { fadeUpSoft } from "@/lib/motion";
 import { regionsIn, routes } from "@/lib/destinations";
 
-const CONTACT_EMAIL = "info@portugalntn.com";
+const CONTACT_EMAIL = "walking@portugalntn.com";
 
 /** Public proof points shown beside the form. Labels come from i18n. */
 const stats = ["stat1", "stat2", "stat3", "stat4"] as const;

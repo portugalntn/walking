@@ -440,7 +440,7 @@
       },
       "submit": "Aceder ao B2B Exclusive",
       "sending": "A abrir",
-      "error": "Não foi possível registar agora. Tente de novo dentro de instantes ou escreva para info@portugalntn.com.",
+      "error": "Não foi possível registar agora. Tente de novo dentro de instantes ou escreva para walking@portugalntn.com.",
       "privacy": "Os seus dados ficam só com a Portugal NTN. Usamo-los para falar consigo sobre a parceria, nada mais."
     },
     "hero": {
@@ -742,7 +742,7 @@
       "refresh": "Atualizar",
       "refreshHint": "Carregar a versão mais recente",
       "contacts": "Contactos",
-      "email": "info@portugalntn.com",
+      "email": "walking@portugalntn.com",
       "site": "portugalntnwalking.com",
       "backToStart": "Voltar ao início"
     }

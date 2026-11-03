@@ -14,14 +14,14 @@ import { flowConfigurado, registarPedidoNoFlow } from "@/lib/flow-leads";
  *    and FLOW_SUPABASE_KEY, the same pair the build uses to read the content.
  * 2. It is also emailed through Resend when RESEND_API_KEY is set:
  *      RESEND_API_KEY   API key from resend.com
- *      PROPOSAL_TO      inbox that receives the leads   (default info@portugalntn.com)
+ *      PROPOSAL_TO      inbox that receives the leads   (default walking@portugalntn.com)
  *      PROPOSAL_FROM    verified sender on that domain  (default site@portugalntn.com)
  *
  * The request succeeds when at least one of the two delivered it. Otherwise,
  * in production, it fails so the form shows its error and the direct email.
  */
 
-const TO = process.env.PROPOSAL_TO || "info@portugalntn.com";
+const TO = process.env.PROPOSAL_TO || "walking@portugalntn.com";
 const FROM = process.env.PROPOSAL_FROM || "site@portugalntn.com";
 const MAX = 4000;
 

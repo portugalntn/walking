@@ -636,7 +636,7 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                 {t("ctaBody")}
               </p>
               <a
-                href="mailto:info@portugalntn.com"
+                href="mailto:walking@portugalntn.com"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "10px", color: "#1a2510", fontFamily: "var(--font-ui)", fontWeight: 700,
                   fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none",
@@ -644,7 +644,7 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                 }}
               >
                 <Mail size={16} />
-                info@portugalntn.com
+                walking@portugalntn.com
               </a>
             </FadeUp>
             <FadeUp delay={0.12}>
