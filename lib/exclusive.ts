@@ -129,7 +129,8 @@ export const exImages = {
   douro: pageImage("exclusive", "douro", "/images/programs/douro-8days/douro-c.jpg"),
   tras: pageImage("exclusive", "tras", "/images/programs/tras-8days/picote-2.jpg"),
   geres: pageImage("exclusive", "geres", "/images/programs/geres-8days/geres-a.jpg"),
-  santiago: pageImage("exclusive", "santiago", "/images/caminho/caminho-bosque.jpg"),
+  // Sinalização do Caminho (setas com a vieira), pedido do Juliano a 03/11/2026.
+  santiago: pageImage("exclusive", "santiago", "/images/caminho/caminho-sinal.jpg"),
   mesa: pageImage("exclusive", "mesa", "/images/programs/tras-8days/tom-a.jpg"),
   vinho: pageImage("exclusive", "vinho", "/images/programs/douro-1day/walk-3.jpg"),
   azeite: pageImage("exclusive", "azeite", "/images/programs/tras-8days/azeite-1.jpg"),

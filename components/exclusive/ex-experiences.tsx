@@ -20,7 +20,7 @@ export function ExExperiences() {
         <div className="ex-head">
           <div>
             <p className="ex-over ex-over-accent">{t("overline")}</p>
-            <h2 className="ex-serif ex-h2" style={{ marginTop: "clamp(1rem, 2vw, 1.5rem)", maxWidth: "15ch" }}>
+            <h2 className="ex-serif ex-h2" style={{ marginTop: "clamp(1rem, 2vw, 1.5rem)", maxWidth: "26ch", textWrap: "balance" }}>
               {t.rich("title", { em: (c) => <em className="ex-serif-i ex-accent">{c}</em> })}
             </h2>
           </div>

@@ -45,14 +45,18 @@ function Foto({ src, alt, sizes, priority }: { src: string; alt: string; sizes: 
   return <Image src={src} alt={alt} fill sizes={sizes} quality={90} loading={priority ? undefined : "eager"} priority={priority} />;
 }
 
-function Cabeca({ over, title, lead, wide }: { over: string; title: React.ReactNode; lead?: string; wide?: boolean }) {
+/** `largura`: para um título mais comprido que deve ficar num número certo de linhas (equilibradas). */
+function Cabeca({ over, title, lead, wide, largura }: { over: string; title: React.ReactNode; lead?: string; wide?: boolean; largura?: string }) {
   return (
     <div className="ex-dk-head">
       <div>
         <p className="ex-over ex-over-accent ex-dk-in" style={d(0)}>
           {over}
         </p>
-        <h2 className="ex-serif ex-dk-h2 ex-dk-in" style={{ ...d(1), maxWidth: wide ? "20ch" : "15ch" }}>
+        <h2
+          className="ex-serif ex-dk-h2 ex-dk-in"
+          style={{ ...d(1), maxWidth: largura ?? (wide ? "20ch" : "15ch"), ...(largura ? { textWrap: "balance" } : {}) }}
+        >
           {title}
         </h2>
       </div>
@@ -241,7 +245,8 @@ function Caminho() {
           <Foto src={exImages.caminhoTopo} alt={t("altTopo")} sizes="(orientation: portrait) 70vw, 34vw" />
         </figure>
         <figure className="ex-figure ex-dk-origin-b ex-dk-in" style={d(3)}>
-          <Foto src={exImages.caminhoSinal} alt={t("altSinal")} sizes="(orientation: portrait) 50vw, 24vw" />
+          {/* O marco (a sinalização das setas já está no ecrã dos Territórios, logo antes). */}
+          <Foto src={exImages.caminhoMarca} alt={t("altMarca")} sizes="(orientation: portrait) 50vw, 24vw" />
         </figure>
         <p className="ex-over ex-dk-caption ex-dk-in" style={d(4)}>
           <span className="ex-paren">(</span> {t("caption")} <span className="ex-paren">)</span>
@@ -287,7 +292,9 @@ function Experiencias() {
   const [aberta, setAberta] = useState(0);
   return (
     <div className="ex-dk-body ex-dk-stack">
-      <Cabeca over={t("overline")} title={t.rich("title", { em })} lead={t("lead")} />
+      {/* "Experiências muito além do catálogo. Momentos reais…": 26ch dá três linhas equilibradas
+          em PT, EN e ES, de 1024×600 a 1280×800 e com o tablet em pé (medido a 03/11/2026). */}
+      <Cabeca over={t("overline")} title={t.rich("title", { em })} lead={t("lead")} largura="26ch" />
       <div className="ex-dk-acc">
         {EXPERIENCIAS.map((k, i) => (
           <button
