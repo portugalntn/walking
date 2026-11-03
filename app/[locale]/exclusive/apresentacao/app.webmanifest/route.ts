@@ -17,7 +17,10 @@ export async function GET(_req: Request, { params }: { params: Promise<{ locale:
       name: "Portugal NTN Exclusive",
       short_name: "NTN Exclusive",
       start_url: inicio,
-      scope: inicio,
+      // O âmbito é o site inteiro: mudar de língua (/pt → /en → /es) tem de ficar "dentro da app".
+      // Com o âmbito só da língua instalada, o Android punha a barra branca de site externo em cima
+      // ao trocar de idioma (vídeo do CEO na feira, 03/11/2026). O id fica igual: é a mesma app.
+      scope: "/",
       display: "fullscreen",
       display_override: ["fullscreen", "standalone"],
       orientation: "any",
