@@ -20,6 +20,12 @@ export const CAMINHO_ROTAS = [
   { k: "prata", img: exImages.caminhoPrata },
 ] as const;
 export const CAMINHO_ENTREGAS = ["e1", "e2", "e3", "e4", "e5", "e6"] as const;
+/** "Desde Chaves · 11 dias · 213,6 km" em duas linhas iguais nos três cartões: de onde parte, e os dias e os km. */
+export function CaminhoSub({ texto }: { texto: string }) {
+  const i = texto.indexOf(" · ");
+  if (i < 0) return <>{texto}</>;
+  return (<>{texto.slice(0, i)}<br />{texto.slice(i + 3)}</>);
+}
 
 /** O Caminho Português de Santiago Interior, em conceito (Juliano, 02/11/2026).
  *  Três tempos: a ideia do caminho ao lado da natureza e de um troço histórico do
@@ -71,7 +77,7 @@ export function ExCaminho() {
               </figure>
               <span className="ex-num">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="ex-serif ex-h4">{t(`${k}.name`)}</h3>
-              <p className="ex-over ex-over-accent" style={{ marginTop: "0.9rem" }}>{t(`${k}.sub`)}</p>
+              <p className="ex-over ex-over-accent" style={{ marginTop: "0.9rem", lineHeight: 1.7 }}><CaminhoSub texto={t(`${k}.sub`)} /></p>
               <p className="ex-body ex-small">{t(`${k}.text`)}</p>
             </m.div>
           ))}

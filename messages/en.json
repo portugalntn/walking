@@ -533,20 +533,20 @@
       "captionTopo": "Between Vidago and Chaves, on the Portuguese side of the Way",
       "rotasLabel": "Three ways to walk it",
       "completo": {
-        "name": "The complete Way",
-        "sub": "From Vila Pouca de Aguiar · 13 days",
+        "name": "The Inland Way",
+        "sub": "From Vila Pouca de Aguiar · 13 days · 252.4 km",
         "text": "From the hills of Aguiar to the cathedral: the spa towns of Pedras Salgadas, Vidago and Chaves, Monterrei Castle, the stone town of Allariz and the Vía de la Plata.",
         "alt": "Trail through pines on the first day of the Way, in Vila Pouca de Aguiar"
       },
       "raia": {
         "name": "Across the border",
-        "sub": "From Chaves · 11 days",
+        "sub": "From Chaves · 11 days · 213.6 km",
         "text": "It begins at the Roman bridge of Chaves, crosses the border through the vineyards of Monterrei and enters Galicia across the Limia plain, on to Santiago.",
         "alt": "The Roman bridge of Chaves over the river Tâmega"
       },
       "prata": {
         "name": "The Galician Vía de la Plata",
-        "sub": "From Allariz · 7 days",
+        "sub": "From Allariz · 7 days · 125.6 km",
         "text": "Allariz, Augas Santas and the hot springs of Ourense, then the Vía de la Plata through oak woods and medieval bridges. Enough to earn the Compostela.",
         "alt": "Medieval bridge over the river Arnoia, in Allariz"
       },

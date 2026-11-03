@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { dayTours, exImages, journeys, regionIds, type ExDayTour, type ExJourney, type ExRegionId } from "@/lib/exclusive";
 import { ExLogo } from "./ex-chrome";
 import { ExMapa } from "./ex-territories";
-import { CAMINHO_ENTREGAS, CAMINHO_ROTAS } from "./ex-caminho";
+import { CAMINHO_ENTREGAS, CAMINHO_ROTAS, CaminhoSub } from "./ex-caminho";
 
 /** Os ecrãs da apresentação para tablet. Os mesmos textos (messages ›
  *  exclusive.*, editáveis no FLOW) e as mesmas fotos (exImages, journeys,
@@ -269,7 +269,7 @@ function CaminhoRotas() {
               <Foto src={img} alt={t(`${k}.alt`)} sizes="(orientation: portrait) 40vw, 32vw" />
             </div>
             <div className="ex-dk-card-text">
-              <p className="ex-over">{t(`${k}.sub`)}</p>
+              <p className="ex-over" style={{ lineHeight: 1.6 }}><CaminhoSub texto={t(`${k}.sub`)} /></p>
               <h3 className="ex-serif ex-dk-h4">{t(`${k}.name`)}</h3>
               <p className="ex-body ex-dk-small ex-dk-caminho-texto">{t(`${k}.text`)}</p>
             </div>

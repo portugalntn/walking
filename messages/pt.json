@@ -533,20 +533,20 @@
       "captionTopo": "Entre Vidago e Chaves, no lado português do Caminho",
       "rotasLabel": "Três formas de o caminhar",
       "completo": {
-        "name": "O Caminho completo",
-        "sub": "Desde Vila Pouca de Aguiar · 13 dias",
+        "name": "O Caminho Interior",
+        "sub": "Desde Vila Pouca de Aguiar · 13 dias · 252,4 km",
         "text": "Das serras de Aguiar à catedral: as termas de Pedras Salgadas, Vidago e Chaves, o Castelo de Monterrei, a vila de pedra de Allariz e a Vía da Prata.",
         "alt": "Trilho entre pinheiros no primeiro dia do Caminho, em Vila Pouca de Aguiar"
       },
       "raia": {
         "name": "A travessia da raia",
-        "sub": "Desde Chaves · 11 dias",
+        "sub": "Desde Chaves · 11 dias · 213,6 km",
         "text": "Começa na ponte romana de Chaves, cruza a fronteira pelas vinhas de Monterrei e entra na Galiza pela planície da Limia, até Santiago.",
         "alt": "Ponte romana de Chaves sobre o rio Tâmega"
       },
       "prata": {
         "name": "A Vía da Prata galega",
-        "sub": "Desde Allariz · 7 dias",
+        "sub": "Desde Allariz · 7 dias · 125,6 km",
         "text": "Allariz, Augas Santas e as termas de Ourense, depois a Vía da Prata por carvalhais e pontes medievais. O suficiente para receber a Compostela.",
         "alt": "Ponte medieval sobre o rio Arnoia, em Allariz"
       },
