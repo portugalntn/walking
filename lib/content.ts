@@ -64,10 +64,14 @@ export type ProductEntry = {
   included?: LEntry[];
   notIncluded?: LEntry[];
   extras?: LEntry[];
-  priceTiers?: { pax: number; price: number; maxPax?: Opt<number>; perPax?: Opt<boolean> }[];
+  /** highPrice: a época alta (FLOW, Tarifas, 25/11/2026). */
+  priceTiers?: { pax: number; price: number; maxPax?: Opt<number>; perPax?: Opt<boolean>; highPrice?: Opt<number> }[];
   priceTiersNote?: LEntry;
   prices?: Opt<{ lowFrom?: Opt<number>; lowSingle?: Opt<number>; highFrom?: Opt<number>; highSingle?: Opt<number>; minPax?: Opt<number>; maxPax?: Opt<number> }>;
   priceCondition?: LEntry;
+  /** FLOW › Tarifas (25/11/2026): os períodos das épocas (em PT) e a forma da tarifa. */
+  precoPeriodos?: Opt<{ baixa?: Opt<string>; alta?: Opt<string> }>;
+  precoFormato?: Opt<string>;
   payment?: LEntry[];
   cancellation?: LEntry[];
 };

@@ -9,7 +9,7 @@
  * pt-PT, no em dashes (house rule).
  */
 
-import { useState, useEffect, useCallback, useMemo, useRef, useId } from "react";
+import { Fragment, useState, useEffect, useCallback, useMemo, useRef, useId } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
@@ -17,6 +17,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { FadeUp } from "@/components/ui/animated";
 import { Overline } from "@/components/ui/overline";
 import { formatPrice } from "@/lib/utils";
+import { periodoNaLingua } from "@/lib/periodos";
 import type { Program } from "@/lib/programs";
 import type { Trail } from "@/lib/trails";
 import type { L } from "@/lib/destinations";
@@ -118,6 +119,15 @@ export function ProductPageContent({ program, trail, previa = false }: { program
   const perPaxTiers = Boolean(program.priceTiers?.some((p) => p.perPax));
   const priceKind = program.priceTiers?.length ? (perPaxTiers ? "person" : "group") : program.prices ? "person" : null;
   const minPax = program.priceTiers?.length ? Math.min(...program.priceTiers.map((p) => p.pax)) : null;
+  // FLOW › Tarifas (25/11/2026): packs e escalões também com época alta; os períodos escritos no FLOW
+  // (traduzidos nos meses) em vez das notas fixas, quando os há.
+  const seasonTiers = Boolean(program.priceTiers?.some((p) => p.highPrice != null));
+  const closedGroup = program.priceFormat === "fechado";
+  const lowNote = program.seasonPeriods?.low ? periodoNaLingua(program.seasonPeriods.low, locale) : t("lowSeasonNote");
+  const highNote = program.seasonPeriods?.high ? periodoNaLingua(program.seasonPeriods.high, locale) : t("highSeasonNote");
+  const tierLabel = (tier: { pax: number; maxPax?: number }) =>
+    `${tier.maxPax ? `${tier.pax}–${tier.maxPax}` : tier.pax} ${tier.pax === 1 && !tier.maxPax ? t("paxOne") : t("paxMany")}`;
+  const tierCell = { backgroundColor: "var(--color-ntn-white)", padding: "clamp(12px, 3vw, 16px) clamp(12px, 3.6vw, 20px)" } as const;
 
   // Reassurance lines come from the program's own conditions, never invented.
   const insurance = program.included.find((it) => /insurance/i.test(it.en));
@@ -479,17 +489,44 @@ export function ProductPageContent({ program, trail, previa = false }: { program
               <FadeUp>
                 <div style={{ marginTop: "72px", paddingTop: "40px", borderTop: "1px solid rgba(89,105,77,0.18)" }}>
                   <Overline color="var(--color-ntn-forest-400)">{t("prices")}</Overline>
-                  {program.priceTiers?.length ? (
+                  {program.priceTiers?.length && seasonTiers ? (
+                    // Uma linha por grupo (ou pack), com a época baixa e a alta lado a lado.
+                    <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1fr)", gap: "1px", marginTop: "20px", backgroundColor: "rgba(89,105,77,0.16)", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
+                      <div style={tierCell} />
+                      {[
+                        { key: "low", label: t("lowSeason"), note: lowNote },
+                        { key: "high", label: t("highSeason"), note: highNote },
+                      ].map((h) => (
+                        <div key={h.key} style={tierCell}>
+                          <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>{h.label}</p>
+                          {h.note && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", opacity: 0.75, fontSize: "13px", lineHeight: 1.4 }}>{h.note}</p>}
+                        </div>
+                      ))}
+                      {program.priceTiers.map((tier) => (
+                        <Fragment key={tier.pax}>
+                          <div style={{ ...tierCell, display: "flex", alignItems: "center" }}>
+                            <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>{tierLabel(tier)}</p>
+                          </div>
+                          {[tier.price, tier.highPrice].map((v, i) => (
+                            <div key={i} style={tierCell}>
+                              <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.3rem", lineHeight: 1.15 }}>{v != null ? formatPrice(v, numLocale) : "—"}</p>
+                              {v != null && tier.perPax && <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "var(--color-ntn-black-800)" }}>{t("perPerson")}</p>}
+                              {v != null && closedGroup && <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "var(--color-ntn-black-800)" }}>{t("groupTotal", { price: formatPrice(v * tier.pax, numLocale) })}</p>}
+                            </div>
+                          ))}
+                        </Fragment>
+                      ))}
+                    </div>
+                  ) : program.priceTiers?.length ? (
                     <div className={`grid grid-cols-2 ${perPaxTiers ? "" : "sm:grid-cols-3"}`} style={{ gap: "1px", marginTop: "20px", backgroundColor: "rgba(89,105,77,0.16)", border: "1px solid rgba(89,105,77,0.16)", borderRadius: "10px", overflow: "hidden" }}>
                       {program.priceTiers.map((tier) => (
-                        <div key={tier.pax} style={{ backgroundColor: "var(--color-ntn-white)", padding: "16px 20px" }}>
-                          <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>
-                            {tier.maxPax ? `${tier.pax}–${tier.maxPax}` : tier.pax} {tier.pax === 1 && !tier.maxPax ? t("paxOne") : t("paxMany")}
-                          </p>
+                        <div key={tier.pax} style={tierCell}>
+                          <p className="text-label" style={{ color: "var(--color-ntn-forest-400)" }}>{tierLabel(tier)}</p>
                           <p className="font-title" style={{ color: "var(--color-ntn-black-900)", fontSize: "1.4rem" }}>
                             {formatPrice(tier.price, numLocale)}
                             {tier.perPax && <span style={{ fontFamily: "var(--font-ui)", fontSize: "13px", fontWeight: 400, color: "var(--color-ntn-black-800)", marginLeft: "8px" }}>{t("perPerson")}</span>}
                           </p>
+                          {closedGroup && <p style={{ fontFamily: "var(--font-ui)", fontSize: "13px", color: "var(--color-ntn-black-800)" }}>{t("groupTotal", { price: formatPrice(tier.price * tier.pax, numLocale) })}</p>}
                         </div>
                       ))}
                     </div>
@@ -497,8 +534,8 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                     <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: "16px", marginTop: "20px" }}>
                       {(program.prices.high
                         ? [
-                            { key: "low", label: t("lowSeason"), note: t("lowSeasonNote"), p: program.prices.low },
-                            { key: "high", label: t("highSeason"), note: t("highSeasonNote"), p: program.prices.high },
+                            { key: "low", label: t("lowSeason"), note: lowNote, p: program.prices.low },
+                            { key: "high", label: t("highSeason"), note: highNote, p: program.prices.high },
                           ]
                         : [{ key: "all", label: program.season[locale], note: "", p: program.prices.low }]
                       ).map((sea) => (
@@ -529,7 +566,23 @@ export function ProductPageContent({ program, trail, previa = false }: { program
                   )}
                   {priceKind && (
                     <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "6px" }}>
-                      {perPaxTiers && <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("perPaxPriceNote", { min: minPax ?? 2 })}</p>}
+                      {Boolean(program.priceTiers?.length) && program.tierSingles?.low != null && (
+                        <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>
+                          {t("singleSupp")}: {formatPrice(program.tierSingles.low, numLocale)}
+                          {seasonTiers && program.tierSingles.high != null
+                            ? ` (${t("lowSeason").toLowerCase()}) · ${formatPrice(program.tierSingles.high, numLocale)} (${t("highSeason").toLowerCase()})`
+                            : ""}
+                        </p>
+                      )}
+                      {perPaxTiers && (
+                        <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>
+                          {program.priceFormat === "packs"
+                            ? t("packsPriceNote")
+                            : closedGroup
+                              ? t("closedGroupNote", { n: minPax ?? 2 })
+                              : t("perPaxPriceNote", { min: minPax ?? 2 })}
+                        </p>
+                      )}
                       {program.prices?.maxPax != null && !program.priceTiers?.length && (
                         <p className="text-body-md" style={{ color: "var(--color-ntn-black-800)", fontSize: "14px" }}>{t("selfGuidedPriceNote", { min: program.prices.minPax ?? 2, max: program.prices.maxPax })}</p>
                       )}

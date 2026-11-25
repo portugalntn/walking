@@ -89,7 +89,13 @@ export type Program = {
    * exactly `pax` people, or (perPax) a price per person for groups of
    * `pax` to `maxPax` people, the commercial bands set in FLOW.
    */
-  priceTiers?: { pax: number; price: number; maxPax?: number; perPax?: boolean }[];
+  priceTiers?: { pax: number; price: number; maxPax?: number; perPax?: boolean; highPrice?: number }[];
+  /** FLOW › Tarifas (25/11/2026): a forma da tarifa (packs, escalões, grupo fechado, por pessoa). */
+  priceFormat?: "pessoa" | "packs" | "escaloes" | "fechado";
+  /** Os períodos das épocas escritos no FLOW, em português (lib/periodos.ts traduz os meses). */
+  seasonPeriods?: { low?: string; high?: string };
+  /** O suplemento individual quando o preço vem por escalões ou packs (sem `prices`). */
+  tierSingles?: { low?: number; high?: number };
   /** Note shown under the price tiers, e.g. groups above 6 on request. */
   priceTiersNote?: L;
   /** Optional commercial condition shown under the price cards. */
@@ -98,6 +104,8 @@ export type Program = {
   cancellation: L[];
 };
 
+
+const FORMATOS = ["pessoa", "packs", "escaloes", "fechado"];
 
 /** A entrada do FLOW na forma da página. Também a pré-visualização (app/[locale]/previa) usa esta. */
 export function toProgram(p: ProductEntry): Program {
@@ -161,7 +169,11 @@ export function toProgram(p: ProductEntry): Program {
           price: t.price,
           ...(t.maxPax != null && t.maxPax > t.pax ? { maxPax: t.maxPax } : {}),
           ...(t.perPax ? { perPax: true } : {}),
+          ...(t.highPrice != null && t.highPrice > 0 ? { highPrice: t.highPrice } : {}),
         })) : undefined,
+    priceFormat: FORMATOS.includes(p.precoFormato as never) ? (p.precoFormato as Program["priceFormat"]) : undefined,
+    seasonPeriods: p.precoPeriodos?.baixa || p.precoPeriodos?.alta ? { low: p.precoPeriodos.baixa || undefined, high: p.precoPeriodos.alta || undefined } : undefined,
+    tierSingles: pr?.lowFrom == null && (pr?.lowSingle || pr?.highSingle) ? { low: pr.lowSingle || undefined, high: pr.highSingle || undefined } : undefined,
     priceTiersNote: optL(p.priceTiersNote),
     priceCondition: optL(p.priceCondition),
     payment: tlList(p.payment),
